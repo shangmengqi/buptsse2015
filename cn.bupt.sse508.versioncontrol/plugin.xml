@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IProject"
+            id="cn.bupt.sse508.versioncontrol.contribution1">
+         <menu
+               label="Versoin Control"
+               path="additions"
+               id="cn.bupt.sse508.versioncontrol.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Commit"
+               class="cn.bupt.sse508.versioncontrol.popup.actions.CommitAction"
+               menubarPath="cn.bupt.sse508.versioncontrol.menu1/group1"
+               enablesFor="1"
+               id="cn.bupt.sse508.versioncontrol.commitAction">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="cn.bupt.sse508.versioncontrol.contribution1"
+            objectClass="org.eclipse.core.resources.IProject">
+         <menu
+               id="cn.bupt.sse508.versioncontrol.menu1"
+               label="Version Control"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="cn.bupt.sse508.versioncontrol.popup.actions.Config"
+               enablesFor="1"
+               id="cn.bupt.sse508.versioncontrol.configAction"
+               label="Config ..."
+               menubarPath="cn.bupt.sse508.versioncontrol.menu1/group1">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

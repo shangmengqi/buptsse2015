@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+	<!--
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            name="graeditor.usecase"
+            application="org.eclipse.e4.ui.workbench.swt.E4Application">
+         <property
+               name="applicationCSS"
+               value="platform:/plugin/GraEditor.UseCase/css/default.css">
+         </property>
+      </product>
+   </extension>
+   -->
+   <extension
+      point="org.eclipse.graphiti.ui.diagramTypes">
+    <diagramType
+      description="This is the diagram type for UseCase Diagram"
+      id="graeditor.usecase.provider.UseCaseDiagramType"
+      name="UseCase Diagram"
+      type="UseCase">
+    </diagramType>
+  </extension>
+
+  <extension
+      point="org.eclipse.graphiti.ui.diagramTypeProviders">
+    <diagramTypeProvider
+      class="graeditor.usecase.provider.UseCaseDiagramTypeProvider"
+      description="UseCase Diagram Type Provider"
+      id="graeditor.usecase.provider.UseCaseDiagramTypeProvider"
+      name="UseCase Diagram Type Provider">
+	      <diagramType
+	        id="graeditor.usecase.provider.UseCaseDiagramType">
+	      </diagramType>
+	      <imageProvider
+	         	id="graeditor.usecase.provider.UseCaseImageProvider">
+	      </imageProvider>
+    </diagramTypeProvider>
+  </extension>
+  
+  <extension
+      point="org.eclipse.graphiti.ui.imageProviders">
+   <imageProvider
+         class="graeditor.usecase.provider.UseCaseImageProvider"
+         id="graeditor.usecase.provider.UseCaseImageProvider">
+   </imageProvider>
+</extension>
+   
+
+</plugin>

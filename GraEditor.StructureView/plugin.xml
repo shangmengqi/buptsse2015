@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypes">
+      <diagramType
+            name="StructureView Diagram Type"
+            type="StructureView"
+            id="GraEditor.StructureView.StructureViewDiagramType">
+      </diagramType>
+   </extension>
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypeProviders">
+      <diagramTypeProvider
+            name="StructureView Diagram Type Provider"
+            class="graeditor.structureview.diagram.StructureViewDiagramTypeProvider"
+            id="GraEditor.StructureView.StructureViewDiagramTypeProvider">
+         <diagramType
+               id="GraEditor.StructureView.StructureViewDiagramType">
+         </diagramType>
+         <imageProvider
+         	id="GraEditor.StructureView.StructureViewImageProvider">
+         </imageProvider>
+      </diagramTypeProvider>
+   </extension>
+   
+   <extension
+      point="org.eclipse.graphiti.ui.imageProviders">
+	   <imageProvider
+	         class="graeditor.structureview.diagram.StructureViewImageProvider"
+	         id="GraEditor.StructureView.StructureViewImageProvider">
+	   </imageProvider>
+</extension> 
+
+</plugin>

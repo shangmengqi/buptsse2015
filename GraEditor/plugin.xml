@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            name="GraEditor"
+            application="org.eclipse.e4.ui.workbench.swt.E4Application">
+         <property
+               name="lifeCycleURI"
+               value="bundleclass://GraEditor/graeditor.E4LifeCycle">
+         </property>
+         <property
+               name="applicationCSS"
+               value="platform:/plugin/GraEditor/css/default.css">
+         </property>
+         <property
+               name="appName"
+               value="GraEditor">
+         </property>
+      </product>
+   </extension>
+   
+   <extension point= "org.eclipse.ui.editors"> 
+    <updater 
+        id="org.eclipse.jdt.ui.markerUpdaters.JavaSearchMarkerUpdater" 
+        class="org.eclipse.jdt.internal.ui.search.JavaSearchMarkerUpdater" 
+        markerType="org.eclipse.search.searchmarker"> 
+    </updater> 
+	</extension>
+
+</plugin>
