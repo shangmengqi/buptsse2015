@@ -21,6 +21,7 @@ import org.eclipse.graphiti.services.IPeCreateService;
 
 import StructureView.FileGroup;
 import StructureView.StructureViewFactory;
+
 import graeditor.structureview.diagram.StructureViewImageProvider;
 import graeditor.utils.GraPropertyUtil;
 import graeditor.utils.IDGenerator;
@@ -63,6 +64,7 @@ public class FileGroupPattern extends IdPattern implements IPattern{
 
 	@Override
 	protected PictogramElement doAdd(IAddContext context) {
+		
 		Diagram targetDiagram = (Diagram) context.getTargetContainer();
 		FileGroup addedDomainModel = (FileGroup) context.getNewObject();
 		
@@ -79,6 +81,9 @@ public class FileGroupPattern extends IdPattern implements IPattern{
 		
 		Image file = gaService.createImage(containerShape, StructureViewImageProvider.FILEGROUP_REF);
 		gaService.setLocationAndSize(file, context.getX(), context.getY(), width, height);
+		System.out.println(file);
+		System.out.println(StructureViewImageProvider.FILEGROUP_REF);
+		
 		
 		link(containerShape, addedDomainModel);
 		
