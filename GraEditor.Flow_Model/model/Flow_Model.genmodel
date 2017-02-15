@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/GraEditor.Flow_Model/src" modelPluginID="GraEditor.Flow_Model"
+    modelName="Flow_Model" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.java" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>@model</foreignModel>
+  <genPackages prefix="Flow_model" basePackage="com.graeditor" disposableProviderFactory="true"
+      ecorePackage="flow_model.ecore#/">
+    <genClasses ecoreClass="flow_model.ecore#//ContentModule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute flow_model.ecore#//ContentModule/textContent"/>
+    </genClasses>
+    <genClasses ecoreClass="flow_model.ecore#//EndTagModule"/>
+    <genClasses ecoreClass="flow_model.ecore#//Flow">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference flow_model.ecore#//Flow/modules"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference flow_model.ecore#//Flow/endTag"/>
+    </genClasses>
+    <genClasses ecoreClass="flow_model.ecore#//FlowModule">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference flow_model.ecore#//FlowModule/pictogramElement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference flow_model.ecore#//FlowModule/previousModules"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference flow_model.ecore#//FlowModule/next"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute flow_model.ecore#//FlowModule/name"/>
+    </genClasses>
+    <genClasses ecoreClass="flow_model.ecore#//StartTagModule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute flow_model.ecore#//StartTagModule/textContent"/>
+    </genClasses>
+    <genClasses ecoreClass="flow_model.ecore#//VerticalLineModule"/>
+  </genPackages>
+</genmodel:GenModel>

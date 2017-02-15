@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypes">
+      <diagramType
+            name="Flow Diagram Type"
+            type="Flow"
+            id="GraEditor.Flow.FlowDiagramType">
+      </diagramType>
+   </extension>
+   
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypeProviders">
+      <diagramTypeProvider
+            name="FlowView Diagram Type Provider"
+            class="graeditor.flow.graphiti.FlowDiagramTypeProvider"
+            id="GraEditor.Flow.FlowDiagramTypeProvider">
+         <diagramType
+               id="GraEditor.Flow.FlowDiagramType">
+               <imageProvider
+               		id="GraEditor.Flow.FlowImageProvider">
+       			</imageProvider>
+         </diagramType>
+         
+      </diagramTypeProvider>
+   </extension>
+   
+   <extension
+   		point="org.eclipse.graphiti.ui.imageProviders">
+   		<imageProvider
+   			class="graeditor.flow.graphiti.FlowImageProvider"
+   			id="GraEditor.Flow.FlowImageProvider">
+		</imageProvider>
+	</extension>
+   			
+
+</plugin>
