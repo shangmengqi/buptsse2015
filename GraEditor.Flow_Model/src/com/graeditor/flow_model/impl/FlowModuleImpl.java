@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.graeditor.flow_model.impl.FlowModuleImpl#getPreviousModules <em>Previous Modules</em>}</li>
  *   <li>{@link com.graeditor.flow_model.impl.FlowModuleImpl#getNext <em>Next</em>}</li>
  *   <li>{@link com.graeditor.flow_model.impl.FlowModuleImpl#getName <em>Name</em>}</li>
+ *   <li>{@link com.graeditor.flow_model.impl.FlowModuleImpl#getTextContent <em>Text Content</em>}</li>
  * </ul>
  *
  * @generated
@@ -88,6 +89,26 @@ public class FlowModuleImpl extends MinimalEObjectImpl.Container implements Flow
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTextContent() <em>Text Content</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTextContent()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String TEXT_CONTENT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getTextContent() <em>Text Content</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTextContent()
+	 * @generated
+	 * @ordered
+	 */
+	protected String textContent = TEXT_CONTENT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -244,6 +265,27 @@ public class FlowModuleImpl extends MinimalEObjectImpl.Container implements Flow
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getTextContent() {
+		return textContent;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTextContent(String newTextContent) {
+		String oldTextContent = textContent;
+		textContent = newTextContent;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Flow_modelPackage.FLOW_MODULE__TEXT_CONTENT, oldTextContent, textContent));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
@@ -292,6 +334,8 @@ public class FlowModuleImpl extends MinimalEObjectImpl.Container implements Flow
 				return basicGetNext();
 			case Flow_modelPackage.FLOW_MODULE__NAME:
 				return getName();
+			case Flow_modelPackage.FLOW_MODULE__TEXT_CONTENT:
+				return getTextContent();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -318,6 +362,9 @@ public class FlowModuleImpl extends MinimalEObjectImpl.Container implements Flow
 			case Flow_modelPackage.FLOW_MODULE__NAME:
 				setName((String)newValue);
 				return;
+			case Flow_modelPackage.FLOW_MODULE__TEXT_CONTENT:
+				setTextContent((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -342,6 +389,9 @@ public class FlowModuleImpl extends MinimalEObjectImpl.Container implements Flow
 			case Flow_modelPackage.FLOW_MODULE__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case Flow_modelPackage.FLOW_MODULE__TEXT_CONTENT:
+				setTextContent(TEXT_CONTENT_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -362,6 +412,8 @@ public class FlowModuleImpl extends MinimalEObjectImpl.Container implements Flow
 				return next != null;
 			case Flow_modelPackage.FLOW_MODULE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case Flow_modelPackage.FLOW_MODULE__TEXT_CONTENT:
+				return TEXT_CONTENT_EDEFAULT == null ? textContent != null : !TEXT_CONTENT_EDEFAULT.equals(textContent);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -378,6 +430,8 @@ public class FlowModuleImpl extends MinimalEObjectImpl.Container implements Flow
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", textContent: ");
+		result.append(textContent);
 		result.append(')');
 		return result.toString();
 	}

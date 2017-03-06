@@ -103,13 +103,22 @@ public interface Flow_modelPackage extends EPackage {
 	int FLOW_MODULE__NAME = 3;
 
 	/**
+	 * The feature id for the '<em><b>Text Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FLOW_MODULE__TEXT_CONTENT = 4;
+
+	/**
 	 * The number of structural features of the '<em>Flow Module</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FLOW_MODULE_FEATURE_COUNT = 4;
+	int FLOW_MODULE_FEATURE_COUNT = 5;
 
 	/**
 	 * The number of operations of the '<em>Flow Module</em>' class.
@@ -173,7 +182,7 @@ public interface Flow_modelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENT_MODULE__TEXT_CONTENT = FLOW_MODULE_FEATURE_COUNT + 0;
+	int CONTENT_MODULE__TEXT_CONTENT = FLOW_MODULE__TEXT_CONTENT;
 
 	/**
 	 * The number of structural features of the '<em>Content Module</em>' class.
@@ -182,7 +191,7 @@ public interface Flow_modelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENT_MODULE_FEATURE_COUNT = FLOW_MODULE_FEATURE_COUNT + 1;
+	int CONTENT_MODULE_FEATURE_COUNT = FLOW_MODULE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Content Module</em>' class.
@@ -238,6 +247,15 @@ public interface Flow_modelPackage extends EPackage {
 	 * @ordered
 	 */
 	int END_TAG_MODULE__NAME = FLOW_MODULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Text Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END_TAG_MODULE__TEXT_CONTENT = FLOW_MODULE__TEXT_CONTENT;
 
 	/**
 	 * The number of structural features of the '<em>End Tag Module</em>' class.
@@ -356,7 +374,7 @@ public interface Flow_modelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int START_TAG_MODULE__TEXT_CONTENT = FLOW_MODULE_FEATURE_COUNT + 0;
+	int START_TAG_MODULE__TEXT_CONTENT = FLOW_MODULE__TEXT_CONTENT;
 
 	/**
 	 * The number of structural features of the '<em>Start Tag Module</em>' class.
@@ -365,7 +383,7 @@ public interface Flow_modelPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int START_TAG_MODULE_FEATURE_COUNT = FLOW_MODULE_FEATURE_COUNT + 1;
+	int START_TAG_MODULE_FEATURE_COUNT = FLOW_MODULE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Start Tag Module</em>' class.
@@ -424,6 +442,15 @@ public interface Flow_modelPackage extends EPackage {
 	int VERTICAL_LINE_MODULE__NAME = FLOW_MODULE__NAME;
 
 	/**
+	 * The feature id for the '<em><b>Text Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERTICAL_LINE_MODULE__TEXT_CONTENT = FLOW_MODULE__TEXT_CONTENT;
+
+	/**
 	 * The number of structural features of the '<em>Vertical Line Module</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -443,6 +470,153 @@ public interface Flow_modelPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link com.graeditor.flow_model.impl.HorizontalLineMoudleImpl <em>Horizontal Line Moudle</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.graeditor.flow_model.impl.HorizontalLineMoudleImpl
+	 * @see com.graeditor.flow_model.impl.Flow_modelPackageImpl#getHorizontalLineMoudle()
+	 * @generated
+	 */
+	int HORIZONTAL_LINE_MOUDLE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HORIZONTAL_LINE_MOUDLE__PICTOGRAM_ELEMENT = FLOW_MODULE__PICTOGRAM_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HORIZONTAL_LINE_MOUDLE__PREVIOUS_MODULES = FLOW_MODULE__PREVIOUS_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HORIZONTAL_LINE_MOUDLE__NEXT = FLOW_MODULE__NEXT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HORIZONTAL_LINE_MOUDLE__NAME = FLOW_MODULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Text Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HORIZONTAL_LINE_MOUDLE__TEXT_CONTENT = FLOW_MODULE__TEXT_CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Horizontal Line Moudle</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HORIZONTAL_LINE_MOUDLE_FEATURE_COUNT = FLOW_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Horizontal Line Moudle</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HORIZONTAL_LINE_MOUDLE_OPERATION_COUNT = FLOW_MODULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link com.graeditor.flow_model.impl.TitleMoudleImpl <em>Title Moudle</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.graeditor.flow_model.impl.TitleMoudleImpl
+	 * @see com.graeditor.flow_model.impl.Flow_modelPackageImpl#getTitleMoudle()
+	 * @generated
+	 */
+	int TITLE_MOUDLE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TITLE_MOUDLE__PICTOGRAM_ELEMENT = FLOW_MODULE__PICTOGRAM_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TITLE_MOUDLE__PREVIOUS_MODULES = FLOW_MODULE__PREVIOUS_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TITLE_MOUDLE__NEXT = FLOW_MODULE__NEXT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TITLE_MOUDLE__NAME = FLOW_MODULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Text Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TITLE_MOUDLE__TEXT_CONTENT = FLOW_MODULE__TEXT_CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Title Moudle</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TITLE_MOUDLE_FEATURE_COUNT = FLOW_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Title Moudle</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TITLE_MOUDLE_OPERATION_COUNT = FLOW_MODULE_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link com.graeditor.flow_model.ContentModule <em>Content Module</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -451,17 +625,6 @@ public interface Flow_modelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getContentModule();
-
-	/**
-	 * Returns the meta object for the attribute '{@link com.graeditor.flow_model.ContentModule#getTextContent <em>Text Content</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Text Content</em>'.
-	 * @see com.graeditor.flow_model.ContentModule#getTextContent()
-	 * @see #getContentModule()
-	 * @generated
-	 */
-	EAttribute getContentModule_TextContent();
 
 	/**
 	 * Returns the meta object for class '{@link com.graeditor.flow_model.EndTagModule <em>End Tag Module</em>}'.
@@ -560,6 +723,17 @@ public interface Flow_modelPackage extends EPackage {
 	EAttribute getFlowModule_Name();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.graeditor.flow_model.FlowModule#getTextContent <em>Text Content</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text Content</em>'.
+	 * @see com.graeditor.flow_model.FlowModule#getTextContent()
+	 * @see #getFlowModule()
+	 * @generated
+	 */
+	EAttribute getFlowModule_TextContent();
+
+	/**
 	 * Returns the meta object for class '{@link com.graeditor.flow_model.StartTagModule <em>Start Tag Module</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -570,17 +744,6 @@ public interface Flow_modelPackage extends EPackage {
 	EClass getStartTagModule();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.graeditor.flow_model.StartTagModule#getTextContent <em>Text Content</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Text Content</em>'.
-	 * @see com.graeditor.flow_model.StartTagModule#getTextContent()
-	 * @see #getStartTagModule()
-	 * @generated
-	 */
-	EAttribute getStartTagModule_TextContent();
-
-	/**
 	 * Returns the meta object for class '{@link com.graeditor.flow_model.VerticalLineModule <em>Vertical Line Module</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -589,6 +752,26 @@ public interface Flow_modelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getVerticalLineModule();
+
+	/**
+	 * Returns the meta object for class '{@link com.graeditor.flow_model.HorizontalLineMoudle <em>Horizontal Line Moudle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Horizontal Line Moudle</em>'.
+	 * @see com.graeditor.flow_model.HorizontalLineMoudle
+	 * @generated
+	 */
+	EClass getHorizontalLineMoudle();
+
+	/**
+	 * Returns the meta object for class '{@link com.graeditor.flow_model.TitleMoudle <em>Title Moudle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Title Moudle</em>'.
+	 * @see com.graeditor.flow_model.TitleMoudle
+	 * @generated
+	 */
+	EClass getTitleMoudle();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -622,14 +805,6 @@ public interface Flow_modelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CONTENT_MODULE = eINSTANCE.getContentModule();
-
-		/**
-		 * The meta object literal for the '<em><b>Text Content</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONTENT_MODULE__TEXT_CONTENT = eINSTANCE.getContentModule_TextContent();
 
 		/**
 		 * The meta object literal for the '{@link com.graeditor.flow_model.impl.EndTagModuleImpl <em>End Tag Module</em>}' class.
@@ -710,6 +885,14 @@ public interface Flow_modelPackage extends EPackage {
 		EAttribute FLOW_MODULE__NAME = eINSTANCE.getFlowModule_Name();
 
 		/**
+		 * The meta object literal for the '<em><b>Text Content</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute FLOW_MODULE__TEXT_CONTENT = eINSTANCE.getFlowModule_TextContent();
+
+		/**
 		 * The meta object literal for the '{@link com.graeditor.flow_model.impl.StartTagModuleImpl <em>Start Tag Module</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -720,14 +903,6 @@ public interface Flow_modelPackage extends EPackage {
 		EClass START_TAG_MODULE = eINSTANCE.getStartTagModule();
 
 		/**
-		 * The meta object literal for the '<em><b>Text Content</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute START_TAG_MODULE__TEXT_CONTENT = eINSTANCE.getStartTagModule_TextContent();
-
-		/**
 		 * The meta object literal for the '{@link com.graeditor.flow_model.impl.VerticalLineModuleImpl <em>Vertical Line Module</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -735,7 +910,27 @@ public interface Flow_modelPackage extends EPackage {
 		 * @see com.graeditor.flow_model.impl.Flow_modelPackageImpl#getVerticalLineModule()
 		 * @generated
 		 */
-		EClass VERTICAL_LINE_MODULE = eINSTANCE.getVerticalLineModule();		
+		EClass VERTICAL_LINE_MODULE = eINSTANCE.getVerticalLineModule();
+
+		/**
+		 * The meta object literal for the '{@link com.graeditor.flow_model.impl.HorizontalLineMoudleImpl <em>Horizontal Line Moudle</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.graeditor.flow_model.impl.HorizontalLineMoudleImpl
+		 * @see com.graeditor.flow_model.impl.Flow_modelPackageImpl#getHorizontalLineMoudle()
+		 * @generated
+		 */
+		EClass HORIZONTAL_LINE_MOUDLE = eINSTANCE.getHorizontalLineMoudle();
+
+		/**
+		 * The meta object literal for the '{@link com.graeditor.flow_model.impl.TitleMoudleImpl <em>Title Moudle</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.graeditor.flow_model.impl.TitleMoudleImpl
+		 * @see com.graeditor.flow_model.impl.Flow_modelPackageImpl#getTitleMoudle()
+		 * @generated
+		 */
+		EClass TITLE_MOUDLE = eINSTANCE.getTitleMoudle();		
 
 	}
 	

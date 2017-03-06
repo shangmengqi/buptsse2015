@@ -64,7 +64,7 @@ public class VerticalLinePattern extends IdPattern implements IPattern{
 		IGaService gaService = Graphiti.getGaService();
 		
 		int width = 3;
-		int height = 600;
+		int height = 500;
 		int x = context.getX();
 		int y = context.getY();		
 		

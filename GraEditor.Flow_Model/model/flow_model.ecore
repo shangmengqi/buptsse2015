@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="flow_model" nsURI="http:///com/graeditor/flow_model.ecore" nsPrefix="com.graeditor.flow_model">
-  <eClassifiers xsi:type="ecore:EClass" name="ContentModule" eSuperTypes="#//FlowModule">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="textContent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ContentModule" eSuperTypes="#//FlowModule"/>
   <eClassifiers xsi:type="ecore:EClass" name="EndTagModule" eSuperTypes="#//FlowModule"/>
   <eClassifiers xsi:type="ecore:EClass" name="Flow">
     <eStructuralFeatures xsi:type="ecore:EReference" name="modules" upperBound="-1"
@@ -17,9 +15,10 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="next" eType="#//FlowModule"
         eOpposite="#//FlowModule/previousModules"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StartTagModule" eSuperTypes="#//FlowModule">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="textContent" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StartTagModule" eSuperTypes="#//FlowModule"/>
   <eClassifiers xsi:type="ecore:EClass" name="VerticalLineModule" eSuperTypes="#//FlowModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HorizontalLineMoudle" eSuperTypes="#//FlowModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TitleMoudle" eSuperTypes="#//FlowModule"/>
 </ecore:EPackage>

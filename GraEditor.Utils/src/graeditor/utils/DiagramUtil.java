@@ -90,6 +90,7 @@ public class DiagramUtil {
 	}
 	
 	public static void changeText(ICustomContext context, PictogramElement element) {
+		System.out.println("getStart chandeText");
 		Object obj = context.getInnerGraphicsAlgorithm();
 		String oldText = "";
 		TextImpl text = null;

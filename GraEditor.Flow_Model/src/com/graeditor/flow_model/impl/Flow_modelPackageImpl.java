@@ -8,8 +8,10 @@ import com.graeditor.flow_model.Flow;
 import com.graeditor.flow_model.FlowModule;
 import com.graeditor.flow_model.Flow_modelFactory;
 import com.graeditor.flow_model.Flow_modelPackage;
+import com.graeditor.flow_model.HorizontalLineMoudle;
 import com.graeditor.flow_model.StartTagModule;
 
+import com.graeditor.flow_model.TitleMoudle;
 import com.graeditor.flow_model.VerticalLineModule;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -66,6 +68,20 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 	 * @generated
 	 */
 	private EClass verticalLineModuleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass horizontalLineMoudleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass titleMoudleEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -135,15 +151,6 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 	 */
 	public EClass getContentModule() {
 		return contentModuleEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getContentModule_TextContent() {
-		return (EAttribute)contentModuleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -232,6 +239,15 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getFlowModule_TextContent() {
+		return (EAttribute)flowModuleEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getStartTagModule() {
 		return startTagModuleEClass;
 	}
@@ -241,8 +257,8 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getStartTagModule_TextContent() {
-		return (EAttribute)startTagModuleEClass.getEStructuralFeatures().get(0);
+	public EClass getVerticalLineModule() {
+		return verticalLineModuleEClass;
 	}
 
 	/**
@@ -250,8 +266,17 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getVerticalLineModule() {
-		return verticalLineModuleEClass;
+	public EClass getHorizontalLineMoudle() {
+		return horizontalLineMoudleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTitleMoudle() {
+		return titleMoudleEClass;
 	}
 
 	/**
@@ -283,7 +308,6 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 
 		// Create classes and their features
 		contentModuleEClass = createEClass(CONTENT_MODULE);
-		createEAttribute(contentModuleEClass, CONTENT_MODULE__TEXT_CONTENT);
 
 		endTagModuleEClass = createEClass(END_TAG_MODULE);
 
@@ -296,11 +320,15 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 		createEReference(flowModuleEClass, FLOW_MODULE__PREVIOUS_MODULES);
 		createEReference(flowModuleEClass, FLOW_MODULE__NEXT);
 		createEAttribute(flowModuleEClass, FLOW_MODULE__NAME);
+		createEAttribute(flowModuleEClass, FLOW_MODULE__TEXT_CONTENT);
 
 		startTagModuleEClass = createEClass(START_TAG_MODULE);
-		createEAttribute(startTagModuleEClass, START_TAG_MODULE__TEXT_CONTENT);
 
 		verticalLineModuleEClass = createEClass(VERTICAL_LINE_MODULE);
+
+		horizontalLineMoudleEClass = createEClass(HORIZONTAL_LINE_MOUDLE);
+
+		titleMoudleEClass = createEClass(TITLE_MOUDLE);
 	}
 
 	/**
@@ -335,10 +363,11 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 		endTagModuleEClass.getESuperTypes().add(this.getFlowModule());
 		startTagModuleEClass.getESuperTypes().add(this.getFlowModule());
 		verticalLineModuleEClass.getESuperTypes().add(this.getFlowModule());
+		horizontalLineMoudleEClass.getESuperTypes().add(this.getFlowModule());
+		titleMoudleEClass.getESuperTypes().add(this.getFlowModule());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(contentModuleEClass, ContentModule.class, "ContentModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getContentModule_TextContent(), ecorePackage.getEString(), "textContent", null, 0, 1, ContentModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(endTagModuleEClass, EndTagModule.class, "EndTagModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -351,11 +380,15 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 		initEReference(getFlowModule_PreviousModules(), this.getFlowModule(), this.getFlowModule_Next(), "previousModules", null, 0, -1, FlowModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getFlowModule_Next(), this.getFlowModule(), this.getFlowModule_PreviousModules(), "next", null, 0, 1, FlowModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getFlowModule_Name(), ecorePackage.getEString(), "name", null, 0, 1, FlowModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getFlowModule_TextContent(), ecorePackage.getEString(), "textContent", null, 0, 1, FlowModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(startTagModuleEClass, StartTagModule.class, "StartTagModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStartTagModule_TextContent(), ecorePackage.getEString(), "textContent", null, 0, 1, StartTagModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(verticalLineModuleEClass, VerticalLineModule.class, "VerticalLineModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(horizontalLineMoudleEClass, HorizontalLineMoudle.class, "HorizontalLineMoudle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(titleMoudleEClass, TitleMoudle.class, "TitleMoudle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

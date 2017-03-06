@@ -76,6 +76,24 @@ public interface Flow_modelFactory extends EFactory {
 	VerticalLineModule createVerticalLineModule();
 
 	/**
+	 * Returns a new object of class '<em>Horizontal Line Moudle</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Horizontal Line Moudle</em>'.
+	 * @generated
+	 */
+	HorizontalLineMoudle createHorizontalLineMoudle();
+
+	/**
+	 * Returns a new object of class '<em>Title Moudle</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Title Moudle</em>'.
+	 * @generated
+	 */
+	TitleMoudle createTitleMoudle();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

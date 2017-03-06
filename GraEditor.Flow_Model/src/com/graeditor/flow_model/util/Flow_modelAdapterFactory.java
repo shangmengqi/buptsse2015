@@ -92,6 +92,14 @@ public class Flow_modelAdapterFactory extends AdapterFactoryImpl {
 				return createVerticalLineModuleAdapter();
 			}
 			@Override
+			public Adapter caseHorizontalLineMoudle(HorizontalLineMoudle object) {
+				return createHorizontalLineMoudleAdapter();
+			}
+			@Override
+			public Adapter caseTitleMoudle(TitleMoudle object) {
+				return createTitleMoudleAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -192,6 +200,34 @@ public class Flow_modelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVerticalLineModuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.graeditor.flow_model.HorizontalLineMoudle <em>Horizontal Line Moudle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.graeditor.flow_model.HorizontalLineMoudle
+	 * @generated
+	 */
+	public Adapter createHorizontalLineMoudleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.graeditor.flow_model.TitleMoudle <em>Title Moudle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.graeditor.flow_model.TitleMoudle
+	 * @generated
+	 */
+	public Adapter createTitleMoudleAdapter() {
 		return null;
 	}
 
