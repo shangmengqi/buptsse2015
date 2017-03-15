@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypes">
+      <diagramType
+            name="Relation Diagram Type"
+            type="Relation"
+            id="GraEditor.Relation.RelationDiagramType">
+      </diagramType>
+   </extension>
+   
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypeProviders">
+      <diagramTypeProvider
+            name="RelationView Diagram Type Provider"
+            class="graeditor.relation.graphiti.RelationDiagramTypeProvider"
+            id="GraEditor.Relation.RelationDiagramTypeProvider">
+         <diagramType
+               id="GraEditor.Relation.RelationDiagramType">
+               <imageProvider
+               		id="GraEditor.Relation.RelationImageProvider">
+       			</imageProvider>
+         </diagramType>
+         
+      </diagramTypeProvider>
+   </extension>
+   
+   <extension
+   		point="org.eclipse.graphiti.ui.imageProviders">
+   		<imageProvider
+   			class="graeditor.flow.graphiti.FlowImageProvider"
+   			id="GraEditor.Flow.FlowImageProvider">
+		</imageProvider>
+	</extension>
+   			
+
+</plugin>

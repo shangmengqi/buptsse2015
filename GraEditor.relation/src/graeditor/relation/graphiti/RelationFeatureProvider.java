@@ -1,0 +1,35 @@
+package graeditor.relation.graphiti;
+
+import org.eclipse.graphiti.dt.IDiagramTypeProvider;
+import org.eclipse.graphiti.features.IAddFeature;
+import org.eclipse.graphiti.features.context.IAddContext;
+import org.eclipse.graphiti.features.context.ICustomContext;
+import org.eclipse.graphiti.features.custom.ICustomFeature;
+import org.eclipse.graphiti.pattern.DefaultFeatureProviderWithPatterns;
+
+import graeditor.relation.features.CustomChangeTextFeature;
+import graeditor.relation.pattern.ContentPattern;
+import graeditor.relation.pattern.HorizontalLinePattern;
+import graeditor.relation.pattern.TitlePattern;
+
+public class RelationFeatureProvider extends DefaultFeatureProviderWithPatterns{
+
+	public RelationFeatureProvider(IDiagramTypeProvider dtp) {
+		super(dtp);
+		addPattern(new ContentPattern());
+		addPattern(new TitlePattern());
+		addPattern(new HorizontalLinePattern());
+	}
+	
+	@Override
+	public IAddFeature getAddFeature(IAddContext context) {
+		// 处理添加connection的情况		
+		return super.getAddFeature(context);
+	}
+	
+	@Override
+	public ICustomFeature[] getCustomFeatures(ICustomContext context) {
+		return new ICustomFeature[] {				
+			new CustomChangeTextFeature(this)};
+	}
+}
