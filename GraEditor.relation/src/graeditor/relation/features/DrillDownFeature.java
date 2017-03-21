@@ -1,4 +1,4 @@
-package graeditor.structureview.features;
+package graeditor.relation.features;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -15,43 +15,51 @@ import org.eclipse.graphiti.mm.pictograms.Diagram;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.ui.features.AbstractDrillDownFeature;
 
+import com.graeditor.relation_model.Relation;
+import com.graeditor.relation_model.RelationModule;
+
 import graeditor.utils.DiagramUtil;
 
-public class DrillDownFeature extends AbstractDrillDownFeature {
+public class DrillDownFeature extends AbstractDrillDownFeature{
 
-	public DrillDownFeature(IFeatureProvider fp) {
+	public DrillDownFeature(IFeatureProvider fp) {	
 		super(fp);
+		System.out.println("DrillDown1");
 	}
 	
 	@Override
-    public String getName() {
-        return "Open associated diagram";
-    }
- 
-    @Override
+	public String getName() {
+		System.out.println("DrillDown2");
+		return "Open assosiated diagram";		
+	}
+	
+	@Override
     public String getDescription() {
+		System.out.println("DrillDown3");
         return "Open the diagram associated with this EClass";
     }
-    
-    @Override
-    public boolean canExecute(ICustomContext context) {
-        PictogramElement[] pes = context.getPictogramElements();
+	
+	@Override
+	public boolean canExecute(ICustomContext context) {
+		System.out.println("DrillDown4/canExecute");
+		//返回一个Graphiti图形对象
+		PictogramElement[] pes = context.getPictogramElements();
         // first check, if one EClass is selected
         if (pes != null && pes.length == 1) {
+        	//返回通过link方法绑定的EMF模型对象
             Object bo = getBusinessObjectForPictogramElement(pes[0]);
-//            if (bo instanceof EClass) {
-//                // then forward to super-implementation, which checks if
-//                // this EClass is associated with other diagrams
-//                return super.canExecute(context);
-//            }
-            
-            return true;
+            if (bo instanceof RelationModule) {
+                // then forward to super-implementation, which checks if
+                // this EClass is associated with other diagrams
+                return super.canExecute(context);
+            }
         }
         return false;
-    }
+	}
 
 	@Override
 	protected Collection<Diagram> getDiagrams() {
+		System.out.println("DrillDown5/Collection");
 		Collection<Diagram> result = Collections.emptyList();
 		Resource resource = getDiagram().eResource();
 		URI uri = resource.getURI();

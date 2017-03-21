@@ -33,12 +33,12 @@ public class AssociateDiagramFeature extends AbstractCustomFeature{
         PictogramElement[] pes = context.getPictogramElements();
         if (pes != null && pes.length >= 1) {
             ret = true;
-            for (PictogramElement pe : pes) {
-                Object bo = getBusinessObjectForPictogramElement(pe);
-                if (! (bo instanceof EClass)) {
-                    ret = false;
-                }                
-            }
+//            for (PictogramElement pe : pes) {
+//                Object bo = getBusinessObjectForPictogramElement(pe);
+//                if (! (bo instanceof EClass)) {
+//                    ret = false;
+//                }                
+//            }
         }
         return ret;
     }

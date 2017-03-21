@@ -29,3 +29,20 @@ git commit -am "流程图绘制（已完成）"
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git config --global user.email "18211006128@163.com"
+git config --global user.name "shangmengqi"
+git init
+git commit -am "关系型视图绘制完成"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master
+git init
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master
+git init
+git add .
+git commit -m "关系型视图绘制完成"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

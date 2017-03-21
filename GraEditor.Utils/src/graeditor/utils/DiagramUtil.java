@@ -28,6 +28,7 @@ import org.eclipse.graphiti.mm.pictograms.Shape;
 
 public class DiagramUtil {
 	public static Collection<Diagram> getDiagrams(IProject p) {
+		System.out.println("DrillDown/DiagramUtil/getDiagrams");
 		final List<IFile> files = getDiagramFiles(p);
 		final List<Diagram> diagramList = new ArrayList<Diagram>();
 		final ResourceSet rSet = new ResourceSetImpl();
@@ -41,6 +42,7 @@ public class DiagramUtil {
 	}
 
 	private static List<IFile> getDiagramFiles(IContainer folder) {
+		System.out.println("DrillDown/DiagramUtil/getDiagramFiles");
 		final List<IFile> ret = new ArrayList<IFile>();
 		try {
 			final IResource[] members = folder.members();
@@ -61,6 +63,7 @@ public class DiagramUtil {
 	}
 
 	private static Diagram getDiagramFromFile(IFile file, ResourceSet resourceSet) {
+		System.out.println("DrillDown/DiagramUtil/getDiagramFromFile");
 		// Get the URI of the model file.
 		final URI resourceURI = getFileURI(file, resourceSet);
 		// Demand load the resource for this file.
@@ -83,6 +86,7 @@ public class DiagramUtil {
 	}
 
 	private static URI getFileURI(IFile file, ResourceSet resourceSet) {
+		System.out.println("DrillDown/DiagramUtil/getFileURI");
 		final String pathName = file.getFullPath().toString();
 		URI resourceURI = URI.createFileURI(pathName);
 		resourceURI = resourceSet.getURIConverter().normalize(resourceURI);
