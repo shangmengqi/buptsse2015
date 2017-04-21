@@ -57,6 +57,43 @@ public interface StructureViewPackage extends EPackage {
 	StructureViewPackage eINSTANCE = StructureView.impl.StructureViewPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link StructureView.impl.StructModuleImpl <em>Struct Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see StructureView.impl.StructModuleImpl
+	 * @see StructureView.impl.StructureViewPackageImpl#getStructModule()
+	 * @generated
+	 */
+	int STRUCT_MODULE = 4;
+
+	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCT_MODULE__PICTOGRAM_ELEMENT = 0;
+
+	/**
+	 * The number of structural features of the '<em>Struct Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCT_MODULE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Struct Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRUCT_MODULE_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link StructureView.impl.PageImpl <em>Page</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -67,13 +104,22 @@ public interface StructureViewPackage extends EPackage {
 	int PAGE = 0;
 
 	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE__PICTOGRAM_ELEMENT = STRUCT_MODULE__PICTOGRAM_ELEMENT;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE__NAME = 0;
+	int PAGE__NAME = STRUCT_MODULE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>File</b></em>' containment reference list.
@@ -82,7 +128,7 @@ public interface StructureViewPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE__FILE = 1;
+	int PAGE__FILE = STRUCT_MODULE_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Filegroup</b></em>' containment reference list.
@@ -91,7 +137,7 @@ public interface StructureViewPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE__FILEGROUP = 2;
+	int PAGE__FILEGROUP = STRUCT_MODULE_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Pagegroup</b></em>' containment reference list.
@@ -100,7 +146,7 @@ public interface StructureViewPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE__PAGEGROUP = 3;
+	int PAGE__PAGEGROUP = STRUCT_MODULE_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Page</b></em>' containment reference list.
@@ -109,7 +155,7 @@ public interface StructureViewPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE__PAGE = 4;
+	int PAGE__PAGE = STRUCT_MODULE_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Page</em>' class.
@@ -118,7 +164,7 @@ public interface StructureViewPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_FEATURE_COUNT = 5;
+	int PAGE_FEATURE_COUNT = STRUCT_MODULE_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Page</em>' class.
@@ -127,7 +173,7 @@ public interface StructureViewPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_OPERATION_COUNT = 0;
+	int PAGE_OPERATION_COUNT = STRUCT_MODULE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link StructureView.impl.PageGroupImpl <em>Page Group</em>}' class.
@@ -140,13 +186,22 @@ public interface StructureViewPackage extends EPackage {
 	int PAGE_GROUP = 1;
 
 	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAGE_GROUP__PICTOGRAM_ELEMENT = STRUCT_MODULE__PICTOGRAM_ELEMENT;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_GROUP__NAME = 0;
+	int PAGE_GROUP__NAME = STRUCT_MODULE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Page Group</em>' class.
@@ -155,7 +210,7 @@ public interface StructureViewPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_GROUP_FEATURE_COUNT = 1;
+	int PAGE_GROUP_FEATURE_COUNT = STRUCT_MODULE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Page Group</em>' class.
@@ -164,7 +219,7 @@ public interface StructureViewPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAGE_GROUP_OPERATION_COUNT = 0;
+	int PAGE_GROUP_OPERATION_COUNT = STRUCT_MODULE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link StructureView.impl.FileImpl <em>File</em>}' class.
@@ -177,13 +232,22 @@ public interface StructureViewPackage extends EPackage {
 	int FILE = 2;
 
 	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE__PICTOGRAM_ELEMENT = STRUCT_MODULE__PICTOGRAM_ELEMENT;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FILE__NAME = 0;
+	int FILE__NAME = STRUCT_MODULE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>File</em>' class.
@@ -192,7 +256,7 @@ public interface StructureViewPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_FEATURE_COUNT = 1;
+	int FILE_FEATURE_COUNT = STRUCT_MODULE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>File</em>' class.
@@ -201,7 +265,7 @@ public interface StructureViewPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_OPERATION_COUNT = 0;
+	int FILE_OPERATION_COUNT = STRUCT_MODULE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link StructureView.impl.FileGroupImpl <em>File Group</em>}' class.
@@ -214,13 +278,22 @@ public interface StructureViewPackage extends EPackage {
 	int FILE_GROUP = 3;
 
 	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FILE_GROUP__PICTOGRAM_ELEMENT = STRUCT_MODULE__PICTOGRAM_ELEMENT;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_GROUP__NAME = 0;
+	int FILE_GROUP__NAME = STRUCT_MODULE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>File Group</em>' class.
@@ -229,7 +302,7 @@ public interface StructureViewPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_GROUP_FEATURE_COUNT = 1;
+	int FILE_GROUP_FEATURE_COUNT = STRUCT_MODULE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>File Group</em>' class.
@@ -238,7 +311,7 @@ public interface StructureViewPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FILE_GROUP_OPERATION_COUNT = 0;
+	int FILE_GROUP_OPERATION_COUNT = STRUCT_MODULE_OPERATION_COUNT + 0;
 
 
 	/**
@@ -370,6 +443,27 @@ public interface StructureViewPackage extends EPackage {
 	EAttribute getFileGroup_Name();
 
 	/**
+	 * Returns the meta object for class '{@link StructureView.StructModule <em>Struct Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Struct Module</em>'.
+	 * @see StructureView.StructModule
+	 * @generated
+	 */
+	EClass getStructModule();
+
+	/**
+	 * Returns the meta object for the reference '{@link StructureView.StructModule#getPictogramElement <em>Pictogram Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Pictogram Element</em>'.
+	 * @see StructureView.StructModule#getPictogramElement()
+	 * @see #getStructModule()
+	 * @generated
+	 */
+	EReference getStructModule_PictogramElement();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -495,6 +589,24 @@ public interface StructureViewPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute FILE_GROUP__NAME = eINSTANCE.getFileGroup_Name();
+
+		/**
+		 * The meta object literal for the '{@link StructureView.impl.StructModuleImpl <em>Struct Module</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see StructureView.impl.StructModuleImpl
+		 * @see StructureView.impl.StructureViewPackageImpl#getStructModule()
+		 * @generated
+		 */
+		EClass STRUCT_MODULE = eINSTANCE.getStructModule();
+
+		/**
+		 * The meta object literal for the '<em><b>Pictogram Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference STRUCT_MODULE__PICTOGRAM_ELEMENT = eINSTANCE.getStructModule_PictogramElement();
 
 	}
 

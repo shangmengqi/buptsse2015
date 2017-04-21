@@ -24,24 +24,20 @@ public class DrillDownFeature extends AbstractDrillDownFeature{
 
 	public DrillDownFeature(IFeatureProvider fp) {	
 		super(fp);
-		System.out.println("DrillDown1");
 	}
 	
 	@Override
 	public String getName() {
-		System.out.println("DrillDown2");
 		return "Open assosiated diagram";		
 	}
 	
 	@Override
     public String getDescription() {
-		System.out.println("DrillDown3");
         return "Open the diagram associated with this EClass";
     }
 	
 	@Override
 	public boolean canExecute(ICustomContext context) {
-		System.out.println("DrillDown4/canExecute");
 		//返回一个Graphiti图形对象
 		PictogramElement[] pes = context.getPictogramElements();
         // first check, if one EClass is selected
@@ -59,7 +55,7 @@ public class DrillDownFeature extends AbstractDrillDownFeature{
 
 	@Override
 	protected Collection<Diagram> getDiagrams() {
-		System.out.println("DrillDown5/Collection");
+//		System.out.println("DrillDown5/Collection");
 		Collection<Diagram> result = Collections.emptyList();
 		Resource resource = getDiagram().eResource();
 		URI uri = resource.getURI();

@@ -53,6 +53,8 @@ public class StructureViewFeatureProvider extends DefaultFeatureProviderWithPatt
 				new DrillDownFeature(this), 
 				new AssociateDiagramFeature(this),
 				new CustomChangeTextFeature(this)};
+				
+
 	}
 
 }

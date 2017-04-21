@@ -60,6 +60,7 @@ public class StructureViewFactoryImpl extends EFactoryImpl implements StructureV
 			case StructureViewPackage.PAGE_GROUP: return createPageGroup();
 			case StructureViewPackage.FILE: return createFile();
 			case StructureViewPackage.FILE_GROUP: return createFileGroup();
+			case StructureViewPackage.STRUCT_MODULE: return createStructModule();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -103,6 +104,16 @@ public class StructureViewFactoryImpl extends EFactoryImpl implements StructureV
 	public FileGroup createFileGroup() {
 		FileGroupImpl fileGroup = new FileGroupImpl();
 		return fileGroup;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public StructModule createStructModule() {
+		StructModuleImpl structModule = new StructModuleImpl();
+		return structModule;
 	}
 
 	/**

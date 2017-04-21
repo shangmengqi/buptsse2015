@@ -1,11 +1,21 @@
 package graeditor.utils;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import javax.swing.JOptionPane;
 
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
+import org.dom4j.io.OutputFormat;
+import org.dom4j.io.SAXReader;
+import org.dom4j.io.XMLWriter;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -27,8 +37,10 @@ import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.mm.pictograms.Shape;
 
 public class DiagramUtil {
+	
+	
+	
 	public static Collection<Diagram> getDiagrams(IProject p) {
-		System.out.println("DrillDown/DiagramUtil/getDiagrams");
 		final List<IFile> files = getDiagramFiles(p);
 		final List<Diagram> diagramList = new ArrayList<Diagram>();
 		final ResourceSet rSet = new ResourceSetImpl();
@@ -42,7 +54,6 @@ public class DiagramUtil {
 	}
 
 	private static List<IFile> getDiagramFiles(IContainer folder) {
-		System.out.println("DrillDown/DiagramUtil/getDiagramFiles");
 		final List<IFile> ret = new ArrayList<IFile>();
 		try {
 			final IResource[] members = folder.members();
@@ -63,7 +74,6 @@ public class DiagramUtil {
 	}
 
 	private static Diagram getDiagramFromFile(IFile file, ResourceSet resourceSet) {
-		System.out.println("DrillDown/DiagramUtil/getDiagramFromFile");
 		// Get the URI of the model file.
 		final URI resourceURI = getFileURI(file, resourceSet);
 		// Demand load the resource for this file.
@@ -86,12 +96,14 @@ public class DiagramUtil {
 	}
 
 	private static URI getFileURI(IFile file, ResourceSet resourceSet) {
-		System.out.println("DrillDown/DiagramUtil/getFileURI");
 		final String pathName = file.getFullPath().toString();
 		URI resourceURI = URI.createFileURI(pathName);
 		resourceURI = resourceSet.getURIConverter().normalize(resourceURI);
 		return resourceURI;
 	}
+	
+	
+	
 	
 	public static void changeText(ICustomContext context, PictogramElement element) {
 		System.out.println("getStart chandeText");
@@ -116,4 +128,5 @@ public class DiagramUtil {
 		}
 		text.setValue(newText);
 	}
+	
 }

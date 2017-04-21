@@ -6,6 +6,7 @@ import StructureView.File;
 import StructureView.FileGroup;
 import StructureView.Page;
 import StructureView.PageGroup;
+import StructureView.StructModule;
 import StructureView.StructureViewFactory;
 import StructureView.StructureViewPackage;
 
@@ -50,6 +51,13 @@ public class StructureViewPackageImpl extends EPackageImpl implements StructureV
 	 * @generated
 	 */
 	private EClass fileGroupEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass structModuleEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -225,6 +233,24 @@ public class StructureViewPackageImpl extends EPackageImpl implements StructureV
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getStructModule() {
+		return structModuleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getStructModule_PictogramElement() {
+		return (EReference)structModuleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public StructureViewFactory getStructureViewFactory() {
 		return (StructureViewFactory)getEFactoryInstance();
 	}
@@ -263,6 +289,9 @@ public class StructureViewPackageImpl extends EPackageImpl implements StructureV
 
 		fileGroupEClass = createEClass(FILE_GROUP);
 		createEAttribute(fileGroupEClass, FILE_GROUP__NAME);
+
+		structModuleEClass = createEClass(STRUCT_MODULE);
+		createEReference(structModuleEClass, STRUCT_MODULE__PICTOGRAM_ELEMENT);
 	}
 
 	/**
@@ -293,6 +322,10 @@ public class StructureViewPackageImpl extends EPackageImpl implements StructureV
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		pageEClass.getESuperTypes().add(this.getStructModule());
+		pageGroupEClass.getESuperTypes().add(this.getStructModule());
+		fileEClass.getESuperTypes().add(this.getStructModule());
+		fileGroupEClass.getESuperTypes().add(this.getStructModule());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(pageEClass, Page.class, "Page", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -310,6 +343,9 @@ public class StructureViewPackageImpl extends EPackageImpl implements StructureV
 
 		initEClass(fileGroupEClass, FileGroup.class, "FileGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getFileGroup_Name(), ecorePackage.getEString(), "name", null, 0, 1, FileGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(structModuleEClass, StructModule.class, "StructModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getStructModule_PictogramElement(), ecorePackage.getEObject(), null, "pictogramElement", null, 0, 1, StructModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

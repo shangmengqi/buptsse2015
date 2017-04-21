@@ -58,6 +58,15 @@ public interface StructureViewFactory extends EFactory {
 	FileGroup createFileGroup();
 
 	/**
+	 * Returns a new object of class '<em>Struct Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Struct Module</em>'.
+	 * @generated
+	 */
+	StructModule createStructModule();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
