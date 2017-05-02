@@ -15,3 +15,6 @@ Bundle-ActivationPolicy: lazy
 Export-Package: graeditor.utils,
  org.dom4j,
  xml.utils
+Bundle-ClassPath: lib/dom4j-1.6.1.jar,
+ lib/jaxen-1.1-beta-6.jar,
+ .

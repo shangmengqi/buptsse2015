@@ -118,12 +118,10 @@ public class AssociateDiagramFeature extends AbstractCustomFeature{
 			}
 
 			if (diagram != null) {
-//				openDiagramEditor(diagram);
 				
 				String diagramName = diagram.getName();
 				System.out.println("diagramName : " + diagramName);
 								
-//					DiagramUtil.addLink(diagramName);
 				addLinkToXML.addLink(diagramName);
 				System.out.println("haha : ");
 				
