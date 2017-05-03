@@ -32,6 +32,7 @@ import org.eclipse.swt.graphics.Image;
 import StructureView.StructModule;
 import graeditor.utils.DiagramUtil;
 import xml.utils.addLinkToXML;
+import xml.utils.constant;
 
 /**
  * drill down功能中提供关联功能的类
@@ -66,7 +67,10 @@ public class AssociateDiagramFeature extends AbstractCustomFeature{
 
 	@Override
 	public void execute(ICustomContext context) {
-		System.out.println("execute: ");
+		int objectNum = 0;
+		String currentDiagramName = null;
+//		System.out.println("execute: ");
+		
 		// TODO 关联的处理函数，此处应该是获取所有的图表，让用户选择一个，
 		final Collection<Diagram> ret = new HashSet<Diagram>();
 		final Collection<Diagram> allDiagrams = getDiagrams();
@@ -75,14 +79,20 @@ public class AssociateDiagramFeature extends AbstractCustomFeature{
 		StructModule module[] = new StructModule[pes.length];
 		for (int i = 0; i < module.length; i++) {
 			module[i] = (StructModule) getBusinessObjectForPictogramElement(pes[i]);
+			objectNum = i + 1;
+//			System.out.println("currentDiagramObject:" + i);
 		}
 		
 		for (final Diagram d : allDiagrams) {
 			final Diagram currentDiagram = getDiagram();//currentDiagram为当前要进行跳转的图表
+//			System.out.println("currentDiagramName: " + currentDiagram.getName());
+			currentDiagramName = currentDiagram.getName();
 			if (!EcoreUtil.equals(currentDiagram, d)) { // always filter out the														// current
 				ret.add(d);							
 			}
 		}
+		
+		
 		
 		Diagram diagram = null;
 		if (!ret.isEmpty()) {
@@ -117,17 +127,12 @@ public class AssociateDiagramFeature extends AbstractCustomFeature{
 				}
 			}
 
-			if (diagram != null) {
-				
+			if (diagram != null) {				
 				String diagramName = diagram.getName();
-				System.out.println("diagramName : " + diagramName);
-								
-				addLinkToXML.addLink(diagramName);
-				System.out.println("haha : ");
-				
-//				link(diagram, module);
-				
-				
+				System.out.println("diagramName : " + diagramName);					
+				String filePath = constant.path + diagramName + ".diagram";
+				addLinkToXML.addLink(filePath,currentDiagramName,objectNum);
+				System.out.println("haha : ");								
 			}
 		}
 	}

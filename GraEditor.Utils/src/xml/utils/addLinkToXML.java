@@ -20,36 +20,34 @@ import org.eclipse.graphiti.mm.pictograms.Diagram;
 public class addLinkToXML {
 
 
-	public static void addLink(String diagramName){
+	public static void addLink(String filePath, String diagramName, int objectNum){
 		
-		File file = new File("E:/Git/buptsse2015/runtime-EclipseApplication/test/src/relation/3.diagram");
-				
+		//读入要被关联的文件并添加link标签
+		File file = new File(filePath);				
 		SAXReader reader = new SAXReader();
 		Document document;
 		try {
 			document = reader.read(file);
 			Element rooElement = document.getRootElement();
-			System.out.println("root :" + rooElement);
-			
-			outputLocationAttributes(rooElement);
-			
+			System.out.println("root :" + rooElement);			
+//			outputLocationAttributes(rooElement);			
 			Element diagram = rooElement.element("Diagram");
 			List list = diagram.elements();
 			
 			Element link = DocumentHelper.createElement("link");
 			Element bussinessObjectElement = link.addElement("businessObjects");
-			bussinessObjectElement.setAttributeValue("href", "struct.diagram#/1");
+			bussinessObjectElement.setAttributeValue("href", diagramName + ".diagram#/" + objectNum);
 			list.add(1, link);
 			
+			//将添加的数据写入文件中
 			FileWriter writer = new FileWriter(file);
-
 			OutputFormat format = OutputFormat.createPrettyPrint();  
 	        format.setEncoding("ASCII");  
 	        XMLWriter writer1 = new XMLWriter(writer,format); 
 	        writer1.write(document);  
 	        writer1.flush();
 	        writer1.close();	
-	        outputLocationAttributes(rooElement);			
+//	        outputLocationAttributes(rooElement);			
 				        			
 		} catch (DocumentException e) {
 			// TODO Auto-generated catch block
@@ -63,14 +61,16 @@ public class addLinkToXML {
 		}			
 	}
 	
+	/*
+	 * xml文件的遍历
+	 */
 	public static void outputLocationAttributes(Element parent){
 		for (int i = 0; i < parent.nodeCount(); i++) {
 			Node node = parent.node(i);
 			if (node instanceof Element) {
 				Element child1 = (Element) node;
 				System.out.println("rootChild1 :" + child1.getName());
-				
-						
+										
 				for (int j = 0; j < child1.nodeCount(); j++) {
 					Node node2 = child1.node(j);
 					
@@ -79,13 +79,10 @@ public class addLinkToXML {
 						System.out.println("rootChild2 :" + child2.getName());
 						
 						if (child2.getName().equals("graphicsAlgorithm")) {
-							System.out.println("索引 ： " + j);
-							
+							System.out.println("索引 ： " + j);							
 						}
 						if (child2.getName().equals("children")) {
-							System.out.println("索引 ： " + j);
-							
-							
+							System.out.println("索引 ： " + j);													
 						}
 					}
 				}				
