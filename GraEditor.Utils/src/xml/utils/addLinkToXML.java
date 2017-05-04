@@ -39,14 +39,26 @@ public class addLinkToXML {
 			System.out.println("root :" + rooElement);			
 //			outputLocationAttributes(rooElement);			
 			Element diagram = rooElement.element("Diagram");
-			List list = diagram.elements();
 			
+			//遍历diagram节点下的所有子节点,查看是否含有link标签
+			for (int i = 0; i < diagram.nodeCount(); i++) {
+				Node node = diagram.node(i);				
+				if (node instanceof Element) {
+//					System.out.println("nodeName: " + node.getName());					
+					if (node.getName().equals("link")) {
+						System.out.println("link标签存在，执行替换操作");
+//						Element childElement = (Element) node;
+						diagram.remove(node);
+					}
+				}
+			}			
+			
+			//在指定位置添加link标签
+			List list = diagram.elements();			
 			Element link = DocumentHelper.createElement("link");
 			Element bussinessObjectElement = link.addElement("businessObjects");
 			bussinessObjectElement.setAttributeValue("href", diagramName + ".diagram#/" + objectNum);
 			list.add(1, link);
-			
-			System.out.println("FilePath:");
 			
 			//将添加的数据写入文件中
 			FileWriter writer = new FileWriter(file);
