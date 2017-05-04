@@ -65,7 +65,7 @@ public class MyDrillDownFeature extends AbstractDrillDownFeature{
 					EList<EObject> eList = d.getLink().getBusinessObjects();
 					System.out.println("eList : " + eList);
 					for (int i = 0; i < eList.size(); i++) {
-//						System.out.println("eListResource: " + eList.get(i));
+						System.out.println("eListResource: " + eList.get(i));
 						
 						//字符串的拆分
 						String string = eList.get(i).toString();
@@ -74,13 +74,13 @@ public class MyDrillDownFeature extends AbstractDrillDownFeature{
 						if (array.length > 2) {
 							String s1 = array[array.length-1];
 							String s2 = array[array.length-2];
-//							System.out.println(s1);
-//							System.out.println(s2);
+							System.out.println(s1);
+							System.out.println(s2);
 							
 							int diagramObj = Integer.parseInt(s1.substring(0, s1.length()-1)) ;
 							String diagramString = s2.substring(0, s2.length()-9);
-//							System.out.println("diagramObj : " + diagramObj);
-//							System.out.println("diagramString : " + diagramString);
+							System.out.println("diagramObj : " + diagramObj);
+							System.out.println("diagramString : " + diagramString);
 							
 							
 							//DrillDown的逻辑实现，将含有跟当前图表和元素相等的图表添加到数组中

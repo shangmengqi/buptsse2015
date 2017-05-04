@@ -41,13 +41,7 @@ public class DrillDownFeature extends MyDrillDownFeature {
         PictogramElement[] pes = context.getPictogramElements();//获取当前画布上所有图表元素
         // first check, if one EClass is selected
         if (pes != null && pes.length == 1) {
-            Object bo = getBusinessObjectForPictogramElement(pes[0]);
-//            if (bo instanceof EClass) {
-//                // then forward to super-implementation, which checks if
-//                // this EClass is associated with other diagrams
-//                return super.canExecute(context);
-//            }
-            
+            Object bo = getBusinessObjectForPictogramElement(pes[0]);            
             return true;
         }
         return false;

@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+import org.eclipse.emf.ecore.resource.Resource;
 
 /**
  * <!-- begin-user-doc -->
@@ -349,6 +350,16 @@ public class StructureViewPackageImpl extends EPackageImpl implements StructureV
 
 		// Create resource
 		createResource(eNS_URI);
+	}
+	
+//	@Override
+//	protected Resource creatResource(String uri){
+//		return super.createResource("");
+//	}
+	
+	@Override
+	protected Resource createResource(String uri) {
+		return super.createResource("E:///Git/buptsse2015/buptsse2015/GraEditor.Model.StructureView/model/StructureView.ecore");
 	}
 
 } //StructureViewPackageImpl

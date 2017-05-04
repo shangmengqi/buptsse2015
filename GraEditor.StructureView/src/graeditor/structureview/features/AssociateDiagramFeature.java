@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -129,12 +130,25 @@ public class AssociateDiagramFeature extends AbstractCustomFeature{
 
 			if (diagram != null) {				
 				String diagramName = diagram.getName();
-				System.out.println("diagramName : " + diagramName);					
-				String filePath = constant.path + diagramName + ".diagram";
+				System.out.println("diagramName : " + diagramName);
+				//进行测试根据文件名获取该文件的绝对路径	
+				String filePath = getFilePath(diagram);								
 				addLinkToXML.addLink(filePath,currentDiagramName,objectNum);
 				System.out.println("haha : ");								
 			}
 		}
+	}
+	
+	public String getFilePath(Diagram diagram){
+		//获得diagram的resource
+		String uri = diagram.eResource().getURI().toString();
+		//截取字符串，拼接成该图表文件所在路径
+		String sub = uri.substring(19);
+		String pathString = constant.path + sub;
+//		System.out.println("字符串：" + sub);
+//		System.out.println("文件路径：" + pathString);
+
+		return pathString;
 	}
 	
 	protected Collection<Diagram> getDiagrams() {
