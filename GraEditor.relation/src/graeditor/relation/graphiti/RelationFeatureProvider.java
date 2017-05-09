@@ -13,6 +13,7 @@ import org.eclipse.graphiti.pattern.DefaultFeatureProviderWithPatterns;
 
 import graeditor.relation.features.AssociateDiagramFeature;
 import graeditor.relation.features.CopyFeature;
+import graeditor.relation.features.CustomBackAssociateDiagramFeature;
 import graeditor.relation.features.CustomChangeTextFeature;
 import graeditor.relation.features.DrillDownFeature;
 import graeditor.relation.features.PasteFeature;
@@ -39,6 +40,7 @@ public class RelationFeatureProvider extends DefaultFeatureProviderWithPatterns{
 	public ICustomFeature[] getCustomFeatures(ICustomContext context) {
 		return new ICustomFeature[] {				
 			new CustomChangeTextFeature(this),
+			new CustomBackAssociateDiagramFeature(this),
 			new DrillDownFeature(this),
 			new AssociateDiagramFeature(this)};
 		

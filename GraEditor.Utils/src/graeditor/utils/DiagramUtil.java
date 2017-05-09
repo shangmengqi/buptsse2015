@@ -1,21 +1,10 @@
 package graeditor.utils;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import javax.swing.JOptionPane;
-
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.DocumentHelper;
-import org.dom4j.Element;
-import org.dom4j.io.OutputFormat;
-import org.dom4j.io.SAXReader;
-import org.dom4j.io.XMLWriter;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -35,6 +24,9 @@ import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.mm.pictograms.Shape;
+import org.eclipse.graphiti.ui.editor.DiagramEditor;
+import org.eclipse.graphiti.ui.internal.services.GraphitiUiInternal;
+import org.eclipse.graphiti.ui.services.GraphitiUi;
 
 public class DiagramUtil {
 	
@@ -101,12 +93,21 @@ public class DiagramUtil {
 		resourceURI = resourceSet.getURIConverter().normalize(resourceURI);
 		return resourceURI;
 	}
+		
+	public static void openDiagramEditor(Diagram diagram) {
+		// Found a diagram to open
+		String diagramTypeProviderId = GraphitiUi.getExtensionManager().getDiagramTypeProviderId(diagram.getDiagramTypeId());
+		GraphitiUiInternal.getWorkbenchService().openDiagramEditor(diagram, diagramTypeProviderId,
+				getDiagramEditorId(diagram));
+	}
 	
+	public static String getDiagramEditorId(Diagram diagram) {
+		return DiagramEditor.DIAGRAM_EDITOR_ID;
+	}
 	
-	
+		
 	
 	public static void changeText(ICustomContext context, PictogramElement element) {
-		System.out.println("getStart chandeText");
 		Object obj = context.getInnerGraphicsAlgorithm();
 		String oldText = "";
 		TextImpl text = null;

@@ -50,7 +50,7 @@ public class MyDrillDownFeature extends AbstractDrillDownFeature{
 
 		final Collection<Diagram> ret = new HashSet<Diagram>();
 
-		final Object[] businessObjectsForPictogramElement = getAllBusinessObjectsForPictogramElement(pe);
+//		final Object[] businessObjectsForPictogramElement = getAllBusinessObjectsForPictogramElement(pe);
 
 		final Collection<Diagram> allDiagrams = getDiagrams();
 		for (final Diagram d : allDiagrams) {
@@ -59,16 +59,42 @@ public class MyDrillDownFeature extends AbstractDrillDownFeature{
 														// current
 				
 				d.getName();
+				System.out.println("d.getName: " + d.getName());
 				
-				if (d.getLink() != null) {
-					System.out.println("getLink: " + d.getLink());
-					EList<EObject> eList = d.getLink().getBusinessObjects();
-					System.out.println("eList : " + eList);
-					for (int i = 0; i < eList.size(); i++) {
-						System.out.println("eListResource: " + eList.get(i));
-						
+				
+				
+//					for (int j = 0; j < businessObjectsForPictogramElement.length; j++) {
+//						final Object currentBo = businessObjectsForPictogramElement[j];
+//						System.out.println("currentBo: " + currentBo);
+//
+//						if (getFeatureProvider().getDiagramTypeProvider().getCurrentToolBehaviorProvider()
+//								.equalsBusinessObjects(currentBo, diagramBo)) {
+//							ret.add(d);
+//						}
+//					}
+				
+				
+				
+
+//				if (d.getLink() != null) {
+//					System.out.println("getLink: " + d.getLink());
+//					EList<EObject> eList = d.getLink().getBusinessObjects();
+//					System.out.println("eList : " + eList);
+//					for (int i = 0; i < eList.size(); i++) {
+//						System.out.println("eListResource: " + eList.get(i));
+					
+					
+					final Object[] businessObjectsForDiagram = getAllBusinessObjectsForPictogramElement(d);
+					System.out.println("businessObjectsForDiagram: " + businessObjectsForDiagram);
+
+					for (int i = 0; i < businessObjectsForDiagram.length; i++) {
+						final Object diagramBo = businessObjectsForDiagram[i];
+						System.out.println("diagramBo: " + diagramBo);
+					
 						//×Ö·û´®µÄ²ð·Ö
-						String string = eList.get(i).toString();
+						String string = diagramBo.toString();
+						System.out.println("diagramBoString: " + string);
+
 						String[] array = new String[20];
 						array = string.split("/");
 						if (array.length > 2) {
@@ -104,7 +130,7 @@ public class MyDrillDownFeature extends AbstractDrillDownFeature{
 					
 				}						
 			}
-		}
+//		}
 		return ret;
 	}
 

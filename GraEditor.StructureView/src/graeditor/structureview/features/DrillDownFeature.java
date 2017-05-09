@@ -54,9 +54,7 @@ public class DrillDownFeature extends MyDrillDownFeature {
 	protected Collection<Diagram> getDiagrams() {
 		Collection<Diagram> result = Collections.emptyList();
 		Resource resource = getDiagram().eResource();
-//		System.out.println("resource: " + resource);
 		URI uri = resource.getURI();
-//		System.out.println("resource: " + uri);
 		URI uriTrimmed = uri.trimFragment();
 		if (uriTrimmed.isPlatformResource()) {
 			String platformString = uriTrimmed.toPlatformString(true);

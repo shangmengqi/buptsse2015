@@ -43,19 +43,14 @@ public class DrillDownFeature extends AbstractDrillDownFeature{
         // first check, if one EClass is selected
         if (pes != null && pes.length == 1) {
         	//返回通过link方法绑定的EMF模型对象
-            Object bo = getBusinessObjectForPictogramElement(pes[0]);
-            if (bo instanceof RelationModule) {
-                // then forward to super-implementation, which checks if
-                // this EClass is associated with other diagrams
-                return super.canExecute(context);
-            }
+            Object bo = getBusinessObjectForPictogramElement(pes[0]);          
+            return super.canExecute(context);           
         }
         return false;
 	}
 
 	@Override
 	protected Collection<Diagram> getDiagrams() {
-//		System.out.println("DrillDown5/Collection");
 		Collection<Diagram> result = Collections.emptyList();
 		Resource resource = getDiagram().eResource();
 		URI uri = resource.getURI();
