@@ -40,9 +40,8 @@ public class RelationFeatureProvider extends DefaultFeatureProviderWithPatterns{
 	public ICustomFeature[] getCustomFeatures(ICustomContext context) {
 		return new ICustomFeature[] {				
 			new CustomChangeTextFeature(this),
-			new CustomBackAssociateDiagramFeature(this),
-			new DrillDownFeature(this),
-			new AssociateDiagramFeature(this)};
+			new CustomBackAssociateDiagramFeature(this)
+			};
 		
 	}
 	

@@ -10,9 +10,12 @@ import org.eclipse.graphiti.features.custom.ICustomFeature;
 import org.eclipse.graphiti.pattern.DefaultFeatureProviderWithPatterns;
 
 import graeditor.flow.features.AddConnectionFeature;
+import graeditor.flow.features.AssociateDiagramFeature;
 import graeditor.flow.features.CreateConnectionFeature;
 import graeditor.flow.features.CreateConnectionFeature.ConnectionType;
+import graeditor.flow.features.CustomBackAssociateDiagramFeature;
 import graeditor.flow.features.CustomChangeTextFeature;
+import graeditor.flow.features.FlowDrillDownFeature;
 import graeditor.flow.pattern.ContentPattern;
 import graeditor.flow.pattern.EndTagPattern;
 import graeditor.flow.pattern.HorizontalLinePattern;
@@ -33,7 +36,7 @@ public class FlowFeatureProvider extends DefaultFeatureProviderWithPatterns{
 	
 	@Override
 	public IAddFeature getAddFeature(IAddContext context) {
-		// ´¦ÀíÌí¼ÓconnectionµÄÇé¿ö
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½connectionï¿½ï¿½ï¿½ï¿½ï¿½
 		if (context instanceof IAddConnectionContext) {
 			return new AddConnectionFeature(this);
 		}
@@ -49,7 +52,7 @@ public class FlowFeatureProvider extends DefaultFeatureProviderWithPatterns{
 	}
 	
 //	public IDirectEditingFeature getDirectEditingFeature(IDirectEditingContext context){
-//		//Ö»ÓÐµ±ÓÃ»§µã»÷µ½ÄÚ²¿µÄTextÇøÓòÊ±²Åµ÷ÓÃ¸ÃFeature
+//		//Ö»ï¿½Ðµï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½Textï¿½ï¿½ï¿½ï¿½Ê±ï¿½Åµï¿½ï¿½Ã¸ï¿½Feature
 //		if (context.getPictogramElement().getGraphicsAlgorithm() instanceof Text) {
 //			return new ModuleDirectEditFeature(this);
 //		}
@@ -63,7 +66,10 @@ public class FlowFeatureProvider extends DefaultFeatureProviderWithPatterns{
 	@Override
 	public ICustomFeature[] getCustomFeatures(ICustomContext context) {
 		return new ICustomFeature[] {				
-			new CustomChangeTextFeature(this)};
+			new CustomChangeTextFeature(this),
+			new FlowDrillDownFeature(this),
+			new AssociateDiagramFeature(this),
+			new CustomBackAssociateDiagramFeature(this)};
 	}
 
 }

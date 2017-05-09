@@ -15,8 +15,9 @@ import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.ui.features.AbstractDrillDownFeature;
 
 import graeditor.utils.DiagramUtil;
+import graeditor.utils.MyDrillDownFeature;
 
-public class FlowDrillDownFeature extends AbstractDrillDownFeature{
+public class FlowDrillDownFeature extends MyDrillDownFeature{
 
 	public FlowDrillDownFeature(IFeatureProvider fp) {
 		super(fp);
@@ -34,16 +35,10 @@ public class FlowDrillDownFeature extends AbstractDrillDownFeature{
     
     @Override
     public boolean canExecute(ICustomContext context) {
-        PictogramElement[] pes = context.getPictogramElements();
+        PictogramElement[] pes = context.getPictogramElements();//获取当前画布上所有图表元素
         // first check, if one EClass is selected
         if (pes != null && pes.length == 1) {
-            Object bo = getBusinessObjectForPictogramElement(pes[0]);
-//            if (bo instanceof EClass) {
-//                // then forward to super-implementation, which checks if
-//                // this EClass is associated with other diagrams
-//                return super.canExecute(context);
-//            }
-            
+            Object bo = getBusinessObjectForPictogramElement(pes[0]);            
             return true;
         }
         return false;
