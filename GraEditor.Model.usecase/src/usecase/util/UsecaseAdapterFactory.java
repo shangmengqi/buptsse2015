@@ -16,7 +16,7 @@ import usecase.*;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see Usecase.UsecasePackage
+ * @see usecase.UsecasePackage
  * @generated
  */
 public class UsecaseAdapterFactory extends AdapterFactoryImpl {
@@ -68,12 +68,16 @@ public class UsecaseAdapterFactory extends AdapterFactoryImpl {
 	protected UsecaseSwitch<Adapter> modelSwitch =
 		new UsecaseSwitch<Adapter>() {
 			@Override
-			public Adapter caseuser(User object) {
-				return createuserAdapter();
+			public Adapter caseUser(User object) {
+				return createUserAdapter();
 			}
 			@Override
-			public Adapter caseusecase(Usecase object) {
-				return createusecaseAdapter();
+			public Adapter caseUsecase(Usecase object) {
+				return createUsecaseAdapter();
+			}
+			@Override
+			public Adapter caseUsercaseModule(UsercaseModule object) {
+				return createUsercaseModuleAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -96,30 +100,44 @@ public class UsecaseAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link Usecase.User <em>user</em>}'.
+	 * Creates a new adapter for an object of class '{@link usecase.User <em>User</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see Usecase.User
+	 * @see usecase.User
 	 * @generated
 	 */
-	public Adapter createuserAdapter() {
+	public Adapter createUserAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link Usecase.usecase <em>usecase</em>}'.
+	 * Creates a new adapter for an object of class '{@link usecase.Usecase <em>Usecase</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see Usecase.usecase
+	 * @see usecase.Usecase
 	 * @generated
 	 */
-	public Adapter createusecaseAdapter() {
+	public Adapter createUsecaseAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link usecase.UsercaseModule <em>Usercase Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see usecase.UsercaseModule
+	 * @generated
+	 */
+	public Adapter createUsercaseModuleAdapter() {
 		return null;
 	}
 

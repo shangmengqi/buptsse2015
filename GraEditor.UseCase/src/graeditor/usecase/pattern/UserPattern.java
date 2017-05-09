@@ -60,7 +60,7 @@ public class UserPattern extends IdPattern implements IPattern{
 	 */
 	@Override
 	public Object[] create(ICreateContext context) {
-		User newUser = UsecaseFactory.eINSTANCE.createuser();
+		User newUser = UsecaseFactory.eINSTANCE.createUser();
 		newUser.setName("newUser");
 		
 		getDiagram().eResource().getContents().add(newUser);

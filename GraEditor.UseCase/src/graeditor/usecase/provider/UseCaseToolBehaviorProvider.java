@@ -23,8 +23,8 @@ public class UseCaseToolBehaviorProvider extends DefaultToolBehaviorProvider {
 	public IContextMenuEntry[] getContextMenu(ICustomContext context) {
 		// create a sub-menu for all custom features
 		subMenu = new ContextMenuEntry(null, context);
-		subMenu.setText("Marked as Solved");
-		subMenu.setDescription("Keep these elements");
+		subMenu.setText("Custom");
+		subMenu.setDescription("Custom Features");
 		// display sub-menu hierarchical or flat
 		subMenu.setSubmenu(true);
 
@@ -34,7 +34,7 @@ public class UseCaseToolBehaviorProvider extends DefaultToolBehaviorProvider {
 			ICustomFeature customFeature = customFeatures[i];
 			if (customFeature.isAvailable(context)) {
 				ContextMenuEntry menuEntry = new ContextMenuEntry(customFeature, context);
-				menuEntry.setText("Solve Conflict");
+				menuEntry.setText(customFeature.getName());
 				subMenu.add(menuEntry);
 			}
 		}

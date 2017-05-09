@@ -12,6 +12,7 @@ import org.eclipse.graphiti.pattern.DefaultFeatureProviderWithPatterns;
 import graeditor.structureview.features.AddConnectionFeature;
 import graeditor.structureview.features.AssociateDiagramFeature;
 import graeditor.structureview.features.CreateConnectionFeature;
+import graeditor.structureview.features.CustomBackAssociateDiagramFeature;
 import graeditor.structureview.features.CustomChangeTextFeature;
 import graeditor.structureview.features.CustomDeleteFeature;
 import graeditor.structureview.features.DrillDownFeature;
@@ -52,7 +53,8 @@ public class StructureViewFeatureProvider extends DefaultFeatureProviderWithPatt
 				new CustomDeleteFeature(this),
 				new DrillDownFeature(this), 
 				new AssociateDiagramFeature(this),
-				new CustomChangeTextFeature(this)};
+				new CustomChangeTextFeature(this),
+				new CustomBackAssociateDiagramFeature(this)};
 				
 
 	}

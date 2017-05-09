@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see Usecase.UsecasePackage
+ * @see usecase.UsecasePackage
  * @generated
  */
 public interface UsecaseFactory extends EFactory {
@@ -22,22 +22,31 @@ public interface UsecaseFactory extends EFactory {
 	UsecaseFactory eINSTANCE = usecase.impl.UsecaseFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>user</em>'.
+	 * Returns a new object of class '<em>User</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>user</em>'.
+	 * @return a new object of class '<em>User</em>'.
 	 * @generated
 	 */
-	User createuser();
+	User createUser();
 
 	/**
-	 * Returns a new object of class '<em>usecase</em>'.
+	 * Returns a new object of class '<em>Usecase</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>usecase</em>'.
+	 * @return a new object of class '<em>Usecase</em>'.
 	 * @generated
 	 */
-	Usecase createusecase();
+	Usecase createUsecase();
+
+	/**
+	 * Returns a new object of class '<em>Usercase Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Usercase Module</em>'.
+	 * @generated
+	 */
+	UsercaseModule createUsercaseModule();
 
 	/**
 	 * Returns the package supported by this factory.

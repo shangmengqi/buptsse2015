@@ -56,8 +56,9 @@ public class UsecaseFactoryImpl extends EFactoryImpl implements UsecaseFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case UsecasePackage.USER: return createuser();
-			case UsecasePackage.USECASE: return createusecase();
+			case UsecasePackage.USER: return createUser();
+			case UsecasePackage.USECASE: return createUsecase();
+			case UsecasePackage.USERCASE_MODULE: return createUsercaseModule();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -68,7 +69,7 @@ public class UsecaseFactoryImpl extends EFactoryImpl implements UsecaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public User createuser() {
+	public User createUser() {
 		UserImpl user = new UserImpl();
 		return user;
 	}
@@ -78,9 +79,19 @@ public class UsecaseFactoryImpl extends EFactoryImpl implements UsecaseFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Usecase createusecase() {
+	public Usecase createUsecase() {
 		UsecaseImpl usecase = new UsecaseImpl();
 		return usecase;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public UsercaseModule createUsercaseModule() {
+		UsercaseModuleImpl usercaseModule = new UsercaseModuleImpl();
+		return usercaseModule;
 	}
 
 	/**

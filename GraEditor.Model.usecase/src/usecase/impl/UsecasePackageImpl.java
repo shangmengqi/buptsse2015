@@ -13,6 +13,7 @@ import usecase.UsecaseFactory;
 import usecase.UsecasePackage;
 import usecase.Usecase;
 import usecase.User;
+import usecase.UsercaseModule;
 
 /**
  * <!-- begin-user-doc -->
@@ -36,6 +37,13 @@ public class UsecasePackageImpl extends EPackageImpl implements UsecasePackage {
 	private EClass usecaseEClass = null;
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass usercaseModuleEClass = null;
+
+	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
 	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
 	 * package URI value.
@@ -46,7 +54,7 @@ public class UsecasePackageImpl extends EPackageImpl implements UsecasePackage {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see Usecase.UsecasePackage#eNS_URI
+	 * @see usecase.UsecasePackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
@@ -101,7 +109,7 @@ public class UsecasePackageImpl extends EPackageImpl implements UsecasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getuser() {
+	public EClass getUser() {
 		return userEClass;
 	}
 
@@ -110,7 +118,7 @@ public class UsecasePackageImpl extends EPackageImpl implements UsecasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getuser_Name() {
+	public EAttribute getUser_Name() {
 		return (EAttribute)userEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -119,7 +127,7 @@ public class UsecasePackageImpl extends EPackageImpl implements UsecasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getuser_Usecase() {
+	public EReference getUser_Usecase() {
 		return (EReference)userEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -128,7 +136,7 @@ public class UsecasePackageImpl extends EPackageImpl implements UsecasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getusecase() {
+	public EClass getUsecase() {
 		return usecaseEClass;
 	}
 
@@ -137,8 +145,26 @@ public class UsecasePackageImpl extends EPackageImpl implements UsecasePackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getusecase_Name() {
+	public EAttribute getUsecase_Name() {
 		return (EAttribute)usecaseEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getUsercaseModule() {
+		return usercaseModuleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getUsercaseModule_PictogramElement() {
+		return (EReference)usercaseModuleEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -175,6 +201,9 @@ public class UsecasePackageImpl extends EPackageImpl implements UsecasePackage {
 
 		usecaseEClass = createEClass(USECASE);
 		createEAttribute(usecaseEClass, USECASE__NAME);
+
+		usercaseModuleEClass = createEClass(USERCASE_MODULE);
+		createEReference(usercaseModuleEClass, USERCASE_MODULE__PICTOGRAM_ELEMENT);
 	}
 
 	/**
@@ -205,14 +234,19 @@ public class UsecasePackageImpl extends EPackageImpl implements UsecasePackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
+		userEClass.getESuperTypes().add(this.getUsercaseModule());
+		usecaseEClass.getESuperTypes().add(this.getUsercaseModule());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(userEClass, User.class, "user", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getuser_Name(), ecorePackage.getEString(), "name", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getuser_Usecase(), this.getusecase(), null, "usecase", null, 0, -1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(userEClass, User.class, "User", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getUser_Name(), ecorePackage.getEString(), "name", null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getUser_Usecase(), this.getUsecase(), null, "usecase", null, 0, -1, User.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(usecaseEClass, Usecase.class, "usecase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getusecase_Name(), ecorePackage.getEString(), "name", null, 0, 1, Usecase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(usecaseEClass, Usecase.class, "Usecase", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getUsecase_Name(), ecorePackage.getEString(), "name", null, 0, 1, Usecase.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(usercaseModuleEClass, UsercaseModule.class, "UsercaseModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getUsercaseModule_PictogramElement(), ecorePackage.getEObject(), null, "pictogramElement", null, 0, 1, UsercaseModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

@@ -13,8 +13,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -30,13 +28,13 @@ import usecase.User;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link Usecase.impl.UserImpl#getName <em>Name</em>}</li>
- *   <li>{@link Usecase.impl.UserImpl#getUsecase <em>Usecase</em>}</li>
+ *   <li>{@link usecase.impl.UserImpl#getName <em>Name</em>}</li>
+ *   <li>{@link usecase.impl.UserImpl#getUsecase <em>Usecase</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class UserImpl extends MinimalEObjectImpl.Container implements User {
+public class UserImpl extends UsercaseModuleImpl implements User {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

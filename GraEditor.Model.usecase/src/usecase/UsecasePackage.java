@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see Usecase.UsecaseFactory
+ * @see usecase.UsecaseFactory
  * @model kind="package"
  * @generated
  */
@@ -57,14 +57,60 @@ public interface UsecasePackage extends EPackage {
 	UsecasePackage eINSTANCE = usecase.impl.UsecasePackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link Usecase.impl.UserImpl <em>user</em>}' class.
+	 * The meta object id for the '{@link usecase.impl.UsercaseModuleImpl <em>Usercase Module</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see Usecase.impl.UserImpl
-	 * @see Usecase.impl.UsecasePackageImpl#getuser()
+	 * @see usecase.impl.UsercaseModuleImpl
+	 * @see usecase.impl.UsecasePackageImpl#getUsercaseModule()
+	 * @generated
+	 */
+	int USERCASE_MODULE = 2;
+
+	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USERCASE_MODULE__PICTOGRAM_ELEMENT = 0;
+
+	/**
+	 * The number of structural features of the '<em>Usercase Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USERCASE_MODULE_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Usercase Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USERCASE_MODULE_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link usecase.impl.UserImpl <em>User</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see usecase.impl.UserImpl
+	 * @see usecase.impl.UsecasePackageImpl#getUser()
 	 * @generated
 	 */
 	int USER = 0;
+
+	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER__PICTOGRAM_ELEMENT = USERCASE_MODULE__PICTOGRAM_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -73,7 +119,7 @@ public interface UsecasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER__NAME = 0;
+	int USER__NAME = USERCASE_MODULE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Usecase</b></em>' containment reference list.
@@ -82,35 +128,44 @@ public interface UsecasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER__USECASE = 1;
+	int USER__USECASE = USERCASE_MODULE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>user</em>' class.
+	 * The number of structural features of the '<em>User</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USER_FEATURE_COUNT = 2;
+	int USER_FEATURE_COUNT = USERCASE_MODULE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>user</em>' class.
+	 * The number of operations of the '<em>User</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USER_OPERATION_COUNT = 0;
+	int USER_OPERATION_COUNT = USERCASE_MODULE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link Usecase.impl.UsecaseImpl <em>usecase</em>}' class.
+	 * The meta object id for the '{@link usecase.impl.UsecaseImpl <em>Usecase</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see Usecase.impl.UsecaseImpl
-	 * @see Usecase.impl.UsecasePackageImpl#getusecase()
+	 * @see usecase.impl.UsecaseImpl
+	 * @see usecase.impl.UsecasePackageImpl#getUsecase()
 	 * @generated
 	 */
 	int USECASE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USECASE__PICTOGRAM_ELEMENT = USERCASE_MODULE__PICTOGRAM_ELEMENT;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -119,79 +174,100 @@ public interface UsecasePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USECASE__NAME = 0;
+	int USECASE__NAME = USERCASE_MODULE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>usecase</em>' class.
+	 * The number of structural features of the '<em>Usecase</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USECASE_FEATURE_COUNT = 1;
+	int USECASE_FEATURE_COUNT = USERCASE_MODULE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>usecase</em>' class.
+	 * The number of operations of the '<em>Usecase</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USECASE_OPERATION_COUNT = 0;
+	int USECASE_OPERATION_COUNT = USERCASE_MODULE_OPERATION_COUNT + 0;
 
 
 	/**
-	 * Returns the meta object for class '{@link Usecase.User <em>user</em>}'.
+	 * Returns the meta object for class '{@link usecase.User <em>User</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>user</em>'.
-	 * @see Usecase.User
+	 * @return the meta object for class '<em>User</em>'.
+	 * @see usecase.User
 	 * @generated
 	 */
-	EClass getuser();
+	EClass getUser();
 
 	/**
-	 * Returns the meta object for the attribute '{@link Usecase.User#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link usecase.User#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see Usecase.User#getName()
-	 * @see #getuser()
+	 * @see usecase.User#getName()
+	 * @see #getUser()
 	 * @generated
 	 */
-	EAttribute getuser_Name();
+	EAttribute getUser_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link Usecase.User#getUsecase <em>Usecase</em>}'.
+	 * Returns the meta object for the containment reference list '{@link usecase.User#getUsecase <em>Usecase</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Usecase</em>'.
-	 * @see Usecase.User#getUsecase()
-	 * @see #getuser()
+	 * @see usecase.User#getUsecase()
+	 * @see #getUser()
 	 * @generated
 	 */
-	EReference getuser_Usecase();
+	EReference getUser_Usecase();
 
 	/**
-	 * Returns the meta object for class '{@link Usecase.usecase <em>usecase</em>}'.
+	 * Returns the meta object for class '{@link usecase.Usecase <em>Usecase</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>usecase</em>'.
-	 * @see Usecase.usecase
+	 * @return the meta object for class '<em>Usecase</em>'.
+	 * @see usecase.Usecase
 	 * @generated
 	 */
-	EClass getusecase();
+	EClass getUsecase();
 
 	/**
-	 * Returns the meta object for the attribute '{@link Usecase.usecase#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link usecase.Usecase#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see Usecase.usecase#getName()
-	 * @see #getusecase()
+	 * @see usecase.Usecase#getName()
+	 * @see #getUsecase()
 	 * @generated
 	 */
-	EAttribute getusecase_Name();
+	EAttribute getUsecase_Name();
+
+	/**
+	 * Returns the meta object for class '{@link usecase.UsercaseModule <em>Usercase Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Usercase Module</em>'.
+	 * @see usecase.UsercaseModule
+	 * @generated
+	 */
+	EClass getUsercaseModule();
+
+	/**
+	 * Returns the meta object for the reference '{@link usecase.UsercaseModule#getPictogramElement <em>Pictogram Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Pictogram Element</em>'.
+	 * @see usecase.UsercaseModule#getPictogramElement()
+	 * @see #getUsercaseModule()
+	 * @generated
+	 */
+	EReference getUsercaseModule_PictogramElement();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -217,14 +293,14 @@ public interface UsecasePackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link Usecase.impl.UserImpl <em>user</em>}' class.
+		 * The meta object literal for the '{@link usecase.impl.UserImpl <em>User</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see Usecase.impl.UserImpl
-		 * @see Usecase.impl.UsecasePackageImpl#getuser()
+		 * @see usecase.impl.UserImpl
+		 * @see usecase.impl.UsecasePackageImpl#getUser()
 		 * @generated
 		 */
-		EClass USER = eINSTANCE.getuser();
+		EClass USER = eINSTANCE.getUser();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -232,7 +308,7 @@ public interface UsecasePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute USER__NAME = eINSTANCE.getuser_Name();
+		EAttribute USER__NAME = eINSTANCE.getUser_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Usecase</b></em>' containment reference list feature.
@@ -240,17 +316,17 @@ public interface UsecasePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference USER__USECASE = eINSTANCE.getuser_Usecase();
+		EReference USER__USECASE = eINSTANCE.getUser_Usecase();
 
 		/**
-		 * The meta object literal for the '{@link Usecase.impl.UsecaseImpl <em>usecase</em>}' class.
+		 * The meta object literal for the '{@link usecase.impl.UsecaseImpl <em>Usecase</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see Usecase.impl.UsecaseImpl
-		 * @see Usecase.impl.UsecasePackageImpl#getusecase()
+		 * @see usecase.impl.UsecaseImpl
+		 * @see usecase.impl.UsecasePackageImpl#getUsecase()
 		 * @generated
 		 */
-		EClass USECASE = eINSTANCE.getusecase();
+		EClass USECASE = eINSTANCE.getUsecase();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -258,7 +334,25 @@ public interface UsecasePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute USECASE__NAME = eINSTANCE.getusecase_Name();
+		EAttribute USECASE__NAME = eINSTANCE.getUsecase_Name();
+
+		/**
+		 * The meta object literal for the '{@link usecase.impl.UsercaseModuleImpl <em>Usercase Module</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see usecase.impl.UsercaseModuleImpl
+		 * @see usecase.impl.UsecasePackageImpl#getUsercaseModule()
+		 * @generated
+		 */
+		EClass USERCASE_MODULE = eINSTANCE.getUsercaseModule();
+
+		/**
+		 * The meta object literal for the '<em><b>Pictogram Element</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference USERCASE_MODULE__PICTOGRAM_ELEMENT = eINSTANCE.getUsercaseModule_PictogramElement();
 
 	}
 

@@ -11,7 +11,10 @@ import org.eclipse.graphiti.pattern.DefaultFeatureProviderWithPatterns;
 import org.eclipse.graphiti.ui.features.DefaultFeatureProvider;
 
 import graeditor.usecase.features.AddConnectionFeature;
+import graeditor.usecase.features.AssociateDiagramFeature;
 import graeditor.usecase.features.CreateConnectionFeature;
+import graeditor.usecase.features.CustomChangeTextFeature;
+import graeditor.usecase.features.DrillDownFeature;
 import graeditor.usecase.features.SolveConflictFeature;
 import graeditor.usecase.pattern.UseCasePattern;
 import graeditor.usecase.pattern.UserPattern;
@@ -44,6 +47,10 @@ public class UseCaseDiagramFeatureProvider extends DefaultFeatureProviderWithPat
 
 	@Override
 	public ICustomFeature[] getCustomFeatures(ICustomContext context) {
-		return new ICustomFeature[] { new SolveConflictFeature(this) };
+		return new ICustomFeature[] { 
+				new SolveConflictFeature(this),
+				new DrillDownFeature(this),
+				new AssociateDiagramFeature(this),
+				new CustomChangeTextFeature(this)};
 	}
 }

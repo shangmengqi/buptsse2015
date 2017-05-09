@@ -1,15 +1,12 @@
-package graeditor.structureview.features;
+package graeditor.usecase.features;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
-import java.util.List;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -19,27 +16,19 @@ import org.eclipse.graphiti.features.custom.AbstractCustomFeature;
 import org.eclipse.graphiti.internal.Messages;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
-import org.eclipse.graphiti.mm.pictograms.PictogramLink;
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.dialogs.ListDialog;
+import org.eclipse.graphiti.platform.IPlatformImageConstants;
+import org.eclipse.graphiti.ui.services.GraphitiUi;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.LabelProvider;
-import org.eclipse.graphiti.ui.services.GraphitiUi;
-import org.eclipse.graphiti.platform.IPlatformImageConstants;
+import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.dialogs.ListDialog;
 
-
-import StructureView.StructModule;
 import graeditor.utils.DiagramUtil;
+import usecase.UsercaseModule;
 import xml.utils.addLinkToXML;
-import xml.utils.constant;
 
-/**
- * drill downåŠŸèƒ½ä¸­æä¾›å…³è”åŠŸèƒ½çš„ç±»
- * @author shhqin
- *
- */
 public class AssociateDiagramFeature extends AbstractCustomFeature{
 
 	public AssociateDiagramFeature(IFeatureProvider fp) {
@@ -70,39 +59,35 @@ public class AssociateDiagramFeature extends AbstractCustomFeature{
 	public void execute(ICustomContext context) {
 		int objectNum = 0;
 		String currentDiagramName = null;
-		final Diagram currentDiagram = getDiagram();//currentDiagramä¸ºå½“å‰è¦è¿›è¡Œè·³è½¬çš„å›¾è¡¨
+		final Diagram currentDiagram = getDiagram();//currentDiagramÎªµ±Ç°Òª½øĞĞÌø×ªµÄÍ¼±í
+		final PictogramElement pe = context.getPictogramElements()[0]; //»ñÈ¡µ±Ç°±»Ñ¡ÔñµÄÔªËØ
 		
-		// TODO å…³è”çš„å¤„ç†å‡½æ•°ï¼Œæ­¤å¤„åº”è¯¥æ˜¯è·å–æ‰€æœ‰çš„å›¾è¡¨ï¼Œè®©ç”¨æˆ·é€‰æ‹©ä¸€ä¸ªï¼Œ
+		// TODO ¹ØÁªµÄ´¦Àíº¯Êı£¬´Ë´¦Ó¦¸ÃÊÇ»ñÈ¡ËùÓĞµÄÍ¼±í£¬ÈÃÓÃ»§Ñ¡ÔñÒ»¸ö£¬
 		final Collection<Diagram> ret = new HashSet<Diagram>();
 		final Collection<Diagram> allDiagrams = getDiagrams();
-		final PictogramElement pe = context.getPictogramElements()[0]; //è·å–å½“å‰è¢«é€‰æ‹©çš„å…ƒç´ 
-
 		
 //		PictogramElement[] pes = context.getPictogramElements();
-//		StructModule module[] = new StructModule[pes.length];
+//		UsercaseModule module[] = new UsercaseModule[pes.length];
 //		for (int i = 0; i < module.length; i++) {
-//			module[i] = (StructModule) getBusinessObjectForPictogramElement(pes[i]);
-//			objectNum = i + 1;
-////			System.out.println("currentDiagramObject:" + i);
+//			module[i] = (UsercaseModule) getBusinessObjectForPictogramElement(pes[i]);
+////			objectNum = i + 1;
 //		}
 		
-		
-		//è·å–å½“å‰å›¾è¡¨ä¸­è¢«é€‰æ‹©å…ƒç´ æ˜¯ç¬¬å‡ ä¸ªobjectNum
 		for (int i = 0; i < currentDiagram.getChildren().size(); i++) {
 			if (currentDiagram.getChildren().get(i).equals(pe)) {
 				objectNum = i + 1;
 				System.out.println("objectNum: " + objectNum);
 			}
-		}
+		}				
 		
 		for (final Diagram d : allDiagrams) {
 //			System.out.println("currentDiagramName: " + currentDiagram.getName());
-			currentDiagramName = currentDiagram.getName();
+			currentDiagramName = currentDiagram.getName();			
 			if (!EcoreUtil.equals(currentDiagram, d)) { // always filter out the														// current
 				ret.add(d);							
 			}
 		}
-		
+				
 		
 		Diagram diagram = null;
 		if (!ret.isEmpty()) {
@@ -140,14 +125,13 @@ public class AssociateDiagramFeature extends AbstractCustomFeature{
 			if (diagram != null) {				
 				String diagramName = diagram.getName();
 				System.out.println("diagramName : " + diagramName);
-				//è¿›è¡Œæµ‹è¯•æ ¹æ®æ–‡ä»¶åè·å–è¯¥æ–‡ä»¶çš„ç»å¯¹è·¯å¾„	
+				//½øĞĞ²âÊÔ¸ù¾İÎÄ¼şÃû»ñÈ¡¸ÃÎÄ¼şµÄ¾ø¶ÔÂ·¾¶	
 				String filePath = DiagramUtil.getFilePath(diagram);								
 				addLinkToXML.addLink(filePath,currentDiagramName,objectNum);
 				System.out.println("haha : ");								
 			}
 		}
 	}
-	
 	
 	protected Collection<Diagram> getDiagrams() {
 		Collection<Diagram> result = Collections.emptyList();
@@ -164,7 +148,7 @@ public class AssociateDiagramFeature extends AbstractCustomFeature{
 				System.out.println("result: " + result);
 			}
 		}
-		return result;//resultè¿”å›ç¼–è¾‘å™¨ä¸ŠåŒä¸€ä¸ªé¡¹ç›®ä¸‹æ‰€æœ‰çš„diagramå›¾è¡¨ä¿¡æ¯ï¼ŒåŒ…æ‹¬å›¾è¡¨åç§°ï¼Œå¹¶å°†è¿™äº›diagramå­˜åœ¨ä¸€ä¸ªæ•°ç»„é‡Œ
+		return result;//result·µ»Ø±à¼­Æ÷ÉÏÍ¬Ò»¸öÏîÄ¿ÏÂËùÓĞµÄdiagramÍ¼±íĞÅÏ¢£¬°üÀ¨Í¼±íÃû³Æ£¬²¢½«ÕâĞ©diagram´æÔÚÒ»¸öÊı×éÀï
 	}
 	
 	private class DiagramLabelProvider extends LabelProvider {

@@ -70,3 +70,9 @@ git commit -m "link标签的逻辑完善"
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "完成associate功能以及逆向跳转功能"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

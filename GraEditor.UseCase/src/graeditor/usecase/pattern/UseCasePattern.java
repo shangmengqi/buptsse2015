@@ -37,7 +37,7 @@ public class UseCasePattern extends IdPattern implements IPattern{
 	}
 	
 	/* 
-	 * 返回在Objects列表中的名称
+	 * 杩斿洖鍦∣bjects鍒楄〃涓殑鍚嶇О
 	 */
 	@Override
 	public String getCreateName() {
@@ -45,7 +45,7 @@ public class UseCasePattern extends IdPattern implements IPattern{
 	}
 
 	/* 
-	 * 判断能否create
+	 * 鍒ゆ柇鑳藉惁create
 	 */
 	@Override
 	public boolean canCreate(ICreateContext context) {
@@ -53,11 +53,11 @@ public class UseCasePattern extends IdPattern implements IPattern{
 	}
 
 	/* 
-	 * 创建Usecase对象
+	 * 鍒涘缓Usecase瀵硅薄
 	 */
 	@Override
 	public Object[] create(ICreateContext context) {
-		Usecase usecase = UsecaseFactory.eINSTANCE.createusecase();
+		Usecase usecase = UsecaseFactory.eINSTANCE.createUsecase();
 		usecase.setName("newUsecase");
 		
 		getDiagram().eResource().getContents().add(usecase);
@@ -66,7 +66,7 @@ public class UseCasePattern extends IdPattern implements IPattern{
 	}
 	
 	/* 
-	 * 判断能否添加进指定位置
+	 * 鍒ゆ柇鑳藉惁娣诲姞杩涙寚瀹氫綅缃�
 	 */
 	@Override
 	public boolean canAdd(IAddContext context) {
@@ -79,7 +79,7 @@ public class UseCasePattern extends IdPattern implements IPattern{
 		Diagram targetDiagram = (Diagram) context.getTargetContainer();
 		Usecase addedDomainModel = (Usecase) context.getNewObject();
 		
-		// 获取绘制图形的两种资源
+		// 鑾峰彇缁樺埗鍥惧舰鐨勪袱绉嶈祫婧�
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
 		IGaService gaService = Graphiti.getGaService();
 		

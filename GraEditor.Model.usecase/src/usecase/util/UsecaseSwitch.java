@@ -19,7 +19,7 @@ import usecase.*;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see Usecase.UsecasePackage
+ * @see usecase.UsecasePackage
  * @generated
  */
 public class UsecaseSwitch<T> extends Switch<T> {
@@ -68,13 +68,21 @@ public class UsecaseSwitch<T> extends Switch<T> {
 		switch (classifierID) {
 			case UsecasePackage.USER: {
 				User user = (User)theEObject;
-				T result = caseuser(user);
+				T result = caseUser(user);
+				if (result == null) result = caseUsercaseModule(user);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case UsecasePackage.USECASE: {
 				Usecase usecase = (Usecase)theEObject;
-				T result = caseusecase(usecase);
+				T result = caseUsecase(usecase);
+				if (result == null) result = caseUsercaseModule(usecase);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case UsecasePackage.USERCASE_MODULE: {
+				UsercaseModule usercaseModule = (UsercaseModule)theEObject;
+				T result = caseUsercaseModule(usercaseModule);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -83,32 +91,47 @@ public class UsecaseSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>user</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>User</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>user</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>User</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseuser(User object) {
+	public T caseUser(User object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>usecase</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Usecase</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>usecase</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Usecase</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseusecase(Usecase object) {
+	public T caseUsecase(Usecase object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Usercase Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Usercase Module</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseUsercaseModule(UsercaseModule object) {
 		return null;
 	}
 

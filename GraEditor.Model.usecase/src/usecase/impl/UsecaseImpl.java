@@ -7,8 +7,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import usecase.UsecasePackage;
 import usecase.Usecase;
 
@@ -20,12 +18,12 @@ import usecase.Usecase;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link Usecase.impl.UsecaseImpl#getName <em>Name</em>}</li>
+ *   <li>{@link usecase.impl.UsecaseImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class UsecaseImpl extends MinimalEObjectImpl.Container implements Usecase {
+public class UsecaseImpl extends UsercaseModuleImpl implements Usecase {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->

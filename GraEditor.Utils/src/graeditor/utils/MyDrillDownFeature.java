@@ -117,7 +117,7 @@ public class MyDrillDownFeature extends AbstractDrillDownFeature{
 								for (int j = 0; j < currentDiagram.getChildren().size(); j++) {
 									if (currentDiagram.getChildren().get(j).equals(pe)) {
 										int currentObj = j + 1;
-//										System.out.println("currentBObject : " + currentObj);
+										System.out.println("currentBObject : " + currentObj);
 										if (diagramObj == currentObj) {
 											ret.add(d);
 										}

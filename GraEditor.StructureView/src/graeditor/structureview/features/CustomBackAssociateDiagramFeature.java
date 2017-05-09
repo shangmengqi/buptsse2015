@@ -1,4 +1,4 @@
-package graeditor.relation.features;
+package graeditor.structureview.features;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -14,9 +14,6 @@ import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICustomContext;
 import org.eclipse.graphiti.features.custom.AbstractCustomFeature;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
-import org.eclipse.graphiti.ui.editor.DiagramEditor;
-import org.eclipse.graphiti.ui.internal.services.GraphitiUiInternal;
-import org.eclipse.graphiti.ui.services.GraphitiUi;
 
 import graeditor.utils.DiagramUtil;
 
@@ -52,7 +49,7 @@ public class CustomBackAssociateDiagramFeature extends AbstractCustomFeature{
 			for (int i = 0; i < eList.size(); i++) {
 				System.out.println("eListResource: " + eList.get(i));
 				
-				//字符串的拆分
+				//瀛楃涓茬殑鎷嗗垎
 				String string = eList.get(i).toString();
 				String[] array = new String[20];
 				array = string.split("/");
@@ -72,14 +69,8 @@ public class CustomBackAssociateDiagramFeature extends AbstractCustomFeature{
 				DiagramUtil.openDiagramEditor(d);
 			}
 		}
-		
-//		for (final Diagram d : allDiagrams) {
-//			DiagramUtil.openDiagramEditor(d);
-//			break;
-//		}
-		
 	}
-		
+	
 	protected Collection<Diagram> getDiagrams() {
 		Collection<Diagram> result = Collections.emptyList();
 		Resource resource = getDiagram().eResource();
@@ -93,7 +84,7 @@ public class CustomBackAssociateDiagramFeature extends AbstractCustomFeature{
 				result = DiagramUtil.getDiagrams(project);
 			}
 		}
-		return result;//result返回编辑器上同一个项目下所有的diagram图表信息，包括图表名称，并将这些diagram存在一个数组里
+		return result;//result杩斿洖缂栬緫鍣ㄤ笂鍚屼竴涓」鐩笅鎵�鏈夌殑diagram鍥捐〃淇℃伅锛屽寘鎷浘琛ㄥ悕绉帮紝骞跺皢杩欎簺diagram瀛樺湪涓�涓暟缁勯噷
 	}
 
 }

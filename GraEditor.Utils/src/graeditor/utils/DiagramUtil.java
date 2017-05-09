@@ -28,6 +28,8 @@ import org.eclipse.graphiti.ui.editor.DiagramEditor;
 import org.eclipse.graphiti.ui.internal.services.GraphitiUiInternal;
 import org.eclipse.graphiti.ui.services.GraphitiUi;
 
+import xml.utils.constant;
+
 public class DiagramUtil {
 	
 	
@@ -92,6 +94,18 @@ public class DiagramUtil {
 		URI resourceURI = URI.createFileURI(pathName);
 		resourceURI = resourceSet.getURIConverter().normalize(resourceURI);
 		return resourceURI;
+	}
+	
+	public static String getFilePath(Diagram diagram){
+		//获得diagram的resource
+		String uri = diagram.eResource().getURI().toString();
+		//截取字符串，拼接成该图表文件所在路径
+		String sub = uri.substring(19);
+		String pathString = constant.path + sub;
+//		System.out.println("字符串：" + sub);
+//		System.out.println("文件路径：" + pathString);
+
+		return pathString;
 	}
 		
 	public static void openDiagramEditor(Diagram diagram) {

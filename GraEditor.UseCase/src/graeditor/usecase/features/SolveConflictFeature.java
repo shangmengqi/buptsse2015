@@ -15,6 +15,16 @@ public class SolveConflictFeature extends AbstractCustomFeature{
 	}
 	
 	@Override
+	public String getName() {
+		return "Solve Conflict";
+	}
+	
+	@Override
+    public String getDescription() {
+        return "Solve Conflict";
+    }
+	
+	@Override
 	public boolean canExecute(ICustomContext context) {
 		return canExecute;
 	}
