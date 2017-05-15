@@ -50,7 +50,9 @@ public class TitlePattern extends IdPattern implements IPattern{
 	@Override
 	public Object[] create(ICreateContext context) {
 		
-		String ret = ExampleUtil.askString("Text", "Please input a text", "title");
+		int i;
+		i = getDiagram().getPictogramLinks().size() + 1;
+		String ret = ExampleUtil.askString("Text", "Please input a text", "title" + i);
 		String value = "t";
 		try {
 			value = ret;
@@ -95,14 +97,14 @@ public class TitlePattern extends IdPattern implements IPattern{
 		containerAlgorithm.setLineWidth(2);
 		
 		//shape with text
-		//´´½¨Ò»¸öÐÂµÄPictogramElement£¬µ«ÊÇ¸ÃÔªËØ²»ÊÇÒ»¸öÈÝÆ÷
+		//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Âµï¿½PictogramElementï¿½ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½Ôªï¿½Ø²ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		String text = null;
 		text = "" + ((TitleModule)moudle).getTextContent();
 		System.out.println(text);
 		
 		
 		Shape shape = peCreateService.createShape(containerShape, false);
-		//¸ÃÔªËØ¼È²»ÊÇ³¤·½ÐÎÒ²²»ÊÇÍÖÔ²£¬¶øÊÇÎÄ×Ö£¬ÆäÏà¹Ø¶¨Î»£¬×ÖÌå£¬ÑÕÉ«ÐÅÏ¢ÈÔÓÐGraphicsAlgorithmÃèÊö
+		//ï¿½ï¿½Ôªï¿½Ø¼È²ï¿½ï¿½Ç³ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½å£¬ï¿½ï¿½É«ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½GraphicsAlgorithmï¿½ï¿½ï¿½ï¿½
 		Text textAlgorithm = gaService.createDefaultText(getDiagram(), shape, text);
 		
 		textAlgorithm.setHorizontalAlignment(Orientation.ALIGNMENT_CENTER);

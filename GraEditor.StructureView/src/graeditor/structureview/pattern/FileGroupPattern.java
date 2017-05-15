@@ -1,5 +1,6 @@
 package graeditor.structureview.pattern;
 
+import org.eclipse.graphiti.examples.common.ExampleUtil;
 import org.eclipse.graphiti.features.IReason;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.context.ICreateContext;
@@ -49,9 +50,17 @@ public class FileGroupPattern extends IdPattern implements IPattern{
 	 */
 	@Override
 	public Object[] create(ICreateContext context) {
-		FileGroup newFileGroup = StructureViewFactory.eINSTANCE.createFileGroup();
-		newFileGroup.setName("newFileGroup");
 		
+		int i;
+		i = getDiagram().getPictogramLinks().size() + 1;
+		String ret = ExampleUtil.askString("Text", "Please input a text", "FileGroup" + i);
+		String value = "s";
+		try {
+			value = ret;
+		} catch (Exception e) {
+		}
+		FileGroup newFileGroup = StructureViewFactory.eINSTANCE.createFileGroup();
+		newFileGroup.setName(value);
 		getDiagram().eResource().getContents().add(newFileGroup);
 		addGraphicalRepresentation(context, newFileGroup);
 		return new Object[] { newFileGroup };

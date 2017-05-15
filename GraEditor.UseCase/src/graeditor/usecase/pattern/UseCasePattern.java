@@ -1,5 +1,6 @@
 package graeditor.usecase.pattern;
 
+import org.eclipse.graphiti.examples.common.ExampleUtil;
 import org.eclipse.graphiti.features.IReason;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.context.ICreateContext;
@@ -57,8 +58,18 @@ public class UseCasePattern extends IdPattern implements IPattern{
 	 */
 	@Override
 	public Object[] create(ICreateContext context) {
+		
+		int i;
+		i = getDiagram().getPictogramLinks().size() + 1;
+		String ret = ExampleUtil.askString("Text", "Please input a text", "usecase" + i);
+		String value = "s";
+		try {
+			value = ret;
+		} catch (Exception e) {
+		}
+		
 		Usecase usecase = UsecaseFactory.eINSTANCE.createUsecase();
-		usecase.setName("newUsecase");
+		usecase.setName(value);
 		
 		getDiagram().eResource().getContents().add(usecase);
 		addGraphicalRepresentation(context, usecase);

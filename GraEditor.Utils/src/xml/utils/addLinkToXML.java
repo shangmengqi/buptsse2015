@@ -29,7 +29,7 @@ public class addLinkToXML {
 
 	public static void addLink(String filePath, String diagramName, int objectNum){
 		
-		//¶ÁÈëÒª±»¹ØÁªµÄÎÄ¼þ²¢Ìí¼Ólink±êÇ©
+		//ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½linkï¿½ï¿½Ç©
 		File file = new File(filePath);				
 		SAXReader reader = new SAXReader();
 		Document document;
@@ -40,27 +40,27 @@ public class addLinkToXML {
 //			outputLocationAttributes(rooElement);			
 			Element diagram = rooElement.element("Diagram");
 			
-			//±éÀúdiagram½ÚµãÏÂµÄËùÓÐ×Ó½Úµã,²é¿´ÊÇ·ñº¬ÓÐlink±êÇ©
+			//ï¿½ï¿½ï¿½ï¿½diagramï¿½Úµï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó½Úµï¿½,ï¿½é¿´ï¿½Ç·ï¿½ï¿½ï¿½linkï¿½ï¿½Ç©
 			for (int i = 0; i < diagram.nodeCount(); i++) {
 				Node node = diagram.node(i);				
 				if (node instanceof Element) {
 //					System.out.println("nodeName: " + node.getName());					
 					if (node.getName().equals("link")) {
-						System.out.println("link±êÇ©´æÔÚ£¬Ö´ÐÐÌæ»»²Ù×÷");
+						System.out.println("linkï¿½ï¿½Ç©ï¿½ï¿½ï¿½Ú£ï¿½Ö´ï¿½ï¿½ï¿½æ»»ï¿½ï¿½ï¿½ï¿½");
 //						Element childElement = (Element) node;
 						diagram.remove(node);
 					}
 				}
 			}			
 			
-			//ÔÚÖ¸¶¨Î»ÖÃÌí¼Ólink±êÇ©
+			//ï¿½ï¿½Ö¸ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½linkï¿½ï¿½Ç©
 			List list = diagram.elements();			
 			Element link = DocumentHelper.createElement("link");
 			Element bussinessObjectElement = link.addElement("businessObjects");
 			bussinessObjectElement.setAttributeValue("href", diagramName + ".diagram#/" + objectNum);
 			list.add(1, link);
 			
-			//½«Ìí¼ÓµÄÊý¾ÝÐ´ÈëÎÄ¼þÖÐ
+			//ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
 			FileWriter writer = new FileWriter(file);
 			OutputFormat format = OutputFormat.createPrettyPrint();  
 	        format.setEncoding("ASCII");  
@@ -83,7 +83,7 @@ public class addLinkToXML {
 	}
 	
 	/*
-	 * xmlÎÄ¼þµÄ±éÀú
+	 * xmlï¿½Ä¼ï¿½ï¿½Ä±ï¿½ï¿½ï¿½
 	 */
 //	public static void outputLocationAttributes(Element parent){
 //		for (int i = 0; i < parent.nodeCount(); i++) {
@@ -100,10 +100,10 @@ public class addLinkToXML {
 //						System.out.println("rootChild2 :" + child2.getName());
 //						
 //						if (child2.getName().equals("graphicsAlgorithm")) {
-//							System.out.println("Ë÷Òý £º " + j);							
+//							System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ " + j);							
 //						}
 //						if (child2.getName().equals("children")) {
-//							System.out.println("Ë÷Òý £º " + j);													
+//							System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ " + j);													
 //						}
 //					}
 //				}				
@@ -113,17 +113,17 @@ public class addLinkToXML {
 	
 //	public static boolean deleteFile(String fileName) {
 //        File file = new File(fileName);
-//        // Èç¹ûÎÄ¼þÂ·¾¶Ëù¶ÔÓ¦µÄÎÄ¼þ´æÔÚ£¬²¢ÇÒÊÇÒ»¸öÎÄ¼þ£¬ÔòÖ±½ÓÉ¾³ý
+//        // ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½É¾ï¿½ï¿½
 //        if (file.exists() && file.isFile()) {
 //            if (file.delete()) {
-//                System.out.println("É¾³ýµ¥¸öÎÄ¼þ" + fileName + "³É¹¦£¡");
+//                System.out.println("É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½" + fileName + "ï¿½É¹ï¿½ï¿½ï¿½");
 //                return true;
 //            } else {
-//                System.out.println("É¾³ýµ¥¸öÎÄ¼þ" + fileName + "Ê§°Ü£¡");
+//                System.out.println("É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½" + fileName + "Ê§ï¿½Ü£ï¿½");
 //                return false;
 //            }
 //        } else {
-//            System.out.println("É¾³ýµ¥¸öÎÄ¼þÊ§°Ü£º" + fileName + "²»´æÔÚ£¡");
+//            System.out.println("É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½Ê§ï¿½Ü£ï¿½" + fileName + "ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½");
 //            return false;
 //        }
 //    }

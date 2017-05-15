@@ -1,5 +1,6 @@
 package graeditor.usecase.pattern;
 
+import org.eclipse.graphiti.examples.common.ExampleUtil;
 import org.eclipse.graphiti.features.IReason;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.context.ICreateContext;
@@ -60,8 +61,18 @@ public class UserPattern extends IdPattern implements IPattern{
 	 */
 	@Override
 	public Object[] create(ICreateContext context) {
+		
+		int i;
+		i = getDiagram().getPictogramLinks().size() + 1;
+		String ret = ExampleUtil.askString("Text", "Please input a text", "newUser" + i);
+		String value = "s";
+		try {
+			value = ret;
+		} catch (Exception e) {
+		}
+		
 		User newUser = UsecaseFactory.eINSTANCE.createUser();
-		newUser.setName("newUser");
+		newUser.setName(value);
 		
 		getDiagram().eResource().getContents().add(newUser);
 		addGraphicalRepresentation(context, newUser);

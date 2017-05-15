@@ -1,5 +1,6 @@
 package graeditor.structureview.pattern;
 
+import org.eclipse.graphiti.examples.common.ExampleUtil;
 import org.eclipse.graphiti.features.IReason;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.context.ICreateContext;
@@ -52,8 +53,17 @@ public class PagePattern extends IdPattern implements IPattern{
 	@Override
 	public Object[] create(ICreateContext context) {
 		
+		int i;
+		i = getDiagram().getPictogramLinks().size() + 1;
+		String ret = ExampleUtil.askString("Text", "Please input a text", "Page" + i);
+		String value = "s";
+		try {
+			value = ret;
+		} catch (Exception e) {
+		}
+		
 		Page newPage = StructureViewFactory.eINSTANCE.createPage();
-		newPage.setName("newPage");
+		newPage.setName(value);
 		
 		
 		getDiagram().eResource().getContents().add(newPage);

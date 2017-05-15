@@ -52,7 +52,9 @@ public class StartTagPattern extends IdPattern implements IPattern{
 	@Override
 	public Object[] create(ICreateContext context) {
 		
-		String ret = ExampleUtil.askString("Text", "Please input a text", "startTag");
+		int i;
+		i = getDiagram().getPictogramLinks().size() + 1;
+		String ret = ExampleUtil.askString("Text", "Please input a text", "startTag" + i);
 		String value = "s";
 		try {
 			value = ret;
@@ -98,7 +100,7 @@ public class StartTagPattern extends IdPattern implements IPattern{
 		containerAlgorithm.setLineWidth(2);
 		
 		//shape with text
-		//´´½¨Ò»¸öÐÂµÄPictogramElement£¬µ«ÊÇ¸ÃÔªËØ²»ÊÇÒ»¸öÈÝÆ÷
+		//ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Âµï¿½PictogramElementï¿½ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½Ôªï¿½Ø²ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		String text = null;
 		
 		text = "" + ((StartTagModule)module).getTextContent();
@@ -106,7 +108,7 @@ public class StartTagPattern extends IdPattern implements IPattern{
 		
 		
 		Shape shape = peCreateService.createShape(containerShape, false);
-		//¸ÃÔªËØ¼È²»ÊÇ³¤·½ÐÎÒ²²»ÊÇÍÖÔ²£¬¶øÊÇÎÄ×Ö£¬ÆäÏà¹Ø¶¨Î»£¬×ÖÌå£¬ÑÕÉ«ÐÅÏ¢ÈÔÓÐGraphicsAlgorithmÃèÊö
+		//ï¿½ï¿½Ôªï¿½Ø¼È²ï¿½ï¿½Ç³ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½å£¬ï¿½ï¿½É«ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½GraphicsAlgorithmï¿½ï¿½ï¿½ï¿½
 		Text textAlgorithm = gaService.createDefaultText(getDiagram(), shape, text);
 		
 		textAlgorithm.setHorizontalAlignment(Orientation.ALIGNMENT_CENTER);
@@ -121,7 +123,7 @@ public class StartTagPattern extends IdPattern implements IPattern{
 		polyline.setForeground(manageColor(98, 131, 167));
 		polyline.setLineWidth(2);
 		
-		//ÔÚÈÝÆ÷Íâ²ã½¨Ãª£¬ÒòÎªÓÐÃª²ÅÄÜ´´½¨connection£¬²»È»ÔªËØÖ®¼äÊÇÏà»¥¶ÀÁ¢¸ô¾øµÄ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã½¨Ãªï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Ãªï¿½ï¿½ï¿½Ü´ï¿½ï¿½ï¿½connectionï¿½ï¿½ï¿½ï¿½È»Ôªï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ï¿½à»¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		peCreateService.createChopboxAnchor(containerShape);
 
 		link(containerShape, module);
