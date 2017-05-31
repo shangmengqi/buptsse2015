@@ -88,3 +88,10 @@ git commit -m "完成流程型视图和关系型视图的跳转导航功能"
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "修改语法问题，使得每次拖出的图形元素的名称都唯一指定"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master
+git init
