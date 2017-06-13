@@ -201,7 +201,7 @@ public class CommitAction implements IObjectActionDelegate{
     	// TODO 弹出对话框让用户输入本次提交的描述
     	String description = "";
     	
-    	String path = getLocation() + "/src/";
+    	String path = getLocation() + "/src/diagrams/";
     	List<String> fileList = getDiagrams(path);
     	
     	// 获取服务器的返回结果

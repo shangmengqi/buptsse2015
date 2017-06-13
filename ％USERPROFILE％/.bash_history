@@ -95,3 +95,11 @@ git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
 git init
+git init
+git add .
+git add README.md
+git commit -m "test commit"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master
+git init
