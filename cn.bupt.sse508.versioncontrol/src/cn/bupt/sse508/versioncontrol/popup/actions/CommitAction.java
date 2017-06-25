@@ -21,6 +21,7 @@ import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.eclipse.core.internal.resources.Folder;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -51,11 +52,12 @@ import midfile.json.graphiti.Utils;
  *
  */
 public class CommitAction implements IObjectActionDelegate{
-	private List<String> versionList = new ArrayList<>();
+	private List<String> versionList = new ArrayList<>(); //提供版本号的列表
+	private List<String> fileList ;
 	
 	public CommitAction() {
 		super();
-		versionList.add("new base");
+		versionList.add("new base"); // 版本号列表中始终有base
 	}
 
 	/* 
@@ -88,14 +90,16 @@ public class CommitAction implements IObjectActionDelegate{
 	 * @datetime 2012-9-5 上午07:27:47
 	 */
 	private IFile getFile(String fileName) {
-		IProject prj = ProjectUtil.getCurrentProject();
+		IProject prj = ProjectUtil.getCurrentProject(); //获得当前的项目名称
 		if (prj == null) {
 			return null;
 		}
-		return prj.getFile("/src/diagrams/" + fileName);
+		System.out.println("CommitAction.getFile: " + prj.getFile("/src/diagrams/" + fileName));
+		return prj.getFile("/src/diagrams/" + fileName); //需要对其进行改进，使得给出文件名，可以获得任何一个文件夹下的文件
 	}
 	
 	private String getLocation() {
+		System.out.println("CommitAction.getLocation(): " + ProjectUtil.getCurrentProject().getLocation().toString());
 		return ProjectUtil.getCurrentProject().getLocation().toString();
 	}
 //	
@@ -175,6 +179,7 @@ public class CommitAction implements IObjectActionDelegate{
 	private String getBase() {
 //		return JOptionPane.showInputDialog(null,"base num：\n","This commit is base on",JOptionPane.PLAIN_MESSAGE); 
 		  
+		// JOptionPane.showInputDialog方法返回用户输入的字符串，即选择的父版本号
 		return ((String) JOptionPane.showInputDialog(null, null, "Choose base", JOptionPane.PLAIN_MESSAGE, null, versionList.toArray(), versionList.get(0))).replace("\n", "");
 	}
 	
@@ -201,18 +206,38 @@ public class CommitAction implements IObjectActionDelegate{
     	// TODO 弹出对话框让用户输入本次提交的描述
     	String description = "";
     	
-    	String path = getLocation() + "/src/diagrams/";
-    	List<String> fileList = getDiagrams(path);
+    	
+//    	{ //将path路径改为统一的路径，可以识别文件夹（shangmengqi add）
+//	    	List<Folder> folders = getDiagramFolders(ProjectUtil.getCurrentProject()); // 得到该项目下除“src”文件夹以外的所有其他文件夹
+//	    	for (int i = 0; i < folders.size(); i++) {
+//	    		String path = getLocation() + "/src/diagram/";
+//	        	fileList = getDiagrams(path);
+//			}
+//    	}
+    	
+    	{ //将path路径改为统一的路径，可以识别文件夹（shangmengqi add）
+	    	List<IResource> diagramResources = getDiagramFilePath(ProjectUtil.getCurrentProject()); // 得到所有文件的resource路径
+	    	List<String> fileList = new ArrayList<String>();
+	    	for (int i = 0; i < diagramResources.size(); i++) {
+	    		String path = diagramResources.get(i).toString();
+//	        	fileList = getDiagrams(path);
+	    		fileList.add(path);
+			}
+    	}
+    	
+    	
+//    	String path = getLocation() + "/src/diagrams/";
+//    	List<String> fileList = getDiagrams(path);
     	
     	// 获取服务器的返回结果
     	HttpAgent agent = HttpAgent.getInstance();
     	List<HttpResponceVO> resultList = agent.generatePushReq(base, description, fileList.size(), fileList);
     	
     	// 将中间文件转换成为xml文件
-    	List<String> conflictFiles = convertToXML(resultList);
+    	List<String> conflictFiles = convertToXML(resultList); // 获取发生冲突的文件名列表
     	
-    	closeAllTabAndOpenConflictsTab(conflictFiles);
-    	showMessageDiaglog(conflictFiles);
+    	closeAllTabAndOpenConflictsTab(conflictFiles); // 关掉所有当前窗口，打开发生冲突的所有文件
+    	showMessageDiaglog(conflictFiles); // 给出提示，提醒发生冲突
     	
     	// TODO 持久化版本号
     	// 临时存储版本号
@@ -223,8 +248,9 @@ public class CommitAction implements IObjectActionDelegate{
 	 * 获取当前工作目录下的diagram文件
 	 * @return
 	 */
-	public List<String> getDiagrams(String path) {
-		List<IFile> files = getDiagramFiles(ProjectUtil.getCurrentProject());
+	public List<String> getDiagrams(String path) { // path=getLocation() + "/src/" + folders.get(i).getName() + "/"
+		List<IFile> files = getDiagramFiles(ProjectUtil.getCurrentProject()); // files的值为该项目下所有以.diagram结尾的图表文件
+		
 		List<String> fileContent = new ArrayList<String>();
 		for (int i = 0; i < files.size(); i++) {
 //			String content = Utils.readFileByLines(path+files.get(i).getName());
@@ -240,17 +266,43 @@ public class CommitAction implements IObjectActionDelegate{
 	 * @param folder
 	 * @return
 	 */
-	private List<IFile> getDiagramFiles(IContainer folder) {
+	private List<IFile> getDiagramFiles(IContainer folder) { // folder = ProjectUtil.getCurrentProject()
 		final List<IFile> ret = new ArrayList<IFile>();
 		try {
-			final IResource[] members = folder.members();
+			final IResource[] members = folder.members(); // 获得该项目下所有的文件夹、文件
 			for (final IResource resource : members) {
 				if (resource instanceof IContainer) {
-					ret.addAll(getDiagramFiles((IContainer) resource));
+					ret.addAll(getDiagramFiles((IContainer) resource));					
 				} else if (resource instanceof IFile) {
 					final IFile file = (IFile) resource;
 					if (file.getName().endsWith(".diagram")) { //$NON-NLS-1$
-						ret.add(file);
+						ret.add(file);						
+					}
+				}
+			}
+		} catch (final CoreException e) {
+			e.printStackTrace();
+		}
+		return ret;
+	}
+	
+	/**
+	 * 递归的搜索所有.diagrams文件的具体路径(shangmengqi add)
+	 * @param folder
+	 * @return
+	 */
+	private List<IResource> getDiagramFilePath(IContainer folder) { // folder = ProjectUtil.getCurrentProject()
+		final List<IResource> ret = new ArrayList<IResource>();
+		try {
+			final IResource[] members = folder.members(); // 获得该项目下所有的文件夹、文件
+			for (final IResource resource : members) {
+				if (resource instanceof IContainer) {
+					ret.addAll(getDiagramFilePath((IContainer) resource));					
+				} else if (resource instanceof IFile) {
+					final IFile file = (IFile) resource;
+					if (file.getName().endsWith(".diagram")) { //$NON-NLS-1$
+//						ret.add(file);
+						ret.add(resource);
 					}
 				}
 			}
@@ -283,9 +335,9 @@ public class CommitAction implements IObjectActionDelegate{
 		for (int i = 1; i < resultList.size(); i++) {
 			HttpResponceVO responce = resultList.get(i);
 			if (responce.result.equals("OK")) { // 说明没有冲突
-				String xml = FromMidFile.fromMidFile(responce.fileContent, null);
-				File file = new File(responce.fileName);
-				writeToFile(xml, file);
+				String xml = FromMidFile.fromMidFile(responce.fileContent, null); // 经过服务器处理过的文件内容
+				File file = new File(responce.fileName); // 文件名字
+				writeToFile(xml, file); // 将xml文件内容写入到该文件中
 			} else { // 有冲突
 				String xml = FromMidFile.fromMidFile(responce.fileContent, responce.conflictList);
 				File file = new File(responce.fileName);
@@ -296,7 +348,7 @@ public class CommitAction implements IObjectActionDelegate{
 		}
 		
 		
-		return conflictFileNames;
+		return conflictFileNames; // 返回发生冲突的文件名列表
 	}
 	
 	/**

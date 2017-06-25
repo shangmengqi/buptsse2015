@@ -22,6 +22,6 @@ public class ProjectUtil {
                 project= ((IResource)element).getProject();    
             }    
         }     
-        return project;    
+        return project;   // 获得当前文件所在的项目名 
     }    
 }

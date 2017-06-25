@@ -43,7 +43,7 @@ public class FromMidFile {
 	public static String fromMidFile(String content, List<JSONObject> conflictList) {
 		// 对冲突列表进行处理，便于在对节点的扫描中一并处理
 		Map<String, JSONObject> conflictMap = new HashMap<String, JSONObject>();
-		if (null != conflictList) {
+		if (null != conflictList) { //存在冲突
 			for (int i = 0; i < conflictList.size(); i++) {
 				String id = conflictList.get(i).optString("shape_id");
 				conflictMap.put(id, conflictList.get(i));
@@ -63,22 +63,24 @@ public class FromMidFile {
 		content = content.replace("description", ValueUtil.XMI);
 		content = content.replace("navi", "link");
 		
-		JSONObject midfile = new JSONObject(content);
+		JSONObject midfile = new JSONObject(content); // 接收到的经过字符串转换后的json文件
 		queue = new LinkedList<LayeredNode>();
 		JSONObject xmi = midfile.optJSONObject(ValueUtil.XMI);
-		namespace = xmi.optString("@ns");
-		JSONObject diagram = xmi.optJSONObject(ValueUtil.DIAGRAM);
-		Object connections = diagram.opt(ValueUtil.CONNECTIONS);
+		namespace = xmi.optString("@ns"); // 获取到该文件的nameapace,即structView
+		JSONObject diagram = xmi.optJSONObject(ValueUtil.DIAGRAM); // 获取到pi:Diagram标签里的属性,用{}括起来的对象
+		Object connections = diagram.opt(ValueUtil.CONNECTIONS); // 获取到标签为connection的属性内容
 		
 		// 处理空的link数组的情况
 		{
-			JSONArray arr = diagram.optJSONArray("link");
+			JSONArray arr = diagram.optJSONArray("link"); // 解析出来的格式是数组类型，即用[]括起来的jsonObject
 			if (arr.length() == 0) {
 				diagram.remove("link"); // 删掉
 			} else {
 				JSONObject foo = arr.getJSONObject(0);
 				if (foo.getJSONObject("businessObjects").getString("@href").equals("")) { // 空的href，需要删掉link
 					diagram.remove("link"); // 删掉
+				}else {
+					// 不为空的情况，将其转换为xml文件 
 				}
 			}
 		}
@@ -452,7 +454,7 @@ public class FromMidFile {
 	public static void processConnection(JSONObject connection) {
 		// 处理start
 		String startID = connection.optString("@start");
-		int index = (allNodeMap.get(startID)).intValue();
+		int index = (allNodeMap.get(startID)).intValue(); // intValue()方法用来输出int数据
 		JSONObject startNode = allNodeList.get(index);
 		int start = index;
 		String startLayer = generateLayeredInfo(startNode.optString("@layer"));

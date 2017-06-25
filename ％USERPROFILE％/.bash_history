@@ -103,3 +103,9 @@ git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
 git init
+git init
+git add .
+git commit -m "客户端和服务器端连接初步测试成功"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

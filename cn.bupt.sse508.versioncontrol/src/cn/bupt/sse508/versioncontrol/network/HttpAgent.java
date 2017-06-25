@@ -44,7 +44,7 @@ public class HttpAgent {
 	}
 	
 	private HttpPost createHttpConnection() {
-		return new HttpPost(NetworkUtils.SERVER_ADDRESS);
+		return new HttpPost(NetworkUtils.SERVER_ADDRESS); // SERVER_ADDRESS = "http://172.16.1.111:8080"
 	}
 
 	/**
@@ -60,7 +60,7 @@ public class HttpAgent {
         CloseableHttpResponse response = null;
         
         httpClient = HttpClients.createDefault();
-        HttpPost httpPost = createHttpConnection();
+        HttpPost httpPost = createHttpConnection(); // httpPost = "http://172.16.1.111:8080"
         
 		StringBody command = new StringBody(NetworkUtils.PUSH, ContentType.create("text/plain", Consts.UTF_8));
 		StringBody commit = new StringBody(generateHashValueByTime(), ContentType.create("text/plain", Consts.UTF_8));
@@ -117,7 +117,7 @@ public class HttpAgent {
         }
         
         // 将返回的结果分段
-        String[] resArr = res.split(NetworkUtils.RESULT_SPLITER);
+        String[] resArr = res.split(NetworkUtils.RESULT_SPLITER); 
         String versionNum = resArr[1];
         System.out.println("versionNum: "+versionNum);
         
@@ -190,7 +190,7 @@ public class HttpAgent {
         
         // 把文件转换成流对象FileBody
 //        FileBody bin = new FileBody(new File(filePath));
-        String midfile = ToMidFile.toMidFile(filePath);
+        String midfile = ToMidFile.toMidFile(filePath);  // 将上传的文件先转换成中间文件
 //        String midFileName = filePath.substring(0, filePath.lastIndexOf("/")) + "/tmp" + filePath.substring(filePath.lastIndexOf("/"), filePath.length());
 //        midFileName = writeToFile(midfile, midFileName);
 //        FileBody bin = new FileBody(new File(midFileName));
@@ -198,7 +198,7 @@ public class HttpAgent {
 //        String midfile = ToMidFile.toMidFile(filePath);
 //        StringBody bin = new StringBody(midfile, ContentType.create("text/plain", Consts.UTF_8));
         
-        String fileName = getFileNameFromPath(filePath);
+        String fileName = getFileNameFromPath(filePath); // 根据文件路径拿到文件名称
         StringBody command = new StringBody(NetworkUtils.PUSH, ContentType.create("text/plain", Consts.UTF_8));
         StringBody stepBody = new StringBody(step+"", ContentType.create("text/plain", Consts.UTF_8));
         

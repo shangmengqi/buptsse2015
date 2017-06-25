@@ -13,8 +13,8 @@ import org.json.XML;
 import graeditor.utils.ValueUtil;
 
 public class ToMidFile {
-	public static String BUSINESSOBJECT;
-	public static List<String> CONN_ID_LIST;
+	public static String BUSINESSOBJECT; //businessobject
+	public static List<String> CONN_ID_LIST; //conn_id_list
 	// 所有的节点列表，仅包括node
 	public static List<JSONObject> allNodeList;
 	
@@ -27,27 +27,27 @@ public class ToMidFile {
 		allNodeList = new ArrayList<JSONObject>();
 		
 		String xmlSrc = Utils.readFileByLines(path); // xml文件内容
-		xmlSrc = insertBOTag(xmlSrc); // 添加tag,获取BUSINESSOBJECT
+		xmlSrc = insertBOTag(xmlSrc); // 添加tag,获取BUSINESSOBJECT,xmlSrc=添加了tag标签的xml字符串文件
 		JSONObject xmlJSONObj = XML.toJSONObject(xmlSrc); // xml串转换成为json对象
 		
-		JSONObject xmi = xmlJSONObj.getJSONObject(ValueUtil.XMI);
-		JSONObject diagram = xmi.getJSONObject(ValueUtil.DIAGRAM);
 		
-		
+		JSONObject xmi = xmlJSONObj.getJSONObject(ValueUtil.XMI); //XMI="xmi:XMI",得到key为xmi:XMI的value值
+		JSONObject diagram = xmi.getJSONObject(ValueUtil.DIAGRAM); //DIAGRAM="pi:Diagram",得到key为pi:Diagram的value值
+				
 		// 以下为获取这张图表的namespace的部分，以@ns为key存入json对象中，便于后续的处理
 		{
 			Iterator<String> it = null;
-			Object obj = xmi.opt(ValueUtil.BO_TAG);
+			Object obj = xmi.opt(ValueUtil.BO_TAG); //BO_TAG = "Ztag",返回Ztag这个属性
 			if (obj instanceof JSONObject) {
-				JSONObject ztag = xmi.getJSONObject(ValueUtil.BO_TAG);
-				it = ztag.keys();
+				JSONObject ztag = xmi.getJSONObject(ValueUtil.BO_TAG); 
+				it = ztag.keys();  //返回画布上的元素
 			} else if (obj instanceof JSONArray) {
 				JSONArray ztagArray = xmi.getJSONArray(ValueUtil.BO_TAG);
 				it = ((JSONObject)(ztagArray.get(0))).keys();
 			}
 			String namespace = "";
 			if (it.hasNext())
-				namespace = it.next().toString().split(":")[0];
+				namespace = it.next().toString().split(":")[0]; //namespace=structView(这里以structView为例)
 			xmi.accumulate("@ns", namespace);
 		}
 		
@@ -55,7 +55,7 @@ public class ToMidFile {
 		{
 			Object obj = diagram.opt("link");
 			if (obj instanceof JSONArray) {
-				// TODO 数组的情况
+				// TODO 数组的情况，需要后续补充
 			}
 			if (null == obj) {
 				JSONObject bo = new JSONObject();
@@ -69,8 +69,8 @@ public class ToMidFile {
 		
 		CONN_ID_LIST = new ArrayList<String>();
 		// 以下为设置connection的start和end的部分，使用节点的id进行标识
-		if (diagram.has(ValueUtil.CONNECTIONS)) {
-			Object obj = diagram.opt(ValueUtil.CONNECTIONS);
+		if (diagram.has(ValueUtil.CONNECTIONS)) { //CONNECTIONS = "connections"
+			Object obj = diagram.opt(ValueUtil.CONNECTIONS); //获取connection属性
 			if (obj instanceof JSONObject) {
 				JSONObject connection = (JSONObject) obj;
 				processConnections(connection, diagram);
@@ -85,16 +85,16 @@ public class ToMidFile {
 		
 		// 以下开始对节点进行处理
 		Queue<AttachedNode> queue = new LinkedList<AttachedNode>(); 
-		if (diagram.has(ValueUtil.CHILDREN)) {
+		if (diagram.has(ValueUtil.CHILDREN)) { //CHILDREN = "children"
 			JSONObject parent = diagram;
 			Object obj = diagram.opt(ValueUtil.CHILDREN);
 			AttachedNode an = new AttachedNode(obj, parent);
 			queue.add(an);
 		}
-		AttachedNode obj = queue.poll();
+		AttachedNode obj = queue.poll(); //poll()获取并移出元素,diagram下的所有children属性
 		while (!queue.isEmpty() || null != obj) {
 			if (obj.node instanceof JSONObject) { // 单个对象
-				int result = processChildren((JSONObject) obj.node, obj.parent, 0);
+				int result = processChildren((JSONObject) obj.node, obj.parent, 0); 
 				if (((JSONObject)obj.node).has(ValueUtil.CHILDREN)) {
 					Object child = ((JSONObject)obj.node).opt(ValueUtil.CHILDREN);
 					AttachedNode an = new AttachedNode(child, (JSONObject)obj.node);
@@ -105,16 +105,16 @@ public class ToMidFile {
 				}
 				
 			} else { // children数组
-				JSONArray arr = (JSONArray) obj.node;
+				JSONArray arr = (JSONArray) obj.node; 
 				List<Integer> indexToRemove = new ArrayList<Integer>();
 				for (int i = 0; i < arr.length(); i++) {
-					int temp = processChildren((JSONObject)arr.get(i), obj.parent, 1);
+					int temp = processChildren((JSONObject)arr.get(i), obj.parent, 1); //
 					// 用于判断这个节点是否需要被移动至ext中
 					if (temp != -1)
 						indexToRemove.add(Integer.valueOf(temp));
 					
-					if (arr.getJSONObject(i).has(ValueUtil.CHILDREN)) {
-						Object child = arr.getJSONObject(i).opt(ValueUtil.CHILDREN);
+					if (arr.getJSONObject(i).has(ValueUtil.CHILDREN)) { 
+						Object child = arr.getJSONObject(i).opt(ValueUtil.CHILDREN);  //拿出数组中的第一个children属性
 						AttachedNode an = new AttachedNode(child, arr.getJSONObject(i));
 						queue.add(an);
 					}
@@ -125,7 +125,7 @@ public class ToMidFile {
 					arr.remove(i);
 				}
 			}
-			obj = queue.poll();
+			obj = queue.poll(); //obj = 所有node节点的children
 		}
 		
 		// 对节点添加node属性，即一个node即使没有子node也许要添加一个空的node数组
@@ -178,7 +178,7 @@ public class ToMidFile {
 			allNodeList.add(child);
 			
 			// 处理id相关
-			String id = getIDFromProperties(child.opt(ValueUtil.PROPERTIES), ValueUtil.SHAPE_ID);
+			String id = getIDFromProperties(child.opt(ValueUtil.PROPERTIES), ValueUtil.SHAPE_ID); //id=Page-1497229346326
 			child.accumulate("@"+ValueUtil.SHAPE_ID, id);
 			parent.accumulate("nodelist", id);
 			
@@ -189,10 +189,10 @@ public class ToMidFile {
 			child.getJSONObject(ValueUtil.LINK).remove("@businessObjects");
 			child.getJSONObject(ValueUtil.LINK).accumulate("@businessObjects", businessObjectName);
 			
-			JSONObject anchors = child.optJSONObject("anchors");
+			JSONObject anchors = child.optJSONObject("anchors"); //anchors xsi:type="pi:ChopboxAnchor" outgoingConnections="/0/@connections.0 /0/@connections.1"
 			// 处理anchors中的outgoingConnections
 			if (anchors.has("@outgoingConnections")) {
-				String ids = convertConnectionIndexToConnID(anchors.optString("@outgoingConnections"));
+				String ids = convertConnectionIndexToConnID(anchors.optString("@outgoingConnections")); // outgoingConnections="/0/@connections.0 /0/@connections.1"
 				anchors.remove("@outgoingConnections");
 				anchors.accumulate("@outgoingConnections", ids);
 			}
@@ -224,12 +224,12 @@ public class ToMidFile {
 		return index;
 	}
 	
-	public static String convertConnectionIndexToConnID(String conn) {
+	public static String convertConnectionIndexToConnID(String conn) { // conn的值为outgoingConnections=/0/@connections.0 /0/@connections.1
 		// 可能会有多个值，以空格分隔
-		String[] conns = conn.split(" ");
+		String[] conns = conn.split(" "); // 数组长度为2
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < conns.length; i++) {
-			int[] index = parseIndexedTag(conns[i]);
+			int[] index = parseIndexedTag(conns[i]); // conn[0]的值为outgoingConnections=/0/@connections.0  
 			// index数组中最多有两层，因为所有的connections是同级排列的
 			sb.append(CONN_ID_LIST.get(index[1]));
 			sb.append(" ");
@@ -244,7 +244,7 @@ public class ToMidFile {
 	 * @return 是node则返回true，否则返回false
 	 */
 	public static boolean isNode(JSONObject children) {
-		if (children.has(ValueUtil.XSI_TYPE)) {
+		if (children.has(ValueUtil.XSI_TYPE)) { //XSI_TYPE = "@xsi:type"
 			if (children.optString(ValueUtil.XSI_TYPE).equals("pi:ContainerShape")) {
 				return true;
 			}
@@ -259,18 +259,18 @@ public class ToMidFile {
 	 */
 	public static String insertBOTag(String src) {
 		int length = src.length();
-		int start = src.lastIndexOf("</pi:Diagram>") + "</pi:Diagram>".length();
-		int end = length - "</xmi:XMI>".length();
+		int start = src.lastIndexOf("</pi:Diagram>") + "</pi:Diagram>".length(); //start表示"</pi:Diagram>"最后一个">"后的位置
+		int end = length - "</xmi:XMI>".length(); //end=0~</StructureView>
 		
-		String s1 = src.substring(0, start);
-		String s2 = src.substring(start, end);
+		String s1 = src.substring(0, start); //s1=0~</pi:Diagram>
+		String s2 = src.substring(start, end); //s2=<StructureView>~</StructureView>
 		BUSINESSOBJECT = s2;
-		String s3 = src.substring(end, length);
+		String s3 = src.substring(end, length); //s3=</xmi:XMI>
 		
 		StringBuilder sb = new StringBuilder();
 		sb.append(s1);
 		sb.append("<");
-		sb.append(ValueUtil.BO_TAG);
+		sb.append(ValueUtil.BO_TAG); //BO_TAG="Ztag"
 		sb.append(">");
 		sb.append(s2);
 		sb.append("</");
@@ -278,7 +278,7 @@ public class ToMidFile {
 		sb.append(">");
 		sb.append(s3);
 		
-		return sb.toString();
+		return sb.toString();  //sb=添加了tag之后的xml字符串,即添加了<Ztag></Ztag>标签包裹住<StructureView></StructureView>
 	}
 	
 	/**
@@ -288,9 +288,9 @@ public class ToMidFile {
 	 */
 	public static void processConnections(JSONObject connection, JSONObject diagram) {
 		// 处理start
-		String startValue = connection.optString("@start");
-		int[] result = parseIndexedTag(startValue);
-		Object obj = diagram.opt(ValueUtil.CHILDREN);
+		String startValue = connection.optString("@start"); //startValue = start="/0/@children.0/@anchors.0"
+		int[] result = parseIndexedTag(startValue); //result=0
+		Object obj = diagram.opt(ValueUtil.CHILDREN); //CHILDREN = "children"
 		
 		// 找到所对应的那个children
 		for (int i = 1; i < result.length; i++) {
@@ -305,15 +305,15 @@ public class ToMidFile {
 			}
 		}
 		// 获取该children的id
-		String startID = getIDFromProperties(((JSONObject)obj).opt(ValueUtil.PROPERTIES), ValueUtil.SHAPE_ID);
+		String startID = getIDFromProperties(((JSONObject)obj).opt(ValueUtil.PROPERTIES), ValueUtil.SHAPE_ID); //PROPERTIES = "properties",SHAPE_ID = "shape_id"
 		// 把原有的@start删去，改为使用id
 		connection.remove("@start");
-		connection.accumulate("@start", startID);
+		connection.accumulate("@start", startID); //start="/0/@children.0/@anchors.0"改为start="Page-1497229346326"
 		
 		
 		// 下面处理end
-		String endValue = connection.optString("@end");
-		result = parseIndexedTag(endValue);
+		String endValue = connection.optString("@end"); //end="/0/@children.1/@anchors.0"
+		result = parseIndexedTag(endValue); //result=1
 		obj = diagram.opt(ValueUtil.CHILDREN);
 		// 找到所对应的那个children
 		for (int i = 1; i < result.length; i++) {
@@ -331,7 +331,7 @@ public class ToMidFile {
 		String endID = getIDFromProperties(((JSONObject) obj).opt(ValueUtil.PROPERTIES), ValueUtil.SHAPE_ID);
 		// 把原有的@end删去，改为使用id
 		connection.remove("@end");
-		connection.accumulate("@end", endID);
+		connection.accumulate("@end", endID); //end="/0/@children.1/@anchors.0"改为end="PageGroup-1497229350545"
 		
 		// 获取connection的id，存入CONN_ID_LIST中
 		// connection的id是start和end的组合
@@ -346,18 +346,18 @@ public class ToMidFile {
 	 * @param src 需要进行处理的字符串
 	 * @return 分段之后的编号，以数组形式存储，connection中最后的anchors会被丢弃
 	 */
-	public static int[] parseIndexedTag(String src) {
+	public static int[] parseIndexedTag(String src) { //src 的值为 start="/0/@children.0/@anchors.0"
 		int[] result = null;
-		String[] parsed = src.split("/");
+		String[] parsed = src.split("/"); //parsed的值为 parsed[0]=start=", parsed[1]=0, parsed[2]=@children.0, parsed[3]=@anchors.0"
 		if (src.contains("anchor")) { // 说明是start/end，需要抛弃最后一个
-			result = new int[parsed.length - 2];
+			result = new int[parsed.length - 2]; //数组长度为2
 		} else { // outgoingConnection/incomingConnection
-			result = new int[parsed.length - 1];
+			result = new int[parsed.length - 1]; //数组长度为2
 		}
 		
 		result[0] = 0;
 		for (int i = 1; i < result.length; i++) {
-			String num = parsed[i+1].substring(parsed[i+1].length()-1);
+			String num = parsed[i+1].substring(parsed[i+1].length()-1); //parse[2] num=0
 			result[i] = Integer.parseInt(num);
 		}
 		
