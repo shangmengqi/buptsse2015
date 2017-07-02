@@ -215,19 +215,20 @@ public class CommitAction implements IObjectActionDelegate{
 //			}
 //    	}
     	
-    	{ //将path路径改为统一的路径，可以识别文件夹（shangmengqi add）
-	    	List<IResource> diagramResources = getDiagramFilePath(ProjectUtil.getCurrentProject()); // 得到所有文件的resource路径
-	    	List<String> fileList = new ArrayList<String>();
-	    	for (int i = 0; i < diagramResources.size(); i++) {
-	    		String path = diagramResources.get(i).toString();
-//	        	fileList = getDiagrams(path);
-	    		fileList.add(path);
-			}
-    	}
+//    	{ //将path路径改为统一的路径，可以识别文件夹（shangmengqi add）
+//	    	List<IResource> diagramResources = getDiagramFilePath(ProjectUtil.getCurrentProject()); // 得到所有文件的resource路径
+//	    	List<String> fileList = new ArrayList<String>();
+//	    	for (int i = 0; i < diagramResources.size(); i++) {
+//	    		String path = diagramResources.get(i).toString();
+////	        	fileList = getDiagrams(path);
+//	    		fileList.add(path);
+//			}
+//    	}
     	
     	
 //    	String path = getLocation() + "/src/diagrams/";
-//    	List<String> fileList = getDiagrams(path);
+    	String path = getLocation();
+    	List<String> fileList = getDiagrams(path);
     	
     	// 获取服务器的返回结果
     	HttpAgent agent = HttpAgent.getInstance();
@@ -253,8 +254,19 @@ public class CommitAction implements IObjectActionDelegate{
 		
 		List<String> fileContent = new ArrayList<String>();
 		for (int i = 0; i < files.size(); i++) {
-//			String content = Utils.readFileByLines(path+files.get(i).getName());
-			String filename = path+files.get(i).getName();
+//			String content = Utils.readFileByLines(path+files.get(i).getName());			
+			
+			String filesPath = files.get(i).toString().substring(6);
+//			String filename = path+files.get(i).getName();
+			String filename = path + filesPath;
+
+			System.out.println("000: " + path);
+
+			System.out.println("888: " + filesPath);
+			System.out.println("555: " + files);
+			System.out.println("666: " + files.get(i));
+			System.out.println("777: " + files.get(i).getName());
+			System.out.println("333: " + filename);
 			fileContent.add(filename);
 		}
 		
@@ -272,11 +284,14 @@ public class CommitAction implements IObjectActionDelegate{
 			final IResource[] members = folder.members(); // 获得该项目下所有的文件夹、文件
 			for (final IResource resource : members) {
 				if (resource instanceof IContainer) {
+					System.out.println("111: " + resource);
 					ret.addAll(getDiagramFiles((IContainer) resource));					
 				} else if (resource instanceof IFile) {
+					System.out.println("222: " + resource);
 					final IFile file = (IFile) resource;
 					if (file.getName().endsWith(".diagram")) { //$NON-NLS-1$
-						ret.add(file);						
+						ret.add(file);
+						System.out.println("444: " + ret);
 					}
 				}
 			}

@@ -109,3 +109,9 @@ git commit -m "客户端和服务器端连接初步测试成功"
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "可能对客户端与服务器端的交互部分做了一些修改，不确定对错，先保存下来"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

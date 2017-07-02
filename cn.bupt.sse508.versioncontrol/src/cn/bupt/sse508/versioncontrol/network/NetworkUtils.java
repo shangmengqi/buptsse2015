@@ -3,7 +3,7 @@ package cn.bupt.sse508.versioncontrol.network;
 import java.security.NoSuchAlgorithmException;
 
 public class NetworkUtils {
-	public static String SERVER_ADDRESS = "http://172.16.1.111:8080";
+	public static String SERVER_ADDRESS = "http://172.16.1.207:8080";
 	
 	public static final String COMMAND = "command";
 	public static final String COMMIT = "commit";
