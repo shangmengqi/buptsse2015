@@ -115,3 +115,9 @@ git commit -m "可能对客户端与服务器端的交互部分做了一些修�
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "提交项目到服务器端成功，统一了path路路径"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

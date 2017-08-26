@@ -106,7 +106,7 @@ public class HttpAgent {
         	res = pushReq3(command, commit);
         	if (res.startsWith("Processing")) {
         		try {
-					Thread.sleep(200);
+					Thread.sleep(500);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -118,6 +118,7 @@ public class HttpAgent {
         
         // 将返回的结果分段
         String[] resArr = res.split(NetworkUtils.RESULT_SPLITER); 
+        System.out.println("返回结果: "+res);
         String versionNum = resArr[1];
         System.out.println("versionNum: "+versionNum);
         
@@ -127,6 +128,7 @@ public class HttpAgent {
         	HttpResponceVO resultVO = new HttpResponceVO();
             resultVO.status = 200;
             resultVO.result = resArr[0];
+            System.out.println("result: "+resArr[0]);
             resultVO.versionNo = versionNum;
             resultList.add(resultVO);
         }
@@ -171,7 +173,7 @@ public class HttpAgent {
 
             resultList.add(resultVO);
 		}
-		
+        System.out.println("resultList:" + resultList);
 		return resultList;
 	}
 	
@@ -191,6 +193,8 @@ public class HttpAgent {
         // 把文件转换成流对象FileBody
 //        FileBody bin = new FileBody(new File(filePath));
         String midfile = ToMidFile.toMidFile(filePath);  // 将上传的文件先转换成中间文件
+        System.out.println("filePath: " + filePath);
+        System.out.println("midfile: " + midfile);
 //        String midFileName = filePath.substring(0, filePath.lastIndexOf("/")) + "/tmp" + filePath.substring(filePath.lastIndexOf("/"), filePath.length());
 //        midFileName = writeToFile(midfile, midFileName);
 //        FileBody bin = new FileBody(new File(midFileName));

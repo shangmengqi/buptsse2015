@@ -260,13 +260,13 @@ public class CommitAction implements IObjectActionDelegate{
 //			String filename = path+files.get(i).getName();
 			String filename = path + filesPath;
 
-			System.out.println("000: " + path);
+			System.out.println("000: " + path); //E:/Git/buptsse2015/runtime-EclipseApplication/test
 
-			System.out.println("888: " + filesPath);
-			System.out.println("555: " + files);
+			System.out.println("888: " + filesPath); // /src/diagrams/struct1.diagram
+			System.out.println("555: " + files); //[L/test/src/diagrams/struct1.diagram]
 			System.out.println("666: " + files.get(i));
 			System.out.println("777: " + files.get(i).getName());
-			System.out.println("333: " + filename);
+			System.out.println("333: " + filename); //E:/Git/buptsse2015/runtime-EclipseApplication/test/src/diagrams/struct1.diagram
 			fileContent.add(filename);
 		}
 		
@@ -336,6 +336,7 @@ public class CommitAction implements IObjectActionDelegate{
 		{
 			//获取返回结果的总体状态 
 			HttpResponceVO responce = resultList.get(0);
+			System.out.println("converToXML.responce.result:" + responce.result);
 			if (!responce.result.equals("OK")) { // 不为OK的返回，需要覆盖原有文件
 				// 删除该工程目录下的所有diagram文件
 				deleteAllDiagrams();
@@ -344,20 +345,30 @@ public class CommitAction implements IObjectActionDelegate{
 			}
 		}
 		
-		String path = getLocation() + "/src/";
+//		String path = getLocation() + "/src/";
+		String path = "E:/Git/buptsse2015/runtime-EclipseApplication/test" + "/src/";
 		List<String> conflictFileNames = new ArrayList<String>();
 		
+		System.out.println("hahahhahhahahahhaahhah111111: ");
 		for (int i = 1; i < resultList.size(); i++) {
+			System.out.println("hahahhahhahahahhaahhah22222: ");
 			HttpResponceVO responce = resultList.get(i);
 			if (responce.result.equals("OK")) { // 说明没有冲突
 				String xml = FromMidFile.fromMidFile(responce.fileContent, null); // 经过服务器处理过的文件内容
 				File file = new File(responce.fileName); // 文件名字
 				writeToFile(xml, file); // 将xml文件内容写入到该文件中
 			} else { // 有冲突
+				System.out.println("hahahhahhahahahhaahhah33333: ");
+				System.out.println("responce.fileContent: " + responce.fileContent);
+				System.out.println("responce.conflictList: " + responce.conflictList);
 				String xml = FromMidFile.fromMidFile(responce.fileContent, responce.conflictList);
+				System.out.println("xml: " + xml);
+				
 				File file = new File(responce.fileName);
+				System.out.println("responce.fileName: " + responce.fileName);
 				writeToFile(xml, file);
 				String relativeFileName = responce.fileName.substring(responce.fileName.lastIndexOf("/")+1, responce.fileName.length());
+				System.out.println("relativeFileName: " + relativeFileName);
 				conflictFileNames.add(relativeFileName);
 			}
 		}
