@@ -121,3 +121,9 @@ git commit -m "提交项目到服务器端成功，统一了path路路径"
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "solve the question about get the correct value of conflict_key"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master
