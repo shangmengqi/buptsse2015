@@ -127,3 +127,9 @@ git commit -m "solve the question about get the correct value of conflict_key"
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "完成structview图表的修改冲突完整交互过程"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

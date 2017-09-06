@@ -21,6 +21,9 @@ import com.graeditor.flow_model.EndTagModule;
 import com.graeditor.flow_model.Flow_modelFactory;
 import com.graeditor.flow_model.StartTagModule;
 
+import graeditor.utils.GraPropertyUtil;
+import graeditor.utils.IDGenerator;
+
 public class EndTagPattern extends IdPattern implements IPattern{
 	
 	public EndTagPattern() {
@@ -65,6 +68,8 @@ public class EndTagPattern extends IdPattern implements IPattern{
 		
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
 		ContainerShape containerShape = peCreateService.createContainerShape(diagram, true);
+		
+		GraPropertyUtil.setValue(containerShape, "shape_id", "EndTag"+IDGenerator.generateID());
 		
 		IGaService gaService = Graphiti.getGaService();
 		

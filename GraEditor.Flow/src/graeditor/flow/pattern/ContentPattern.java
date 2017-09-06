@@ -25,6 +25,9 @@ import org.eclipse.graphiti.util.IColorConstant;
 import com.graeditor.flow_model.ContentModule;
 import com.graeditor.flow_model.Flow_modelFactory;
 
+import graeditor.utils.GraPropertyUtil;
+import graeditor.utils.IDGenerator;
+
 public class ContentPattern extends IdPattern implements IPattern{
 	
 	private static IColorConstant FONT_COLOR = ColorConstant.BLACK;
@@ -80,6 +83,8 @@ public class ContentPattern extends IdPattern implements IPattern{
 		
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
 		ContainerShape containerShape = peCreateService.createContainerShape(diagram, true);
+		
+		GraPropertyUtil.setValue(containerShape, "shape_id", "Content"+IDGenerator.generateID());
 		
 		IGaService gaService = Graphiti.getGaService();
 		

@@ -19,6 +19,9 @@ import org.eclipse.graphiti.services.IPeCreateService;
 import com.graeditor.flow_model.Flow_modelFactory;
 import com.graeditor.flow_model.VerticalLineModule;
 
+import graeditor.utils.GraPropertyUtil;
+import graeditor.utils.IDGenerator;
+
 
 public class VerticalLinePattern extends IdPattern implements IPattern{
 	
@@ -61,6 +64,8 @@ public class VerticalLinePattern extends IdPattern implements IPattern{
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
 		ContainerShape containerShape = peCreateService.createContainerShape(diagram, true);
 		
+		GraPropertyUtil.setValue(containerShape, "shape_id", "VerticalLine"+IDGenerator.generateID());
+
 		IGaService gaService = Graphiti.getGaService();
 		
 		int width = 3;

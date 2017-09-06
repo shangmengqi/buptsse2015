@@ -179,6 +179,7 @@ public class ToMidFile {
 			
 			// 处理id相关
 			String id = getIDFromProperties(child.opt(ValueUtil.PROPERTIES), ValueUtil.SHAPE_ID); //id=Page-1497229346326
+			System.out.println("id1111111:" + id);
 			child.accumulate("@"+ValueUtil.SHAPE_ID, id);
 			parent.accumulate("nodelist", id);
 			

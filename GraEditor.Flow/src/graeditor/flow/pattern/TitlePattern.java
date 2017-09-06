@@ -26,6 +26,9 @@ import com.graeditor.flow_model.ContentModule;
 import com.graeditor.flow_model.Flow_modelFactory;
 import com.graeditor.flow_model.TitleMoudle;
 
+import graeditor.utils.GraPropertyUtil;
+import graeditor.utils.IDGenerator;
+
 public class TitlePattern extends IdPattern implements IPattern{
 	
 	private static IColorConstant FONT_COLOR = ColorConstant.BLACK;
@@ -79,6 +82,8 @@ public class TitlePattern extends IdPattern implements IPattern{
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
 		ContainerShape containerShape = peCreateService.createContainerShape(diagram, true);
 		
+		GraPropertyUtil.setValue(containerShape, "shape_id", "Title"+IDGenerator.generateID());
+
 		IGaService gaService = Graphiti.getGaService();
 		
 		int x = context.getX();
