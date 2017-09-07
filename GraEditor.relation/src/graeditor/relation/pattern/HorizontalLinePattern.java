@@ -19,6 +19,9 @@ import org.eclipse.graphiti.services.IPeCreateService;
 import com.graeditor.relation_model.HorizontalLineModule;
 import com.graeditor.relation_model.Relation_modelFactory;
 
+import graeditor.utils.GraPropertyUtil;
+import graeditor.utils.IDGenerator;
+
 public class HorizontalLinePattern extends IdPattern implements IPattern{
 	
 	public HorizontalLinePattern() {
@@ -59,6 +62,8 @@ public class HorizontalLinePattern extends IdPattern implements IPattern{
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
 		ContainerShape containerShape = peCreateService.createContainerShape(diagram, true);
 		
+		GraPropertyUtil.setValue(containerShape, "shape_id", "HorizontalLine"+IDGenerator.generateID());
+
 		IGaService gaService = Graphiti.getGaService();
 		
 		int width = 400;

@@ -25,6 +25,9 @@ import org.eclipse.graphiti.util.IColorConstant;
 import com.graeditor.relation_model.ContentModule;
 import com.graeditor.relation_model.Relation_modelFactory;
 
+import graeditor.utils.GraPropertyUtil;
+import graeditor.utils.IDGenerator;
+
 
 
 public class ContentPattern extends IdPattern implements IPattern{
@@ -78,6 +81,8 @@ public class ContentPattern extends IdPattern implements IPattern{
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
 		ContainerShape containerShape = peCreateService.createContainerShape(diagram, true);
 		
+		GraPropertyUtil.setValue(containerShape, "shape_id", "Content"+IDGenerator.generateID());
+
 		IGaService gaService = Graphiti.getGaService();
 		
 		int x = context.getX();
