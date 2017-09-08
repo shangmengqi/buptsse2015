@@ -34,6 +34,8 @@ public class FromMidFile {
 	public static List<IndexedConnection> connectionList;
 	// namespace
 	public static String namespace;
+	//connections
+	public static Object connections;
 	
 	/**
 	 * 提供将中间文件字符串转换成为xml的功能
@@ -74,8 +76,17 @@ public class FromMidFile {
 		System.out.println("namespace : " + namespace);
 		JSONObject diagram = xmi.optJSONObject(ValueUtil.DIAGRAM); // 获取到pi:Diagram标签里的属性,用{}括起来的对象
 		System.out.println("diagram : " + diagram.toString());
-		Object connections = diagram.opt(ValueUtil.CONNECTIONS); // 获取到标签为connection的属性内容
-		System.out.println("connections : " + connections.toString());
+		
+		//(shangmengqi add)先判断该图表是否含有连线
+		if(diagram.has(ValueUtil.CONNECTIONS)){
+			connections = diagram.opt(ValueUtil.CONNECTIONS); // 获取到标签为connection的属性内容
+			System.out.println("connections : " + connections.toString());
+		}else {
+			connections = null;
+		}
+		
+//		Object connections = diagram.opt(ValueUtil.CONNECTIONS); // 获取到标签为connection的属性内容
+//		System.out.println("connections : " + connections.toString());
 
 		// 处理空的link数组的情况
 		{
@@ -94,18 +105,32 @@ public class FromMidFile {
 		
 		// 先对connections进行遍历，构造一个hashmap
 		connectionMap = new HashMap<String, JSONObject>();
-		if (connections instanceof JSONObject) { // 单个连线
-			String connectionID = ((JSONObject) connections).optString("@conn_id");
-			connectionMap.put(connectionID, (JSONObject) connections);
-			((JSONObject) connections).accumulate("@index", "0");
-		} else { // 连线数组
-			JSONArray connectionArr = (JSONArray) connections;
-			for (int i = 0; i < connectionArr.length(); i++) {
-				String connectionID = connectionArr.getJSONObject(i).optString("@conn_id");
-				connectionMap.put(connectionID, connectionArr.getJSONObject(i));
-				connectionArr.getJSONObject(i).accumulate("@index", ""+i);
+		if(connections != null){
+			if (connections instanceof JSONObject) { // 单个连线
+				String connectionID = ((JSONObject) connections).optString("@conn_id");
+				connectionMap.put(connectionID, (JSONObject) connections);
+				((JSONObject) connections).accumulate("@index", "0");
+			} else { // 连线数组
+				JSONArray connectionArr = (JSONArray) connections;
+				for (int i = 0; i < connectionArr.length(); i++) {
+					String connectionID = connectionArr.getJSONObject(i).optString("@conn_id");
+					connectionMap.put(connectionID, connectionArr.getJSONObject(i));
+					connectionArr.getJSONObject(i).accumulate("@index", ""+i);
+				}
 			}
 		}
+//		if (connections instanceof JSONObject) { // 单个连线
+//			String connectionID = ((JSONObject) connections).optString("@conn_id");
+//			connectionMap.put(connectionID, (JSONObject) connections);
+//			((JSONObject) connections).accumulate("@index", "0");
+//		} else { // 连线数组
+//			JSONArray connectionArr = (JSONArray) connections;
+//			for (int i = 0; i < connectionArr.length(); i++) {
+//				String connectionID = connectionArr.getJSONObject(i).optString("@conn_id");
+//				connectionMap.put(connectionID, connectionArr.getJSONObject(i));
+//				connectionArr.getJSONObject(i).accumulate("@index", ""+i);
+//			}
+//		}
 		
 		// 对节点的处理
 		layeredBOList = new ArrayList<LayeredBONode>();
@@ -127,14 +152,24 @@ public class FromMidFile {
 		}
 		
 		// 以下是对连线的处理，将连线的start和end改为使用索引的标记
-		if (connections instanceof JSONObject) { // 单个连线
-			processConnection((JSONObject) connections);
-		} else { // 连线数组
-			JSONArray connectionsArr = (JSONArray) connections;
-			for (int i = 0; i < connectionsArr.length(); i++) {
-				processConnection(connectionsArr.getJSONObject(i));
+		if(connections != null){
+			if (connections instanceof JSONObject) { // 单个连线
+				processConnection((JSONObject) connections);
+			} else { // 连线数组
+				JSONArray connectionsArr = (JSONArray) connections;
+				for (int i = 0; i < connectionsArr.length(); i++) {
+					processConnection(connectionsArr.getJSONObject(i));
+				}
 			}
 		}
+//		if (connections instanceof JSONObject) { // 单个连线
+//			processConnection((JSONObject) connections);
+//		} else { // 连线数组
+//			JSONArray connectionsArr = (JSONArray) connections;
+//			for (int i = 0; i < connectionsArr.length(); i++) {
+//				processConnection(connectionsArr.getJSONObject(i));
+//			}
+//		}
 		
 		// 下面生成图表的BusinessObject信息和节点link值
 		StringBuilder boXMLsb = new StringBuilder();
@@ -222,9 +257,10 @@ public class FromMidFile {
 						alternative.put("@key", ValueUtil.ALTERNATIVE_TEXT);
 						alternative.put("@value", alternative_text);
 						properties.put(alternative);
+						System.out.println("handle the conflict_text end");
 						
 						// 将贴图换成实线红框
-						JSONObject graphicsAlgorithm = node.optJSONObject("graphicsAlgorithm");
+						JSONObject graphicsAlgorithm = node.optJSONObject("graphicsAlgorithm");						
 						replaceImg(graphicsAlgorithm, isDeleted);
 					}
 //					String conflict_key = conflictInfo.optJSONArray("conflict_key").getString(0);
@@ -240,15 +276,26 @@ public class FromMidFile {
 				}
 			}
 		}
-		if (connections instanceof JSONObject) { // 单个连线
-			JSONObject connection = (JSONObject) connections;
-			removeExtraInfoOfConnections(connection);
-		} else { // 连线数组
-			JSONArray connectionArr = (JSONArray) connections;
-			for (int i = 0; i < connectionArr.length(); i++) {
-				removeExtraInfoOfConnections(connectionArr.getJSONObject(i));
+		if(connections != null){
+			if (connections instanceof JSONObject) { // 单个连线
+				JSONObject connection = (JSONObject) connections;
+				removeExtraInfoOfConnections(connection);
+			} else { // 连线数组
+				JSONArray connectionArr = (JSONArray) connections;
+				for (int i = 0; i < connectionArr.length(); i++) {
+					removeExtraInfoOfConnections(connectionArr.getJSONObject(i));
+				}
 			}
 		}
+//		if (connections instanceof JSONObject) { // 单个连线
+//			JSONObject connection = (JSONObject) connections;
+//			removeExtraInfoOfConnections(connection);
+//		} else { // 连线数组
+//			JSONArray connectionArr = (JSONArray) connections;
+//			for (int i = 0; i < connectionArr.length(); i++) {
+//				removeExtraInfoOfConnections(connectionArr.getJSONObject(i));
+//			}
+//		}
 		if (diagram.has("childrenlist")) {
 			diagram.remove("childrenlist");
 		}
@@ -524,6 +571,7 @@ public class FromMidFile {
 	 */
 	public static void replaceImg(JSONObject graphicsAlgorithm, boolean isDeleted) {
 		String img_id = graphicsAlgorithm.optString("@id");
+		System.out.println("img_id: " + img_id);
 		int lastDot = img_id.lastIndexOf(".");
 		String suffix = img_id.substring(lastDot, img_id.length());
 		String new_img_id = "";

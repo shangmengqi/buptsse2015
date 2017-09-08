@@ -133,3 +133,9 @@ git commit -m "完成structview图表的修改冲突完整交互过程"
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "增加Relation视图在创建节点时的shap_id属性"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master
