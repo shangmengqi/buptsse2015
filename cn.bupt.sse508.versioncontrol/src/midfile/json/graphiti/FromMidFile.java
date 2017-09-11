@@ -260,8 +260,24 @@ public class FromMidFile {
 						System.out.println("handle the conflict_text end");
 						
 						// 将贴图换成实线红框
-						JSONObject graphicsAlgorithm = node.optJSONObject("graphicsAlgorithm");						
-						replaceImg(graphicsAlgorithm, isDeleted);
+						JSONObject graphicsAlgorithm = node.optJSONObject("graphicsAlgorithm");	
+						System.out.println("graphicsAlgorithm: " + graphicsAlgorithm);
+						
+						//(shangmengqi add)分情况展示冲突节点，替换贴图或者更换原来颜色						
+						if(graphicsAlgorithm.has("@id")){
+							replaceImg(graphicsAlgorithm, isDeleted);
+						}else {
+							System.out.println("更换冲突节点颜色");
+							String background = graphicsAlgorithm.optString("@background");
+							System.out.println("background: " + background);
+							String new_background;
+							new_background = background.substring(0, 11) + "1";
+							graphicsAlgorithm.remove("@background");
+							graphicsAlgorithm.accumulate("@background", new_background);
+							System.out.println("new_background: "  + new_background);
+						}
+						
+//						replaceImg(graphicsAlgorithm, isDeleted);
 					}
 //					String conflict_key = conflictInfo.optJSONArray("conflict_key").getString(0);
 //					String alternative_text = conflictInfo.optString(conflict_key);
@@ -326,14 +342,39 @@ public class FromMidFile {
 		if (!layer.contains("/")) { // 不含有/说明是根节点，需要加上namespace
 			sb.append("<");
 			sb.append(namespace);
-			sb.append(":");
-			sb.append(tagName);
-			sb.append(" name=\"new");
-			sb.append(tagName);
-			sb.append("\">");
+			
+			//(shangmengqi add)
+			if(namespace == "StructureView"){
+				sb.append(":");
+				sb.append(tagName);
+				System.out.println("tagName: " + tagName);
+				sb.append(" name=\"new");
+				sb.append(tagName);
+				sb.append("\">");
+			}else {
+				sb.append(":");
+				sb.append(tagName + "Module");
+				System.out.println("tagName: " + tagName);				
+				sb.append(" name=\"");
+				sb.append(tagName);
+				sb.append("\">");
+				if(tagName != "HorizontalLine"){
+					sb.append(" textContent=\"content1"); //需要获取到该节点的text值
+					sb.append("\">");
+				}else {
+					sb.append("\">");
+				}				
+			}
+//			sb.append(":");
+//			sb.append(tagName);
+//			System.out.println("tagName: " + tagName);
+//			sb.append(" name=\"new");
+//			sb.append(tagName);
+//			sb.append("\">");
 		} else {
 			sb.append("<");
 			sb.append(tagName.toLowerCase());
+			System.out.println("tagName.toLowerCase(): " + tagName.toLowerCase());
 			sb.append(" name=\"new");
 			sb.append(tagName);
 			sb.append("\">");
@@ -374,7 +415,7 @@ public class FromMidFile {
 			sb.append("</");
 			sb.append(namespace);
 			sb.append(":");
-			sb.append(tagName);
+			sb.append(tagName + "Module");
 			sb.append(">");
 		} else {
 			sb.append("</");
@@ -573,12 +614,16 @@ public class FromMidFile {
 		String img_id = graphicsAlgorithm.optString("@id");
 		System.out.println("img_id: " + img_id);
 		int lastDot = img_id.lastIndexOf(".");
+		System.out.println("lastDot: " + lastDot);
 		String suffix = img_id.substring(lastDot, img_id.length());
+		System.out.println("suffix: " + suffix);
 		String new_img_id = "";
 		if (isDeleted) {
 			new_img_id = img_id.substring(0, lastDot) + suffix + "-delte-red";
+			System.out.println("new_img_id: " + new_img_id);
 		} else {
 			new_img_id = img_id.substring(0, lastDot) + suffix + "-conflict-red";
+			System.out.println("new_img_id: " + new_img_id);
 		}
 		graphicsAlgorithm.remove("@id");
 		graphicsAlgorithm.accumulate("@id", new_img_id);

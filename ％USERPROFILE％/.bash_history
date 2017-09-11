@@ -139,3 +139,9 @@ git commit -m "增加Relation视图在创建节点时的shap_id属性"
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "解决客户端关于Relation视图提交后处理结果中不存在connection的情况"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

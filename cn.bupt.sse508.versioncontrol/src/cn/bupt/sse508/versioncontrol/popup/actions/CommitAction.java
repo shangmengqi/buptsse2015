@@ -236,9 +236,13 @@ public class CommitAction implements IObjectActionDelegate{
     	
     	// 将中间文件转换成为xml文件
     	List<String> conflictFiles = convertToXML(resultList); // 获取发生冲突的文件名列表
-    	
-    	closeAllTabAndOpenConflictsTab(conflictFiles); // 关掉所有当前窗口，打开发生冲突的所有文件
-    	showMessageDiaglog(conflictFiles); // 给出提示，提醒发生冲突
+    	if (conflictFiles.size() > 0){
+    		System.out.println("conflictFiles: " + conflictFiles.get(0));
+    		closeAllTabAndOpenConflictsTab(conflictFiles); // 关掉所有当前窗口，打开发生冲突的所有文件
+        	showMessageDiaglog(conflictFiles); // 给出提示，提醒发生冲突
+    	}
+//    	closeAllTabAndOpenConflictsTab(conflictFiles); // 关掉所有当前窗口，打开发生冲突的所有文件
+//    	showMessageDiaglog(conflictFiles); // 给出提示，提醒发生冲突
     	
     	// TODO 持久化版本号
     	// 临时存储版本号
