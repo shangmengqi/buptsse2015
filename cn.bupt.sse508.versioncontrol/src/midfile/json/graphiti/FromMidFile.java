@@ -342,29 +342,38 @@ public class FromMidFile {
 		if (!layer.contains("/")) { // 不含有/说明是根节点，需要加上namespace
 			sb.append("<");
 			sb.append(namespace);
+			System.out.println("namespace: " + namespace);
 			
 			//(shangmengqi add)
-			if(namespace == "StructureView"){
+			if( "StructureView".equals(namespace)){
 				sb.append(":");
 				sb.append(tagName);
 				System.out.println("tagName: " + tagName);
 				sb.append(" name=\"new");
 				sb.append(tagName);
 				sb.append("\">");
-			}else {
+			}else if ("usecase".equals(namespace)){
 				sb.append(":");
-				sb.append(tagName + "Module");
-				System.out.println("tagName: " + tagName);				
-				sb.append(" name=\"");
+				sb.append(tagName);
+				System.out.println("tagName: " + tagName);
+				sb.append(" name=\"new");
 				sb.append(tagName);
 				sb.append("\">");
-				if(tagName != "HorizontalLine"){
-					sb.append(" textContent=\"content1"); //需要获取到该节点的text值
+			}else
+				{
+					sb.append(":");
+					sb.append(tagName + "Module");
+					System.out.println("tagName: " + tagName);				
+					sb.append(" name=\"");
+					sb.append(tagName);
 					sb.append("\">");
-				}else {
-					sb.append("\">");
-				}				
-			}
+					if(tagName != "HorizontalLine"){
+						sb.append(" textContent=\"content1"); //需要获取到该节点的text值
+						sb.append("\">");
+					}else {
+						sb.append("\">");
+					}				
+				}
 //			sb.append(":");
 //			sb.append(tagName);
 //			System.out.println("tagName: " + tagName);
@@ -415,11 +424,24 @@ public class FromMidFile {
 			sb.append("</");
 			sb.append(namespace);
 			sb.append(":");
-			sb.append(tagName + "Module");
-			sb.append(">");
+			
+			//(shangmengqi add)
+			if("StructureView".equals(namespace)){
+				sb.append(tagName);
+				sb.append(">");
+			}else if("usecase".equals(namespace)){
+				sb.append(tagName);
+				sb.append(">");
+			}else{
+				sb.append(tagName + "Module");
+				sb.append(">");
+				}
+//			sb.append(tagName);
+//			sb.append(">");
 		} else {
 			sb.append("</");
 			sb.append(tagName.toLowerCase());
+			System.out.println("tagName.toLowerCase(): " + tagName.toLowerCase());
 			sb.append(">");
 		}
 		

@@ -145,3 +145,9 @@ git commit -m "解决客户端关于Relation视图提交后处理结果中不存
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "解决relation视图冲突节点的正确展示问题，修改了dfs函数，还不太通用"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master
