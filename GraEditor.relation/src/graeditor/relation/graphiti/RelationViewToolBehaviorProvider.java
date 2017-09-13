@@ -10,6 +10,8 @@ import org.eclipse.graphiti.tb.ContextMenuEntry;
 import org.eclipse.graphiti.tb.DefaultToolBehaviorProvider;
 import org.eclipse.graphiti.tb.IContextMenuEntry;
 
+import graeditor.relation.features.CustomDeleteFeature;
+
 
 public class RelationViewToolBehaviorProvider extends DefaultToolBehaviorProvider{
 	
@@ -85,9 +87,9 @@ public class RelationViewToolBehaviorProvider extends DefaultToolBehaviorProvide
 		}
 		
 		if (flag == true) { // 可以进行冲突处理
-//			CustomDeleteFeature.setCanDelete(true);
+			CustomDeleteFeature.setCanDelete(true);
 		} else { // 至少有一个被选择的元素是不在冲突列表中的
-//			CustomDeleteFeature.setCanDelete(false);
+			CustomDeleteFeature.setCanDelete(false);
 		}
 
 		return super.getSelection(originalPe, oldSelection);

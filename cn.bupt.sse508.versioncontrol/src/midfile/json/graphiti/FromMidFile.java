@@ -178,6 +178,9 @@ public class FromMidFile {
 			int index = layeredBOList.get(i).index;
 			layer = i+1+"";
 			String tagName = allNodeList.get(index).optJSONObject("link").optString("@businessObjects");
+			System.out.println("index: " + index);
+			System.out.println("tagName: " + tagName);
+			System.out.println("layer: " + layer);
 			String str = dfs(index, tagName, layer);
 			boXMLsb.append(str);
 		}
@@ -391,8 +394,10 @@ public class FromMidFile {
 		
 		// 在该node中添加link
 		JSONObject link = allNodeList.get(node).optJSONObject("link");
+		System.out.println("link: " + link.toString());
 		link.remove("@businessObjects");
 		link.accumulate("@businessObjects", generateLink(layer));
+		System.out.println("generateLink(layer): " + generateLink(layer));
 		
 		// 处理与其相连的节点（终点）
 		List<Integer> destinationNode = new ArrayList<Integer>();
@@ -416,6 +421,9 @@ public class FromMidFile {
 			} else {
 				boNameCountMap.put(tag, Integer.valueOf(1));
 			}
+			System.out.println("index: " + index);
+			System.out.println("tag: " + tag);
+			System.out.println(layer+"/@"+tag.toLowerCase()+"."+(count-1));
 			sb.append(dfs(index, tag, layer+"/@"+tag.toLowerCase()+"."+(count-1)));
 		}
 		

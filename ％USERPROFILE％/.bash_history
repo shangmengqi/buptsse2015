@@ -151,3 +151,15 @@ git commit -m "解决relation视图冲突节点的正确展示问题，修改了
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "注释语句"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master
+git init
+git add .
+git commit -m "解决了relation视图在转化为xml文件时的错误转化情况，对df函数做出了修改，不是很严密，但也没什么影响"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master
