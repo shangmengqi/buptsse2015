@@ -14,3 +14,4 @@ Require-Bundle: org.eclipse.graphiti.ui;bundle-version="0.12.2",
  org.eclipse.ui;bundle-version="3.107.0",
  org.eclipse.graphiti.examples.common;bundle-version="0.12.2",
  org.eclipse.ui.views.properties.tabbed;bundle-version="3.6.100"
+Export-Package: graeditor.relation.features

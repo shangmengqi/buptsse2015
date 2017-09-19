@@ -22,6 +22,7 @@ import graeditor.flow.pattern.HorizontalLinePattern;
 import graeditor.flow.pattern.StartTagPattern;
 import graeditor.flow.pattern.TitlePattern;
 import graeditor.flow.pattern.VerticalLinePattern;
+import graeditor.flow.features.CustomDeleteFeature;
 public class FlowFeatureProvider extends DefaultFeatureProviderWithPatterns{
 
 	public FlowFeatureProvider(IDiagramTypeProvider dtp) {
@@ -69,7 +70,9 @@ public class FlowFeatureProvider extends DefaultFeatureProviderWithPatterns{
 			new CustomChangeTextFeature(this),
 			new FlowDrillDownFeature(this),
 			new AssociateDiagramFeature(this),
-			new CustomBackAssociateDiagramFeature(this)};
+			new CustomBackAssociateDiagramFeature(this),
+			new CustomDeleteFeature(this)
+			};
 	}
 
 }

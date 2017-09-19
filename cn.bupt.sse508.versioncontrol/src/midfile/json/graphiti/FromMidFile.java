@@ -119,33 +119,25 @@ public class FromMidFile {
 				}
 			}
 		}
-//		if (connections instanceof JSONObject) { // 单个连线
-//			String connectionID = ((JSONObject) connections).optString("@conn_id");
-//			connectionMap.put(connectionID, (JSONObject) connections);
-//			((JSONObject) connections).accumulate("@index", "0");
-//		} else { // 连线数组
-//			JSONArray connectionArr = (JSONArray) connections;
-//			for (int i = 0; i < connectionArr.length(); i++) {
-//				String connectionID = connectionArr.getJSONObject(i).optString("@conn_id");
-//				connectionMap.put(connectionID, connectionArr.getJSONObject(i));
-//				connectionArr.getJSONObject(i).accumulate("@index", ""+i);
-//			}
-//		}
+
 		
 		// 对节点的处理
 		layeredBOList = new ArrayList<LayeredBONode>();
 		LayeredNode lnode = new LayeredNode(diagram.opt(ValueUtil.CHILDREN), "0");
+		
 		queue.add(lnode);
 		while (!queue.isEmpty()) {
 			LayeredNode lNode = queue.poll();
 			String currentLayer = lNode.layer;
 			if (lNode.childList instanceof JSONObject) { // 单个节点
 				JSONObject node = (JSONObject) lNode.childList;
+				System.out.println("nodeqqqqqqqqqqqqqqqqqqqqqq: " + node.toString());
 				processNode(node, currentLayer+"/0", connections);
 				
 			} else { // 节点列表
 				JSONArray nodes = (JSONArray) lNode.childList;
 				for (int i = 0; i < nodes.length(); i++) {
+					System.out.println("nodesqqqqqqqqqqqqqqqqqqqqqqqqqq: " + nodes.length());
 					processNode(nodes.getJSONObject(i), currentLayer+"/"+i, connections);
 				}
 			}
@@ -174,17 +166,33 @@ public class FromMidFile {
 		// 下面生成图表的BusinessObject信息和节点link值
 		StringBuilder boXMLsb = new StringBuilder();
 		String layer = "";
-		for (int i = 0; i < layeredBOList.size(); i++) {
-			int index = layeredBOList.get(i).index;
-			layer = i+1+"";
-			String tagName = allNodeList.get(index).optJSONObject("link").optString("@businessObjects");
-			System.out.println("index: " + index);
-			System.out.println("tagName: " + tagName);
-			System.out.println("layer: " + layer);
-			String str = dfs(index, tagName, layer);
-			boXMLsb.append(str);
+		System.out.println("layeredBOList.size()22222222222222222222222222222222222: " + layeredBOList.size());
+		
+		if("com.graeditor.flow_model".equals(namespace)){
+			for(int a = 0; a < allNodeList.size(); a++){
+				int num = 0;
+				num = a + 1;
+				String tagName = allNodeList.get(a).optJSONObject("link").optString("@businessObjects");
+				String str = dfs1(a, tagName, num);
+				boXMLsb.append(str);				
+			}				
+		}else {
+			for (int i = 0; i < layeredBOList.size(); i++) {
+				int index = layeredBOList.get(i).index;
+				layer = i+1+"";
+				String tagName = allNodeList.get(index).optJSONObject("link").optString("@businessObjects");						
+				System.out.println("allNodeList.size: " + allNodeList.size());
+				System.out.println("index111111111111111111111111: " + index);
+				System.out.println("tagName111111111111111111111111: " + tagName);
+				System.out.println("layer11111111111111111111111111: " + layer);
+				String str = dfs(index, tagName, layer);
+				boXMLsb.append(str);
+				System.out.println("boXMLsbaaaaaaaaaaaaaaaaaaaaaaaaaaaa: " + boXMLsb.toString());
+			}
 		}
+
 		String boXMLStr = boXMLsb.toString();
+		System.out.println("boXMLStrbbbbbbbbbbbbbbbbbbbbbbbb: " + boXMLStr);
 		
 		// 最后需要遍历所有元素，去掉多余的信息
 		for (int i = 0; i < allNodeList.size(); i++) {
@@ -342,6 +350,7 @@ public class FromMidFile {
 	public static String dfs(int node, String tagName, String layer) {
 		StringBuilder sb = new StringBuilder();
 		// 处理tag头
+		System.out.println("layer22222222222222222222222222222222222: " + layer);
 		if (!layer.contains("/")) { // 不含有/说明是根节点，需要加上namespace
 			sb.append("<");
 			sb.append(namespace);
@@ -367,15 +376,15 @@ public class FromMidFile {
 					sb.append(":");
 					sb.append(tagName + "Module");
 					System.out.println("tagName: " + tagName);				
-					sb.append(" name=\"");
-					sb.append(tagName);
-					sb.append("\">");
-					if(tagName != "HorizontalLine"){
-						sb.append(" textContent=\"content1"); //需要获取到该节点的text值
-						sb.append("\">");
-					}else {
-						sb.append("\">");
-					}				
+//					sb.append(" name=\"");
+//					sb.append(tagName);
+					sb.append(">");
+//					if(tagName != "HorizontalLine"){
+//						sb.append(" textContent=\"content1"); //需要获取到该节点的text值
+//						sb.append("\">");
+//					}else {
+//						sb.append("\">");
+//					}				
 				}
 //			sb.append(":");
 //			sb.append(tagName);
@@ -397,13 +406,14 @@ public class FromMidFile {
 		System.out.println("link: " + link.toString());
 		link.remove("@businessObjects");
 		link.accumulate("@businessObjects", generateLink(layer));
-		System.out.println("generateLink(layer): " + generateLink(layer));
+		System.out.println("generateLink(layer): " + generateLink(layer)); // /1
 		
 		// 处理与其相连的节点（终点）
 		List<Integer> destinationNode = new ArrayList<Integer>();
 		for (int i = 0; i < connectionList.size(); i++) { // 获取当前节点的所有终点
 			if (connectionList.get(i).start == node) { // 起点为当前节点
 				destinationNode.add(Integer.valueOf(connectionList.get(i).end));
+//				System.out.println("destinationNodewwwwwwwwwwwwwwwwwwwwwwwww: " + destinationNode.get(i).toString());
 			}
 		}
 		// TODO 子节点是否需要考虑？？
@@ -423,6 +433,7 @@ public class FromMidFile {
 			}
 			System.out.println("index: " + index);
 			System.out.println("tag: " + tag);
+//			System.out.println(layer+"/@"+tag.toLowerCase()+"."+(count-1));
 			System.out.println(layer+"/@"+tag.toLowerCase()+"."+(count-1));
 			sb.append(dfs(index, tag, layer+"/@"+tag.toLowerCase()+"."+(count-1)));
 		}
@@ -453,6 +464,35 @@ public class FromMidFile {
 			sb.append(">");
 		}
 		
+		System.out.println("sb wwwwwwwwwwwwwwwwwwwwwwww: " + sb.toString());
+		return sb.toString();
+	}
+	
+	public static String dfs1(int index, String tagName, int num){
+		StringBuilder sb = new StringBuilder();
+		// 处理tag头
+		sb.append("<");
+		sb.append(namespace);
+		sb.append(":");
+		sb.append(tagName + "Module");
+		sb.append(">");
+		
+		// 在该node中添加link
+		JSONObject link = allNodeList.get(index).optJSONObject("link");
+		System.out.println("link: " + link.toString());			
+		link.remove("@businessObjects");
+		link.accumulate("@businessObjects", "/"+num);				
+		System.out.println("tagNamezzzzzzzzzzzzzzzzzzzzzzzz: " + tagName);
+		System.out.println("linkzzzzzzzzzzzzzzzzzzzzzzzz: " + allNodeList.get(index).optJSONObject("link"));
+		
+		// 处理close tag
+		sb.append("</");
+		sb.append(namespace);
+		sb.append(":");
+		sb.append(tagName + "Module");
+		sb.append(">");
+		
+		System.out.println("sb wwwwwwwwwwwwwwwwwwwwwwww: " + sb.toString());
 		return sb.toString();
 	}
 	
