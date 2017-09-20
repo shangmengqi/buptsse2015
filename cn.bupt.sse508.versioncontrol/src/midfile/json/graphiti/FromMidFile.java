@@ -474,8 +474,17 @@ public class FromMidFile {
 		sb.append("<");
 		sb.append(namespace);
 		sb.append(":");
-		sb.append(tagName + "Module");
-		sb.append(">");
+		if("HorizontalLine".equals(tagName)){
+			sb.append(tagName + "Moudle");
+			sb.append(">");
+		}else if("Title".equals(tagName)){
+			sb.append(tagName + "Moudle");
+			sb.append(">");
+		}else {
+			sb.append(tagName + "Module");
+			sb.append(">");
+		}
+		
 		
 		// 在该node中添加link
 		JSONObject link = allNodeList.get(index).optJSONObject("link");
@@ -489,8 +498,17 @@ public class FromMidFile {
 		sb.append("</");
 		sb.append(namespace);
 		sb.append(":");
-		sb.append(tagName + "Module");
-		sb.append(">");
+		if("HorizontalLine".equals(tagName)){
+			sb.append(tagName + "Moudle");
+			sb.append(">");
+		}else if("Title".equals(tagName)){
+			sb.append(tagName + "Moudle");
+			sb.append(">");
+		}else {
+			sb.append(tagName + "Module");
+			sb.append(">");
+		}
+		
 		
 		System.out.println("sb wwwwwwwwwwwwwwwwwwwwwwww: " + sb.toString());
 		return sb.toString();
