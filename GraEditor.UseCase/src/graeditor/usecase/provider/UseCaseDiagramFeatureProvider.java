@@ -14,6 +14,7 @@ import graeditor.usecase.features.AddConnectionFeature;
 import graeditor.usecase.features.AssociateDiagramFeature;
 import graeditor.usecase.features.CreateConnectionFeature;
 import graeditor.usecase.features.CustomChangeTextFeature;
+import graeditor.usecase.features.CustomDeleteFeature;
 import graeditor.usecase.features.DrillDownFeature;
 import graeditor.usecase.features.SolveConflictFeature;
 import graeditor.usecase.pattern.UseCasePattern;
@@ -48,9 +49,10 @@ public class UseCaseDiagramFeatureProvider extends DefaultFeatureProviderWithPat
 	@Override
 	public ICustomFeature[] getCustomFeatures(ICustomContext context) {
 		return new ICustomFeature[] { 
-				new SolveConflictFeature(this),
+//				new SolveConflictFeature(this),
 				new DrillDownFeature(this),
 				new AssociateDiagramFeature(this),
-				new CustomChangeTextFeature(this)};
+				new CustomChangeTextFeature(this),
+				new CustomDeleteFeature(this)};
 	}
 }

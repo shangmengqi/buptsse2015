@@ -10,6 +10,7 @@ import org.eclipse.graphiti.tb.ContextMenuEntry;
 import org.eclipse.graphiti.tb.DefaultToolBehaviorProvider;
 import org.eclipse.graphiti.tb.IContextMenuEntry;
 
+import graeditor.usecase.features.CustomDeleteFeature;
 import graeditor.usecase.features.SolveConflictFeature;
 
 public class UseCaseToolBehaviorProvider extends DefaultToolBehaviorProvider {
@@ -55,7 +56,8 @@ public class UseCaseToolBehaviorProvider extends DefaultToolBehaviorProvider {
 		{
 			EList<Property> pList = originalPe.getProperties();
 			for (int j = 0; j < pList.size(); j++) {
-				if (pList.get(j).getValue().equals("conflict")) { // 判断是否有冲突
+//				System.out.println("pList" + j + ": " + pList.get(j).getValue());
+				if (pList.get(j).getValue().contains("conflict")) { // 判断是否有冲突
 					isElementsConflict[0] = true;
 					break;
 				} else { // 只要
@@ -68,7 +70,7 @@ public class UseCaseToolBehaviorProvider extends DefaultToolBehaviorProvider {
 			for (int i = 0; i < oldSelection.length; i++) {
 				EList<Property> pList = oldSelection[i].getProperties();
 				for (int j = 0; j < pList.size(); j++) {
-					if (pList.get(j).getValue().equals("conflict")) { // 判断是否有冲突
+					if (pList.get(j).getValue().contains("conflict")) { // 判断是否有冲突
 						isElementsConflict[i+1] = true;
 						break;
 					} else { 
@@ -86,9 +88,9 @@ public class UseCaseToolBehaviorProvider extends DefaultToolBehaviorProvider {
 		}
 		
 		if (flag == true) { // 可以进行冲突处理
-			SolveConflictFeature.setCanExecute(true);
+			CustomDeleteFeature.setCanDelete(true);
 		} else { // 至少有一个被选择的元素是不在冲突列表中的
-			SolveConflictFeature.setCanExecute(false);
+			CustomDeleteFeature.setCanDelete(false);
 		}
 
 		return super.getSelection(originalPe, oldSelection);

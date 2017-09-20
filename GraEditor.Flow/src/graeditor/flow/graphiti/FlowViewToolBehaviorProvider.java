@@ -49,6 +49,7 @@ public class FlowViewToolBehaviorProvider extends DefaultToolBehaviorProvider{
 	
 	@Override
 	public PictogramElement getSelection(PictogramElement originalPe, PictogramElement[] oldSelection) {
+		System.out.println("start getSelection function 111111111111111111111111");
 		int numOfSelection = oldSelection.length + 1;
 		boolean flag = true;
 		boolean[] isElementsConflict = new boolean[numOfSelection];

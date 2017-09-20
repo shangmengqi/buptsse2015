@@ -163,3 +163,9 @@ git commit -m "解决了relation视图在转化为xml文件时的错误转化情
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "完成flow流程图的中间文件到xml文件的转化和冲突展示和处理"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master
