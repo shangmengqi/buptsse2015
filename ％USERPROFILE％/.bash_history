@@ -169,3 +169,9 @@ git commit -m "完成flow流程图的中间文件到xml文件的转化和冲突�
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "完成所有图表单个的提交、冲突检测、冲突展示和冲突处理，限于修改冲突"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

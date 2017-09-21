@@ -252,15 +252,21 @@ public class FromMidFile {
 					replaceImg(graphicsAlgorithm, isDeleted);
 					
 				} else { // 显示文字冲突
-					info.put("@key", "info");
-					info.put("@value", ValueUtil.CONFLICT_TEXT);
-					properties.put(info);
+//					info.put("@key", "info");
+//					info.put("@value", ValueUtil.CONFLICT_TEXT);
+//					properties.put(info);
 					
 					// 将冲突的另一个文字信息存入property中
 					System.out.println("hahahahahahhahaha444444: ");
 					
 					//(shangmengqi add) 先进行判断是否含有conflict_key键，然后再进行后续操作
 					if (conflictInfo.has("conflict_key")) {
+//						System.out.println("conflictMap.get(id)" + conflictMap.get(id).getJSONObject("conflict_key").toString());
+						
+						info.put("@key", "info");
+						info.put("@value", ValueUtil.CONFLICT_TEXT);
+						properties.put(info);
+						
 						System.out.println("start to handle the conflict_text");
 						String conflict_key = conflictInfo.optJSONArray("conflict_key").getString(0);
 						String alternative_text = conflictInfo.optString(conflict_key);
@@ -290,16 +296,7 @@ public class FromMidFile {
 						
 //						replaceImg(graphicsAlgorithm, isDeleted);
 					}
-//					String conflict_key = conflictInfo.optJSONArray("conflict_key").getString(0);
-//					String alternative_text = conflictInfo.optString(conflict_key);
-//					JSONObject alternative = new JSONObject();
-//					alternative.put("@key", ValueUtil.ALTERNATIVE_TEXT);
-//					alternative.put("@value", alternative_text);
-//					properties.put(alternative);
-					
-					// 将贴图换成实线红框
-//					JSONObject graphicsAlgorithm = node.optJSONObject("graphicsAlgorithm");
-//					replaceImg(graphicsAlgorithm, isDeleted);
+//					
 				}
 			}
 		}

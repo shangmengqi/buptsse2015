@@ -21,6 +21,11 @@ import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.Node;
+import org.dom4j.io.SAXReader;
 import org.eclipse.core.internal.resources.Folder;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
@@ -54,6 +59,7 @@ import midfile.json.graphiti.Utils;
 public class CommitAction implements IObjectActionDelegate{
 	private List<String> versionList = new ArrayList<>(); //提供版本号的列表
 	private List<String> fileList ;
+//	List<String> conflictFiles;
 	
 	public CommitAction() {
 		super();
@@ -233,11 +239,18 @@ public class CommitAction implements IObjectActionDelegate{
     	// 获取服务器的返回结果
     	HttpAgent agent = HttpAgent.getInstance();
     	List<HttpResponceVO> resultList = agent.generatePushReq(base, description, fileList.size(), fileList);
+    	for(int a = 0; a < resultList.size(); a++){
+    		System.out.println("resultList.fileName: " + a + resultList.get(a).fileName);
+    	}
+    	
     	
     	// 将中间文件转换成为xml文件
     	List<String> conflictFiles = convertToXML(resultList); // 获取发生冲突的文件名列表
+    	
     	if (conflictFiles.size() > 0){
-    		System.out.println("conflictFiles: " + conflictFiles.get(0));
+    		for(int s = 0; s < conflictFiles.size(); s++){
+        		System.out.println("conflictFiles: " + conflictFiles.get(s));
+    		}
     		closeAllTabAndOpenConflictsTab(conflictFiles); // 关掉所有当前窗口，打开发生冲突的所有文件
         	showMessageDiaglog(conflictFiles); // 给出提示，提醒发生冲突
     	}
@@ -341,9 +354,11 @@ public class CommitAction implements IObjectActionDelegate{
 			//获取返回结果的总体状态 
 			HttpResponceVO responce = resultList.get(0);
 			System.out.println("converToXML.responce.result:" + responce.result);
+//			System.out.println("responce.fileName:" + responce.fileName);
 			if (!responce.result.equals("OK")) { // 不为OK的返回，需要覆盖原有文件
 				// 删除该工程目录下的所有diagram文件
 				deleteAllDiagrams();
+//				deleteConflictDiagrams(conflictFiles);
 			} else {
 				JOptionPane.showMessageDialog(null, "Your diagrams are commited to Server.\nVersion Num: "+responce.versionNo, "Commit complete",JOptionPane.PLAIN_MESSAGE);
 			}
@@ -353,16 +368,19 @@ public class CommitAction implements IObjectActionDelegate{
 		String path = "E:/Git/buptsse2015/runtime-EclipseApplication/test" + "/src/";
 		List<String> conflictFileNames = new ArrayList<String>();
 		
-		System.out.println("hahahhahhahahahhaahhah111111: ");
+		
 		for (int i = 1; i < resultList.size(); i++) {
-			System.out.println("hahahhahhahahahhaahhah22222: ");
+			
 			HttpResponceVO responce = resultList.get(i);
 			if (responce.result.equals("OK")) { // 说明没有冲突
 				String xml = FromMidFile.fromMidFile(responce.fileContent, null); // 经过服务器处理过的文件内容
 				File file = new File(responce.fileName); // 文件名字
 				writeToFile(xml, file); // 将xml文件内容写入到该文件中
+				System.out.println("responce.fileName1111: " + responce.fileName);
 			} else { // 有冲突
-				System.out.println("hahahhahhahahahhaahhah33333: ");
+				
+				
+				
 				System.out.println("responce.fileContent: " + responce.fileContent);
 				System.out.println("responce.conflictList: " + responce.conflictList);
 				String xml = FromMidFile.fromMidFile(responce.fileContent, responce.conflictList);
@@ -371,9 +389,47 @@ public class CommitAction implements IObjectActionDelegate{
 				File file = new File(responce.fileName);
 				System.out.println("responce.fileName: " + responce.fileName);
 				writeToFile(xml, file);
-				String relativeFileName = responce.fileName.substring(responce.fileName.lastIndexOf("/")+1, responce.fileName.length());
-				System.out.println("relativeFileName: " + relativeFileName);
-				conflictFileNames.add(relativeFileName);
+				
+//				File file = new File(filePath);	
+				//(shangmengqi add)查找出那个文件真正发生了冲突，即含有“info”
+				SAXReader reader = new SAXReader();
+				Document document;
+				try {
+					document = reader.read(file);
+					Element rooElement = document.getRootElement();
+					Element diagram = rooElement.element("Diagram");
+					for (int x = 0; x < diagram.nodeCount(); x++) {
+						Node node = diagram.node(x);
+						if (node instanceof Element) {
+							Element child1 = (Element) node ;
+							System.out.println("child1 :" + child1.getName());
+							for (int j = 0; j < child1.nodeCount(); j++) {
+								Node node2 = child1.node(j);
+								if (node2 instanceof Element) {
+									Element child2 = (Element) node2 ;
+									System.out.println("child2 :" + child2.getName());
+									if (child2.getName().equals("properties")) {
+										if (child2.attributeValue("key").equals("info")) {
+											System.out.println("child2.attributeValue :" + child2.attributeValue("key"));
+											String relativeFileName = responce.fileName.substring(responce.fileName.lastIndexOf("/")+1, responce.fileName.length());
+											System.out.println("relativeFileName: " + relativeFileName);
+											conflictFileNames.add(relativeFileName);
+											System.out.println("responce.fileName2222: " + responce.fileName);
+										}							
+									}
+								}
+							}
+						}						
+					}
+				} catch (DocumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+//				String relativeFileName = responce.fileName.substring(responce.fileName.lastIndexOf("/")+1, responce.fileName.length());
+//				System.out.println("relativeFileName: " + relativeFileName);
+//				conflictFileNames.add(relativeFileName);
+//				System.out.println("responce.fileName2222: " + responce.fileName);
 			}
 		}
 		
@@ -386,6 +442,22 @@ public class CommitAction implements IObjectActionDelegate{
 	 * 
 	 */
 	private void deleteAllDiagrams() {
+		List<IFile> files = getDiagramFiles(ProjectUtil.getCurrentProject());
+		try {
+			for (int i = files.size() - 1; i >= 0; i--) {
+				files.get(i).delete(true, null);
+			}
+		} catch (CoreException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 删除该工程目录下的所有.diagrams文件
+	 * 
+	 */
+	private void deleteConflictDiagrams(String conflictFiles) {
 		List<IFile> files = getDiagramFiles(ProjectUtil.getCurrentProject());
 		try {
 			for (int i = files.size() - 1; i >= 0; i--) {
