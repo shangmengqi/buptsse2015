@@ -100,8 +100,9 @@ public class CommitAction implements IObjectActionDelegate{
 		if (prj == null) {
 			return null;
 		}
-		System.out.println("CommitAction.getFile: " + prj.getFile("/src/diagrams/" + fileName));
-		return prj.getFile("/src/diagrams/" + fileName); //需要对其进行改进，使得给出文件名，可以获得任何一个文件夹下的文件
+		System.out.println("CommitAction.getFile: " + prj.getFile(fileName));
+//		return prj.getFile("/src/diagrams/" + fileName); //需要对其进行改进，使得给出文件名，可以获得任何一个文件夹下的文件
+		return prj.getFile(fileName);
 	}
 	
 	private String getLocation() {
@@ -191,6 +192,7 @@ public class CommitAction implements IObjectActionDelegate{
 	
 	private void showMessageDiaglog(List<String> conflictFiles) {
 		if (conflictFiles.size() != 0) { // 有冲突
+			
 			JOptionPane.showMessageDialog(null, "Conflicts occur. Please refresh your project and solve conflicts before commit.", "Conflicts occur",JOptionPane.PLAIN_MESSAGE);
 		}
 	}
@@ -213,25 +215,7 @@ public class CommitAction implements IObjectActionDelegate{
     	String description = "";
     	
     	
-//    	{ //将path路径改为统一的路径，可以识别文件夹（shangmengqi add）
-//	    	List<Folder> folders = getDiagramFolders(ProjectUtil.getCurrentProject()); // 得到该项目下除“src”文件夹以外的所有其他文件夹
-//	    	for (int i = 0; i < folders.size(); i++) {
-//	    		String path = getLocation() + "/src/diagram/";
-//	        	fileList = getDiagrams(path);
-//			}
-//    	}
-    	
-//    	{ //将path路径改为统一的路径，可以识别文件夹（shangmengqi add）
-//	    	List<IResource> diagramResources = getDiagramFilePath(ProjectUtil.getCurrentProject()); // 得到所有文件的resource路径
-//	    	List<String> fileList = new ArrayList<String>();
-//	    	for (int i = 0; i < diagramResources.size(); i++) {
-//	    		String path = diagramResources.get(i).toString();
-////	        	fileList = getDiagrams(path);
-//	    		fileList.add(path);
-//			}
-//    	}
-    	
-    	
+ 	
 //    	String path = getLocation() + "/src/diagrams/";
     	String path = getLocation();
     	List<String> fileList = getDiagrams(path);
@@ -248,7 +232,9 @@ public class CommitAction implements IObjectActionDelegate{
     	List<String> conflictFiles = convertToXML(resultList); // 获取发生冲突的文件名列表
     	
     	if (conflictFiles.size() > 0){
+    		
     		for(int s = 0; s < conflictFiles.size(); s++){
+//    			
         		System.out.println("conflictFiles: " + conflictFiles.get(s));
     		}
     		closeAllTabAndOpenConflictsTab(conflictFiles); // 关掉所有当前窗口，打开发生冲突的所有文件
@@ -358,7 +344,6 @@ public class CommitAction implements IObjectActionDelegate{
 			if (!responce.result.equals("OK")) { // 不为OK的返回，需要覆盖原有文件
 				// 删除该工程目录下的所有diagram文件
 				deleteAllDiagrams();
-//				deleteConflictDiagrams(conflictFiles);
 			} else {
 				JOptionPane.showMessageDialog(null, "Your diagrams are commited to Server.\nVersion Num: "+responce.versionNo, "Commit complete",JOptionPane.PLAIN_MESSAGE);
 			}
@@ -413,7 +398,8 @@ public class CommitAction implements IObjectActionDelegate{
 											System.out.println("child2.attributeValue :" + child2.attributeValue("key"));
 											String relativeFileName = responce.fileName.substring(responce.fileName.lastIndexOf("/")+1, responce.fileName.length());
 											System.out.println("relativeFileName: " + relativeFileName);
-											conflictFileNames.add(relativeFileName);
+//											conflictFileNames.add(relativeFileName);
+											conflictFileNames.add(responce.fileName);
 											System.out.println("responce.fileName2222: " + responce.fileName);
 										}							
 									}
@@ -454,7 +440,7 @@ public class CommitAction implements IObjectActionDelegate{
 	}
 	
 	/**
-	 * 删除该工程目录下的所有.diagrams文件
+	 * 删除该工程目录下的所有.diagrams文件(shangmengqi add)
 	 * 
 	 */
 	private void deleteConflictDiagrams(String conflictFiles) {
@@ -491,7 +477,10 @@ public class CommitAction implements IObjectActionDelegate{
 		for (int i = 0; i < fileNames.size(); i++) {
 			IWorkbenchPage wbPage = PlatformUI.getWorkbench()
 					.getActiveWorkbenchWindow().getActivePage();
-			IFile file = getFile(fileNames.get(i));
+//			IFile file = getFile(fileNames.get(i));
+			String pathFile = fileNames.get(i).substring(50);
+			IFile file = getFile(pathFile);
+			
 			try {
 				if (file != null) {
 					IDE.openEditor(wbPage, file);

@@ -175,3 +175,9 @@ git commit -m "完成所有图表单个的提交、冲突检测、冲突展示�
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "完成同一个文件夹下四种图表的正确提交，仅仅只检测了一种图表的修改冲突，返回后的其余三张图表的xml显示有问题，不能重复提交"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master
