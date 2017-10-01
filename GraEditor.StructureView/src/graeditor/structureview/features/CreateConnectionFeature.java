@@ -55,7 +55,6 @@ public class CreateConnectionFeature extends AbstractCreateConnectionFeature {
 
 	@Override
 	public Connection create(ICreateConnectionContext context) {
-		// 在pattern的doAdd中需要创建anchor，否则此处会为null
 		Anchor sourceAnchor = context.getSourceAnchor();
 		Anchor targetAnchor = context.getTargetAnchor();
 		

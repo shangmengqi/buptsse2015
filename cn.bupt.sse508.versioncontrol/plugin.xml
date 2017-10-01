@@ -42,6 +42,25 @@
                menubarPath="cn.bupt.sse508.versioncontrol.menu1/group1">
          </action>
       </objectContribution>
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IProject"
+            id="cn.bupt.sse508.versioncontrol.contribution1">
+         <menu
+               label="Versoin Control"
+               path="additions"
+               id="cn.bupt.sse508.versioncontrol.menu1">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               label="Pull"
+               class="cn.bupt.sse508.versioncontrol.popup.actions.PullAction"
+               menubarPath="cn.bupt.sse508.versioncontrol.menu1/group1"
+               enablesFor="1"
+               id="cn.bupt.sse508.versioncontrol.pullAction">
+         </action>
+      </objectContribution>
    </extension>
 
 </plugin>

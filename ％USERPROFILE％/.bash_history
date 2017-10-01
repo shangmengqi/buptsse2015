@@ -181,3 +181,9 @@ git commit -m "完成同一个文件夹下四种图表的正确提交，仅仅�
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "添加上跳转导航后，完成不同文件夹下四种图表的正确提交，遗留问题是：两种图表同时发生冲突检测，编辑器窗口只能打开一个发生了冲突的图表；未进行冲突检测的图表返回后可以正常显示图表，但xml格式有问题，不能重复提交"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

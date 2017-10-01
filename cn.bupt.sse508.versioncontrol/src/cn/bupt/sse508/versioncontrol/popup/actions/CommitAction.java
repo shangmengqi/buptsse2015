@@ -59,6 +59,8 @@ import midfile.json.graphiti.Utils;
 public class CommitAction implements IObjectActionDelegate{
 	private List<String> versionList = new ArrayList<>(); //提供版本号的列表
 	private List<String> fileList ;
+	
+	public String conflictVersionNomber;
 //	List<String> conflictFiles;
 	
 	public CommitAction() {
@@ -76,6 +78,8 @@ public class CommitAction implements IObjectActionDelegate{
 		
 //		showDialog();
 	}
+	
+	
 
 	@Override
 	public void selectionChanged(IAction action, ISelection selection) {
@@ -245,7 +249,15 @@ public class CommitAction implements IObjectActionDelegate{
     	
     	// TODO 持久化版本号
     	// 临时存储版本号
-    	versionList.add(resultList.get(0).versionNo);
+    	if (conflictFiles.size() > 0){
+    		//本次版本不进行存储
+    		conflictVersionNomber = resultList.get(0).versionNo;
+    		System.out.println("conflictVersionNomber: " + conflictVersionNomber);
+    		
+    	}else {
+    		versionList.add(resultList.get(0).versionNo);
+    	}
+    	
     }
 
 	/**

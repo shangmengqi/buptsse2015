@@ -139,6 +139,10 @@ public class CustomDeleteFeature extends AbstractCustomFeature{
 								}
 								break;
 							}
+							
+							//再次进行提交操作
+							
+							
 						}
 	}
 	

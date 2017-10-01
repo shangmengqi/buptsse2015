@@ -67,6 +67,7 @@ public class HttpAgent {
 		StringBody baseBody = new StringBody(base, ContentType.create("text/plain", Consts.UTF_8));
 		StringBody descriptionBody = new StringBody(description, ContentType.create("text/plain", Consts.UTF_8));
 		StringBody fileCountBody = new StringBody(fileCount+"", ContentType.create("text/plain", Consts.UTF_8));
+		System.out.println("fileCountBody: " + fileCountBody);
 		StringBody step = new StringBody(NetworkUtils.START, ContentType.create("text/plain", Consts.UTF_8));
 		
 		HttpEntity reqEntity = MultipartEntityBuilder.create()
@@ -175,6 +176,43 @@ public class HttpAgent {
 		}
         System.out.println("resultList:" + resultList);
 		return resultList;
+	}
+	
+	/**
+	 * 提供向服务器发送pull请求的命令
+	 * @param command 命令类型pull
+	 * @param step 
+	 * @return
+	 */
+	public List<HttpResponceVO> pullReq(){
+		CloseableHttpClient httpClient = null;
+        CloseableHttpResponse response = null;
+        
+        httpClient = HttpClients.createDefault();
+        HttpPost httpPost = createHttpConnection(); // httpPost = "http://172.16.1.111:8080"
+        
+		StringBody command = new StringBody(NetworkUtils.PULL, ContentType.create("text/plain", Consts.UTF_8));
+		StringBody step = new StringBody("all", ContentType.create("text/plain", Consts.UTF_8));
+		
+		HttpEntity reqEntity = MultipartEntityBuilder.create()
+				.addPart(NetworkUtils.COMMAND, command)
+				.addPart(NetworkUtils.STEP, step)
+				.build();
+		httpPost.setEntity(reqEntity);
+		
+		try {
+        	// 发起请求 并返回请求的响应
+			response = httpClient.execute(httpPost);
+		} catch (ClientProtocolException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+		
 	}
 	
 	/**
