@@ -187,3 +187,9 @@ git commit -m "添加上跳转导航后，完成不同文件夹下四种图表�
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "添加pull按钮以及请求的发送，还没进行结果的处处理"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master
