@@ -193,3 +193,9 @@ git commit -m "添加pull按钮以及请求的发送，还没进行结果的处�
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "添加pull按钮，并成功和服务器端通信信"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

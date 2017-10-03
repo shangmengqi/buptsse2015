@@ -16,6 +16,8 @@ public class NetworkUtils {
 	public static final String STEP = "step";
 	public static final String PULL = "pull";
 	public static final String RESULT_SPLITER = "=========";
+	public static final String RESULT_SPLITER_FILENAME = "----------";
+	public static final String RESULT_SPLITER_NAME = ".";
 
 	public static String getMD5(byte[] source) {
 		String s = null;

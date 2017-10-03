@@ -375,9 +375,6 @@ public class CommitAction implements IObjectActionDelegate{
 				writeToFile(xml, file); // 将xml文件内容写入到该文件中
 				System.out.println("responce.fileName1111: " + responce.fileName);
 			} else { // 有冲突
-				
-				
-				
 				System.out.println("responce.fileContent: " + responce.fileContent);
 				System.out.println("responce.conflictList: " + responce.conflictList);
 				String xml = FromMidFile.fromMidFile(responce.fileContent, responce.conflictList);

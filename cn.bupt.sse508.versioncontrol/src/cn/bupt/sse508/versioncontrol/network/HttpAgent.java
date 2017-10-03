@@ -184,7 +184,7 @@ public class HttpAgent {
 	 * @param step 
 	 * @return
 	 */
-	public List<HttpResponceVO> pullReq(){
+	public String pullReq(){
 		CloseableHttpClient httpClient = null;
         CloseableHttpResponse response = null;
         
@@ -210,9 +210,26 @@ public class HttpAgent {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
 		
-		
+		// 获取响应对象
+        HttpEntity resEntity = response.getEntity();
+        int status = response.getStatusLine().getStatusCode();
+        if (status == 200) { // 成功返回，说明此文件发送成功
+        	String res = "Processing";
+			try {
+				res = EntityUtils.toString(resEntity, Charset.forName("UTF-8"));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+        	return res;
+		} else {
+
+		}        
+		return "";						
 	}
 	
 	/**
