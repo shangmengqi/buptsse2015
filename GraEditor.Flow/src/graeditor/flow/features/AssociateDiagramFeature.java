@@ -84,7 +84,7 @@ public class AssociateDiagramFeature extends AbstractCustomFeature{
 		}
 		
 		for (final Diagram d : allDiagrams) {
-//			System.out.println("currentDiagramName: " + currentDiagram.getName());
+			System.out.println("currentDiagramName: " + currentDiagram.getName());
 			currentDiagramName = currentDiagram.getName();
 			if (!EcoreUtil.equals(currentDiagram, d)) { // always filter out the														// current
 				ret.add(d);							

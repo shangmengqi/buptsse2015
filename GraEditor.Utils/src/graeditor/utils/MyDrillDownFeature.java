@@ -38,7 +38,7 @@ public class MyDrillDownFeature extends AbstractDrillDownFeature{
 				result = DiagramUtil.getDiagrams(project);
 			}
 		}
-		return result;//result·µ»Ø±à¼­Æ÷ÉÏÍ¬Ò»¸öÏîÄ¿ÏÂËùÓĞµÄdiagramÍ¼±íĞÅÏ¢£¬°üÀ¨Í¼±íÃû³Æ£¬²¢½«ÕâĞ©diagram´æÔÚÒ»¸öÊı×éÀï
+		return result;//resultï¿½ï¿½ï¿½Ø±à¼­ï¿½ï¿½ï¿½ï¿½Í¬Ò»ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½Ğµï¿½diagramÍ¼ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½Æ£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ©diagramï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	}
 	
 	/**
@@ -54,14 +54,12 @@ public class MyDrillDownFeature extends AbstractDrillDownFeature{
 
 		final Collection<Diagram> allDiagrams = getDiagrams();
 		for (final Diagram d : allDiagrams) {
-			final Diagram currentDiagram = getDiagram();//currentDiagramÎªµ±Ç°Òª½øĞĞÌø×ªµÄÍ¼±í
+			final Diagram currentDiagram = getDiagram();//currentDiagramÎªï¿½ï¿½Ç°Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½Í¼ï¿½ï¿½
 			if (!EcoreUtil.equals(currentDiagram, d)) { // always filter out the
 														// current
 				
 				d.getName();
-				System.out.println("d.getName: " + d.getName());
-				
-				
+				System.out.println("d.getName: " + d.getName());				
 				
 //					for (int j = 0; j < businessObjectsForPictogramElement.length; j++) {
 //						final Object currentBo = businessObjectsForPictogramElement[j];
@@ -91,7 +89,7 @@ public class MyDrillDownFeature extends AbstractDrillDownFeature{
 						final Object diagramBo = businessObjectsForDiagram[i];
 						System.out.println("diagramBo: " + diagramBo);
 					
-						//×Ö·û´®µÄ²ğ·Ö
+						//ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½
 						String string = diagramBo.toString();
 						System.out.println("diagramBoString: " + string);
 
@@ -109,11 +107,8 @@ public class MyDrillDownFeature extends AbstractDrillDownFeature{
 							System.out.println("diagramString : " + diagramString);
 							
 							
-							//DrillDownµÄÂß¼­ÊµÏÖ£¬½«º¬ÓĞ¸úµ±Ç°Í¼±íºÍÔªËØÏàµÈµÄÍ¼±íÌí¼Óµ½Êı×éÖĞ
+							//DrillDownï¿½ï¿½ï¿½ß¼ï¿½Êµï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¸ï¿½ï¿½ï¿½Ç°Í¼ï¿½ï¿½ï¿½Ôªï¿½ï¿½ï¿½ï¿½Èµï¿½Í¼ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 							if (currentDiagram.getName().equals(diagramString)) {
-								
-//								System.out.println("peGetLink : " + pe.getLink().getBusinessObjects());
-//								System.out.println("currentDiagramChildrenNumber : " + currentDiagram.getChildren().size());
 								for (int j = 0; j < currentDiagram.getChildren().size(); j++) {
 									if (currentDiagram.getChildren().get(j).equals(pe)) {
 										int currentObj = j + 1;
@@ -130,7 +125,6 @@ public class MyDrillDownFeature extends AbstractDrillDownFeature{
 					
 				}						
 			}
-//		}
 		return ret;
 	}
 

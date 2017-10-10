@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICustomContext;
 import org.eclipse.graphiti.mm.algorithms.impl.ImageImpl;
 import org.eclipse.graphiti.mm.algorithms.impl.TextImpl;
@@ -121,7 +122,7 @@ public class DiagramUtil {
 	
 		
 	
-	public static void changeText(ICustomContext context, PictogramElement element) {
+	public static void changeText(ICustomContext context, PictogramElement element, Diagram diagram) {		
 		Object obj = context.getInnerGraphicsAlgorithm();
 		String oldText = "";
 		TextImpl text = null;
@@ -142,6 +143,10 @@ public class DiagramUtil {
 			return;
 		}
 		text.setValue(newText);
+		if(newText != oldText){
+			NotifyChange.notifyChange(diagram);
+			
+		}
 	}
 	
 }

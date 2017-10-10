@@ -3,6 +3,7 @@ package graeditor.relation.features;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICustomContext;
 import org.eclipse.graphiti.features.custom.AbstractCustomFeature;
+import org.eclipse.graphiti.mm.pictograms.Diagram;
 
 import graeditor.utils.DiagramUtil;
 
@@ -29,7 +30,8 @@ public class CustomChangeTextFeature extends AbstractCustomFeature{
 
 	@Override
 	public void execute(ICustomContext context) {
-		DiagramUtil.changeText(context, context.getPictogramElements()[0]);
+		final Diagram currentDiagram = getDiagram();
+		DiagramUtil.changeText(context, context.getPictogramElements()[0], currentDiagram);
 	}
 
 }

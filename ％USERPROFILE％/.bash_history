@@ -199,3 +199,9 @@ git commit -m "添加pull按钮，并成功和服务器端通信信"
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "客户端拉取功能模块的初步完成"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

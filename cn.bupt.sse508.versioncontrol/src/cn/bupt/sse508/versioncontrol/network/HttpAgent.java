@@ -267,6 +267,7 @@ public class HttpAgent {
         		.addPart("fileName", new StringBody(fileName, ContentType.create("text/plain", Consts.UTF_8)))
         		.addPart("fileContent", new StringBody(midfile, ContentType.create("text/plain", Consts.UTF_8)))
         		.addPart(NetworkUtils.STEP, stepBody)
+//        		.addPart("filePath", new StringBody(filePath, ContentType.create("text/plain", Consts.UTF_8)))
         		.build();
         httpPost.setEntity(reqEntity);
         

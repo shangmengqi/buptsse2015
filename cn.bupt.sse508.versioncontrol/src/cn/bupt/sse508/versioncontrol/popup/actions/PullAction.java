@@ -50,31 +50,32 @@ public class PullAction implements IObjectActionDelegate{
     	String[] resultArr = resultString.split(NetworkUtils.RESULT_SPLITER);
     	int fileCount = resultArr.length - 1;
     	System.out.println("resultArr.length: " + fileCount);
-    	for(int i = 1; i < resultArr.length; i++){
-    		String fileNameAndContent = resultArr[i];
-    		String[] fileSpilt = fileNameAndContent.split(NetworkUtils.RESULT_SPLITER_FILENAME);
-    		fileName = fileSpilt[0];
+    	for(int i = 1; i < resultArr.length; i = i + 2){
+    		fileName = resultArr[i].trim();   		
+    		String fileContent = resultArr[i+1];
     		System.out.println("fileName: " +fileName );
+    		
+    		String[]  fileNameArr = fileName.split("\\.");
+    		String fileName1 = fileNameArr[0];
+    		System.out.println("fileName1: " + fileName1);
 
-    		//将拉取到的文件内容进行格式转换
-    		String fileContent = fileSpilt[1];
+    		//将拉取到的文件内容进行格式转换   		
     		String xml = FromMidFile.fromMidFile(fileContent, null);
     		System.out.println("Pull Req xml: " + xml);
     		
     		/**
     		 * 额外将拉取的文件存入本地一个临时文件夹下
     		 */
-//    		String fileContater = "E:/Git/diagrams/" + fileName;
-//    		System.out.println("fileName33333333: " + fileName);
-//    		System.out.println("fileContater: " + fileContater);
-//    		File file = new File(fileContater);
-//    		writeToFile(xml, file);
-//    		
+    		String fileContater = "E:/Git/diagrams/" + fileName;
+    		System.out.println("fileName33333333: " + fileName);
+    		System.out.println("fileContater: " + fileContater);
+    		File file = new File(fileContater);
+    		writeToFile(xml, file);
+    		
     		//遍历当前项目文件，将拉取到的内容重新写进相应路径的文件中
     		List<IFile> fileNameAndPathList = getDiagramFiles(ProjectUtil.getCurrentProject()); 
     		for(int a = 0; a < fileNameAndPathList.size(); a++){
     			System.out.println("fileNameAndPathList: " + fileNameAndPathList.get(a));
-
     			String filePath = fileNameAndPathList.get(a).toString();
     			String filePathTrue = filePath.substring(1, filePath.length());
     			String filePathTrue2 = "E:/Git/buptsse2015/runtime-EclipseApplication" + filePathTrue;
@@ -82,8 +83,7 @@ public class PullAction implements IObjectActionDelegate{
     			String[] filePathSpilt = filePath.split("/");
     			String fileNameSpilt = filePathSpilt[4];
     			System.out.println("fileNameSpilt: " + fileNameSpilt);
-    			
-    			
+    			   			
     			if(fileName.contains(fileNameSpilt)){
     				try {
 						fileNameAndPathList.get(a).delete(true, null);
