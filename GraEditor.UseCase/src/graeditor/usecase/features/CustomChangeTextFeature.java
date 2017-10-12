@@ -79,7 +79,7 @@ public class CustomChangeTextFeature extends AbstractCustomFeature{
 			return;
 		}
 		if(newText != oldText){
-			notifyChange(currentDiagram);
+			notifyChange(currentDiagram, element);
 			if (flag == 0) {
 				text.setValue(newText);
 			}else if (flag == 1) {
@@ -88,7 +88,7 @@ public class CustomChangeTextFeature extends AbstractCustomFeature{
 		}
 	}
 	
-	public void notifyChange(Diagram diagram){
+	public void notifyChange(Diagram diagram, PictogramElement element){
 		System.out.println("该节点发生修改");		
 		/*
 		 * 遍历该节点所在项目下所有图表文件,返回图表文件列表
@@ -109,6 +109,7 @@ public class CustomChangeTextFeature extends AbstractCustomFeature{
 			}
 		}
 		final Collection<Diagram> allDiagrams = result;
+//		final PictogramElement pe = context.getPictogramElements()[0]; //获取当前被选择的元素
 		
 		for (final Diagram d : allDiagrams) {
 			String diagramName = diagram.getName();
@@ -138,6 +139,11 @@ public class CustomChangeTextFeature extends AbstractCustomFeature{
 						System.out.println("diagramString : " + diagramString);
 						
 						if (diagram.getName().equals(diagramString)) {
+							for (int j = 0; j < diagram.getChildren().size(); j++) {
+								if (diagram.getChildren().get(j).equals(element)) {
+									int currentObj = j + 1;
+									System.out.println("currentBObject : " + currentObj);
+									if (diagramObj == currentObj) {
 							System.out.println("find the link diagram is " + d.getName());
 							
 							// 构造弹出提示的对话框，提示用户选择删除这个节点或者是保留当前状态
@@ -156,6 +162,9 @@ public class CustomChangeTextFeature extends AbstractCustomFeature{
 							} else if (s == 1){	
 								flag = s;
 								System.out.println("放弃修改,不打开关联图表文件");
+							}
+									}
+								}
 							}
 						}
 					}

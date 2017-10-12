@@ -205,3 +205,9 @@ git commit -m "客户端拉取功能模块的初步完成"
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "use图表的节点修改变更提示初步完成成"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

@@ -3,9 +3,11 @@ package graeditor.usecase.provider;
 import org.eclipse.graphiti.dt.IDiagramTypeProvider;
 import org.eclipse.graphiti.features.IAddFeature;
 import org.eclipse.graphiti.features.ICreateConnectionFeature;
+import org.eclipse.graphiti.features.IDeleteFeature;
 import org.eclipse.graphiti.features.context.IAddConnectionContext;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.context.ICustomContext;
+import org.eclipse.graphiti.features.context.IDeleteContext;
 import org.eclipse.graphiti.features.custom.ICustomFeature;
 import org.eclipse.graphiti.pattern.DefaultFeatureProviderWithPatterns;
 import org.eclipse.graphiti.ui.features.DefaultFeatureProvider;
@@ -15,6 +17,7 @@ import graeditor.usecase.features.AssociateDiagramFeature;
 import graeditor.usecase.features.CreateConnectionFeature;
 import graeditor.usecase.features.CustomChangeTextFeature;
 import graeditor.usecase.features.CustomDeleteFeature;
+import graeditor.usecase.features.DeleteFeatureNotify;
 import graeditor.usecase.features.DrillDownFeature;
 import graeditor.usecase.features.SolveConflictFeature;
 import graeditor.usecase.pattern.UseCasePattern;
@@ -44,6 +47,10 @@ public class UseCaseDiagramFeatureProvider extends DefaultFeatureProviderWithPat
 			return new AddConnectionFeature(this);
 		}
 		return super.getAddFeature(context);
+	}
+	
+	public IDeleteFeature getDeleteFeature(IDeleteContext context){
+		return new DeleteFeatureNotify(this);
 	}
 
 	@Override

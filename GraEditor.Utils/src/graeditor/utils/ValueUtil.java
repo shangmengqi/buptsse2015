@@ -23,5 +23,7 @@ public class ValueUtil {
 	public static final String ALTERNATIVE_TEXT = "alternative_text";
 	
 	public static final String TITLE_NODE_WITH_CONFLICT = "This node has conflict with other version";
-	public static final String TITLE_CONFLICT = "Message";
+	public static final String TITLE_CONFLICT = "Modify Message";
+	public static final String TITLE_CONFLICT_DELETE = "Delete Message";
+	public static final String ASSOCIATE_DIAGRAM_DELETE = "Delete Resoueces";
 }

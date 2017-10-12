@@ -28,6 +28,10 @@ import org.eclipse.graphiti.mm.pictograms.Shape;
 import org.eclipse.graphiti.ui.editor.DiagramEditor;
 import org.eclipse.graphiti.ui.internal.services.GraphitiUiInternal;
 import org.eclipse.graphiti.ui.services.GraphitiUi;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.ui.ISelectionService;
+import org.eclipse.ui.internal.Workbench;
 
 import xml.utils.constant;
 
@@ -119,6 +123,24 @@ public class DiagramUtil {
 	public static String getDiagramEditorId(Diagram diagram) {
 		return DiagramEditor.DIAGRAM_EDITOR_ID;
 	}
+	
+	
+	public static IProject getCurrentProject(){    
+        ISelectionService selectionService =     
+            Workbench.getInstance().getActiveWorkbenchWindow().getSelectionService();    
+    
+        ISelection selection = selectionService.getSelection();    
+    
+        IProject project = null;    
+        if(selection instanceof IStructuredSelection) {    
+            Object element = ((IStructuredSelection)selection).getFirstElement();    
+    
+            if (element instanceof IResource) {    
+                project= ((IResource)element).getProject();    
+            }    
+        }     
+        return project;   // 获得当前文件所在的项目名 
+    }  
 	
 		
 	
