@@ -26,5 +26,14 @@ Bundle-ClassPath: lib/commons-codec-1.9.jar,
  lib/org.eclipse.jdt.ui_3.7.1.r371_v20110824-0800.jar,
  .,
  lib/dom4j-1.6.1.jar,
- lib/jaxen-1.1-beta-6.jar
-Export-Package: cn.bupt.sse508.versioncontrol.util
+ lib/jaxen-1.1-beta-6.jar,
+ lib/
+Export-Package: cn.bupt.sse508.versioncontrol,
+ cn.bupt.sse508.versioncontrol.util,
+ com.google.gson,
+ com.google.gson.annotations,
+ com.google.gson.internal,
+ com.google.gson.internal.bind,
+ com.google.gson.internal.bind.util,
+ com.google.gson.reflect,
+ com.google.gson.stream

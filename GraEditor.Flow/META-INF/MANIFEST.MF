@@ -13,6 +13,16 @@ Require-Bundle: org.eclipse.graphiti;bundle-version="0.12.2",
  org.eclipse.graphiti.pattern;bundle-version="0.12.2",
  org.eclipse.core.runtime;bundle-version="3.11.1",
  org.eclipse.ui.views.properties.tabbed;bundle-version="3.6.100"
-Import-Package: org.eclipse.draw2d,
+Import-Package: cn.bupt.sse508.versioncontrol.util,
+ org.eclipse.draw2d,
  org.eclipse.graphiti.pattern;version="0.12.2",
  org.eclipse.graphiti.pattern.id
+Bundle-ClassPath: lib/gson-2.8.0.jar,
+ .
+Export-Package: com.google.gson,
+ com.google.gson.annotations,
+ com.google.gson.internal,
+ com.google.gson.internal.bind,
+ com.google.gson.internal.bind.util,
+ com.google.gson.reflect,
+ com.google.gson.stream

@@ -15,6 +15,7 @@ import graeditor.flow.features.CreateConnectionFeature;
 import graeditor.flow.features.CreateConnectionFeature.ConnectionType;
 import graeditor.flow.features.CustomBackAssociateDiagramFeature;
 import graeditor.flow.features.CustomChangeTextFeature;
+import graeditor.flow.features.CustomCompareLocalFeature;
 import graeditor.flow.features.FlowDrillDownFeature;
 import graeditor.flow.pattern.ContentPattern;
 import graeditor.flow.pattern.EndTagPattern;
@@ -71,7 +72,8 @@ public class FlowFeatureProvider extends DefaultFeatureProviderWithPatterns{
 			new FlowDrillDownFeature(this),
 			new AssociateDiagramFeature(this),
 			new CustomBackAssociateDiagramFeature(this),
-			new CustomDeleteFeature(this)
+			new CustomDeleteFeature(this),
+			new CustomCompareLocalFeature(this)
 			};
 	}
 
