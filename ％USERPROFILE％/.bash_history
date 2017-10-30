@@ -211,3 +211,9 @@ git commit -m "use图表的节点修改变更提示初步完成成"
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "将用户正在编辑的图表文件和服务器端最新保存的该图表文件进行比较，生成描述文件和合并了的diagram1文件的json格式"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

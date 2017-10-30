@@ -1,10 +1,12 @@
 package cn.bupt.sse508.versioncontrol.util;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import midfile.json.graphiti.FromMidFileAboutMerge;
 import midfile.json.graphiti.ToMidFile;
 
 public class CompareLocal {
@@ -261,25 +264,28 @@ public class CompareLocal {
 				// 根据节点id拿到diagram1中该节点的json对象
 				JsonObject preNode1Object= getNode1ById(preNodeIdString);
 				JsonObject nextNode1Object= getNode1ById(nextNodeIdString);
+				System.out.println("preNode1Object: " + preNode1Object);
 				System.out.println("nextNode1Object: " + nextNode1Object);
 
 				// 在preNode1Object的anchor中的outgoing中添加nodeDeleteAnchorIncomming
 				String preNode1OutgoingString = preNode1Object.get("anchors").getAsJsonObject().get("@outgoingConnections").getAsString();				
 				preNode1Object.get("anchors").getAsJsonObject().remove("@outgoingConnections");
 				System.out.println("preNode1OutgoingString: " + preNode1OutgoingString);
-				String newNode1OutgoingString  = preNode1OutgoingString + " " + nodeDeleteAnchorIncomming;
+				String newNode1OutgoingString  = preNode1OutgoingString + nodeDeleteAnchorIncomming;
 				String preValueString = gson.toJson(newNode1OutgoingString);
 				JsonElement preElement = parse.parse(preValueString);
 				preNode1Object.get("anchors").getAsJsonObject().add("@outgoingConnections", preElement);
+				System.out.println("11111111111: " + preNode1Object.get("anchors").getAsJsonObject().toString());
 				
 				// 在nextNode1Object的anchor中的incomming中添加nodeDeleteAnchorOutgoing
 				String nextNode1IncomingString = nextNode1Object.get("anchors").getAsJsonObject().get("@incomingConnections").getAsString();
 				System.out.println("nextNode1IncomingString: " + nextNode1IncomingString);
 				nextNode1Object.get("anchors").getAsJsonObject().remove("@incomingConnections");
-				String newNode1Incoming = nextNode1IncomingString + " " + nodeDeleteAnchorOutgoing;
+				String newNode1Incoming = nextNode1IncomingString + nodeDeleteAnchorOutgoing;
 				String nextValueString = gson.toJson(newNode1Incoming);
 				JsonElement nextElement = parse.parse(nextValueString);
-				nextNode1Object.add("@incomingConnections", nextElement);
+				nextNode1Object.get("anchors").getAsJsonObject().add("@incomingConnections", nextElement);
+				System.out.println("11111111111: " + nextNode1Object.get("anchors").getAsJsonObject().toString());
 				System.out.println(preNode1Object.toString());
 				System.out.println(nextNode1Object.toString());
 			}else {
@@ -296,14 +302,34 @@ public class CompareLocal {
 		/**
 		 *  在用户当前编辑的文件diagram1Obj上根据描述文件mergeObject来进行解析和展示工作
 		 */
+//		FromMidFileAboutMerge.fromMidFileAboutMerge(diagram1Obj.toString(), mergeObject);
+		String newDiagramXml = FromMidFileAboutMerge.fromMidFileAboutMerge(diagram1Obj.toString(), mergeObject);
+		
+		/**
+		 * 用新生成的新diagram1替代原有的diagram1图表文件
+		 */
+		File file = new File("E:/Git/buptsse2015/runtime-EclipseApplication/test/src/flow/newFlow.diagram"); // 文件名字
+		writeToFile(newDiagramXml, file);
+
 	}
 	
 	/**
-	 * 将最后的json字符串写入文件
-	 * @param fileContent
+	 * 将字符串内容写入到某个文件中
+	 * @param content String，字符串内容
+	 * @param file File，文件对象
 	 */
-	public void writeToFile(String fileContent){
-		
+	private static void writeToFile(String content, File file) {
+		try {
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+			FileWriter fw = new FileWriter(file.getAbsoluteFile());
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(content);
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**

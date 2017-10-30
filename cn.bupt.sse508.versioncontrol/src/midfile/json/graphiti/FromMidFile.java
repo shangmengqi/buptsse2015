@@ -99,6 +99,7 @@ public class FromMidFile {
 					diagram.remove("link"); // 删掉
 				}else {
 					// 不为空的情况，将其转换为xml文件 
+					
 				}
 			}
 		}
