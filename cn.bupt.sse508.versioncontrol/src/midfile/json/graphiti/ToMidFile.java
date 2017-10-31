@@ -29,6 +29,7 @@ public class ToMidFile {
 		String xmlSrc = Utils.readFileByLines(path); // xml文件内容
 		xmlSrc = insertBOTag(xmlSrc); // 添加tag,获取BUSINESSOBJECT,xmlSrc=添加了tag标签的xml字符串文件
 		JSONObject xmlJSONObj = XML.toJSONObject(xmlSrc); // xml串转换成为json对象
+		System.out.println("111111111111111111111111111: " + xmlJSONObj.toString());
 		
 		
 		JSONObject xmi = xmlJSONObj.getJSONObject(ValueUtil.XMI); //XMI="xmi:XMI",得到key为xmi:XMI的value值

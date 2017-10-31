@@ -217,3 +217,9 @@ git commit -m "将用户正在编辑的图表文件和服务器端最新保存�
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "完成json格式转xml格式以及合并处理与展示的预处理"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

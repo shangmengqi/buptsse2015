@@ -250,8 +250,8 @@ public class HttpAgent {
         String midfile = ToMidFile.toMidFile(filePath);  // 将上传的文件先转换成中间文件
         System.out.println("filePath: " + filePath);
         System.out.println("midfile: " + midfile);
-//        String midFileName = filePath.substring(0, filePath.lastIndexOf("/")) + "/tmp" + filePath.substring(filePath.lastIndexOf("/"), filePath.length());
-//        midFileName = writeToFile(midfile, midFileName);
+        String midFileName = filePath.substring(0, filePath.lastIndexOf("/")) + "/tmp" + filePath.substring(filePath.lastIndexOf("/"), filePath.length());
+        midFileName = writeToFile(midfile, midFileName);
 //        FileBody bin = new FileBody(new File(midFileName));
         
 //        String midfile = ToMidFile.toMidFile(filePath);

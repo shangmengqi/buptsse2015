@@ -38,6 +38,7 @@ public class CustomCompareLocalFeature extends AbstractCustomFeature{
 		
 		System.out.println(currentDiagramPath);
 		
+//		ToMidFile.toMidFile(currentDiagramPath);
 		CompareLocal.compareLocal(currentDiagramPath, currentDiagramName);
 	}
 

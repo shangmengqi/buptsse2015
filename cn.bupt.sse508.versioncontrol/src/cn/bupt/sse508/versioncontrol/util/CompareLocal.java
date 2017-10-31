@@ -251,23 +251,16 @@ public class CompareLocal {
 				 *  处理与该节点相关联的其他节点的anchor
 				 *  拿到该节点的出连线和入连线
 				 */
+				
 				JsonObject nodeDeleteAnchor = (JsonObject) node0Array.get(j).getAsJsonObject().get("anchors");
 				String nodeDeleteAnchorIncomming = nodeDeleteAnchor.get("@incomingConnections").getAsString();
 				String nodeDeleteAnchorOutgoing = nodeDeleteAnchor.get("@outgoingConnections").getAsString();
 				System.out.println("nodeDeleteAnchorIncomming: " + nodeDeleteAnchorIncomming);
 				System.out.println("nodeDeleteAnchorOutgoing: " + nodeDeleteAnchorOutgoing);
 				
+				// 处理前节点的连线问题
 				String preNodeIdString = nodeDeleteAnchorIncomming.split("#")[0];
-				String nextNodeIdString = nodeDeleteAnchorOutgoing.split("#")[1];
-				System.out.println("nextNodeIdString: " + nextNodeIdString);
-				
-				// 根据节点id拿到diagram1中该节点的json对象
 				JsonObject preNode1Object= getNode1ById(preNodeIdString);
-				JsonObject nextNode1Object= getNode1ById(nextNodeIdString);
-				System.out.println("preNode1Object: " + preNode1Object);
-				System.out.println("nextNode1Object: " + nextNode1Object);
-
-				// 在preNode1Object的anchor中的outgoing中添加nodeDeleteAnchorIncomming
 				String preNode1OutgoingString = preNode1Object.get("anchors").getAsJsonObject().get("@outgoingConnections").getAsString();				
 				preNode1Object.get("anchors").getAsJsonObject().remove("@outgoingConnections");
 				System.out.println("preNode1OutgoingString: " + preNode1OutgoingString);
@@ -275,19 +268,61 @@ public class CompareLocal {
 				String preValueString = gson.toJson(newNode1OutgoingString);
 				JsonElement preElement = parse.parse(preValueString);
 				preNode1Object.get("anchors").getAsJsonObject().add("@outgoingConnections", preElement);
-				System.out.println("11111111111: " + preNode1Object.get("anchors").getAsJsonObject().toString());
 				
-				// 在nextNode1Object的anchor中的incomming中添加nodeDeleteAnchorOutgoing
-				String nextNode1IncomingString = nextNode1Object.get("anchors").getAsJsonObject().get("@incomingConnections").getAsString();
-				System.out.println("nextNode1IncomingString: " + nextNode1IncomingString);
-				nextNode1Object.get("anchors").getAsJsonObject().remove("@incomingConnections");
-				String newNode1Incoming = nextNode1IncomingString + nodeDeleteAnchorOutgoing;
-				String nextValueString = gson.toJson(newNode1Incoming);
-				JsonElement nextElement = parse.parse(nextValueString);
-				nextNode1Object.get("anchors").getAsJsonObject().add("@incomingConnections", nextElement);
-				System.out.println("11111111111: " + nextNode1Object.get("anchors").getAsJsonObject().toString());
-				System.out.println(preNode1Object.toString());
-				System.out.println(nextNode1Object.toString());
+				// 处理后节点的问题
+				String[] nextNodeIdAllStrings = nodeDeleteAnchorOutgoing.split(" ");
+				System.out.println("1111: " + nextNodeIdAllStrings.length);
+				for (int k = 0; k < nextNodeIdAllStrings.length; k++) {
+					String nextNodeIdString = nextNodeIdAllStrings[k].split("#")[1];					
+					JsonObject nextNode1Object = getNode1ById(nextNodeIdString);
+					System.out.println("222: " + nextNodeIdString);
+					String nextNode1IncomingString = nextNode1Object.get("anchors").getAsJsonObject().get("@incomingConnections").getAsString();
+					nextNode1Object.get("anchors").getAsJsonObject().remove("@incomingConnections");
+					String newNode1Incoming = nextNode1IncomingString + nextNodeIdAllStrings[k] + " ";
+					System.out.println("333: " + newNode1Incoming);
+					String nextValueString = gson.toJson(newNode1Incoming);
+					JsonElement nextElement = parse.parse(nextValueString);
+					nextNode1Object.get("anchors").getAsJsonObject().add("@incomingConnections", nextElement);
+				}
+				
+				
+//				JsonObject nodeDeleteAnchor = (JsonObject) node0Array.get(j).getAsJsonObject().get("anchors");
+//				String nodeDeleteAnchorIncomming = nodeDeleteAnchor.get("@incomingConnections").getAsString();
+//				String nodeDeleteAnchorOutgoing = nodeDeleteAnchor.get("@outgoingConnections").getAsString();
+//				System.out.println("nodeDeleteAnchorIncomming: " + nodeDeleteAnchorIncomming);
+//				System.out.println("nodeDeleteAnchorOutgoing: " + nodeDeleteAnchorOutgoing);
+//				
+//				String preNodeIdString = nodeDeleteAnchorIncomming.split("#")[0];
+//				String nextNodeIdString = nodeDeleteAnchorOutgoing.split("#")[1];
+//				System.out.println("nextNodeIdString: " + nextNodeIdString);
+//				
+//				// 根据节点id拿到diagram1中该节点的json对象
+//				JsonObject preNode1Object= getNode1ById(preNodeIdString);
+//				JsonObject nextNode1Object= getNode1ById(nextNodeIdString);
+//				System.out.println("preNode1Object: " + preNode1Object);
+//				System.out.println("nextNode1Object: " + nextNode1Object);
+//
+//				// 在preNode1Object的anchor中的outgoing中添加nodeDeleteAnchorIncomming
+//				String preNode1OutgoingString = preNode1Object.get("anchors").getAsJsonObject().get("@outgoingConnections").getAsString();				
+//				preNode1Object.get("anchors").getAsJsonObject().remove("@outgoingConnections");
+//				System.out.println("preNode1OutgoingString: " + preNode1OutgoingString);
+//				String newNode1OutgoingString  = preNode1OutgoingString + nodeDeleteAnchorIncomming;
+//				String preValueString = gson.toJson(newNode1OutgoingString);
+//				JsonElement preElement = parse.parse(preValueString);
+//				preNode1Object.get("anchors").getAsJsonObject().add("@outgoingConnections", preElement);
+//				System.out.println("11111111111: " + preNode1Object.get("anchors").getAsJsonObject().toString());
+//				
+//				// 在nextNode1Object的anchor中的incomming中添加nodeDeleteAnchorOutgoing
+//				String nextNode1IncomingString = nextNode1Object.get("anchors").getAsJsonObject().get("@incomingConnections").getAsString();
+//				System.out.println("nextNode1IncomingString: " + nextNode1IncomingString);
+//				nextNode1Object.get("anchors").getAsJsonObject().remove("@incomingConnections");
+//				String newNode1Incoming = nextNode1IncomingString + nodeDeleteAnchorOutgoing;
+//				String nextValueString = gson.toJson(newNode1Incoming);
+//				JsonElement nextElement = parse.parse(nextValueString);
+//				nextNode1Object.get("anchors").getAsJsonObject().add("@incomingConnections", nextElement);
+//				System.out.println("11111111111: " + nextNode1Object.get("anchors").getAsJsonObject().toString());
+//				System.out.println(preNode1Object.toString());
+//				System.out.println(nextNode1Object.toString());
 			}else {
 				// 已经对相同节点做过了处理，此处无需再做处理
 			}
@@ -304,6 +339,9 @@ public class CompareLocal {
 		 */
 //		FromMidFileAboutMerge.fromMidFileAboutMerge(diagram1Obj.toString(), mergeObject);
 		String newDiagramXml = FromMidFileAboutMerge.fromMidFileAboutMerge(diagram1Obj.toString(), mergeObject);
+		merge_nodeArray = new JsonArray();
+		merge_connectionArray = new JsonArray();
+		merge_naviArray = new JsonArray();
 		
 		/**
 		 * 用新生成的新diagram1替代原有的diagram1图表文件
