@@ -50,6 +50,29 @@ public class CompareLocal {
 		JsonObject diagram1Obj= (JsonObject) parse.parse(diagram1Str);
 		
 		/**
+		 * 为color添加黑色、红色、绿色
+		 */
+		JsonArray colorArray = diagram1Obj.get("description").getAsJsonObject().get("-diagram").getAsJsonObject().get("colors").getAsJsonArray();
+				
+		Map mapColor1 = new HashMap();
+		mapColor1.put("@blue", 0);
+		mapColor1.put("@green", 0);
+		mapColor1.put("@red", 255);
+		String mapColorString1 = gson.toJson(mapColor1);
+		JsonElement mapColorElement1 = parse.parse(mapColorString1);
+		colorArray.add(mapColorElement1);
+		
+		Map mapColor2 = new HashMap();
+		mapColor2.put("@blue", 0);
+		mapColor2.put("@green", 255);
+		mapColor2.put("@red", 0);
+		String mapColorString2 = gson.toJson(mapColor2);
+		JsonElement mapColorElement2 = parse.parse(mapColorString2);
+		colorArray.add(mapColorElement2);
+		System.out.println(colorArray.toString());
+
+				
+		/**
 		 * 开始处理跳转
 		 */
 		System.out.println("\n-------------------");
@@ -286,43 +309,7 @@ public class CompareLocal {
 				}
 				
 				
-//				JsonObject nodeDeleteAnchor = (JsonObject) node0Array.get(j).getAsJsonObject().get("anchors");
-//				String nodeDeleteAnchorIncomming = nodeDeleteAnchor.get("@incomingConnections").getAsString();
-//				String nodeDeleteAnchorOutgoing = nodeDeleteAnchor.get("@outgoingConnections").getAsString();
-//				System.out.println("nodeDeleteAnchorIncomming: " + nodeDeleteAnchorIncomming);
-//				System.out.println("nodeDeleteAnchorOutgoing: " + nodeDeleteAnchorOutgoing);
 //				
-//				String preNodeIdString = nodeDeleteAnchorIncomming.split("#")[0];
-//				String nextNodeIdString = nodeDeleteAnchorOutgoing.split("#")[1];
-//				System.out.println("nextNodeIdString: " + nextNodeIdString);
-//				
-//				// 根据节点id拿到diagram1中该节点的json对象
-//				JsonObject preNode1Object= getNode1ById(preNodeIdString);
-//				JsonObject nextNode1Object= getNode1ById(nextNodeIdString);
-//				System.out.println("preNode1Object: " + preNode1Object);
-//				System.out.println("nextNode1Object: " + nextNode1Object);
-//
-//				// 在preNode1Object的anchor中的outgoing中添加nodeDeleteAnchorIncomming
-//				String preNode1OutgoingString = preNode1Object.get("anchors").getAsJsonObject().get("@outgoingConnections").getAsString();				
-//				preNode1Object.get("anchors").getAsJsonObject().remove("@outgoingConnections");
-//				System.out.println("preNode1OutgoingString: " + preNode1OutgoingString);
-//				String newNode1OutgoingString  = preNode1OutgoingString + nodeDeleteAnchorIncomming;
-//				String preValueString = gson.toJson(newNode1OutgoingString);
-//				JsonElement preElement = parse.parse(preValueString);
-//				preNode1Object.get("anchors").getAsJsonObject().add("@outgoingConnections", preElement);
-//				System.out.println("11111111111: " + preNode1Object.get("anchors").getAsJsonObject().toString());
-//				
-//				// 在nextNode1Object的anchor中的incomming中添加nodeDeleteAnchorOutgoing
-//				String nextNode1IncomingString = nextNode1Object.get("anchors").getAsJsonObject().get("@incomingConnections").getAsString();
-//				System.out.println("nextNode1IncomingString: " + nextNode1IncomingString);
-//				nextNode1Object.get("anchors").getAsJsonObject().remove("@incomingConnections");
-//				String newNode1Incoming = nextNode1IncomingString + nodeDeleteAnchorOutgoing;
-//				String nextValueString = gson.toJson(newNode1Incoming);
-//				JsonElement nextElement = parse.parse(nextValueString);
-//				nextNode1Object.get("anchors").getAsJsonObject().add("@incomingConnections", nextElement);
-//				System.out.println("11111111111: " + nextNode1Object.get("anchors").getAsJsonObject().toString());
-//				System.out.println(preNode1Object.toString());
-//				System.out.println(nextNode1Object.toString());
 			}else {
 				// 已经对相同节点做过了处理，此处无需再做处理
 			}

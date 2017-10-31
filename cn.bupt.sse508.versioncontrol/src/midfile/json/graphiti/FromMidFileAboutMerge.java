@@ -275,7 +275,15 @@ public class FromMidFileAboutMerge {
 						infoObject.put("@value", "modify");
 						propertiesArray.put(infoObject);
 						
-						// 更换图形颜色，边框变为绿色
+						// 将合并的另一个文字信息存入property中
+						
+						JSONObject textObject = node.optJSONObject("children");
+						if (textObject != null) {
+							System.out.println("777777777777777777777777: " + textObject.toString());
+						}
+						
+						
+						// 更换图形颜色，字体颜色变为白色
 						System.out.println("更换图形颜色，边框变为绿色");
 						JSONObject graphicsAlgorithm = node.optJSONObject("graphicsAlgorithm");	
 						String foreground = graphicsAlgorithm.optString("@foreground");
@@ -283,6 +291,9 @@ public class FromMidFileAboutMerge {
 						new_foreground = foreground.substring(0, 11) + "6";
 						graphicsAlgorithm.remove("@foreground");
 						graphicsAlgorithm.accumulate("@foreground", new_foreground);
+						
+						
+						
 					}else{
 						JSONObject infoObject = new JSONObject();
 						JSONArray propertiesArray = node.optJSONArray("properties");
