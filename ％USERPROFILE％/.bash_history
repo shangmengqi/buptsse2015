@@ -223,3 +223,9 @@ git commit -m "完成json格式转xml格式以及合并处理与展示的预处�
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "解决在展示合并图表时需手动添加颜色的情况"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

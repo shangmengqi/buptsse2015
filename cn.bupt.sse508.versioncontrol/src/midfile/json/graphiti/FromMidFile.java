@@ -546,7 +546,7 @@ public class FromMidFile {
 	 * @param layer 层级信息
 	 * @param connections 连线
 	 */
-	public static void processNode(JSONObject node, String layer, Object connections) {
+	public static void processNode(JSONObject node, String layer, Object connections) { // node为childList列表中的某一个节点对象
 		// 需要判断这个节点是否是一个node，或者是一个text或polyline
 		if (!node.has("@shape_id")) {
 			return;
@@ -554,7 +554,7 @@ public class FromMidFile {
 			String id = node.optString("@shape_id");
 			allNodeMap.put(id, allNodeList.size());
 		}
-		allNodeList.add(node);
+		allNodeList.add(node); // allNodeList为所有节点的数组，存储的是含有“@shape_id”的真正节点对象
 		
 		// 将ext中的text和polyline放入子children中
 		if (node.has("ext")) {

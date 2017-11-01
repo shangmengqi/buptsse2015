@@ -267,6 +267,7 @@ public class FromMidFileAboutMerge {
 						graphicsAlgorithm.remove("@foreground");
 						graphicsAlgorithm.accumulate("@foreground", new_foreground);
 						System.out.println("new_foreground: "  + new_foreground);
+
 						
 					}else if (action.contains("modify")) {
 						JSONObject infoObject = new JSONObject();
@@ -276,23 +277,28 @@ public class FromMidFileAboutMerge {
 						propertiesArray.put(infoObject);
 						
 						// 将合并的另一个文字信息存入property中
+						String alternative_text = mergeInfoObject.get("text").getAsString();
+						JSONObject alternative = new JSONObject();
+						alternative.put("@key", ValueUtil.ALTERNATIVE_TEXT);
+						alternative.put("@value", alternative_text);
+						propertiesArray.put(alternative);
 						
-						JSONObject textObject = node.optJSONObject("children");
-						if (textObject != null) {
-							System.out.println("777777777777777777777777: " + textObject.toString());
+						// 更换图形字体颜色，字体颜色变为白色
+						System.out.println("更换图形字体颜色，字体颜色变为白色");
+						if (node.has("children")) {
+							System.out.println("7777777777777777 this node has text");
+							JSONArray textArray = node.optJSONArray("children");
+							System.out.println("textArray: " + textArray.toString());
+							String textForeground = textArray.getJSONObject(0).getJSONObject("graphicsAlgorithm").getString("@foreground");
+							System.out.println("textForeground: " + textForeground);
+							
+							String new_foreground;
+							new_foreground = textForeground.substring(0, 11) + "1";
+							textArray.getJSONObject(0).getJSONObject("graphicsAlgorithm").remove("@foreground");
+							textArray.getJSONObject(0).getJSONObject("graphicsAlgorithm").accumulate("@foreground", new_foreground);
 						}
 						
-						
-						// 更换图形颜色，字体颜色变为白色
-						System.out.println("更换图形颜色，边框变为绿色");
-						JSONObject graphicsAlgorithm = node.optJSONObject("graphicsAlgorithm");	
-						String foreground = graphicsAlgorithm.optString("@foreground");
-						String new_foreground;
-						new_foreground = foreground.substring(0, 11) + "6";
-						graphicsAlgorithm.remove("@foreground");
-						graphicsAlgorithm.accumulate("@foreground", new_foreground);
-						
-						
+						System.out.println("node: " + node.toString());
 						
 					}else{
 						JSONObject infoObject = new JSONObject();
