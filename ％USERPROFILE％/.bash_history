@@ -229,3 +229,8 @@ git commit -m "解决在展示合并图表时需手动添加颜色的情况"
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "添加节点中text值发生修改时的字体颜色变化"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
