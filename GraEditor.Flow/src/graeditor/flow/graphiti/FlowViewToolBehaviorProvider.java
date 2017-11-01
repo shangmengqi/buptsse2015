@@ -5,10 +5,14 @@ import org.eclipse.graphiti.dt.IDiagramTypeProvider;
 import org.eclipse.graphiti.features.context.ICustomContext;
 import org.eclipse.graphiti.features.custom.ICustomFeature;
 import org.eclipse.graphiti.mm.Property;
+import org.eclipse.graphiti.mm.algorithms.GraphicsAlgorithm;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import org.eclipse.graphiti.tb.ContextMenuEntry;
 import org.eclipse.graphiti.tb.DefaultToolBehaviorProvider;
 import org.eclipse.graphiti.tb.IContextMenuEntry;
+
+import com.graeditor.flow_model.Flow;
+import com.graeditor.flow_model.FlowModule;
 
 import graeditor.flow.features.CustomDeleteFeature;
 
@@ -21,6 +25,32 @@ public class FlowViewToolBehaviorProvider extends DefaultToolBehaviorProvider{
 	public FlowViewToolBehaviorProvider(IDiagramTypeProvider diagramTypeProvider) {
 		super(diagramTypeProvider);
 	}
+	
+	@Override
+	public Object getToolTip(GraphicsAlgorithm ga) {
+		PictogramElement pe = ga.getPictogramElement();
+	    Object bo = getFeatureProvider().getBusinessObjectForPictogramElement(pe);
+	    
+	 // 拿出该节点中所有的properties,并判断该节点是新添加的节点还是用户删除的节点
+	    EList<Property> propertiesList = pe.getProperties(); 
+	    for (int i = 0; i < propertiesList.size(); i++) {
+			String valueString = propertiesList.get(i).getValue();
+			String keyString = propertiesList.get(i).getKey();
+			if (valueString.contains("delete")) {
+				return "this is a delete node";
+			}else if (valueString.contains("add")) {
+				return "this is a add node";
+			}
+			
+			if (keyString.contains("alternative_text")) {				
+				return "this node has original value is " + valueString;
+			}
+
+		}
+        return null;         
+	}
+	
+	
 	
 	@Override
 	public IContextMenuEntry[] getContextMenu(ICustomContext context) {
