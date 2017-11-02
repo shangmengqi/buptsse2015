@@ -21,4 +21,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="VerticalLineModule" eSuperTypes="#//FlowModule"/>
   <eClassifiers xsi:type="ecore:EClass" name="HorizontalLineMoudle" eSuperTypes="#//FlowModule"/>
   <eClassifiers xsi:type="ecore:EClass" name="TitleMoudle" eSuperTypes="#//FlowModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PreLogInTagModule" eSuperTypes="#//FlowModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlTagModule" eSuperTypes="#//FlowModule"/>
 </ecore:EPackage>

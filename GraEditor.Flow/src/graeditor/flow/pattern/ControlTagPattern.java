@@ -1,11 +1,11 @@
 package graeditor.flow.pattern;
 
-import org.eclipse.graphiti.examples.common.ExampleUtil;
 import org.eclipse.graphiti.features.IReason;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.context.ICreateContext;
 import org.eclipse.graphiti.features.impl.Reason;
 import org.eclipse.graphiti.mm.algorithms.GraphicsAlgorithm;
+import org.eclipse.graphiti.mm.algorithms.Image;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
@@ -17,74 +17,72 @@ import org.eclipse.graphiti.services.Graphiti;
 import org.eclipse.graphiti.services.IGaService;
 import org.eclipse.graphiti.services.IPeCreateService;
 
+import com.graeditor.flow_model.ControlTagModule;
 import com.graeditor.flow_model.EndTagModule;
 import com.graeditor.flow_model.Flow_modelFactory;
-import com.graeditor.flow_model.StartTagModule;
+import com.graeditor.flow_model.PreLogInTagModule;
 
+import graeditor.flow.graphiti.FlowImageProvider;
 import graeditor.utils.GraPropertyUtil;
 import graeditor.utils.IDGenerator;
 
-public class EndTagPattern extends IdPattern implements IPattern{
+public class ControlTagPattern extends IdPattern implements IPattern{
 	
-	public EndTagPattern() {
+	public ControlTagPattern() {
+		// TODO Auto-generated constructor stub
 		super();
 	}
 	
 	@Override
 	public String getCreateName() {
-		return "EndTag";
+		return "ControlTag";
 	}
 	
 	@Override
 	public boolean canCreate(ICreateContext context) {
-		System.out.println("canCreate");
 		
 		return context.getTargetContainer() instanceof Diagram;
 	}
 	
 	@Override
 	public Object[] create(ICreateContext context) {
-		System.out.println("create");
 		
-		EndTagModule endTag = Flow_modelFactory.eINSTANCE.createEndTagModule();
-		endTag.setName("EndTag");
-		getDiagram().eResource().getContents().add(endTag);
-		addGraphicalRepresentation(context, endTag);
-		return new Object[] { endTag };		
+		ControlTagModule controlTag = Flow_modelFactory.eINSTANCE.createControlTagModule();
+		controlTag.setName("ControlTag");
+		getDiagram().eResource().getContents().add(controlTag);
+		addGraphicalRepresentation(context, controlTag);
+		return new Object[] { controlTag };		
 	}
 	
 	@Override
 	public boolean canAdd(IAddContext context) {
-		System.out.println("canAdd");
 		
 		return super.canAdd(context) && context.getTargetContainer() instanceof Diagram;
 	}
 
 	@Override
 	protected PictogramElement doAdd(IAddContext context) {
-		System.out.println("doAdd");
-		EndTagModule module = (EndTagModule) context.getNewObject();
+		ControlTagModule module = (ControlTagModule) context.getNewObject();
 		Diagram diagram = (Diagram) context.getTargetContainer();
 		
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
 		ContainerShape containerShape = peCreateService.createContainerShape(diagram, true);
 		
-		GraPropertyUtil.setValue(containerShape, "shape_id", "EndTag"+IDGenerator.generateID());
+		GraPropertyUtil.setValue(containerShape, "shape_id", "ControlTag"+IDGenerator.generateID());
 		
 		IGaService gaService = Graphiti.getGaService();
 		
 		int x = context.getX();
 		int y = context.getY();
 		
-		int range = 50;
+		int width = 50;
+		int height = 50;
 		
 		GraphicsAlgorithm containerAlgorithm = null;
-		containerAlgorithm = gaService.createEllipse(containerShape);
-		gaService.setLocationAndSize(containerAlgorithm, x, y, range, range);
 		
-		containerAlgorithm.setForeground(manageColor(98, 131, 167));
-		containerAlgorithm.setBackground(manageColor(187, 218, 247));
-		containerAlgorithm.setLineWidth(10);
+		Image file = gaService.createImage(containerShape, FlowImageProvider.CONTROL);
+		gaService.setLocationAndSize(file, context.getX(), context.getY(), width, height);
+
 		
 		peCreateService.createChopboxAnchor(containerShape);
 
@@ -101,6 +99,7 @@ public class EndTagPattern extends IdPattern implements IPattern{
 
 	@Override
 	protected IReason updateNeeded(IdUpdateContext context, String id) {
+		// TODO Auto-generated method stub
 		return Reason.createFalseReason();
 	}
 
@@ -112,7 +111,8 @@ public class EndTagPattern extends IdPattern implements IPattern{
 
 	@Override
 	public boolean isMainBusinessObjectApplicable(Object mainBusinessObject) {
-		return mainBusinessObject instanceof EndTagModule;
+		// TODO Auto-generated method stub
+		return mainBusinessObject instanceof ControlTagModule;
 	}
 	
 	@Override

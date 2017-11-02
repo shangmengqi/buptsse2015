@@ -1,6 +1,5 @@
 package graeditor.flow.pattern;
 
-import org.eclipse.graphiti.examples.common.ExampleUtil;
 import org.eclipse.graphiti.features.IReason;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.context.ICreateContext;
@@ -19,26 +18,26 @@ import org.eclipse.graphiti.services.IPeCreateService;
 
 import com.graeditor.flow_model.EndTagModule;
 import com.graeditor.flow_model.Flow_modelFactory;
-import com.graeditor.flow_model.StartTagModule;
+import com.graeditor.flow_model.PreLogInTagModule;
 
 import graeditor.utils.GraPropertyUtil;
 import graeditor.utils.IDGenerator;
 
-public class EndTagPattern extends IdPattern implements IPattern{
+public class PreLogInTagPattern extends IdPattern implements IPattern{
 	
-	public EndTagPattern() {
+	public PreLogInTagPattern() {
+		// TODO Auto-generated constructor stub
 		super();
 	}
 	
 	@Override
 	public String getCreateName() {
-		return "EndTag";
+		return "PreLogInTag";
 	}
 	
 	@Override
 	public boolean canCreate(ICreateContext context) {
-		System.out.println("canCreate");
-		
+		System.out.println("canCreate");		
 		return context.getTargetContainer() instanceof Diagram;
 	}
 	
@@ -46,11 +45,11 @@ public class EndTagPattern extends IdPattern implements IPattern{
 	public Object[] create(ICreateContext context) {
 		System.out.println("create");
 		
-		EndTagModule endTag = Flow_modelFactory.eINSTANCE.createEndTagModule();
-		endTag.setName("EndTag");
-		getDiagram().eResource().getContents().add(endTag);
-		addGraphicalRepresentation(context, endTag);
-		return new Object[] { endTag };		
+		PreLogInTagModule logInTag = Flow_modelFactory.eINSTANCE.createPreLogInTagModule();
+		logInTag.setName("PreLogInTag");
+		getDiagram().eResource().getContents().add(logInTag);
+		addGraphicalRepresentation(context, logInTag);
+		return new Object[] { logInTag };		
 	}
 	
 	@Override
@@ -62,29 +61,26 @@ public class EndTagPattern extends IdPattern implements IPattern{
 
 	@Override
 	protected PictogramElement doAdd(IAddContext context) {
-		System.out.println("doAdd");
-		EndTagModule module = (EndTagModule) context.getNewObject();
+		PreLogInTagModule module = (PreLogInTagModule) context.getNewObject();
 		Diagram diagram = (Diagram) context.getTargetContainer();
 		
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
 		ContainerShape containerShape = peCreateService.createContainerShape(diagram, true);
 		
-		GraPropertyUtil.setValue(containerShape, "shape_id", "EndTag"+IDGenerator.generateID());
+		GraPropertyUtil.setValue(containerShape, "shape_id", "PreLogInTag"+IDGenerator.generateID());
 		
 		IGaService gaService = Graphiti.getGaService();
 		
 		int x = context.getX();
 		int y = context.getY();
 		
-		int range = 50;
+		int range = 45;
 		
 		GraphicsAlgorithm containerAlgorithm = null;
 		containerAlgorithm = gaService.createEllipse(containerShape);
 		gaService.setLocationAndSize(containerAlgorithm, x, y, range, range);
 		
-		containerAlgorithm.setForeground(manageColor(98, 131, 167));
 		containerAlgorithm.setBackground(manageColor(187, 218, 247));
-		containerAlgorithm.setLineWidth(10);
 		
 		peCreateService.createChopboxAnchor(containerShape);
 
@@ -95,7 +91,6 @@ public class EndTagPattern extends IdPattern implements IPattern{
 
 	@Override
 	protected boolean layout(IdLayoutContext context, String id) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
@@ -112,7 +107,8 @@ public class EndTagPattern extends IdPattern implements IPattern{
 
 	@Override
 	public boolean isMainBusinessObjectApplicable(Object mainBusinessObject) {
-		return mainBusinessObject instanceof EndTagModule;
+		// TODO Auto-generated method stub
+		return mainBusinessObject instanceof PreLogInTagModule;
 	}
 	
 	@Override

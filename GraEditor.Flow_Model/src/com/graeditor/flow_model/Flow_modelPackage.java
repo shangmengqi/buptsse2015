@@ -617,6 +617,154 @@ public interface Flow_modelPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link com.graeditor.flow_model.impl.PreLogInTagModuleImpl <em>Pre Log In Tag Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.graeditor.flow_model.impl.PreLogInTagModuleImpl
+	 * @see com.graeditor.flow_model.impl.Flow_modelPackageImpl#getPreLogInTagModule()
+	 * @generated
+	 */
+	int PRE_LOG_IN_TAG_MODULE = 8;
+
+	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRE_LOG_IN_TAG_MODULE__PICTOGRAM_ELEMENT = FLOW_MODULE__PICTOGRAM_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRE_LOG_IN_TAG_MODULE__PREVIOUS_MODULES = FLOW_MODULE__PREVIOUS_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRE_LOG_IN_TAG_MODULE__NEXT = FLOW_MODULE__NEXT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRE_LOG_IN_TAG_MODULE__NAME = FLOW_MODULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Text Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRE_LOG_IN_TAG_MODULE__TEXT_CONTENT = FLOW_MODULE__TEXT_CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Pre Log In Tag Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRE_LOG_IN_TAG_MODULE_FEATURE_COUNT = FLOW_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Pre Log In Tag Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRE_LOG_IN_TAG_MODULE_OPERATION_COUNT = FLOW_MODULE_OPERATION_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link com.graeditor.flow_model.impl.ControlTagModuleImpl <em>Control Tag Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.graeditor.flow_model.impl.ControlTagModuleImpl
+	 * @see com.graeditor.flow_model.impl.Flow_modelPackageImpl#getControlTagModule()
+	 * @generated
+	 */
+	int CONTROL_TAG_MODULE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_TAG_MODULE__PICTOGRAM_ELEMENT = FLOW_MODULE__PICTOGRAM_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_TAG_MODULE__PREVIOUS_MODULES = FLOW_MODULE__PREVIOUS_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_TAG_MODULE__NEXT = FLOW_MODULE__NEXT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_TAG_MODULE__NAME = FLOW_MODULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Text Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_TAG_MODULE__TEXT_CONTENT = FLOW_MODULE__TEXT_CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Control Tag Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_TAG_MODULE_FEATURE_COUNT = FLOW_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Control Tag Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTROL_TAG_MODULE_OPERATION_COUNT = FLOW_MODULE_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link com.graeditor.flow_model.ContentModule <em>Content Module</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -772,6 +920,26 @@ public interface Flow_modelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTitleMoudle();
+
+	/**
+	 * Returns the meta object for class '{@link com.graeditor.flow_model.PreLogInTagModule <em>Pre Log In Tag Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Pre Log In Tag Module</em>'.
+	 * @see com.graeditor.flow_model.PreLogInTagModule
+	 * @generated
+	 */
+	EClass getPreLogInTagModule();
+
+	/**
+	 * Returns the meta object for class '{@link com.graeditor.flow_model.ControlTagModule <em>Control Tag Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Control Tag Module</em>'.
+	 * @see com.graeditor.flow_model.ControlTagModule
+	 * @generated
+	 */
+	EClass getControlTagModule();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -930,7 +1098,27 @@ public interface Flow_modelPackage extends EPackage {
 		 * @see com.graeditor.flow_model.impl.Flow_modelPackageImpl#getTitleMoudle()
 		 * @generated
 		 */
-		EClass TITLE_MOUDLE = eINSTANCE.getTitleMoudle();		
+		EClass TITLE_MOUDLE = eINSTANCE.getTitleMoudle();
+
+		/**
+		 * The meta object literal for the '{@link com.graeditor.flow_model.impl.PreLogInTagModuleImpl <em>Pre Log In Tag Module</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.graeditor.flow_model.impl.PreLogInTagModuleImpl
+		 * @see com.graeditor.flow_model.impl.Flow_modelPackageImpl#getPreLogInTagModule()
+		 * @generated
+		 */
+		EClass PRE_LOG_IN_TAG_MODULE = eINSTANCE.getPreLogInTagModule();
+
+		/**
+		 * The meta object literal for the '{@link com.graeditor.flow_model.impl.ControlTagModuleImpl <em>Control Tag Module</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.graeditor.flow_model.impl.ControlTagModuleImpl
+		 * @see com.graeditor.flow_model.impl.Flow_modelPackageImpl#getControlTagModule()
+		 * @generated
+		 */
+		EClass CONTROL_TAG_MODULE = eINSTANCE.getControlTagModule();		
 
 	}
 	

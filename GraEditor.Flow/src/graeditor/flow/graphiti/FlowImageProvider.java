@@ -4,13 +4,13 @@ import org.eclipse.graphiti.ui.platform.AbstractImageProvider;
 
 public class FlowImageProvider extends AbstractImageProvider{
 	
-	//protected static final String PREFIX = "img.graeditor.flow.graphiti.";
+	protected static final String PREFIX = "GraEditor.Flow.";
 	
-	public static final String VERTICAL_LINE  = "line";
+	public static final String CONTROL  = PREFIX + "control";
 
 	@Override
 	protected void addAvailableImages() {
-		addImageFilePath(VERTICAL_LINE,"image/line.png");
+		addImageFilePath(CONTROL,"image/control.png");
 	}
 
 }

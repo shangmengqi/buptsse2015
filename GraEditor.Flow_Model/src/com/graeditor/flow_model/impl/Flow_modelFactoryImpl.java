@@ -64,6 +64,8 @@ public class Flow_modelFactoryImpl extends EFactoryImpl implements Flow_modelFac
 			case Flow_modelPackage.VERTICAL_LINE_MODULE: return createVerticalLineModule();
 			case Flow_modelPackage.HORIZONTAL_LINE_MOUDLE: return createHorizontalLineMoudle();
 			case Flow_modelPackage.TITLE_MOUDLE: return createTitleMoudle();
+			case Flow_modelPackage.PRE_LOG_IN_TAG_MODULE: return createPreLogInTagModule();
+			case Flow_modelPackage.CONTROL_TAG_MODULE: return createControlTagModule();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -147,6 +149,26 @@ public class Flow_modelFactoryImpl extends EFactoryImpl implements Flow_modelFac
 	public TitleMoudle createTitleMoudle() {
 		TitleMoudleImpl titleMoudle = new TitleMoudleImpl();
 		return titleMoudle;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PreLogInTagModule createPreLogInTagModule() {
+		PreLogInTagModuleImpl preLogInTagModule = new PreLogInTagModuleImpl();
+		return preLogInTagModule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ControlTagModule createControlTagModule() {
+		ControlTagModuleImpl controlTagModule = new ControlTagModuleImpl();
+		return controlTagModule;
 	}
 
 	/**

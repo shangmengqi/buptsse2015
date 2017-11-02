@@ -18,8 +18,10 @@ import graeditor.flow.features.CustomChangeTextFeature;
 import graeditor.flow.features.CustomCompareLocalFeature;
 import graeditor.flow.features.FlowDrillDownFeature;
 import graeditor.flow.pattern.ContentPattern;
+import graeditor.flow.pattern.ControlTagPattern;
 import graeditor.flow.pattern.EndTagPattern;
 import graeditor.flow.pattern.HorizontalLinePattern;
+import graeditor.flow.pattern.PreLogInTagPattern;
 import graeditor.flow.pattern.StartTagPattern;
 import graeditor.flow.pattern.TitlePattern;
 import graeditor.flow.pattern.VerticalLinePattern;
@@ -34,6 +36,8 @@ public class FlowFeatureProvider extends DefaultFeatureProviderWithPatterns{
 		addPattern(new EndTagPattern());
 		addPattern(new ContentPattern());
 		addPattern(new TitlePattern());
+		addPattern(new PreLogInTagPattern());
+		addPattern(new ControlTagPattern());
 	}
 	
 	@Override

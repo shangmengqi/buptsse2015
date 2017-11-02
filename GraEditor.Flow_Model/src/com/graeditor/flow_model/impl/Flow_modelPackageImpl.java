@@ -3,12 +3,14 @@
 package com.graeditor.flow_model.impl;
 
 import com.graeditor.flow_model.ContentModule;
+import com.graeditor.flow_model.ControlTagModule;
 import com.graeditor.flow_model.EndTagModule;
 import com.graeditor.flow_model.Flow;
 import com.graeditor.flow_model.FlowModule;
 import com.graeditor.flow_model.Flow_modelFactory;
 import com.graeditor.flow_model.Flow_modelPackage;
 import com.graeditor.flow_model.HorizontalLineMoudle;
+import com.graeditor.flow_model.PreLogInTagModule;
 import com.graeditor.flow_model.StartTagModule;
 
 import com.graeditor.flow_model.TitleMoudle;
@@ -82,6 +84,20 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 	 * @generated
 	 */
 	private EClass titleMoudleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass preLogInTagModuleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass controlTagModuleEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -284,6 +300,24 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getPreLogInTagModule() {
+		return preLogInTagModuleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getControlTagModule() {
+		return controlTagModuleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Flow_modelFactory getFlow_modelFactory() {
 		return (Flow_modelFactory)getEFactoryInstance();
 	}
@@ -329,6 +363,10 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 		horizontalLineMoudleEClass = createEClass(HORIZONTAL_LINE_MOUDLE);
 
 		titleMoudleEClass = createEClass(TITLE_MOUDLE);
+
+		preLogInTagModuleEClass = createEClass(PRE_LOG_IN_TAG_MODULE);
+
+		controlTagModuleEClass = createEClass(CONTROL_TAG_MODULE);
 	}
 
 	/**
@@ -365,6 +403,8 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 		verticalLineModuleEClass.getESuperTypes().add(this.getFlowModule());
 		horizontalLineMoudleEClass.getESuperTypes().add(this.getFlowModule());
 		titleMoudleEClass.getESuperTypes().add(this.getFlowModule());
+		preLogInTagModuleEClass.getESuperTypes().add(this.getFlowModule());
+		controlTagModuleEClass.getESuperTypes().add(this.getFlowModule());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(contentModuleEClass, ContentModule.class, "ContentModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -389,6 +429,10 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 		initEClass(horizontalLineMoudleEClass, HorizontalLineMoudle.class, "HorizontalLineMoudle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(titleMoudleEClass, TitleMoudle.class, "TitleMoudle", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(preLogInTagModuleEClass, PreLogInTagModule.class, "PreLogInTagModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(controlTagModuleEClass, ControlTagModule.class, "ControlTagModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

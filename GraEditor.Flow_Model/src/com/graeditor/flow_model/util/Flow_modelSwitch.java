@@ -120,6 +120,20 @@ public class Flow_modelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case Flow_modelPackage.PRE_LOG_IN_TAG_MODULE: {
+				PreLogInTagModule preLogInTagModule = (PreLogInTagModule)theEObject;
+				T result = casePreLogInTagModule(preLogInTagModule);
+				if (result == null) result = caseFlowModule(preLogInTagModule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Flow_modelPackage.CONTROL_TAG_MODULE: {
+				ControlTagModule controlTagModule = (ControlTagModule)theEObject;
+				T result = caseControlTagModule(controlTagModule);
+				if (result == null) result = caseFlowModule(controlTagModule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -241,6 +255,36 @@ public class Flow_modelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseTitleMoudle(TitleMoudle object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Pre Log In Tag Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Pre Log In Tag Module</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePreLogInTagModule(PreLogInTagModule object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Control Tag Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Control Tag Module</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseControlTagModule(ControlTagModule object) {
 		return null;
 	}
 

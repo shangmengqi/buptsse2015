@@ -24,6 +24,10 @@
        			</imageProvider>
          </diagramType>
          
+         <imageProvider
+   			id="GraEditor.Flow.FlowImageProvider">
+		</imageProvider>
+         
       </diagramTypeProvider>
    </extension>
    

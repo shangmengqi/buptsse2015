@@ -100,6 +100,14 @@ public class Flow_modelAdapterFactory extends AdapterFactoryImpl {
 				return createTitleMoudleAdapter();
 			}
 			@Override
+			public Adapter casePreLogInTagModule(PreLogInTagModule object) {
+				return createPreLogInTagModuleAdapter();
+			}
+			@Override
+			public Adapter caseControlTagModule(ControlTagModule object) {
+				return createControlTagModuleAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -228,6 +236,34 @@ public class Flow_modelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createTitleMoudleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.graeditor.flow_model.PreLogInTagModule <em>Pre Log In Tag Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.graeditor.flow_model.PreLogInTagModule
+	 * @generated
+	 */
+	public Adapter createPreLogInTagModuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.graeditor.flow_model.ControlTagModule <em>Control Tag Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.graeditor.flow_model.ControlTagModule
+	 * @generated
+	 */
+	public Adapter createControlTagModuleAdapter() {
 		return null;
 	}
 

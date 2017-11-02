@@ -94,6 +94,24 @@ public interface Flow_modelFactory extends EFactory {
 	TitleMoudle createTitleMoudle();
 
 	/**
+	 * Returns a new object of class '<em>Pre Log In Tag Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Pre Log In Tag Module</em>'.
+	 * @generated
+	 */
+	PreLogInTagModule createPreLogInTagModule();
+
+	/**
+	 * Returns a new object of class '<em>Control Tag Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Control Tag Module</em>'.
+	 * @generated
+	 */
+	ControlTagModule createControlTagModule();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

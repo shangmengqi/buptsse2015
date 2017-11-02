@@ -24,5 +24,7 @@
     <genClasses ecoreClass="flow_model.ecore#//VerticalLineModule"/>
     <genClasses ecoreClass="flow_model.ecore#//HorizontalLineMoudle"/>
     <genClasses ecoreClass="flow_model.ecore#//TitleMoudle"/>
+    <genClasses ecoreClass="flow_model.ecore#//PreLogInTagModule"/>
+    <genClasses ecoreClass="flow_model.ecore#//ControlTagModule"/>
   </genPackages>
 </genmodel:GenModel>
