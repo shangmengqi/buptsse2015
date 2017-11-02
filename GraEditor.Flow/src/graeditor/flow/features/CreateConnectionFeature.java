@@ -10,6 +10,7 @@ import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 import com.graeditor.flow_model.ContentModule;
 import com.graeditor.flow_model.EndTagModule;
 import com.graeditor.flow_model.FlowModule;
+import com.graeditor.flow_model.PreLogInTagModule;
 import com.graeditor.flow_model.StartTagModule;
 
 public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
@@ -43,34 +44,74 @@ public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
 		startBizObj = (FlowModule) getBusinessObjectForPictogramElement(startElement);
 		endBizObj = (FlowModule) getBusinessObjectForPictogramElement(endElement);
 		
-		//Èç¹ûµ±Ç°µÄÁ¬½ÓÔçÒÑ¾­´æÔÚ
-		if (startBizObj.getPreviousModules().contains(endBizObj)) {
+		// å¦‚æœå½“å‰è¿çº¿æ—©å·²å­˜åœ¨
+		if (endBizObj.getPreviousModules().contains(startBizObj)) {
 			return false;
 		}
 		
-		//StartTagModuleÖ»ÄÜÁ¬½Óµ½ContentModuleÉÏ
-		if (startBizObj instanceof StartTagModule) {
+		//ï¿½ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½
+//		if (startBizObj.getPreviousModules().contains(endBizObj)) {
+//			return false;
+//		}
+		
+		//StartTagModuleÖ»ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ContentModuleï¿½ï¿½
+//		if (startBizObj instanceof StartTagModule) {
+//			if (endBizObj instanceof EndTagModule) {
+//				return false;
+//			}
+//		}
+		
+		// å¼€å§‹èŠ‚ç‚¹ä¸èƒ½è¿æ¥åˆ°ç»“æŸèŠ‚ç‚¹ä¸Š
+		if (startBizObj instanceof PreLogInTagModule) {
 			if (endBizObj instanceof EndTagModule) {
 				return false;
 			}
 		}
 		
-		//ContentModuleÖ»ÄÜÁ¬½Óµ½ContentModule»òÕßEndTagModuleÉÏ
-		if (startBizObj instanceof ContentModule) {
-			if (endBizObj instanceof StartTagModule) {
+		//ContentModuleÖ»ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ContentModuleï¿½ï¿½ï¿½ï¿½EndTagModuleï¿½ï¿½
+		// contentèŠ‚ç‚¹ä¸èƒ½è¿æ¥åˆ°å¼€å§‹å’Œç™»å½•èŠ‚ç‚¹
+//		if (startBizObj instanceof ContentModule) {
+//			if (endBizObj instanceof StartTagModule) {
+//				return false;
+//			}
+//		}
+		
+		// ç™»å½•èŠ‚ç‚¹ä¸å¯ä»¥è¿æ¥å¼€å§‹èŠ‚ç‚¹
+		if (startBizObj instanceof StartTagModule) {
+			if (endBizObj instanceof PreLogInTagModule) {
 				return false;
 			}
 		}
+		
+		// endTagä¸èƒ½ä½œä¸ºè¿çº¿çš„èµ·ç‚¹
+		if (startBizObj instanceof EndTagModule) {
+			return false;
+		}
+		
+		// å¼€å§‹èŠ‚ç‚¹ä¸èƒ½ä½œä¸ºè¿çº¿çš„ç»ˆç‚¹
+		if (endBizObj instanceof PreLogInTagModule) {
+			return false;
+		}
+		
+		// 
+//		if (startBizObj instanceof PreLogInTagModule) {
+//			if (startBizObj.getNext() instanceof ) {
+//				
+//			}
+//		}
+		
+		
+		
 		return true;
 	}
 
 	@Override
 	public Connection create(ICreateConnectionContext context) {
 		/*
-		 * ÕâÒ»²½·Ç³£ÖØÒª
+		 * ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½Òª
 		 */
 		startBizObj.setNext(endBizObj);
-		//ÕâÀïµÄÉÏÏÂÎÄĞèÒªÎÒÃÇÊÖ¶¯¹¹½¨£¬´«ÈëÆğµãÓëÖÕµãµÄÃª
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õµï¿½ï¿½Ãª
 		AddConnectionContext addContext = new AddConnectionContext(context.getSourceAnchor(), context.getTargetAnchor());
 		addContext.setNewObject(type);
 		Connection newConnection = (Connection) getFeatureProvider().addIfPossible(addContext);
@@ -98,7 +139,7 @@ public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
 	}
 	
 	/**
-	 * Ö»ÓĞ×îÍâ²ãµÄPictogramElement²ÅÓĞ´´½¨ConnectionµÄ×Ê¸ñ
+	 * Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½PictogramElementï¿½ï¿½ï¿½Ğ´ï¿½ï¿½ï¿½Connectionï¿½ï¿½ï¿½Ê¸ï¿½
 	 * 
 	 */
 	private boolean isQualified(PictogramElement element){
