@@ -45,7 +45,7 @@ public class FlowDrillDownFeature extends MyDrillDownFeature{
     }
 	
 	@Override
-	protected Collection<Diagram> getDiagrams() {
+	public Collection<Diagram> getDiagrams() {
 		Collection<Diagram> result = Collections.emptyList();
 		Resource resource = getDiagram().eResource();
 		URI uri = resource.getURI();

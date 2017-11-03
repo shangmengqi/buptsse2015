@@ -252,3 +252,9 @@ git commit -m "添加两种图形元素的绘制，登录前的开始节点和�
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "重新定义流程图中判断节点的图形，并添加了text"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

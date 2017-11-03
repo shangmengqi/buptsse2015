@@ -34,7 +34,7 @@ public class DrillDownFeature extends MyDrillDownFeature{
     
     @Override
     public boolean canExecute(ICustomContext context) {
-        PictogramElement[] pes = context.getPictogramElements();//获取当前画布上所有图表元素
+        PictogramElement[] pes = context.getPictogramElements();//锟斤拷取锟斤拷前锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷图锟斤拷元锟斤拷
         // first check, if one EClass is selected
         if (pes != null && pes.length == 1) {
             Object bo = getBusinessObjectForPictogramElement(pes[0]);            
@@ -44,10 +44,10 @@ public class DrillDownFeature extends MyDrillDownFeature{
     }
     
     /**
-     * 获取同一个项目下的所有图表
+     * 锟斤拷取同一锟斤拷锟斤拷目锟铰碉拷锟斤拷锟斤拷图锟斤拷
      */
 	@Override
-	protected Collection<Diagram> getDiagrams() {
+	public Collection<Diagram> getDiagrams() {
 		Collection<Diagram> result = Collections.emptyList();
 		Resource resource = getDiagram().eResource();
 		URI uri = resource.getURI();
@@ -60,7 +60,7 @@ public class DrillDownFeature extends MyDrillDownFeature{
 				result = DiagramUtil.getDiagrams(project);
 			}
 		}
-		return result;//result返回编辑器上同一个项目下所有的diagram图表信息，包括图表名称，并将这些diagram存在一个数组里
+		return result;//result锟斤拷锟截编辑锟斤拷锟斤拷同一锟斤拷锟斤拷目锟斤拷锟斤拷锟叫碉拷diagram图锟斤拷锟斤拷息锟斤拷锟斤拷锟斤拷图锟斤拷锟斤拷锟狡ｏ拷锟斤拷锟斤拷锟斤拷些diagram锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷
 	}
 
 }

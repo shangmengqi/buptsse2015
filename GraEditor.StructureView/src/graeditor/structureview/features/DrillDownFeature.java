@@ -51,7 +51,7 @@ public class DrillDownFeature extends MyDrillDownFeature {
      * 获取同一个项目下的所有图表
      */
 	@Override
-	protected Collection<Diagram> getDiagrams() {
+	public Collection<Diagram> getDiagrams() {
 		Collection<Diagram> result = Collections.emptyList();
 		Resource resource = getDiagram().eResource();
 		URI uri = resource.getURI();

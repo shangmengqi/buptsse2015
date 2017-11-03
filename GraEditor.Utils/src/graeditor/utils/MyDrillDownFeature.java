@@ -25,7 +25,7 @@ public class MyDrillDownFeature extends AbstractDrillDownFeature{
 	}
 
 	@Override
-	protected Collection<Diagram> getDiagrams() {
+	public Collection<Diagram> getDiagrams() {
 		Collection<Diagram> result = Collections.emptyList();
 		Resource resource = getDiagram().eResource();
 		URI uri = resource.getURI();
@@ -46,7 +46,7 @@ public class MyDrillDownFeature extends AbstractDrillDownFeature{
 	 *         pictogram element.
 	 */
 	@Override
-	protected Collection<Diagram> getLinkedDiagrams(PictogramElement pe) {
+	public Collection<Diagram> getLinkedDiagrams(PictogramElement pe) {
 
 		final Collection<Diagram> ret = new HashSet<Diagram>();
 
@@ -60,28 +60,7 @@ public class MyDrillDownFeature extends AbstractDrillDownFeature{
 				
 				d.getName();
 				System.out.println("d.getName: " + d.getName());				
-				
-//					for (int j = 0; j < businessObjectsForPictogramElement.length; j++) {
-//						final Object currentBo = businessObjectsForPictogramElement[j];
-//						System.out.println("currentBo: " + currentBo);
-//
-//						if (getFeatureProvider().getDiagramTypeProvider().getCurrentToolBehaviorProvider()
-//								.equalsBusinessObjects(currentBo, diagramBo)) {
-//							ret.add(d);
-//						}
-//					}
-				
-				
-				
-
-//				if (d.getLink() != null) {
-//					System.out.println("getLink: " + d.getLink());
-//					EList<EObject> eList = d.getLink().getBusinessObjects();
-//					System.out.println("eList : " + eList);
-//					for (int i = 0; i < eList.size(); i++) {
-//						System.out.println("eListResource: " + eList.get(i));
-					
-					
+										
 					final Object[] businessObjectsForDiagram = getAllBusinessObjectsForPictogramElement(d);
 					System.out.println("businessObjectsForDiagram: " + businessObjectsForDiagram);
 
