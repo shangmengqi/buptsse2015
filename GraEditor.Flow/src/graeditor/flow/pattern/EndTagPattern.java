@@ -84,7 +84,7 @@ public class EndTagPattern extends IdPattern implements IPattern{
 		
 		containerAlgorithm.setForeground(manageColor(98, 131, 167));
 		containerAlgorithm.setBackground(manageColor(187, 218, 247));
-		containerAlgorithm.setLineWidth(10);
+		containerAlgorithm.setLineWidth(5);
 		
 		peCreateService.createChopboxAnchor(containerShape);
 

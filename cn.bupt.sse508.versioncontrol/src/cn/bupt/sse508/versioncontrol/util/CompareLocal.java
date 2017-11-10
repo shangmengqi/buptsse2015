@@ -40,7 +40,8 @@ public class CompareLocal {
 	public static void compareLocal(String currentDiagramPath, String currentDiagramName){		
 		System.out.println("start compare local");
 		
-		String diagram0Str = ToMidFile.toMidFile("E:/Git/diagrams/flow.diagram");
+		System.out.println(currentDiagramName);
+		String diagram0Str = ToMidFile.toMidFile("E:/Git/diagrams/" + currentDiagramName+ ".diagram");
 		String diagram1Str = ToMidFile.toMidFile(currentDiagramPath);
 		System.out.println(diagram0Str);
 		
@@ -255,7 +256,7 @@ public class CompareLocal {
 //			System.out.println("node0IdString:　" + node0IdString);
 			// 寻找node1中拥有相同节点id的节点下标
 			int i = findNodeById(node0IdString, "diagram0");
-//			System.out.println(i);
+			System.out.println(i);
 			if (i < 0) {  
 				// 该节点在node0中存在，在node1中不存在，这是node1删除的节点,记录合并：删除，并将该节点保存到diagram1中
 				// 记录合并：删除
@@ -282,30 +283,49 @@ public class CompareLocal {
 				System.out.println("nodeDeleteAnchorOutgoing: " + nodeDeleteAnchorOutgoing);
 				
 				// 处理前节点的连线问题
-				String preNodeIdString = nodeDeleteAnchorIncomming.split("#")[0];
-				JsonObject preNode1Object= getNode1ById(preNodeIdString);
-				String preNode1OutgoingString = preNode1Object.get("anchors").getAsJsonObject().get("@outgoingConnections").getAsString();				
-				preNode1Object.get("anchors").getAsJsonObject().remove("@outgoingConnections");
-				System.out.println("preNode1OutgoingString: " + preNode1OutgoingString);
-				String newNode1OutgoingString  = preNode1OutgoingString + nodeDeleteAnchorIncomming;
-				String preValueString = gson.toJson(newNode1OutgoingString);
-				JsonElement preElement = parse.parse(preValueString);
-				preNode1Object.get("anchors").getAsJsonObject().add("@outgoingConnections", preElement);
+				if (!nodeDeleteAnchorIncomming.isEmpty()) {
+					String preNodeIdString = nodeDeleteAnchorIncomming.split("#")[0];
+					System.out.println("preNodeIdString: " + preNodeIdString);
+					JsonObject preNode1Object= getNode1ById(preNodeIdString);
+					System.out.println("preNode1Object: " + preNode1Object.toString());
+					String preNode1OutgoingString = preNode1Object.get("anchors").getAsJsonObject().get("@outgoingConnections").getAsString();				
+					preNode1Object.get("anchors").getAsJsonObject().remove("@outgoingConnections");
+					System.out.println("preNode1OutgoingString: " + preNode1OutgoingString);
+					String newNode1OutgoingString  = preNode1OutgoingString + nodeDeleteAnchorIncomming;
+					String preValueString = gson.toJson(newNode1OutgoingString);
+					JsonElement preElement = parse.parse(preValueString);
+					preNode1Object.get("anchors").getAsJsonObject().add("@outgoingConnections", preElement);
+				}
+//				String preNodeIdString = nodeDeleteAnchorIncomming.split("#")[0];
+//				System.out.println("preNodeIdString: " + preNodeIdString);
+//				JsonObject preNode1Object= getNode1ById(preNodeIdString);
+//				System.out.println("preNode1Object: " + preNode1Object.toString());
+//				String preNode1OutgoingString = preNode1Object.get("anchors").getAsJsonObject().get("@outgoingConnections").getAsString();				
+//				preNode1Object.get("anchors").getAsJsonObject().remove("@outgoingConnections");
+//				System.out.println("preNode1OutgoingString: " + preNode1OutgoingString);
+//				String newNode1OutgoingString  = preNode1OutgoingString + nodeDeleteAnchorIncomming;
+//				String preValueString = gson.toJson(newNode1OutgoingString);
+//				JsonElement preElement = parse.parse(preValueString);
+//				preNode1Object.get("anchors").getAsJsonObject().add("@outgoingConnections", preElement);
 				
 				// 处理后节点的问题
-				String[] nextNodeIdAllStrings = nodeDeleteAnchorOutgoing.split(" ");
-				System.out.println("1111: " + nextNodeIdAllStrings.length);
-				for (int k = 0; k < nextNodeIdAllStrings.length; k++) {
-					String nextNodeIdString = nextNodeIdAllStrings[k].split("#")[1];					
-					JsonObject nextNode1Object = getNode1ById(nextNodeIdString);
-					System.out.println("222: " + nextNodeIdString);
-					String nextNode1IncomingString = nextNode1Object.get("anchors").getAsJsonObject().get("@incomingConnections").getAsString();
-					nextNode1Object.get("anchors").getAsJsonObject().remove("@incomingConnections");
-					String newNode1Incoming = nextNode1IncomingString + nextNodeIdAllStrings[k] + " ";
-					System.out.println("333: " + newNode1Incoming);
-					String nextValueString = gson.toJson(newNode1Incoming);
-					JsonElement nextElement = parse.parse(nextValueString);
-					nextNode1Object.get("anchors").getAsJsonObject().add("@incomingConnections", nextElement);
+				if (!nodeDeleteAnchorOutgoing.isEmpty()) {
+					String[] nextNodeIdAllStrings = nodeDeleteAnchorOutgoing.split(" ");
+					System.out.println("1111: " + nextNodeIdAllStrings.length);
+					for (int k = 0; k < nextNodeIdAllStrings.length; k++) {
+						String nextNodeIdString = nextNodeIdAllStrings[k].split("#")[1];					
+						JsonObject nextNode1Object = getNode1ById(nextNodeIdString);
+						System.out.println("222: " + nextNodeIdString);
+						System.out.println("nextNode1Object: " + nextNode1Object.toString());
+						String nextNode1IncomingString = nextNode1Object.get("anchors").getAsJsonObject().get("@incomingConnections").getAsString();
+						System.out.println("nextNode1IncomingString: " + nextNode1IncomingString);
+						nextNode1Object.get("anchors").getAsJsonObject().remove("@incomingConnections");
+						String newNode1Incoming = nextNode1IncomingString + nextNodeIdAllStrings[k] + " ";
+						System.out.println("333: " + newNode1Incoming);
+						String nextValueString = gson.toJson(newNode1Incoming);
+						JsonElement nextElement = parse.parse(nextValueString);
+						nextNode1Object.get("anchors").getAsJsonObject().add("@incomingConnections", nextElement);
+					}
 				}
 				
 				
@@ -333,7 +353,7 @@ public class CompareLocal {
 		/**
 		 * 用新生成的新diagram1替代原有的diagram1图表文件
 		 */
-		File file = new File("E:/Git/buptsse2015/runtime-EclipseApplication/test/src/flow/newFlow.diagram"); // 文件名字
+		File file = new File("E:/Git/buptsse2015/runtime-EclipseApplication/test/src/newDiagram.diagram"); // 文件名字
 		writeToFile(newDiagramXml, file);
 
 	}
