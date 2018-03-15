@@ -27,4 +27,9 @@ public interface Flow extends EObject{
 	 * @generated
 	 */
 	void setEndTag(EndTagModule value);
+	
+//	/**
+//	 * @model
+//	 */
+//	PreLogInTagModule getPreLogInTagModule();
 }

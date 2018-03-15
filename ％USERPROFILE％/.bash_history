@@ -264,3 +264,9 @@ git commit -m "完成flow视图中包含跳转的图形元素添加图形标记�
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "完善本地比较路径的获取"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master
