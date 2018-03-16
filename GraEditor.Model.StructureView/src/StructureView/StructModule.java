@@ -1,6 +1,9 @@
 package StructureView;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+
+
 
 /**
  * @model
@@ -21,4 +24,23 @@ public interface StructModule extends EObject{
 	 * @generated
 	 */
 	void setPictogramElement(EObject value);
+	
+	/**
+	 * @model opposite="next"
+	 */
+	EList<StructModule> getPreviousModules();
+	
+	/**
+	 * @model opposite="previousModules"
+	 */
+	StructModule getNext();
+	
+	/**
+	 * @model
+	 */
+	public String getName();
+
+
+	
+	
 }

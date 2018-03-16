@@ -24,5 +24,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="StructModule">
     <eStructuralFeatures xsi:type="ecore:EReference" name="pictogramElement" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="previousModules" upperBound="-1"
+        eType="#//StructModule" eOpposite="#//StructModule/next"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="next" eType="#//StructModule"
+        eOpposite="#//StructModule/previousModules"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Area" eSuperTypes="#//StructModule"/>
 </ecore:EPackage>

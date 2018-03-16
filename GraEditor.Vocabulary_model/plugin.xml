@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated Vocabulary_Model -->
+      <package
+            uri="http:///com/graeditor/vocabulary_model.ecore"
+            class="com.graeditor.vocabulary_model.Vocabulary_modelPackage"
+            genModel="model/Vocabulary_Model.genmodel"/>
+   </extension>
+
+</plugin>

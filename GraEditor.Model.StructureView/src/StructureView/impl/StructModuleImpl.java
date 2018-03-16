@@ -6,7 +6,7 @@ import StructureView.StructModule;
 import StructureView.StructureViewPackage;
 
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -152,6 +152,29 @@ public class StructModuleImpl extends MinimalEObjectImpl.Container implements St
 				return pictogramElement != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	@Override
+	public EList<StructModule> getPreviousModules() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public StructModule getNext() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getTextContent() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 } //StructModuleImpl

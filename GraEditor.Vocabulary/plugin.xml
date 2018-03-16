@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypes">
+      <diagramType
+            name="Vocabulary Diagram Type"
+            type="Vocabulary"
+            id="GraEditor.Vocabulary.VocabularyDiagramType">
+      </diagramType>
+   </extension>
+   
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypeProviders">
+      <diagramTypeProvider
+            name="Vocabulary Diagram Type Provider"
+            class="graeditor.vocabulary.graphiti.VocabularyDiagramTypeProvider"
+            id="GraEditor.Vocabulary.VocabularyDiagramTypeProvider">
+         <diagramType
+               id="GraEditor.Vocabulary.VocabularyDiagramType">
+               <imageProvider
+               		id="GraEditor.Vocabulary.VocabularyImageProvider">
+       			</imageProvider>
+         </diagramType>
+         
+         <imageProvider
+   			id="GraEditor.Vocabulary.VocabularyImageProvider">
+		</imageProvider>
+         
+      </diagramTypeProvider>
+   </extension>
+   
+   <extension
+   		point="org.eclipse.graphiti.ui.imageProviders">
+   		<imageProvider
+   			class="graeditor.vocabulary.graphiti.VocabularyImageProvider"
+   			id="GraEditor.Vocabulary.VocabularyImageProvider">
+		</imageProvider>
+	</extension>
+   			
+
+</plugin>
