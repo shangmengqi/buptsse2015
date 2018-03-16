@@ -5,11 +5,14 @@ package com.graeditor.flow_model.impl;
 import com.graeditor.flow_model.ContentModule;
 import com.graeditor.flow_model.ControlTagModule;
 import com.graeditor.flow_model.EndTagModule;
+import com.graeditor.flow_model.FenChaModule;
 import com.graeditor.flow_model.Flow;
 import com.graeditor.flow_model.FlowModule;
 import com.graeditor.flow_model.Flow_modelFactory;
 import com.graeditor.flow_model.Flow_modelPackage;
+import com.graeditor.flow_model.HeBingModule;
 import com.graeditor.flow_model.HorizontalLineMoudle;
+import com.graeditor.flow_model.HuiHeModule;
 import com.graeditor.flow_model.PreLogInTagModule;
 import com.graeditor.flow_model.StartTagModule;
 
@@ -98,6 +101,27 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 	 * @generated
 	 */
 	private EClass controlTagModuleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass fenChaModuleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass heBingModuleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass huiHeModuleEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -318,6 +342,33 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getFenChaModule() {
+		return fenChaModuleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getHeBingModule() {
+		return heBingModuleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getHuiHeModule() {
+		return huiHeModuleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Flow_modelFactory getFlow_modelFactory() {
 		return (Flow_modelFactory)getEFactoryInstance();
 	}
@@ -367,6 +418,12 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 		preLogInTagModuleEClass = createEClass(PRE_LOG_IN_TAG_MODULE);
 
 		controlTagModuleEClass = createEClass(CONTROL_TAG_MODULE);
+
+		fenChaModuleEClass = createEClass(FEN_CHA_MODULE);
+
+		heBingModuleEClass = createEClass(HE_BING_MODULE);
+
+		huiHeModuleEClass = createEClass(HUI_HE_MODULE);
 	}
 
 	/**
@@ -405,6 +462,9 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 		titleMoudleEClass.getESuperTypes().add(this.getFlowModule());
 		preLogInTagModuleEClass.getESuperTypes().add(this.getFlowModule());
 		controlTagModuleEClass.getESuperTypes().add(this.getFlowModule());
+		fenChaModuleEClass.getESuperTypes().add(this.getFlowModule());
+		heBingModuleEClass.getESuperTypes().add(this.getFlowModule());
+		huiHeModuleEClass.getESuperTypes().add(this.getFlowModule());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(contentModuleEClass, ContentModule.class, "ContentModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -433,6 +493,12 @@ public class Flow_modelPackageImpl extends EPackageImpl implements Flow_modelPac
 		initEClass(preLogInTagModuleEClass, PreLogInTagModule.class, "PreLogInTagModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(controlTagModuleEClass, ControlTagModule.class, "ControlTagModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(fenChaModuleEClass, FenChaModule.class, "FenChaModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(heBingModuleEClass, HeBingModule.class, "HeBingModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(huiHeModuleEClass, HuiHeModule.class, "HuiHeModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

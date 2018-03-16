@@ -108,6 +108,18 @@ public class Flow_modelAdapterFactory extends AdapterFactoryImpl {
 				return createControlTagModuleAdapter();
 			}
 			@Override
+			public Adapter caseFenChaModule(FenChaModule object) {
+				return createFenChaModuleAdapter();
+			}
+			@Override
+			public Adapter caseHeBingModule(HeBingModule object) {
+				return createHeBingModuleAdapter();
+			}
+			@Override
+			public Adapter caseHuiHeModule(HuiHeModule object) {
+				return createHuiHeModuleAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -264,6 +276,48 @@ public class Flow_modelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createControlTagModuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.graeditor.flow_model.FenChaModule <em>Fen Cha Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.graeditor.flow_model.FenChaModule
+	 * @generated
+	 */
+	public Adapter createFenChaModuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.graeditor.flow_model.HeBingModule <em>He Bing Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.graeditor.flow_model.HeBingModule
+	 * @generated
+	 */
+	public Adapter createHeBingModuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.graeditor.flow_model.HuiHeModule <em>Hui He Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.graeditor.flow_model.HuiHeModule
+	 * @generated
+	 */
+	public Adapter createHuiHeModuleAdapter() {
 		return null;
 	}
 

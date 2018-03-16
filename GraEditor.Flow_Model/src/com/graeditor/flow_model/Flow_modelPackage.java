@@ -765,6 +765,227 @@ public interface Flow_modelPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link com.graeditor.flow_model.impl.FenChaModuleImpl <em>Fen Cha Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.graeditor.flow_model.impl.FenChaModuleImpl
+	 * @see com.graeditor.flow_model.impl.Flow_modelPackageImpl#getFenChaModule()
+	 * @generated
+	 */
+	int FEN_CHA_MODULE = 10;
+
+	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEN_CHA_MODULE__PICTOGRAM_ELEMENT = FLOW_MODULE__PICTOGRAM_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEN_CHA_MODULE__PREVIOUS_MODULES = FLOW_MODULE__PREVIOUS_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEN_CHA_MODULE__NEXT = FLOW_MODULE__NEXT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEN_CHA_MODULE__NAME = FLOW_MODULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Text Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEN_CHA_MODULE__TEXT_CONTENT = FLOW_MODULE__TEXT_CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Fen Cha Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEN_CHA_MODULE_FEATURE_COUNT = FLOW_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Fen Cha Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int FEN_CHA_MODULE_OPERATION_COUNT = FLOW_MODULE_OPERATION_COUNT + 0;
+
+
+	/**
+	 * The meta object id for the '{@link com.graeditor.flow_model.impl.HeBingModuleImpl <em>He Bing Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.graeditor.flow_model.impl.HeBingModuleImpl
+	 * @see com.graeditor.flow_model.impl.Flow_modelPackageImpl#getHeBingModule()
+	 * @generated
+	 */
+	int HE_BING_MODULE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HE_BING_MODULE__PICTOGRAM_ELEMENT = FLOW_MODULE__PICTOGRAM_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HE_BING_MODULE__PREVIOUS_MODULES = FLOW_MODULE__PREVIOUS_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HE_BING_MODULE__NEXT = FLOW_MODULE__NEXT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HE_BING_MODULE__NAME = FLOW_MODULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Text Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HE_BING_MODULE__TEXT_CONTENT = FLOW_MODULE__TEXT_CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>He Bing Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HE_BING_MODULE_FEATURE_COUNT = FLOW_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>He Bing Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HE_BING_MODULE_OPERATION_COUNT = FLOW_MODULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link com.graeditor.flow_model.impl.HuiHeModuleImpl <em>Hui He Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.graeditor.flow_model.impl.HuiHeModuleImpl
+	 * @see com.graeditor.flow_model.impl.Flow_modelPackageImpl#getHuiHeModule()
+	 * @generated
+	 */
+	int HUI_HE_MODULE = 12;
+
+	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HUI_HE_MODULE__PICTOGRAM_ELEMENT = FLOW_MODULE__PICTOGRAM_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HUI_HE_MODULE__PREVIOUS_MODULES = FLOW_MODULE__PREVIOUS_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HUI_HE_MODULE__NEXT = FLOW_MODULE__NEXT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HUI_HE_MODULE__NAME = FLOW_MODULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Text Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HUI_HE_MODULE__TEXT_CONTENT = FLOW_MODULE__TEXT_CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Hui He Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HUI_HE_MODULE_FEATURE_COUNT = FLOW_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Hui He Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int HUI_HE_MODULE_OPERATION_COUNT = FLOW_MODULE_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link com.graeditor.flow_model.ContentModule <em>Content Module</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -940,6 +1161,36 @@ public interface Flow_modelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getControlTagModule();
+
+	/**
+	 * Returns the meta object for class '{@link com.graeditor.flow_model.FenChaModule <em>Fen Cha Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Fen Cha Module</em>'.
+	 * @see com.graeditor.flow_model.FenChaModule
+	 * @generated
+	 */
+	EClass getFenChaModule();
+
+	/**
+	 * Returns the meta object for class '{@link com.graeditor.flow_model.HeBingModule <em>He Bing Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>He Bing Module</em>'.
+	 * @see com.graeditor.flow_model.HeBingModule
+	 * @generated
+	 */
+	EClass getHeBingModule();
+
+	/**
+	 * Returns the meta object for class '{@link com.graeditor.flow_model.HuiHeModule <em>Hui He Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Hui He Module</em>'.
+	 * @see com.graeditor.flow_model.HuiHeModule
+	 * @generated
+	 */
+	EClass getHuiHeModule();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1118,7 +1369,37 @@ public interface Flow_modelPackage extends EPackage {
 		 * @see com.graeditor.flow_model.impl.Flow_modelPackageImpl#getControlTagModule()
 		 * @generated
 		 */
-		EClass CONTROL_TAG_MODULE = eINSTANCE.getControlTagModule();		
+		EClass CONTROL_TAG_MODULE = eINSTANCE.getControlTagModule();
+
+		/**
+		 * The meta object literal for the '{@link com.graeditor.flow_model.impl.FenChaModuleImpl <em>Fen Cha Module</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.graeditor.flow_model.impl.FenChaModuleImpl
+		 * @see com.graeditor.flow_model.impl.Flow_modelPackageImpl#getFenChaModule()
+		 * @generated
+		 */
+		EClass FEN_CHA_MODULE = eINSTANCE.getFenChaModule();
+
+		/**
+		 * The meta object literal for the '{@link com.graeditor.flow_model.impl.HeBingModuleImpl <em>He Bing Module</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.graeditor.flow_model.impl.HeBingModuleImpl
+		 * @see com.graeditor.flow_model.impl.Flow_modelPackageImpl#getHeBingModule()
+		 * @generated
+		 */
+		EClass HE_BING_MODULE = eINSTANCE.getHeBingModule();
+
+		/**
+		 * The meta object literal for the '{@link com.graeditor.flow_model.impl.HuiHeModuleImpl <em>Hui He Module</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.graeditor.flow_model.impl.HuiHeModuleImpl
+		 * @see com.graeditor.flow_model.impl.Flow_modelPackageImpl#getHuiHeModule()
+		 * @generated
+		 */
+		EClass HUI_HE_MODULE = eINSTANCE.getHuiHeModule();		
 
 	}
 	

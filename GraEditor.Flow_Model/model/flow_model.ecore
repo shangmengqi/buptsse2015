@@ -23,4 +23,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="TitleMoudle" eSuperTypes="#//FlowModule"/>
   <eClassifiers xsi:type="ecore:EClass" name="PreLogInTagModule" eSuperTypes="#//FlowModule"/>
   <eClassifiers xsi:type="ecore:EClass" name="ControlTagModule" eSuperTypes="#//FlowModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FenChaModule" eSuperTypes="#//FlowModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HeBingModule" eSuperTypes="#//FlowModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HuiHeModule" eSuperTypes="#//FlowModule"/>
 </ecore:EPackage>

@@ -26,5 +26,8 @@
     <genClasses ecoreClass="flow_model.ecore#//TitleMoudle"/>
     <genClasses ecoreClass="flow_model.ecore#//PreLogInTagModule"/>
     <genClasses ecoreClass="flow_model.ecore#//ControlTagModule"/>
+    <genClasses ecoreClass="flow_model.ecore#//FenChaModule"/>
+    <genClasses ecoreClass="flow_model.ecore#//HeBingModule"/>
+    <genClasses ecoreClass="flow_model.ecore#//HuiHeModule"/>
   </genPackages>
 </genmodel:GenModel>

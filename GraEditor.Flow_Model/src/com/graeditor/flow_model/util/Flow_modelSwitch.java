@@ -134,6 +134,27 @@ public class Flow_modelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case Flow_modelPackage.FEN_CHA_MODULE: {
+				FenChaModule fenChaModule = (FenChaModule)theEObject;
+				T result = caseFenChaModule(fenChaModule);
+				if (result == null) result = caseFlowModule(fenChaModule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Flow_modelPackage.HE_BING_MODULE: {
+				HeBingModule heBingModule = (HeBingModule)theEObject;
+				T result = caseHeBingModule(heBingModule);
+				if (result == null) result = caseFlowModule(heBingModule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Flow_modelPackage.HUI_HE_MODULE: {
+				HuiHeModule huiHeModule = (HuiHeModule)theEObject;
+				T result = caseHuiHeModule(huiHeModule);
+				if (result == null) result = caseFlowModule(huiHeModule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -285,6 +306,51 @@ public class Flow_modelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseControlTagModule(ControlTagModule object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Fen Cha Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Fen Cha Module</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseFenChaModule(FenChaModule object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>He Bing Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>He Bing Module</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHeBingModule(HeBingModule object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Hui He Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Hui He Module</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHuiHeModule(HuiHeModule object) {
 		return null;
 	}
 

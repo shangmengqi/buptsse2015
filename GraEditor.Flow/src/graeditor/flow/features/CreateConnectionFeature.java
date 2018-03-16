@@ -8,8 +8,12 @@ import org.eclipse.graphiti.mm.pictograms.Connection;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 
 import com.graeditor.flow_model.ContentModule;
+import com.graeditor.flow_model.ControlTagModule;
 import com.graeditor.flow_model.EndTagModule;
+import com.graeditor.flow_model.FenChaModule;
 import com.graeditor.flow_model.FlowModule;
+import com.graeditor.flow_model.HeBingModule;
+import com.graeditor.flow_model.HuiHeModule;
 import com.graeditor.flow_model.PreLogInTagModule;
 import com.graeditor.flow_model.StartTagModule;
 
@@ -32,7 +36,7 @@ public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
 	public boolean canCreate(ICreateConnectionContext context) {
 		PictogramElement startElement = context.getSourcePictogramElement();
 		PictogramElement endElement = context.getTargetPictogramElement();
-		
+
 		if (startElement == null || endElement == null || (startElement == endElement)) {
 			return false;
 		}
@@ -44,37 +48,49 @@ public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
 		startBizObj = (FlowModule) getBusinessObjectForPictogramElement(startElement);
 		endBizObj = (FlowModule) getBusinessObjectForPictogramElement(endElement);
 		
-		// 如果当前连线早已存在
+		// 如果当前连线早已存在,则不创建该链接
 		if (endBizObj.getPreviousModules().contains(startBizObj)) {
 			return false;
 		}
 		
-		//�����ǰ���������Ѿ�����
-//		if (startBizObj.getPreviousModules().contains(endBizObj)) {
-//			return false;
-//		}
-		
-		//StartTagModuleֻ�����ӵ�ContentModule��
-//		if (startBizObj instanceof StartTagModule) {
-//			if (endBizObj instanceof EndTagModule) {
-//				return false;
-//			}
-//		}
-		
-		// 开始节点不能连接到结束节点上
+		// 开始节点不能连接到结束节点、汇合节点、合并节点上
 		if (startBizObj instanceof PreLogInTagModule) {
-			if (endBizObj instanceof EndTagModule) {
+			if (endBizObj instanceof EndTagModule || endBizObj instanceof HuiHeModule || endBizObj instanceof HeBingModule) {
 				return false;
 			}
 		}
 		
-		//ContentModuleֻ�����ӵ�ContentModule����EndTagModule��
-		// content节点不能连接到开始和登录节点
-//		if (startBizObj instanceof ContentModule) {
-//			if (endBizObj instanceof StartTagModule) {
-//				return false;
-//			}
-//		}
+		// 终止节点无出连线
+		if (startBizObj instanceof EndTagModule) {
+			return false;
+		}
+		
+		// 开始节点无入连线
+		if (endBizObj instanceof PreLogInTagModule) {
+			return false;
+		}
+		
+		//分支节点只有一个入度
+		if (endBizObj instanceof ControlTagModule) {
+			if (endBizObj.getPreviousModules().size() == 1) {
+				return false;
+			}			
+		}
+				
+		//合并节点只有两个入度
+		if (endBizObj instanceof HeBingModule) {
+			if (endBizObj.getPreviousModules().size() == 2) {
+				return false;
+			}
+		}
+		
+		//分叉节点只有一个入度
+		if (endBizObj instanceof FenChaModule) {
+			if (endBizObj.getPreviousModules().size() == 1) {
+				return false;
+			}
+		}
+				
 		
 		// 登录节点不可以连接开始节点
 		if (startBizObj instanceof StartTagModule) {
@@ -83,25 +99,7 @@ public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
 			}
 		}
 		
-		// endTag不能作为连线的起点
-		if (startBizObj instanceof EndTagModule) {
-			return false;
-		}
-		
-		// 开始节点不能作为连线的终点
-		if (endBizObj instanceof PreLogInTagModule) {
-			return false;
-		}
-		
-		// 
-//		if (startBizObj instanceof PreLogInTagModule) {
-//			if (startBizObj.getNext() instanceof ) {
-//				
-//			}
-//		}
-		
-		
-		
+				
 		return true;
 	}
 

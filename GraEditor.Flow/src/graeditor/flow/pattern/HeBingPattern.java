@@ -6,6 +6,7 @@ import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.context.ICreateContext;
 import org.eclipse.graphiti.features.impl.Reason;
 import org.eclipse.graphiti.mm.algorithms.GraphicsAlgorithm;
+import org.eclipse.graphiti.mm.algorithms.Image;
 import org.eclipse.graphiti.mm.algorithms.Text;
 import org.eclipse.graphiti.mm.algorithms.styles.Orientation;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
@@ -22,23 +23,27 @@ import org.eclipse.graphiti.services.IPeCreateService;
 import org.eclipse.graphiti.util.ColorConstant;
 import org.eclipse.graphiti.util.IColorConstant;
 
-import com.graeditor.flow_model.ContentModule;
+import com.graeditor.flow_model.ControlTagModule;
 import com.graeditor.flow_model.Flow_modelFactory;
+import com.graeditor.flow_model.HeBingModule;
 
+import graeditor.flow.graphiti.FlowImageProvider;
 import graeditor.utils.GraPropertyUtil;
 import graeditor.utils.IDGenerator;
 
-public class ContentPattern extends IdPattern implements IPattern{
+public class HeBingPattern extends IdPattern implements IPattern{
 	
 	private static IColorConstant FONT_COLOR = ColorConstant.BLACK;
+
 	
-	public ContentPattern() {
+	public HeBingPattern() {
+		// TODO Auto-generated constructor stub
 		super();
 	}
 	
 	@Override
 	public String getCreateName() {
-		return "Content";
+		return "HeBing";
 	}
 	
 	@Override
@@ -56,18 +61,18 @@ public class ContentPattern extends IdPattern implements IPattern{
 		System.out.println(getDiagram().getPictogramLinks().size());		
 		i = getDiagram().getPictogramLinks().size() + 1;
 
-		String ret = ExampleUtil.askString("Text", "Please input a text", "content" + i);	
+		String ret = ExampleUtil.askString("Text", "Please input a text", "HeBing " + i);	
 		try {
 			value = ret;
 		} catch (Exception e) {
 		}
 		
-		ContentModule content = Flow_modelFactory.eINSTANCE.createContentModule();				
-		content.setName("Content");
-		content.setTextContent(value);
-		getDiagram().eResource().getContents().add(content);
-		addGraphicalRepresentation(context, content);
-		return new Object[] { content };		
+		HeBingModule HeBingTag = Flow_modelFactory.eINSTANCE.createHeBingModule();			
+		HeBingTag.setName("HeBing");
+		HeBingTag.setTextContent(value);
+		getDiagram().eResource().getContents().add(HeBingTag);
+		addGraphicalRepresentation(context, HeBingTag);
+		return new Object[] { HeBingTag };
 	}
 	
 	@Override
@@ -78,38 +83,31 @@ public class ContentPattern extends IdPattern implements IPattern{
 
 	@Override
 	protected PictogramElement doAdd(IAddContext context) {
-		ContentModule module = (ContentModule) context.getNewObject();
+		HeBingModule module = (HeBingModule) context.getNewObject();
 		Diagram diagram = (Diagram) context.getTargetContainer();
 		
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
 		ContainerShape containerShape = peCreateService.createContainerShape(diagram, true);
 		
-		GraPropertyUtil.setValue(containerShape, "shape_id", "Content"+IDGenerator.generateID());
+		GraPropertyUtil.setValue(containerShape, "shape_id", "HeBing"+IDGenerator.generateID());
 		
 		IGaService gaService = Graphiti.getGaService();
 		
 		int x = context.getX();
 		int y = context.getY();
 		
-//		int width = 180;
-//		int height = 60;
-		
-		int width = 130;
-		int height = 60;
+		int width = 100;
+		int height = 50;
+		int text_height = 10;
 		
 		GraphicsAlgorithm containerAlgorithm = null;
-		containerAlgorithm = gaService.createRoundedRectangle(containerShape, 10, 10);
-		gaService.setLocationAndSize(containerAlgorithm, x, y, width, height);
 		
-		containerAlgorithm.setForeground(manageColor(98, 131, 167));
-		containerAlgorithm.setBackground(manageColor(187, 218, 247));
-		containerAlgorithm.setLineWidth(2);
-		
-		//shape with text
-		//����һ���µ�PictogramElement�����Ǹ�Ԫ�ز���һ������
+		Image file = gaService.createImage(containerShape, FlowImageProvider.HEBING);
+		gaService.setLocationAndSize(file, context.getX(), context.getY(), width, height);
+				
 		String text = null;
 		
-		text = "" + ((ContentModule)module).getTextContent();
+		text = "" + ((HeBingModule)module).getTextContent();
 		System.out.println(text);
 		
 		
@@ -121,11 +119,12 @@ public class ContentPattern extends IdPattern implements IPattern{
 		textAlgorithm.setVerticalAlignment(Orientation.ALIGNMENT_CENTER);
 		textAlgorithm.setForeground(manageColor(FONT_COLOR));
 		textAlgorithm.setFont(gaService.manageDefaultFont(getDiagram(), false, false));
-		gaService.setLocationAndSize(textAlgorithm, 5, 5, width, 50);
+		gaService.setLocationAndSize(textAlgorithm, 2, 2, width, height);
 		
 		peCreateService.createChopboxAnchor(containerShape);
 
 		link(containerShape, module);
+		
 		return containerShape;
 	}
 
@@ -137,6 +136,7 @@ public class ContentPattern extends IdPattern implements IPattern{
 
 	@Override
 	protected IReason updateNeeded(IdUpdateContext context, String id) {
+		// TODO Auto-generated method stub
 		return Reason.createFalseReason();
 	}
 
@@ -148,7 +148,8 @@ public class ContentPattern extends IdPattern implements IPattern{
 
 	@Override
 	public boolean isMainBusinessObjectApplicable(Object mainBusinessObject) {
-		return mainBusinessObject instanceof ContentModule;
+		// TODO Auto-generated method stub
+		return mainBusinessObject instanceof HeBingModule;
 	}
 	
 	@Override
@@ -162,6 +163,5 @@ public class ContentPattern extends IdPattern implements IPattern{
 		Object domainObject  = getBusinessObjectForPictogramElement(pictogramElement);
 		return isMainBusinessObjectApplicable(domainObject);
 	}
-
 
 }

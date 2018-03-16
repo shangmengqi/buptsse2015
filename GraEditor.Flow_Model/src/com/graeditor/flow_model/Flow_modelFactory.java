@@ -112,6 +112,33 @@ public interface Flow_modelFactory extends EFactory {
 	ControlTagModule createControlTagModule();
 
 	/**
+	 * Returns a new object of class '<em>Fen Cha Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Fen Cha Module</em>'.
+	 * @generated
+	 */
+	FenChaModule createFenChaModule();
+
+	/**
+	 * Returns a new object of class '<em>He Bing Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>He Bing Module</em>'.
+	 * @generated
+	 */
+	HeBingModule createHeBingModule();
+
+	/**
+	 * Returns a new object of class '<em>Hui He Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Hui He Module</em>'.
+	 * @generated
+	 */
+	HuiHeModule createHuiHeModule();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

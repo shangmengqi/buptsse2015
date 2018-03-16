@@ -66,6 +66,9 @@ public class Flow_modelFactoryImpl extends EFactoryImpl implements Flow_modelFac
 			case Flow_modelPackage.TITLE_MOUDLE: return createTitleMoudle();
 			case Flow_modelPackage.PRE_LOG_IN_TAG_MODULE: return createPreLogInTagModule();
 			case Flow_modelPackage.CONTROL_TAG_MODULE: return createControlTagModule();
+			case Flow_modelPackage.FEN_CHA_MODULE: return createFenChaModule();
+			case Flow_modelPackage.HE_BING_MODULE: return createHeBingModule();
+			case Flow_modelPackage.HUI_HE_MODULE: return createHuiHeModule();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -169,6 +172,36 @@ public class Flow_modelFactoryImpl extends EFactoryImpl implements Flow_modelFac
 	public ControlTagModule createControlTagModule() {
 		ControlTagModuleImpl controlTagModule = new ControlTagModuleImpl();
 		return controlTagModule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public FenChaModule createFenChaModule() {
+		FenChaModuleImpl fenChaModule = new FenChaModuleImpl();
+		return fenChaModule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HeBingModule createHeBingModule() {
+		HeBingModuleImpl heBingModule = new HeBingModuleImpl();
+		return heBingModule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public HuiHeModule createHuiHeModule() {
+		HuiHeModuleImpl huiHeModule = new HuiHeModuleImpl();
+		return huiHeModule;
 	}
 
 	/**

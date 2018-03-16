@@ -20,7 +20,10 @@ import graeditor.flow.features.FlowDrillDownFeature;
 import graeditor.flow.pattern.ContentPattern;
 import graeditor.flow.pattern.ControlTagPattern;
 import graeditor.flow.pattern.EndTagPattern;
+import graeditor.flow.pattern.FenChaPattern;
+import graeditor.flow.pattern.HeBingPattern;
 import graeditor.flow.pattern.HorizontalLinePattern;
+import graeditor.flow.pattern.HuiHePattern;
 import graeditor.flow.pattern.PreLogInTagPattern;
 import graeditor.flow.pattern.StartTagPattern;
 import graeditor.flow.pattern.TitlePattern;
@@ -38,6 +41,9 @@ public class FlowFeatureProvider extends DefaultFeatureProviderWithPatterns{
 		addPattern(new TitlePattern());
 		addPattern(new PreLogInTagPattern());
 		addPattern(new ControlTagPattern());
+		addPattern(new FenChaPattern());
+		addPattern(new HuiHePattern());
+		addPattern(new HeBingPattern());
 	}
 	
 	@Override

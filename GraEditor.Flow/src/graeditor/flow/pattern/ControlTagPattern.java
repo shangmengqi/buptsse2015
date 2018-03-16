@@ -97,9 +97,9 @@ public class ControlTagPattern extends IdPattern implements IPattern{
 		int x = context.getX();
 		int y = context.getY();
 		
-		int width = 200;
-		int height = 100;
-		int text_height = 20;
+		int width = 100;
+		int height = 50;
+		int text_height = 10;
 		
 		GraphicsAlgorithm containerAlgorithm = null;
 		
@@ -120,7 +120,7 @@ public class ControlTagPattern extends IdPattern implements IPattern{
 		textAlgorithm.setVerticalAlignment(Orientation.ALIGNMENT_CENTER);
 		textAlgorithm.setForeground(manageColor(FONT_COLOR));
 		textAlgorithm.setFont(gaService.manageDefaultFont(getDiagram(), false, false));
-		gaService.setLocationAndSize(textAlgorithm, 2, 2, width, 100);
+		gaService.setLocationAndSize(textAlgorithm, 2, 2, width, height);
 		
 		peCreateService.createChopboxAnchor(containerShape);
 

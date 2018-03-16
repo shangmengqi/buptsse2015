@@ -70,6 +70,10 @@ public class VerticalLinePattern extends IdPattern implements IPattern{
 		
 		int width = 3;
 		int height = 500;
+		
+//		int width = 3;
+//		int height = 300;
+		
 		int x = context.getX();
 		int y = context.getY();		
 		
