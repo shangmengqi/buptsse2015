@@ -76,6 +76,60 @@ public interface Vocabulary_modelFactory extends EFactory {
 	PageStackModule createPageStackModule();
 
 	/**
+	 * Returns a new object of class '<em>Cluster Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cluster Module</em>'.
+	 * @generated
+	 */
+	ClusterModule createClusterModule();
+
+	/**
+	 * Returns a new object of class '<em>Concurrent Set Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Concurrent Set Module</em>'.
+	 * @generated
+	 */
+	ConcurrentSetModule createConcurrentSetModule();
+
+	/**
+	 * Returns a new object of class '<em>Cond Branch Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cond Branch Module</em>'.
+	 * @generated
+	 */
+	CondBranchModule createCondBranchModule();
+
+	/**
+	 * Returns a new object of class '<em>Cont Horz Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cont Horz Module</em>'.
+	 * @generated
+	 */
+	ContHorzModule createContHorzModule();
+
+	/**
+	 * Returns a new object of class '<em>Cont Vert Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Cont Vert Module</em>'.
+	 * @generated
+	 */
+	ContVertModule createContVertModule();
+
+	/**
+	 * Returns a new object of class '<em>Dec Point Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Dec Point Module</em>'.
+	 * @generated
+	 */
+	DecPointModule createDecPointModule();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

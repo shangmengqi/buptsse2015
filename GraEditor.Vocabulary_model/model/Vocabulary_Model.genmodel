@@ -19,5 +19,11 @@
     <genClasses ecoreClass="vocabulary_model.ecore#//FileStackModule"/>
     <genClasses ecoreClass="vocabulary_model.ecore#//PageModule"/>
     <genClasses ecoreClass="vocabulary_model.ecore#//PageStackModule"/>
+    <genClasses ecoreClass="vocabulary_model.ecore#//ClusterModule"/>
+    <genClasses ecoreClass="vocabulary_model.ecore#//ConcurrentSetModule"/>
+    <genClasses ecoreClass="vocabulary_model.ecore#//CondBranchModule"/>
+    <genClasses ecoreClass="vocabulary_model.ecore#//ContHorzModule"/>
+    <genClasses ecoreClass="vocabulary_model.ecore#//ContVertModule"/>
+    <genClasses ecoreClass="vocabulary_model.ecore#//DecPointModule"/>
   </genPackages>
 </genmodel:GenModel>

@@ -497,6 +497,445 @@ public interface Vocabulary_modelPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link com.graeditor.vocabulary_model.impl.ClusterModuleImpl <em>Cluster Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.graeditor.vocabulary_model.impl.ClusterModuleImpl
+	 * @see com.graeditor.vocabulary_model.impl.Vocabulary_modelPackageImpl#getClusterModule()
+	 * @generated
+	 */
+	int CLUSTER_MODULE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER_MODULE__PICTOGRAM_ELEMENT = VOCABULARY_MODULE__PICTOGRAM_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER_MODULE__PREVIOUS_MODULES = VOCABULARY_MODULE__PREVIOUS_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER_MODULE__NEXT = VOCABULARY_MODULE__NEXT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER_MODULE__NAME = VOCABULARY_MODULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Text Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER_MODULE__TEXT_CONTENT = VOCABULARY_MODULE__TEXT_CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Cluster Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER_MODULE_FEATURE_COUNT = VOCABULARY_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Cluster Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CLUSTER_MODULE_OPERATION_COUNT = VOCABULARY_MODULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link com.graeditor.vocabulary_model.impl.ConcurrentSetModuleImpl <em>Concurrent Set Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.graeditor.vocabulary_model.impl.ConcurrentSetModuleImpl
+	 * @see com.graeditor.vocabulary_model.impl.Vocabulary_modelPackageImpl#getConcurrentSetModule()
+	 * @generated
+	 */
+	int CONCURRENT_SET_MODULE = 7;
+
+	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCURRENT_SET_MODULE__PICTOGRAM_ELEMENT = VOCABULARY_MODULE__PICTOGRAM_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCURRENT_SET_MODULE__PREVIOUS_MODULES = VOCABULARY_MODULE__PREVIOUS_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCURRENT_SET_MODULE__NEXT = VOCABULARY_MODULE__NEXT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCURRENT_SET_MODULE__NAME = VOCABULARY_MODULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Text Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCURRENT_SET_MODULE__TEXT_CONTENT = VOCABULARY_MODULE__TEXT_CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Concurrent Set Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCURRENT_SET_MODULE_FEATURE_COUNT = VOCABULARY_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Concurrent Set Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCURRENT_SET_MODULE_OPERATION_COUNT = VOCABULARY_MODULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link com.graeditor.vocabulary_model.impl.CondBranchModuleImpl <em>Cond Branch Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.graeditor.vocabulary_model.impl.CondBranchModuleImpl
+	 * @see com.graeditor.vocabulary_model.impl.Vocabulary_modelPackageImpl#getCondBranchModule()
+	 * @generated
+	 */
+	int COND_BRANCH_MODULE = 8;
+
+	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COND_BRANCH_MODULE__PICTOGRAM_ELEMENT = VOCABULARY_MODULE__PICTOGRAM_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COND_BRANCH_MODULE__PREVIOUS_MODULES = VOCABULARY_MODULE__PREVIOUS_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COND_BRANCH_MODULE__NEXT = VOCABULARY_MODULE__NEXT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COND_BRANCH_MODULE__NAME = VOCABULARY_MODULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Text Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COND_BRANCH_MODULE__TEXT_CONTENT = VOCABULARY_MODULE__TEXT_CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Cond Branch Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COND_BRANCH_MODULE_FEATURE_COUNT = VOCABULARY_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Cond Branch Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COND_BRANCH_MODULE_OPERATION_COUNT = VOCABULARY_MODULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link com.graeditor.vocabulary_model.impl.ContHorzModuleImpl <em>Cont Horz Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.graeditor.vocabulary_model.impl.ContHorzModuleImpl
+	 * @see com.graeditor.vocabulary_model.impl.Vocabulary_modelPackageImpl#getContHorzModule()
+	 * @generated
+	 */
+	int CONT_HORZ_MODULE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONT_HORZ_MODULE__PICTOGRAM_ELEMENT = VOCABULARY_MODULE__PICTOGRAM_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONT_HORZ_MODULE__PREVIOUS_MODULES = VOCABULARY_MODULE__PREVIOUS_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONT_HORZ_MODULE__NEXT = VOCABULARY_MODULE__NEXT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONT_HORZ_MODULE__NAME = VOCABULARY_MODULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Text Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONT_HORZ_MODULE__TEXT_CONTENT = VOCABULARY_MODULE__TEXT_CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Cont Horz Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONT_HORZ_MODULE_FEATURE_COUNT = VOCABULARY_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Cont Horz Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONT_HORZ_MODULE_OPERATION_COUNT = VOCABULARY_MODULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link com.graeditor.vocabulary_model.impl.ContVertModuleImpl <em>Cont Vert Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.graeditor.vocabulary_model.impl.ContVertModuleImpl
+	 * @see com.graeditor.vocabulary_model.impl.Vocabulary_modelPackageImpl#getContVertModule()
+	 * @generated
+	 */
+	int CONT_VERT_MODULE = 10;
+
+	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONT_VERT_MODULE__PICTOGRAM_ELEMENT = VOCABULARY_MODULE__PICTOGRAM_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONT_VERT_MODULE__PREVIOUS_MODULES = VOCABULARY_MODULE__PREVIOUS_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONT_VERT_MODULE__NEXT = VOCABULARY_MODULE__NEXT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONT_VERT_MODULE__NAME = VOCABULARY_MODULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Text Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONT_VERT_MODULE__TEXT_CONTENT = VOCABULARY_MODULE__TEXT_CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Cont Vert Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONT_VERT_MODULE_FEATURE_COUNT = VOCABULARY_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Cont Vert Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONT_VERT_MODULE_OPERATION_COUNT = VOCABULARY_MODULE_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link com.graeditor.vocabulary_model.impl.DecPointModuleImpl <em>Dec Point Module</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see com.graeditor.vocabulary_model.impl.DecPointModuleImpl
+	 * @see com.graeditor.vocabulary_model.impl.Vocabulary_modelPackageImpl#getDecPointModule()
+	 * @generated
+	 */
+	int DEC_POINT_MODULE = 11;
+
+	/**
+	 * The feature id for the '<em><b>Pictogram Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEC_POINT_MODULE__PICTOGRAM_ELEMENT = VOCABULARY_MODULE__PICTOGRAM_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEC_POINT_MODULE__PREVIOUS_MODULES = VOCABULARY_MODULE__PREVIOUS_MODULES;
+
+	/**
+	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEC_POINT_MODULE__NEXT = VOCABULARY_MODULE__NEXT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEC_POINT_MODULE__NAME = VOCABULARY_MODULE__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Text Content</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEC_POINT_MODULE__TEXT_CONTENT = VOCABULARY_MODULE__TEXT_CONTENT;
+
+	/**
+	 * The number of structural features of the '<em>Dec Point Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEC_POINT_MODULE_FEATURE_COUNT = VOCABULARY_MODULE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Dec Point Module</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DEC_POINT_MODULE_OPERATION_COUNT = VOCABULARY_MODULE_OPERATION_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link com.graeditor.vocabulary_model.AreaModule <em>Area Module</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -610,6 +1049,66 @@ public interface Vocabulary_modelPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getPageStackModule();
+
+	/**
+	 * Returns the meta object for class '{@link com.graeditor.vocabulary_model.ClusterModule <em>Cluster Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Cluster Module</em>'.
+	 * @see com.graeditor.vocabulary_model.ClusterModule
+	 * @generated
+	 */
+	EClass getClusterModule();
+
+	/**
+	 * Returns the meta object for class '{@link com.graeditor.vocabulary_model.ConcurrentSetModule <em>Concurrent Set Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Concurrent Set Module</em>'.
+	 * @see com.graeditor.vocabulary_model.ConcurrentSetModule
+	 * @generated
+	 */
+	EClass getConcurrentSetModule();
+
+	/**
+	 * Returns the meta object for class '{@link com.graeditor.vocabulary_model.CondBranchModule <em>Cond Branch Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Cond Branch Module</em>'.
+	 * @see com.graeditor.vocabulary_model.CondBranchModule
+	 * @generated
+	 */
+	EClass getCondBranchModule();
+
+	/**
+	 * Returns the meta object for class '{@link com.graeditor.vocabulary_model.ContHorzModule <em>Cont Horz Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Cont Horz Module</em>'.
+	 * @see com.graeditor.vocabulary_model.ContHorzModule
+	 * @generated
+	 */
+	EClass getContHorzModule();
+
+	/**
+	 * Returns the meta object for class '{@link com.graeditor.vocabulary_model.ContVertModule <em>Cont Vert Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Cont Vert Module</em>'.
+	 * @see com.graeditor.vocabulary_model.ContVertModule
+	 * @generated
+	 */
+	EClass getContVertModule();
+
+	/**
+	 * Returns the meta object for class '{@link com.graeditor.vocabulary_model.DecPointModule <em>Dec Point Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Dec Point Module</em>'.
+	 * @see com.graeditor.vocabulary_model.DecPointModule
+	 * @generated
+	 */
+	EClass getDecPointModule();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -733,6 +1232,66 @@ public interface Vocabulary_modelPackage extends EPackage {
 		 * @generated
 		 */
 		EClass PAGE_STACK_MODULE = eINSTANCE.getPageStackModule();
+
+		/**
+		 * The meta object literal for the '{@link com.graeditor.vocabulary_model.impl.ClusterModuleImpl <em>Cluster Module</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.graeditor.vocabulary_model.impl.ClusterModuleImpl
+		 * @see com.graeditor.vocabulary_model.impl.Vocabulary_modelPackageImpl#getClusterModule()
+		 * @generated
+		 */
+		EClass CLUSTER_MODULE = eINSTANCE.getClusterModule();
+
+		/**
+		 * The meta object literal for the '{@link com.graeditor.vocabulary_model.impl.ConcurrentSetModuleImpl <em>Concurrent Set Module</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.graeditor.vocabulary_model.impl.ConcurrentSetModuleImpl
+		 * @see com.graeditor.vocabulary_model.impl.Vocabulary_modelPackageImpl#getConcurrentSetModule()
+		 * @generated
+		 */
+		EClass CONCURRENT_SET_MODULE = eINSTANCE.getConcurrentSetModule();
+
+		/**
+		 * The meta object literal for the '{@link com.graeditor.vocabulary_model.impl.CondBranchModuleImpl <em>Cond Branch Module</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.graeditor.vocabulary_model.impl.CondBranchModuleImpl
+		 * @see com.graeditor.vocabulary_model.impl.Vocabulary_modelPackageImpl#getCondBranchModule()
+		 * @generated
+		 */
+		EClass COND_BRANCH_MODULE = eINSTANCE.getCondBranchModule();
+
+		/**
+		 * The meta object literal for the '{@link com.graeditor.vocabulary_model.impl.ContHorzModuleImpl <em>Cont Horz Module</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.graeditor.vocabulary_model.impl.ContHorzModuleImpl
+		 * @see com.graeditor.vocabulary_model.impl.Vocabulary_modelPackageImpl#getContHorzModule()
+		 * @generated
+		 */
+		EClass CONT_HORZ_MODULE = eINSTANCE.getContHorzModule();
+
+		/**
+		 * The meta object literal for the '{@link com.graeditor.vocabulary_model.impl.ContVertModuleImpl <em>Cont Vert Module</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.graeditor.vocabulary_model.impl.ContVertModuleImpl
+		 * @see com.graeditor.vocabulary_model.impl.Vocabulary_modelPackageImpl#getContVertModule()
+		 * @generated
+		 */
+		EClass CONT_VERT_MODULE = eINSTANCE.getContVertModule();
+
+		/**
+		 * The meta object literal for the '{@link com.graeditor.vocabulary_model.impl.DecPointModuleImpl <em>Dec Point Module</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see com.graeditor.vocabulary_model.impl.DecPointModuleImpl
+		 * @see com.graeditor.vocabulary_model.impl.Vocabulary_modelPackageImpl#getDecPointModule()
+		 * @generated
+		 */
+		EClass DEC_POINT_MODULE = eINSTANCE.getDecPointModule();
 
 	}
 

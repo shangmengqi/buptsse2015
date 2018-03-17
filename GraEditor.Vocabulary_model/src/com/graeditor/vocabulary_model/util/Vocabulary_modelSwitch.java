@@ -107,6 +107,48 @@ public class Vocabulary_modelSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case Vocabulary_modelPackage.CLUSTER_MODULE: {
+				ClusterModule clusterModule = (ClusterModule)theEObject;
+				T result = caseClusterModule(clusterModule);
+				if (result == null) result = caseVocabularyModule(clusterModule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Vocabulary_modelPackage.CONCURRENT_SET_MODULE: {
+				ConcurrentSetModule concurrentSetModule = (ConcurrentSetModule)theEObject;
+				T result = caseConcurrentSetModule(concurrentSetModule);
+				if (result == null) result = caseVocabularyModule(concurrentSetModule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Vocabulary_modelPackage.COND_BRANCH_MODULE: {
+				CondBranchModule condBranchModule = (CondBranchModule)theEObject;
+				T result = caseCondBranchModule(condBranchModule);
+				if (result == null) result = caseVocabularyModule(condBranchModule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Vocabulary_modelPackage.CONT_HORZ_MODULE: {
+				ContHorzModule contHorzModule = (ContHorzModule)theEObject;
+				T result = caseContHorzModule(contHorzModule);
+				if (result == null) result = caseVocabularyModule(contHorzModule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Vocabulary_modelPackage.CONT_VERT_MODULE: {
+				ContVertModule contVertModule = (ContVertModule)theEObject;
+				T result = caseContVertModule(contVertModule);
+				if (result == null) result = caseVocabularyModule(contVertModule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Vocabulary_modelPackage.DEC_POINT_MODULE: {
+				DecPointModule decPointModule = (DecPointModule)theEObject;
+				T result = caseDecPointModule(decPointModule);
+				if (result == null) result = caseVocabularyModule(decPointModule);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -198,6 +240,96 @@ public class Vocabulary_modelSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePageStackModule(PageStackModule object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cluster Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cluster Module</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseClusterModule(ClusterModule object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Concurrent Set Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Concurrent Set Module</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseConcurrentSetModule(ConcurrentSetModule object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cond Branch Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cond Branch Module</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCondBranchModule(CondBranchModule object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cont Horz Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cont Horz Module</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseContHorzModule(ContHorzModule object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Cont Vert Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Cont Vert Module</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseContVertModule(ContVertModule object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Dec Point Module</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Dec Point Module</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDecPointModule(DecPointModule object) {
 		return null;
 	}
 

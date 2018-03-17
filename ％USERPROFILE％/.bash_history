@@ -282,3 +282,9 @@ git commit -m "添加活动图的完整语义约束和图形元素"
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "添加视觉词汇的部分元素绘制"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

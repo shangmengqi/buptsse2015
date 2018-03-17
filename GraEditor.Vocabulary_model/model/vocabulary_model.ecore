@@ -16,4 +16,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="FileStackModule" eSuperTypes="#//VocabularyModule"/>
   <eClassifiers xsi:type="ecore:EClass" name="PageModule" eSuperTypes="#//VocabularyModule"/>
   <eClassifiers xsi:type="ecore:EClass" name="PageStackModule" eSuperTypes="#//VocabularyModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ClusterModule" eSuperTypes="#//VocabularyModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ConcurrentSetModule" eSuperTypes="#//VocabularyModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CondBranchModule" eSuperTypes="#//VocabularyModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ContHorzModule" eSuperTypes="#//VocabularyModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ContVertModule" eSuperTypes="#//VocabularyModule"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DecPointModule" eSuperTypes="#//VocabularyModule"/>
 </ecore:EPackage>

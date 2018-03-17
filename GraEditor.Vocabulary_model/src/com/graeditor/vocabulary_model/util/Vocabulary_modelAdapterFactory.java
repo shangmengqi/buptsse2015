@@ -92,6 +92,30 @@ public class Vocabulary_modelAdapterFactory extends AdapterFactoryImpl {
 				return createPageStackModuleAdapter();
 			}
 			@Override
+			public Adapter caseClusterModule(ClusterModule object) {
+				return createClusterModuleAdapter();
+			}
+			@Override
+			public Adapter caseConcurrentSetModule(ConcurrentSetModule object) {
+				return createConcurrentSetModuleAdapter();
+			}
+			@Override
+			public Adapter caseCondBranchModule(CondBranchModule object) {
+				return createCondBranchModuleAdapter();
+			}
+			@Override
+			public Adapter caseContHorzModule(ContHorzModule object) {
+				return createContHorzModuleAdapter();
+			}
+			@Override
+			public Adapter caseContVertModule(ContVertModule object) {
+				return createContVertModuleAdapter();
+			}
+			@Override
+			public Adapter caseDecPointModule(DecPointModule object) {
+				return createDecPointModuleAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -192,6 +216,90 @@ public class Vocabulary_modelAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPageStackModuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.graeditor.vocabulary_model.ClusterModule <em>Cluster Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.graeditor.vocabulary_model.ClusterModule
+	 * @generated
+	 */
+	public Adapter createClusterModuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.graeditor.vocabulary_model.ConcurrentSetModule <em>Concurrent Set Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.graeditor.vocabulary_model.ConcurrentSetModule
+	 * @generated
+	 */
+	public Adapter createConcurrentSetModuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.graeditor.vocabulary_model.CondBranchModule <em>Cond Branch Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.graeditor.vocabulary_model.CondBranchModule
+	 * @generated
+	 */
+	public Adapter createCondBranchModuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.graeditor.vocabulary_model.ContHorzModule <em>Cont Horz Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.graeditor.vocabulary_model.ContHorzModule
+	 * @generated
+	 */
+	public Adapter createContHorzModuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.graeditor.vocabulary_model.ContVertModule <em>Cont Vert Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.graeditor.vocabulary_model.ContVertModule
+	 * @generated
+	 */
+	public Adapter createContVertModuleAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link com.graeditor.vocabulary_model.DecPointModule <em>Dec Point Module</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see com.graeditor.vocabulary_model.DecPointModule
+	 * @generated
+	 */
+	public Adapter createDecPointModuleAdapter() {
 		return null;
 	}
 

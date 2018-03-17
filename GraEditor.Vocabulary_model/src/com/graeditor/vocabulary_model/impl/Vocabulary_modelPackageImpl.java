@@ -3,6 +3,12 @@
 package com.graeditor.vocabulary_model.impl;
 
 import com.graeditor.vocabulary_model.AreaModule;
+import com.graeditor.vocabulary_model.ClusterModule;
+import com.graeditor.vocabulary_model.ConcurrentSetModule;
+import com.graeditor.vocabulary_model.CondBranchModule;
+import com.graeditor.vocabulary_model.ContHorzModule;
+import com.graeditor.vocabulary_model.ContVertModule;
+import com.graeditor.vocabulary_model.DecPointModule;
 import com.graeditor.vocabulary_model.FileModule;
 import com.graeditor.vocabulary_model.FileStackModule;
 import com.graeditor.vocabulary_model.PageModule;
@@ -67,6 +73,48 @@ public class Vocabulary_modelPackageImpl extends EPackageImpl implements Vocabul
 	 * @generated
 	 */
 	private EClass pageStackModuleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass clusterModuleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass concurrentSetModuleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass condBranchModuleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass contHorzModuleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass contVertModuleEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass decPointModuleEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -233,6 +281,60 @@ public class Vocabulary_modelPackageImpl extends EPackageImpl implements Vocabul
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getClusterModule() {
+		return clusterModuleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getConcurrentSetModule() {
+		return concurrentSetModuleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getCondBranchModule() {
+		return condBranchModuleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getContHorzModule() {
+		return contHorzModuleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getContVertModule() {
+		return contVertModuleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDecPointModule() {
+		return decPointModuleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public Vocabulary_modelFactory getVocabulary_modelFactory() {
 		return (Vocabulary_modelFactory)getEFactoryInstance();
 	}
@@ -272,6 +374,18 @@ public class Vocabulary_modelPackageImpl extends EPackageImpl implements Vocabul
 		pageModuleEClass = createEClass(PAGE_MODULE);
 
 		pageStackModuleEClass = createEClass(PAGE_STACK_MODULE);
+
+		clusterModuleEClass = createEClass(CLUSTER_MODULE);
+
+		concurrentSetModuleEClass = createEClass(CONCURRENT_SET_MODULE);
+
+		condBranchModuleEClass = createEClass(COND_BRANCH_MODULE);
+
+		contHorzModuleEClass = createEClass(CONT_HORZ_MODULE);
+
+		contVertModuleEClass = createEClass(CONT_VERT_MODULE);
+
+		decPointModuleEClass = createEClass(DEC_POINT_MODULE);
 	}
 
 	/**
@@ -307,6 +421,12 @@ public class Vocabulary_modelPackageImpl extends EPackageImpl implements Vocabul
 		fileStackModuleEClass.getESuperTypes().add(this.getVocabularyModule());
 		pageModuleEClass.getESuperTypes().add(this.getVocabularyModule());
 		pageStackModuleEClass.getESuperTypes().add(this.getVocabularyModule());
+		clusterModuleEClass.getESuperTypes().add(this.getVocabularyModule());
+		concurrentSetModuleEClass.getESuperTypes().add(this.getVocabularyModule());
+		condBranchModuleEClass.getESuperTypes().add(this.getVocabularyModule());
+		contHorzModuleEClass.getESuperTypes().add(this.getVocabularyModule());
+		contVertModuleEClass.getESuperTypes().add(this.getVocabularyModule());
+		decPointModuleEClass.getESuperTypes().add(this.getVocabularyModule());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(areaModuleEClass, AreaModule.class, "AreaModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -325,6 +445,18 @@ public class Vocabulary_modelPackageImpl extends EPackageImpl implements Vocabul
 		initEClass(pageModuleEClass, PageModule.class, "PageModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(pageStackModuleEClass, PageStackModule.class, "PageStackModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(clusterModuleEClass, ClusterModule.class, "ClusterModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(concurrentSetModuleEClass, ConcurrentSetModule.class, "ConcurrentSetModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(condBranchModuleEClass, CondBranchModule.class, "CondBranchModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(contHorzModuleEClass, ContHorzModule.class, "ContHorzModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(contVertModuleEClass, ContVertModule.class, "ContVertModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(decPointModuleEClass, DecPointModule.class, "DecPointModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

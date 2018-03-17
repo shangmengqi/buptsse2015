@@ -62,6 +62,12 @@ public class Vocabulary_modelFactoryImpl extends EFactoryImpl implements Vocabul
 			case Vocabulary_modelPackage.FILE_STACK_MODULE: return createFileStackModule();
 			case Vocabulary_modelPackage.PAGE_MODULE: return createPageModule();
 			case Vocabulary_modelPackage.PAGE_STACK_MODULE: return createPageStackModule();
+			case Vocabulary_modelPackage.CLUSTER_MODULE: return createClusterModule();
+			case Vocabulary_modelPackage.CONCURRENT_SET_MODULE: return createConcurrentSetModule();
+			case Vocabulary_modelPackage.COND_BRANCH_MODULE: return createCondBranchModule();
+			case Vocabulary_modelPackage.CONT_HORZ_MODULE: return createContHorzModule();
+			case Vocabulary_modelPackage.CONT_VERT_MODULE: return createContVertModule();
+			case Vocabulary_modelPackage.DEC_POINT_MODULE: return createDecPointModule();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -125,6 +131,66 @@ public class Vocabulary_modelFactoryImpl extends EFactoryImpl implements Vocabul
 	public PageStackModule createPageStackModule() {
 		PageStackModuleImpl pageStackModule = new PageStackModuleImpl();
 		return pageStackModule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ClusterModule createClusterModule() {
+		ClusterModuleImpl clusterModule = new ClusterModuleImpl();
+		return clusterModule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ConcurrentSetModule createConcurrentSetModule() {
+		ConcurrentSetModuleImpl concurrentSetModule = new ConcurrentSetModuleImpl();
+		return concurrentSetModule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CondBranchModule createCondBranchModule() {
+		CondBranchModuleImpl condBranchModule = new CondBranchModuleImpl();
+		return condBranchModule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContHorzModule createContHorzModule() {
+		ContHorzModuleImpl contHorzModule = new ContHorzModuleImpl();
+		return contHorzModule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ContVertModule createContVertModule() {
+		ContVertModuleImpl contVertModule = new ContVertModuleImpl();
+		return contVertModule;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DecPointModule createDecPointModule() {
+		DecPointModuleImpl decPointModule = new DecPointModuleImpl();
+		return decPointModule;
 	}
 
 	/**
