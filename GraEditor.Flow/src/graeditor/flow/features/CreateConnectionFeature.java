@@ -133,6 +133,7 @@ public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
 				return false;
 			}
 		}
+		
 		return true;
 	}
 	

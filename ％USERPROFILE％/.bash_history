@@ -288,3 +288,9 @@ git commit -m "添加视觉词汇的部分元素绘制"
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "视觉词汇添加不带有约束的连线"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master
