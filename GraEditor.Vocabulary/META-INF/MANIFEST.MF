@@ -12,3 +12,4 @@ Require-Bundle: org.eclipse.ui;bundle-version="3.107.0",
  GraEditor.Utils;bundle-version="1.0.0",
  GraEditor.Vocabulary_model;bundle-version="0.1.0",
  org.eclipse.graphiti.examples.common
+Import-Package: org.eclipse.core.resources

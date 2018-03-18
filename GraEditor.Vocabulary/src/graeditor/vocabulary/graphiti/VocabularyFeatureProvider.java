@@ -5,11 +5,17 @@ import org.eclipse.graphiti.features.IAddFeature;
 import org.eclipse.graphiti.features.ICreateConnectionFeature;
 import org.eclipse.graphiti.features.context.IAddConnectionContext;
 import org.eclipse.graphiti.features.context.IAddContext;
+import org.eclipse.graphiti.features.context.ICustomContext;
+import org.eclipse.graphiti.features.custom.ICustomFeature;
 import org.eclipse.graphiti.pattern.DefaultFeatureProviderWithPatterns;
 
+
 import graeditor.vocabulary.features.AddConnectionFeature;
+import graeditor.vocabulary.features.AssociateDiagramFeature;
 import graeditor.vocabulary.features.CreateConnectionFeature;
 import graeditor.vocabulary.features.CreateConnectionFeature.ConnectionType;
+import graeditor.vocabulary.features.CreateNewActionDiagramFeature;
+import graeditor.vocabulary.features.VocabularyDrillDownFeature;
 import graeditor.vocabulary.pattern.AreaPattern;
 import graeditor.vocabulary.pattern.ClusterPattern;
 import graeditor.vocabulary.pattern.ConcurrentSetPattern;
@@ -54,6 +60,15 @@ public class VocabularyFeatureProvider extends DefaultFeatureProviderWithPattern
 				new CreateConnectionFeature(this, ConnectionType.FREEFORM),
 				new CreateConnectionFeature(this, ConnectionType.MANHATTAN)
 		};
+	}
+	
+	@Override
+	public ICustomFeature[] getCustomFeatures(ICustomContext context) {
+		return new ICustomFeature[] {				
+			new VocabularyDrillDownFeature(this),
+			new AssociateDiagramFeature(this),
+			new CreateNewActionDiagramFeature(this),
+			};
 	}
 
 }
