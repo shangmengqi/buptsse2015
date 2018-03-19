@@ -76,7 +76,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int VOCABULARY_MODULE__PICTOGRAM_ELEMENT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -85,7 +85,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int VOCABULARY_MODULE__PREVIOUS_MODULES = 1;
 
 	/**
-	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * The feature id for the '<em><b>Next</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -149,7 +149,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int AREA_MODULE__PICTOGRAM_ELEMENT = VOCABULARY_MODULE__PICTOGRAM_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -158,7 +158,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int AREA_MODULE__PREVIOUS_MODULES = VOCABULARY_MODULE__PREVIOUS_MODULES;
 
 	/**
-	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * The feature id for the '<em><b>Next</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -223,7 +223,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int FILE_MODULE__PICTOGRAM_ELEMENT = VOCABULARY_MODULE__PICTOGRAM_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -232,7 +232,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int FILE_MODULE__PREVIOUS_MODULES = VOCABULARY_MODULE__PREVIOUS_MODULES;
 
 	/**
-	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * The feature id for the '<em><b>Next</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -296,7 +296,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int FILE_STACK_MODULE__PICTOGRAM_ELEMENT = VOCABULARY_MODULE__PICTOGRAM_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -305,7 +305,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int FILE_STACK_MODULE__PREVIOUS_MODULES = VOCABULARY_MODULE__PREVIOUS_MODULES;
 
 	/**
-	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * The feature id for the '<em><b>Next</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -369,7 +369,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int PAGE_MODULE__PICTOGRAM_ELEMENT = VOCABULARY_MODULE__PICTOGRAM_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -378,7 +378,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int PAGE_MODULE__PREVIOUS_MODULES = VOCABULARY_MODULE__PREVIOUS_MODULES;
 
 	/**
-	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * The feature id for the '<em><b>Next</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -442,7 +442,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int PAGE_STACK_MODULE__PICTOGRAM_ELEMENT = VOCABULARY_MODULE__PICTOGRAM_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -451,7 +451,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int PAGE_STACK_MODULE__PREVIOUS_MODULES = VOCABULARY_MODULE__PREVIOUS_MODULES;
 
 	/**
-	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * The feature id for the '<em><b>Next</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -516,7 +516,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int CLUSTER_MODULE__PICTOGRAM_ELEMENT = VOCABULARY_MODULE__PICTOGRAM_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -525,7 +525,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int CLUSTER_MODULE__PREVIOUS_MODULES = VOCABULARY_MODULE__PREVIOUS_MODULES;
 
 	/**
-	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * The feature id for the '<em><b>Next</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -589,7 +589,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int CONCURRENT_SET_MODULE__PICTOGRAM_ELEMENT = VOCABULARY_MODULE__PICTOGRAM_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -598,7 +598,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int CONCURRENT_SET_MODULE__PREVIOUS_MODULES = VOCABULARY_MODULE__PREVIOUS_MODULES;
 
 	/**
-	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * The feature id for the '<em><b>Next</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -662,7 +662,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int COND_BRANCH_MODULE__PICTOGRAM_ELEMENT = VOCABULARY_MODULE__PICTOGRAM_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -671,7 +671,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int COND_BRANCH_MODULE__PREVIOUS_MODULES = VOCABULARY_MODULE__PREVIOUS_MODULES;
 
 	/**
-	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * The feature id for the '<em><b>Next</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -735,7 +735,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int CONT_HORZ_MODULE__PICTOGRAM_ELEMENT = VOCABULARY_MODULE__PICTOGRAM_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -744,7 +744,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int CONT_HORZ_MODULE__PREVIOUS_MODULES = VOCABULARY_MODULE__PREVIOUS_MODULES;
 
 	/**
-	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * The feature id for the '<em><b>Next</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -808,7 +808,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int CONT_VERT_MODULE__PICTOGRAM_ELEMENT = VOCABULARY_MODULE__PICTOGRAM_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -817,7 +817,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int CONT_VERT_MODULE__PREVIOUS_MODULES = VOCABULARY_MODULE__PREVIOUS_MODULES;
 
 	/**
-	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * The feature id for the '<em><b>Next</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -881,7 +881,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int DEC_POINT_MODULE__PICTOGRAM_ELEMENT = VOCABULARY_MODULE__PICTOGRAM_ELEMENT;
 
 	/**
-	 * The feature id for the '<em><b>Previous Modules</b></em>' reference list.
+	 * The feature id for the '<em><b>Previous Modules</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -890,7 +890,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 	int DEC_POINT_MODULE__PREVIOUS_MODULES = VOCABULARY_MODULE__PREVIOUS_MODULES;
 
 	/**
-	 * The feature id for the '<em><b>Next</b></em>' reference.
+	 * The feature id for the '<em><b>Next</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -967,10 +967,10 @@ public interface Vocabulary_modelPackage extends EPackage {
 	EReference getVocabularyModule_PictogramElement();
 
 	/**
-	 * Returns the meta object for the reference list '{@link com.graeditor.vocabulary_model.VocabularyModule#getPreviousModules <em>Previous Modules</em>}'.
+	 * Returns the meta object for the reference '{@link com.graeditor.vocabulary_model.VocabularyModule#getPreviousModules <em>Previous Modules</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Previous Modules</em>'.
+	 * @return the meta object for the reference '<em>Previous Modules</em>'.
 	 * @see com.graeditor.vocabulary_model.VocabularyModule#getPreviousModules()
 	 * @see #getVocabularyModule()
 	 * @generated
@@ -978,10 +978,10 @@ public interface Vocabulary_modelPackage extends EPackage {
 	EReference getVocabularyModule_PreviousModules();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.graeditor.vocabulary_model.VocabularyModule#getNext <em>Next</em>}'.
+	 * Returns the meta object for the reference list '{@link com.graeditor.vocabulary_model.VocabularyModule#getNext <em>Next</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Next</em>'.
+	 * @return the meta object for the reference list '<em>Next</em>'.
 	 * @see com.graeditor.vocabulary_model.VocabularyModule#getNext()
 	 * @see #getVocabularyModule()
 	 * @generated
@@ -1162,7 +1162,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 		EReference VOCABULARY_MODULE__PICTOGRAM_ELEMENT = eINSTANCE.getVocabularyModule_PictogramElement();
 
 		/**
-		 * The meta object literal for the '<em><b>Previous Modules</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Previous Modules</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1170,7 +1170,7 @@ public interface Vocabulary_modelPackage extends EPackage {
 		EReference VOCABULARY_MODULE__PREVIOUS_MODULES = eINSTANCE.getVocabularyModule_PreviousModules();
 
 		/**
-		 * The meta object literal for the '<em><b>Next</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Next</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

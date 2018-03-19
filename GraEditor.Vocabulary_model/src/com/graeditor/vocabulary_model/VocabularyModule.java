@@ -27,23 +27,23 @@ public interface VocabularyModule extends EObject{
 	/**
 	 * @model opposite="next"
 	 */
-	EList<VocabularyModule> getPreviousModules();
+	VocabularyModule getPreviousModules();
 	
+	/**
+	 * Sets the value of the '{@link com.graeditor.vocabulary_model.VocabularyModule#getPreviousModules <em>Previous Modules</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Previous Modules</em>' reference.
+	 * @see #getPreviousModules()
+	 * @generated
+	 */
+	void setPreviousModules(VocabularyModule value);
+
 	/**
 	 * @model opposite="previousModules"
 	 */
-	VocabularyModule getNext();
+	EList<VocabularyModule> getNext();
 	
-	/**
-	 * Sets the value of the '{@link com.graeditor.vocabulary_model.VocabularyModule#getNext <em>Next</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Next</em>' reference.
-	 * @see #getNext()
-	 * @generated
-	 */
-	void setNext(VocabularyModule value);
-
 	/**
 	 * @model
 	 */

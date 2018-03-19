@@ -51,24 +51,24 @@ public class VocabularyModuleImpl extends MinimalEObjectImpl.Container implement
 	protected EObject pictogramElement;
 
 	/**
-	 * The cached value of the '{@link #getPreviousModules() <em>Previous Modules</em>}' reference list.
+	 * The cached value of the '{@link #getPreviousModules() <em>Previous Modules</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPreviousModules()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<VocabularyModule> previousModules;
+	protected VocabularyModule previousModules;
 
 	/**
-	 * The cached value of the '{@link #getNext() <em>Next</em>}' reference.
+	 * The cached value of the '{@link #getNext() <em>Next</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getNext()
 	 * @generated
 	 * @ordered
 	 */
-	protected VocabularyModule next;
+	protected EList<VocabularyModule> next;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -172,9 +172,14 @@ public class VocabularyModuleImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<VocabularyModule> getPreviousModules() {
-		if (previousModules == null) {
-			previousModules = new EObjectWithInverseResolvingEList<VocabularyModule>(VocabularyModule.class, this, Vocabulary_modelPackage.VOCABULARY_MODULE__PREVIOUS_MODULES, Vocabulary_modelPackage.VOCABULARY_MODULE__NEXT);
+	public VocabularyModule getPreviousModules() {
+		if (previousModules != null && previousModules.eIsProxy()) {
+			InternalEObject oldPreviousModules = (InternalEObject)previousModules;
+			previousModules = (VocabularyModule)eResolveProxy(oldPreviousModules);
+			if (previousModules != oldPreviousModules) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Vocabulary_modelPackage.VOCABULARY_MODULE__PREVIOUS_MODULES, oldPreviousModules, previousModules));
+			}
 		}
 		return previousModules;
 	}
@@ -184,16 +189,8 @@ public class VocabularyModuleImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VocabularyModule getNext() {
-		if (next != null && next.eIsProxy()) {
-			InternalEObject oldNext = (InternalEObject)next;
-			next = (VocabularyModule)eResolveProxy(oldNext);
-			if (next != oldNext) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Vocabulary_modelPackage.VOCABULARY_MODULE__NEXT, oldNext, next));
-			}
-		}
-		return next;
+	public VocabularyModule basicGetPreviousModules() {
+		return previousModules;
 	}
 
 	/**
@@ -201,20 +198,11 @@ public class VocabularyModuleImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VocabularyModule basicGetNext() {
-		return next;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetNext(VocabularyModule newNext, NotificationChain msgs) {
-		VocabularyModule oldNext = next;
-		next = newNext;
+	public NotificationChain basicSetPreviousModules(VocabularyModule newPreviousModules, NotificationChain msgs) {
+		VocabularyModule oldPreviousModules = previousModules;
+		previousModules = newPreviousModules;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Vocabulary_modelPackage.VOCABULARY_MODULE__NEXT, oldNext, newNext);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Vocabulary_modelPackage.VOCABULARY_MODULE__PREVIOUS_MODULES, oldPreviousModules, newPreviousModules);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -225,18 +213,30 @@ public class VocabularyModuleImpl extends MinimalEObjectImpl.Container implement
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNext(VocabularyModule newNext) {
-		if (newNext != next) {
+	public void setPreviousModules(VocabularyModule newPreviousModules) {
+		if (newPreviousModules != previousModules) {
 			NotificationChain msgs = null;
-			if (next != null)
-				msgs = ((InternalEObject)next).eInverseRemove(this, Vocabulary_modelPackage.VOCABULARY_MODULE__PREVIOUS_MODULES, VocabularyModule.class, msgs);
-			if (newNext != null)
-				msgs = ((InternalEObject)newNext).eInverseAdd(this, Vocabulary_modelPackage.VOCABULARY_MODULE__PREVIOUS_MODULES, VocabularyModule.class, msgs);
-			msgs = basicSetNext(newNext, msgs);
+			if (previousModules != null)
+				msgs = ((InternalEObject)previousModules).eInverseRemove(this, Vocabulary_modelPackage.VOCABULARY_MODULE__NEXT, VocabularyModule.class, msgs);
+			if (newPreviousModules != null)
+				msgs = ((InternalEObject)newPreviousModules).eInverseAdd(this, Vocabulary_modelPackage.VOCABULARY_MODULE__NEXT, VocabularyModule.class, msgs);
+			msgs = basicSetPreviousModules(newPreviousModules, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Vocabulary_modelPackage.VOCABULARY_MODULE__NEXT, newNext, newNext));
+			eNotify(new ENotificationImpl(this, Notification.SET, Vocabulary_modelPackage.VOCABULARY_MODULE__PREVIOUS_MODULES, newPreviousModules, newPreviousModules));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EList<VocabularyModule> getNext() {
+		if (next == null) {
+			next = new EObjectWithInverseResolvingEList<VocabularyModule>(VocabularyModule.class, this, Vocabulary_modelPackage.VOCABULARY_MODULE__NEXT, Vocabulary_modelPackage.VOCABULARY_MODULE__PREVIOUS_MODULES);
+		}
+		return next;
 	}
 
 	/**
@@ -291,11 +291,11 @@ public class VocabularyModuleImpl extends MinimalEObjectImpl.Container implement
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__PREVIOUS_MODULES:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPreviousModules()).basicAdd(otherEnd, msgs);
+				if (previousModules != null)
+					msgs = ((InternalEObject)previousModules).eInverseRemove(this, Vocabulary_modelPackage.VOCABULARY_MODULE__NEXT, VocabularyModule.class, msgs);
+				return basicSetPreviousModules((VocabularyModule)otherEnd, msgs);
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__NEXT:
-				if (next != null)
-					msgs = ((InternalEObject)next).eInverseRemove(this, Vocabulary_modelPackage.VOCABULARY_MODULE__PREVIOUS_MODULES, VocabularyModule.class, msgs);
-				return basicSetNext((VocabularyModule)otherEnd, msgs);
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getNext()).basicAdd(otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -309,9 +309,9 @@ public class VocabularyModuleImpl extends MinimalEObjectImpl.Container implement
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__PREVIOUS_MODULES:
-				return ((InternalEList<?>)getPreviousModules()).basicRemove(otherEnd, msgs);
+				return basicSetPreviousModules(null, msgs);
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__NEXT:
-				return basicSetNext(null, msgs);
+				return ((InternalEList<?>)getNext()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -328,10 +328,10 @@ public class VocabularyModuleImpl extends MinimalEObjectImpl.Container implement
 				if (resolve) return getPictogramElement();
 				return basicGetPictogramElement();
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__PREVIOUS_MODULES:
-				return getPreviousModules();
+				if (resolve) return getPreviousModules();
+				return basicGetPreviousModules();
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__NEXT:
-				if (resolve) return getNext();
-				return basicGetNext();
+				return getNext();
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__NAME:
 				return getName();
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__TEXT_CONTENT:
@@ -353,11 +353,11 @@ public class VocabularyModuleImpl extends MinimalEObjectImpl.Container implement
 				setPictogramElement((EObject)newValue);
 				return;
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__PREVIOUS_MODULES:
-				getPreviousModules().clear();
-				getPreviousModules().addAll((Collection<? extends VocabularyModule>)newValue);
+				setPreviousModules((VocabularyModule)newValue);
 				return;
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__NEXT:
-				setNext((VocabularyModule)newValue);
+				getNext().clear();
+				getNext().addAll((Collection<? extends VocabularyModule>)newValue);
 				return;
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__NAME:
 				setName((String)newValue);
@@ -381,10 +381,10 @@ public class VocabularyModuleImpl extends MinimalEObjectImpl.Container implement
 				setPictogramElement((EObject)null);
 				return;
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__PREVIOUS_MODULES:
-				getPreviousModules().clear();
+				setPreviousModules((VocabularyModule)null);
 				return;
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__NEXT:
-				setNext((VocabularyModule)null);
+				getNext().clear();
 				return;
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__NAME:
 				setName(NAME_EDEFAULT);
@@ -407,9 +407,9 @@ public class VocabularyModuleImpl extends MinimalEObjectImpl.Container implement
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__PICTOGRAM_ELEMENT:
 				return pictogramElement != null;
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__PREVIOUS_MODULES:
-				return previousModules != null && !previousModules.isEmpty();
+				return previousModules != null;
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__NEXT:
-				return next != null;
+				return next != null && !next.isEmpty();
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 			case Vocabulary_modelPackage.VOCABULARY_MODULE__TEXT_CONTENT:

@@ -311,3 +311,9 @@ git commit -m "视觉词汇添加跳转导航功能"
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "创建活动图的自动生成1"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

@@ -52,9 +52,11 @@ public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
 		endBizObj = (VocabularyModule) getBusinessObjectForPictogramElement(endElement);
 		
 		// 如果当前连线早已存在,则不创建该链接
-		if (endBizObj.getPreviousModules().contains(startBizObj)) {
+		
+		if (startBizObj.getNext().contains(endBizObj)) {
 			return false;
 		}
+		
 		
 		//文件元素和文件相似组不能作为连线起点
 		if (startBizObj instanceof FileModule || startBizObj instanceof FileStackModule) {
@@ -88,7 +90,8 @@ public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
 
 	@Override
 	public Connection create(ICreateConnectionContext context) {
-		startBizObj.setNext(endBizObj);
+//		startBizObj.setNext(endBizObj);
+		endBizObj.setPreviousModules(startBizObj);
 		
 		AddConnectionContext addContext = new AddConnectionContext(context.getSourceAnchor(), context.getTargetAnchor());
 		addContext.setNewObject(type);

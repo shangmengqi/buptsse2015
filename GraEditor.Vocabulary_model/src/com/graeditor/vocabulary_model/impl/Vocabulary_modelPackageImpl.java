@@ -433,8 +433,8 @@ public class Vocabulary_modelPackageImpl extends EPackageImpl implements Vocabul
 
 		initEClass(vocabularyModuleEClass, VocabularyModule.class, "VocabularyModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getVocabularyModule_PictogramElement(), ecorePackage.getEObject(), null, "pictogramElement", null, 0, 1, VocabularyModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVocabularyModule_PreviousModules(), this.getVocabularyModule(), this.getVocabularyModule_Next(), "previousModules", null, 0, -1, VocabularyModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getVocabularyModule_Next(), this.getVocabularyModule(), this.getVocabularyModule_PreviousModules(), "next", null, 0, 1, VocabularyModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVocabularyModule_PreviousModules(), this.getVocabularyModule(), this.getVocabularyModule_Next(), "previousModules", null, 0, 1, VocabularyModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getVocabularyModule_Next(), this.getVocabularyModule(), this.getVocabularyModule_PreviousModules(), "next", null, 0, -1, VocabularyModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVocabularyModule_Name(), ecorePackage.getEString(), "name", null, 0, 1, VocabularyModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getVocabularyModule_TextContent(), ecorePackage.getEString(), "textContent", null, 0, 1, VocabularyModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

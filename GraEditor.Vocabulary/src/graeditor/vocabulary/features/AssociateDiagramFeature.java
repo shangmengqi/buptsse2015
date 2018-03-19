@@ -53,7 +53,7 @@ public class AssociateDiagramFeature extends AbstractCustomFeature{
         final PictogramElement pe = context.getPictogramElements()[0]; //获取当前被选择的元素
         VocabularyModule selectModule = (VocabularyModule) getBusinessObjectForPictogramElement(pe);
         if (pes != null && pes.length >= 1) {
-        	if (selectModule.getNext() == null) {
+        	if (selectModule.getNext().size() == 0) {
         		ret = true;
 			}            
         }
