@@ -66,7 +66,7 @@ public class PagePattern extends IdPattern implements IPattern{
 		}
 		
 		PageModule pageModule = Vocabulary_modelFactory.eINSTANCE.createPageModule();			
-		pageModule.setName("Area");
+		pageModule.setName("Page");
 		pageModule.setTextContent(value);
 		getDiagram().eResource().getContents().add(pageModule);
 		addGraphicalRepresentation(context, pageModule);

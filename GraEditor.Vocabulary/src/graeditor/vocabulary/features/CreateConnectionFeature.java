@@ -89,7 +89,7 @@ public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
 	@Override
 	public Connection create(ICreateConnectionContext context) {
 		startBizObj.setNext(endBizObj);
-		//�������������Ҫ�����ֶ�����������������յ��ê
+		
 		AddConnectionContext addContext = new AddConnectionContext(context.getSourceAnchor(), context.getTargetAnchor());
 		addContext.setNewObject(type);
 		Connection newConnection = (Connection) getFeatureProvider().addIfPossible(addContext);

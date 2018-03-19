@@ -36,4 +36,5 @@ Export-Package: cn.bupt.sse508.versioncontrol,
  com.google.gson.internal.bind,
  com.google.gson.internal.bind.util,
  com.google.gson.reflect,
- com.google.gson.stream
+ com.google.gson.stream,
+ midfile.json.graphiti
