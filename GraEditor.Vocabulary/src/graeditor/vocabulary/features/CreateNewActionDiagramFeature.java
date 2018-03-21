@@ -1,8 +1,19 @@
 package graeditor.vocabulary.features;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -18,9 +29,11 @@ import org.eclipse.graphiti.features.custom.AbstractCustomFeature;
 import org.eclipse.graphiti.mm.Property;
 import org.eclipse.graphiti.mm.pictograms.Diagram;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
+import org.eclipse.ui.actions.RetargetAction;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.graeditor.vocabulary_model.VocabularyModule;
@@ -29,6 +42,11 @@ import graeditor.utils.DiagramUtil;
 import midfile.json.graphiti.ToMidFile;
 
 public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
+	
+	public static JsonArray merge_nodeArray = new JsonArray();
+	
+	public static JsonArray node0Array;
+	public static JsonArray node1Array;
 
 	public CreateNewActionDiagramFeature(IFeatureProvider fp) {
 		super(fp);
@@ -60,8 +78,12 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 
 	@Override
 	public void execute(ICustomContext context) {
+		
+		
 				
+		String diagram0Str = null;
 		String leafNodeAllIdStr = null;
+		
 		Diagram currentDiagram = getDiagram();
 //		currentDiagram.getChildren().size();
 //		System.out.println(currentDiagram.getChildren().size());
@@ -121,21 +143,122 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 										if (leafNodeNum == diagramObjNum) {
 											ret.add(d);
 											System.out.println("找出的活动图： " + d.getName());
+											System.out.println("hahahahahahahahahah： " + d.eResource());
+											
+											//根据文件的绝对路径读取文件内容并重新存储
+											String uriString = d.eResource().getURI().toString().substring(18);
+											String dDiagramPath = "E:/Git/buptsse2015/runtime-EclipseApplication" + uriString;
+											diagram0Str = readFileByLines(dDiagramPath);
+											File file = new File("E:/Git/" + d.getName() + ".diagram"); // 文件名字
+											writeToFile(diagram0Str,file);
 										}
 									}
 								}
 							}
-						}
-					System.out.println(ret);
-					
-					
+						}				
 					
 					}
+					
 				}
+				
         	}
+        	
         }
         
+        /**
+         * 将找出的活动图的图表文件转换为中间文件格式，
+         * 依次遍历两个活动图图表文件中的节点、连线元素，将添加的节点记录在描述文件中
+         * 新建一张活动图表，用来自动生成上面两张图表的并集
+         * 添加某些图形元素，完善图表中的连线信息
+         */
+        String action1DiagramStr = ToMidFile.toMidFile("E:/Git/action_vocabulary4.diagram");
+		String action2DiagramStr = ToMidFile.toMidFile("E:/Git/action_vocabulary5.diagram");
+//		System.out.println("action1DiagramStr: " + action1DiagramStr);
+		
+		//遍历每个活动图中的节点信息
+		Gson gson = new Gson();
+		JsonParser parse =new JsonParser();
+		JsonObject diagram0Obj= (JsonObject) parse.parse(action1DiagramStr);
+		JsonObject diagram1Obj= (JsonObject) parse.parse(action2DiagramStr);
+		
+		/**
+		 * 开始处理节点
+		 */
+		System.out.println("\n\n---------------------");
+		System.out.println("开始处理节点");
+		
+		node0Array = ((JsonObject)((JsonObject)diagram0Obj.get("description")).get("-diagram")).get("node").getAsJsonArray();
+		node1Array = ((JsonObject)((JsonObject)diagram1Obj.get("description")).get("-diagram")).get("node").getAsJsonArray();
+		System.out.println("node0Array: " + node0Array.toString());
+		System.out.println("node1Array: " + node1Array.toString());
         
+		// 遍历action_vocabulary4(diagram0)中的节点
+		for (int i = 0; i < node0Array.size(); i++) {
+			String node0ModuleStyle = node0Array.get(i).getAsJsonObject().get("link").getAsJsonObject().get("@businessObjects").getAsString();
+//			System.out.println("node0ModuleStyle: " + node0ModuleStyle);
+			if (node0ModuleStyle.equals("Content")) {
+				System.out.println("node0ModuleStyle: " + node0ModuleStyle);
+				String node0Text = node0Array.get(i).getAsJsonObject().get("ext").getAsJsonObject().get("text").getAsJsonArray().get(0)
+						                     .getAsJsonObject().get("style").getAsJsonObject().get("@value").getAsString();
+				System.out.println("node0Text: " + node0Text);
+				// 根据node0的text在node1中寻找相同text的节点下标
+				int j = findNodeById(node0Text, "diagram0");
+				System.out.println("j: " + j);
+				
+				if (j < 0) {  //该节点在node0中存在，在node1中不存在，说明该节点是存在的分叉节点
+					System.out.println("该节点在node0中存在，在node1中不存在，该节点是存在的分叉节点");
+					//将该节点的信息记录在描述文件中
+					String node0IdStr = node0Array.get(i).getAsJsonObject().get("@shape_id").getAsString();
+					System.out.println("node0IdStr: " + node0IdStr);
+					Map map = new HashMap();
+					map.put("diagram", "action_vocabulary4");
+					map.put("shap_id", node0IdStr);
+					map.put("text", node0Text);
+					map.put("action", "fencha");
+					String mapString = gson.toJson(map);
+					JsonElement mapElement = parse.parse(mapString);
+					merge_nodeArray.add(mapElement);
+					System.out.println(merge_nodeArray.toString());
+				}
+			}
+		}
+		
+		//遍历action_vocabulary5（diagram1）中的节点
+		System.out.println("\n\n");
+		System.out.println("遍历action_vocabulary5（diagram1）中的节点");
+		for (int a = 0; a < node1Array.size(); a++) {
+			String node1ModuleStyle = node1Array.get(a).getAsJsonObject().get("link").getAsJsonObject().get("@businessObjects").getAsString();
+			if (node1ModuleStyle.equals("Content")) {
+				String node1Text = node1Array.get(a).getAsJsonObject().get("ext").getAsJsonObject().get("text").getAsJsonArray().get(0)
+	                     .getAsJsonObject().get("style").getAsJsonObject().get("@value").getAsString();
+				System.out.println("node1Text: " + node1Text);
+				// 根据node1的text在node0中寻找相同text的节点下标
+				int j = findNodeById(node1Text, "diagram1");
+				System.out.println("j: " + j);
+				
+				if (j < 0) {  //该节点在node1中存在，在node0中不存在，说明该节点是存在的分叉节点
+					System.out.println("该节点在node1中存在，在node0中不存在，该节点是存在的分叉节点");
+					//将该节点的信息记录在描述文件中,并将该节点添加进node0数组中
+					String node1IdStr = node1Array.get(a).getAsJsonObject().get("@shape_id").getAsString();
+					System.out.println("node1IdStr: " + node1IdStr);
+					Map map = new HashMap();
+					map.put("diagram", "action_vocabulary5");
+					map.put("shap_id", node1IdStr);
+					map.put("text", node1Text);
+					map.put("action", "fencha");
+					String mapString = gson.toJson(map);
+					JsonElement mapElement = parse.parse(mapString);
+					merge_nodeArray.add(mapElement);
+					System.out.println(merge_nodeArray.toString());
+					
+					//将该分叉的节点添加进node0数组中
+					JsonObject node1FenchaObject = node1Array.get(a).getAsJsonObject();
+					node1Array.add(node1FenchaObject);
+				}
+			}
+		}
+		
+		
         
         
         
@@ -189,6 +312,41 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 		
 	}
 	
+	/**
+	 * 通过节点id寻找拥有相同节点id的下标
+	 * @param id
+	 * @param diagram
+	 * @return
+	 */
+	public static int findNodeById(String text, String diagram){
+		if (diagram.equals("diagram0")) {
+			for (int j = 0; j < node1Array.size(); j++) {
+				String node1ModuleStyle = node1Array.get(j).getAsJsonObject().get("link").getAsJsonObject().get("@businessObjects").getAsString();
+				if (node1ModuleStyle.equals("Content")) {
+					String node1Text = node1Array.get(j).getAsJsonObject().get("ext").getAsJsonObject().get("text").getAsJsonArray().get(0)
+		                     .getAsJsonObject().get("style").getAsJsonObject().get("@value").getAsString();
+					if (text.equals(node1Text)) {
+						return j;
+					}
+				}
+							
+			}
+		}else {
+			for (int j = 0; j < node0Array.size(); j++) {
+				String node0ModuleStyle = node0Array.get(j).getAsJsonObject().get("link").getAsJsonObject().get("@businessObjects").getAsString();
+//				String node1IdString = node0Array.get(j).getAsJsonObject().get("@shape_id").getAsString();
+				if (node0ModuleStyle.equals("Content")) {
+					String node0Text = node0Array.get(j).getAsJsonObject().get("ext").getAsJsonObject().get("text").getAsJsonArray().get(0)
+		                     .getAsJsonObject().get("style").getAsJsonObject().get("@value").getAsString();
+					if (text.equals(node0Text)) {
+						return j;
+					}
+				}
+			}
+		}
+		return -1;		
+	}
+	
 	
 	public Collection<Diagram> getDiagrams() {
 		Collection<Diagram> result = Collections.emptyList();
@@ -204,6 +362,81 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 			}
 		}
 		return result;//result���ر༭����ͬһ����Ŀ�����е�diagramͼ����Ϣ������ͼ�����ƣ�������Щdiagram����һ��������
+	}
+	
+	/**
+	 * 将字符串内容写入到某个文件中
+	 * @param content String，字符串内容
+	 * @param file File，文件对象
+	 */
+	private static void writeToFile(String content, File file) {
+		try {
+			if (!file.exists()) {
+				file.createNewFile();
+			}
+			FileWriter fw = new FileWriter(file.getAbsoluteFile());
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(content);
+			bw.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 读取文件内容
+	 * @param fileName
+	 * @return
+	 */
+	public static String readToString(String fileName) {  
+        String encoding = "UTF-8";  
+        File file = new File(fileName);  
+        Long filelength = file.length();  
+        byte[] filecontent = new byte[filelength.intValue()];  
+        try {  
+            FileInputStream in = new FileInputStream(file);  
+            in.read(filecontent);  
+            in.close();  
+        } catch (FileNotFoundException e) {  
+            e.printStackTrace();  
+        } catch (IOException e) {  
+            e.printStackTrace();  
+        }  
+        try {  
+            return new String(filecontent, encoding);  
+        } catch (UnsupportedEncodingException e) {  
+            System.err.println("The OS does not support " + encoding);  
+            e.printStackTrace();  
+            return null;  
+        }  
+    }
+	
+	/**
+	 * 以行为单位读取文件，用于读面向行的格式化文件
+	 */
+	public static String readFileByLines(String filePath) {
+		File file = new File(filePath);
+		BufferedReader reader = null;
+		StringBuilder sb = new StringBuilder();
+		try {
+			reader = new BufferedReader(new FileReader(file));
+			String temp = "";
+			// 一次读入一行，直到读入null为文件结束
+			while ((temp = reader.readLine()) != null) {
+				sb.append(temp);
+			}
+			reader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e1) {
+				}
+			}
+		}
+		return sb.toString();
 	}
 	
 
