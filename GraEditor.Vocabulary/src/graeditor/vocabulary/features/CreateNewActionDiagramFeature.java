@@ -47,6 +47,8 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 	
 	public static JsonArray node0Array;
 	public static JsonArray node1Array;
+	public static JsonArray connection0Array;
+	public static JsonArray connection1Array;
 
 	public CreateNewActionDiagramFeature(IFeatureProvider fp) {
 		super(fp);
@@ -181,6 +183,9 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 		JsonObject diagram0Obj= (JsonObject) parse.parse(action1DiagramStr);
 		JsonObject diagram1Obj= (JsonObject) parse.parse(action2DiagramStr);
 		
+		connection0Array = ((JsonObject)((JsonObject)diagram0Obj.get("description")).get("-diagram")).get("connections").getAsJsonArray();
+		connection1Array = ((JsonObject)((JsonObject)diagram1Obj.get("description")).get("-diagram")).get("connections").getAsJsonArray();
+		
 		/**
 		 * 开始处理节点
 		 */
@@ -219,6 +224,53 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 					JsonElement mapElement = parse.parse(mapString);
 					merge_nodeArray.add(mapElement);
 					System.out.println(merge_nodeArray.toString());
+					
+					//处理与该节点相关的连线节点信息
+					for (int k = 0; k < connection0Array.size(); k++) {
+						String conn0_id_strString = connection0Array.get(k).getAsJsonObject().get("@conn_id").getAsString();
+						if (conn0_id_strString.contains(node0IdStr)) {
+							System.out.println("conn0_id_strString: " + conn0_id_strString);
+							//获取该节点的前一个节点id和后一个节点id，并存入描述文件中
+							String spildNodeIdString = conn0_id_strString.split("#")[0];
+							if (!spildNodeIdString.equals(node0IdStr)) {
+								String priviousNodeIdString = spildNodeIdString;
+								System.out.println("priviousNodeIdString: " + priviousNodeIdString);
+								
+								//记录前一个节点信息到描述文件中
+								Map map1 = new HashMap();
+								map1.put("diagram", "action_vocabulary4");
+								map1.put("shap_id", priviousNodeIdString);								
+								map1.put("action", "priviousNode");
+								String map1String = gson.toJson(map1);
+								JsonElement mapElement1 = parse.parse(map1String);
+								merge_nodeArray.add(mapElement1);
+								System.out.println(merge_nodeArray.toString());
+								
+							}else {
+								String nextNodeIdString = conn0_id_strString.split("#")[1];
+								System.out.println("nextNodeIdString: " + nextNodeIdString);
+								
+								//记录后一个节点信息到描述文件中
+								Map map2 = new HashMap();
+								map2.put("diagram", "action_vocabulary4");
+								map2.put("shap_id", nextNodeIdString);								
+								map2.put("action", "nextNode");
+								String map2String = gson.toJson(map2);
+								JsonElement mapElement2 = parse.parse(map2String);
+								merge_nodeArray.add(mapElement2);
+								System.out.println(merge_nodeArray.toString());
+							}
+//							String[] node0SplitStrings = conn0_id_strString.split("#");							
+//							for (int l = 0; l < node0SplitStrings.length; l++) {
+//								String spildNodeIdString = node0SplitStrings[l];
+//								System.out.println("node0SplitStrings: " + node0SplitStrings[l]);
+//								if (!spildNodeIdString.equals(node0IdStr)) {
+//									
+//									System.out.println("关联的节点id： " + spildNodeIdString);
+//								}
+//							}
+						}
+					}
 				}
 			}
 		}
@@ -239,6 +291,7 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 				if (j < 0) {  //该节点在node1中存在，在node0中不存在，说明该节点是存在的分叉节点
 					System.out.println("该节点在node1中存在，在node0中不存在，该节点是存在的分叉节点");
 					//将该节点的信息记录在描述文件中,并将该节点添加进node0数组中
+					
 					String node1IdStr = node1Array.get(a).getAsJsonObject().get("@shape_id").getAsString();
 					System.out.println("node1IdStr: " + node1IdStr);
 					Map map = new HashMap();
@@ -251,11 +304,51 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 					merge_nodeArray.add(mapElement);
 					System.out.println(merge_nodeArray.toString());
 					
+					//获取与该节点相关联的两条连线信息
+					for (int k = 0; k < connection1Array.size(); k++) {
+						String conn_id_Str = connection1Array.get(k).getAsJsonObject().get("@conn_id").getAsString();
+//						System.out.println("conn_id_Str: " + conn_id_Str);
+						if (conn_id_Str.contains(node1IdStr)) {
+							System.out.println("与该节点相关联的连线信息： " + conn_id_Str );
+							JsonObject conn_add_Object = connection1Array.get(k).getAsJsonObject();
+							connection0Array.add(conn_add_Object);
+						}
+					}
+					
 					//将该分叉的节点添加进node0数组中
 					JsonObject node1FenchaObject = node1Array.get(a).getAsJsonObject();
-					node1Array.add(node1FenchaObject);
+					node0Array.add(node1FenchaObject);
 				}
 			}
+		}
+//		System.out.println("node0Array.size: " + node0Array.size());
+//		System.out.println("node1Array.size: " + node1Array.size());
+		System.out.println("conn0Array.size: " + connection0Array.size());
+		System.out.println("conn1Array.size: " + connection1Array.size());
+		
+		/**
+		 * 在diagram0图表中添加连线，修改相关节点中的anchor信息
+		 */
+		//获取diagram0图表的连线
+		System.out.println("\n\n---------------------");
+		System.out.println("开始处理连线");
+		
+		System.out.println("merge_nodeArray.size: " + merge_nodeArray.size());
+		for (int c = 0; c < merge_nodeArray.size(); c++) {
+			String diagramNameString = merge_nodeArray.get(c).getAsJsonObject().get("diagram").getAsString();
+			if (diagramNameString.equals("action_vocabulary5")) {
+				System.out.println();
+			}
+		}
+		
+		for (int b = 0; b < connection0Array.size(); b++) {
+			String conn_id_strString = connection0Array.get(b).getAsJsonObject().get("@conn_id").getAsString();
+//			String 
+//			if (conn_id_strString.contains("")) {
+//				
+//			}
+			System.out.println("conn_id_strString: " + conn_id_strString);
+			
 		}
 		
 		

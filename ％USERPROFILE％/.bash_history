@@ -323,3 +323,9 @@ git commit -m "自动生成活动图-获取叶子节点以及与其关联的活�
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "自动生成活动图实现两张活动图中节点的遍历"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master
