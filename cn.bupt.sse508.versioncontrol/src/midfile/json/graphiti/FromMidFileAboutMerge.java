@@ -58,16 +58,7 @@ public class FromMidFileAboutMerge {
 					}					
 				}				
 			}
-//			JSONArray merge_node_Array = mergeObject.getJSONArray("merge_node");			
-//			Map<String, JSONObject> conflictMap = new HashMap<String, JSONObject>();
-//			if (null != conflictList) { //存在冲突
-//				for (int i = 0; i < conflictList.size(); i++) {
-//					String id = conflictList.get(i).optString("shape_id");
-//					System.out.println("i = " + i);
-//					System.out.println("id = " + id + " : " + conflictList.get(i));
-//					conflictMap.put(id, conflictList.get(i));
-//				}
-//			}
+//			
 			//////////////////----
 			
 			allNodeList = new ArrayList<JSONObject>();
@@ -95,6 +86,7 @@ public class FromMidFileAboutMerge {
 			//(shangmengqi add)先判断该图表是否含有连线
 			if(diagram.has(ValueUtil.CONNECTIONS)){
 				connections = diagram.opt(ValueUtil.CONNECTIONS); // 获取到标签为connection的属性内容
+//				System.out.println("所有的连线信息： " + connections.toString());
 				System.out.println("connections : " + connections.toString());
 			}else {
 				connections = null;
@@ -124,6 +116,7 @@ public class FromMidFileAboutMerge {
 			if(connections != null){
 				if (connections instanceof JSONObject) { // 单个连线
 					String connectionID = ((JSONObject) connections).optString("@conn_id");
+					
 					connectionMap.put(connectionID, (JSONObject) connections);
 					((JSONObject) connections).accumulate("@index", "0");
 				} else { // 连线数组
@@ -318,76 +311,7 @@ public class FromMidFileAboutMerge {
 					}
 					
 				}
-//				if (conflictMap.containsKey(id)) { // 当前节点是否为冲突节点,containsKey()判断是否包含指定的键名
-//					System.out.println("conflictMap.containsKey(id) id = " + id);
-//					System.out.println("conflictMap: " + conflictMap.hashCode());
-//					JSONObject conflictInfo = conflictMap.get(id);
-//					System.out.println("conflictInfo: " + conflictInfo.toString());
-//					// 用于判断这个节点是否是一个删除冲突
-//					boolean isDeleted = true;
-//					if (conflictInfo.optString("isDeleted").equals("false")) {
-//						isDeleted = false;
-//					}
-//					
-//					JSONObject info = new JSONObject();
-//					JSONArray properties = node.optJSONArray("properties");
-//					if (isDeleted) { // 删除与其他的冲突，只需要在property中添加conflict_delete信息
-//						info.put("@key", "info");
-//						info.put("@value", ValueUtil.CONFLICT_DELETE);
-//						properties.put(info);
-//						
-//						// 将贴图换成虚线红框
-//						JSONObject graphicsAlgorithm = node.optJSONObject("graphicsAlgorithm");
-//						replaceImg(graphicsAlgorithm, isDeleted);
-//						
-//					} else { // 显示文字冲突
-////						info.put("@key", "info");
-////						info.put("@value", ValueUtil.CONFLICT_TEXT);
-////						properties.put(info);
-//						
-//						// 将冲突的另一个文字信息存入property中
-//						System.out.println("hahahahahahhahaha444444: ");
-//						
-//						//(shangmengqi add) 先进行判断是否含有conflict_key键，然后再进行后续操作
-//						if (conflictInfo.has("conflict_key")) {
-////							System.out.println("conflictMap.get(id)" + conflictMap.get(id).getJSONObject("conflict_key").toString());
-//							
-//							info.put("@key", "info");
-//							info.put("@value", ValueUtil.CONFLICT_TEXT);
-//							properties.put(info);
-//							
-//							System.out.println("start to handle the conflict_text");
-//							String conflict_key = conflictInfo.optJSONArray("conflict_key").getString(0);
-//							String alternative_text = conflictInfo.optString(conflict_key);
-//							JSONObject alternative = new JSONObject();
-//							alternative.put("@key", ValueUtil.ALTERNATIVE_TEXT);
-//							alternative.put("@value", alternative_text);
-//							properties.put(alternative);
-//							System.out.println("handle the conflict_text end");
-//							
-//							// 将贴图换成实线红框
-//							JSONObject graphicsAlgorithm = node.optJSONObject("graphicsAlgorithm");	
-//							System.out.println("graphicsAlgorithm: " + graphicsAlgorithm);
-//							
-//							//(shangmengqi add)分情况展示冲突节点，替换贴图或者更换原来颜色						
-//							if(graphicsAlgorithm.has("@id")){
-//								replaceImg(graphicsAlgorithm, isDeleted);
-//							}else {
-//								System.out.println("更换冲突节点颜色");
-//								String background = graphicsAlgorithm.optString("@background");
-//								System.out.println("background: " + background);
-//								String new_background;
-//								new_background = background.substring(0, 11) + "1";
-//								graphicsAlgorithm.remove("@background");
-//								graphicsAlgorithm.accumulate("@background", new_background);
-//								System.out.println("new_background: "  + new_background);
-//							}
-//							
-////							replaceImg(graphicsAlgorithm, isDeleted);
-//						}
-////						
-//					}
-//				}
+//				
 			}
 			if(connections != null){
 				if (connections instanceof JSONObject) { // 单个连线
@@ -674,6 +598,7 @@ public class FromMidFileAboutMerge {
 			// 对anchors中的outgoingConnections和incomingConnections进行处理
 			if (node.has("anchors")) {
 				JSONObject anchors = node.optJSONObject("anchors");
+				System.out.println("\n\nachors: " + anchors.toString());
 				
 				// 处理outgoingConnections
 				if (anchors.has("@outgoingConnections")) {
@@ -683,11 +608,14 @@ public class FromMidFileAboutMerge {
 						String[] each = out.split(" ");
 						StringBuilder sb = new StringBuilder();
 						for (int i = 0; i < each.length; i++) {
+							System.out.println("each.lenth: " + each.length);
 							JSONObject connection = connectionMap.get(each[i]);
+							System.out.println("each[i]: " + each[i].toString());
 							System.out.println("1111111111111111111111: " + connection.toString());
 							sb.append("/0/@connections.");
 							sb.append(connection.optString("@index"));
 							sb.append(" ");
+							System.out.println("sb: " + sb);
 						}
 						anchors.remove("@outgoingConnections");
 						anchors.accumulate("@outgoingConnections", sb.toString());

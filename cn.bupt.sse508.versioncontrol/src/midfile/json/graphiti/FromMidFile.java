@@ -85,8 +85,6 @@ public class FromMidFile {
 			connections = null;
 		}
 		
-//		Object connections = diagram.opt(ValueUtil.CONNECTIONS); // 获取到标签为connection的属性内容
-//		System.out.println("connections : " + connections.toString());
 
 		// 处理空的link数组的情况
 		{
@@ -586,18 +584,22 @@ public class FromMidFile {
 		// 对anchors中的outgoingConnections和incomingConnections进行处理
 		if (node.has("anchors")) {
 			JSONObject anchors = node.optJSONObject("anchors");
-			
+			System.out.println("获取该节点的anchors信息： " + anchors.toString());
 			// 处理outgoingConnections
 			if (anchors.has("@outgoingConnections")) {
 				String out = anchors.optString("@outgoingConnections");
+				System.out.println("out: " + out);
 				if (out.length() != 0) {
 					String[] each = out.split(" ");
 					StringBuilder sb = new StringBuilder();
 					for (int i = 0; i < each.length; i++) {
 						JSONObject connection = connectionMap.get(each[i]);
+						System.out.println("each[i]: " + each[i]);
+						System.out.println("connection: " + connection.toString());
 						sb.append("/0/@connections.");
 						sb.append(connection.optString("@index"));
 						sb.append(" ");
+						System.out.println("sb: " + sb);
 					}
 					anchors.remove("@outgoingConnections");
 					anchors.accumulate("@outgoingConnections", sb.toString());

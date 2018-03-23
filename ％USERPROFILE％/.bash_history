@@ -335,3 +335,9 @@ git commit -m "自动生成活动图关于节点连线的处理逻辑1"
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "初步完成活动图的自动生成"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

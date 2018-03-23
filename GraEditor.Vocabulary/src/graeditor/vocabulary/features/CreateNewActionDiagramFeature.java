@@ -365,26 +365,32 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 		//遍历图表中的所有连线信息，找出与添加节点相关联的两条链线，并修改连线数组中的属性
 		for (int b = 0; b < connection0Array.size(); b++) {
 			String conn_id_strString = connection0Array.get(b).getAsJsonObject().get("@conn_id").getAsString();
+			
+//			System.out.println("输出所有连线信息id： " + conn_id_strString);
 
 			if (conn_id_strString.contains(addNodeIdString)) {
 				System.out.println("conn_id_strString: " + conn_id_strString);
-				if (conn_id_add1String.split("#")[0].equals(addNodeIdString)) {
+				if (conn_id_strString.split("#")[0].toString().equals(addNodeIdString)) {
 					System.out.println("该连线是一条出连线");
 					connection0Array.get(b).getAsJsonObject().remove("@conn_id"); //删除原有连线中的错误属性信息
 					connection0Array.get(b).getAsJsonObject().remove("@start");
 					connection0Array.get(b).getAsJsonObject().remove("@end");
-					connection0Array.get(b).getAsJsonObject().addProperty("@conn_id", conn_id_add1String);
+					connection0Array.get(b).getAsJsonObject().addProperty("@conn_id", conn_id_add2String + " ");
 					connection0Array.get(b).getAsJsonObject().addProperty("@start", addNodeIdString);
 					connection0Array.get(b).getAsJsonObject().addProperty("@end", nextNodeIdString);
-				}else {
+					System.out.println("输出修改的出连线id： " + connection0Array.get(b).getAsJsonObject().get("@conn_id").getAsString());
+				}else if (conn_id_strString.split("#")[1].toString().equals(addNodeIdString)) {
 					System.out.println("该连线是一条入连线");
 					connection0Array.get(b).getAsJsonObject().remove("@conn_id"); //删除原有连线中的错误属性信息
 					connection0Array.get(b).getAsJsonObject().remove("@start");
 					connection0Array.get(b).getAsJsonObject().remove("@end");
-					connection0Array.get(b).getAsJsonObject().addProperty("@conn_id", conn_id_add2String);
+					connection0Array.get(b).getAsJsonObject().addProperty("@conn_id", conn_id_add1String + " ");
 					connection0Array.get(b).getAsJsonObject().addProperty("@start", priviouNodeIdString);
 					connection0Array.get(b).getAsJsonObject().addProperty("@end", addNodeIdString);
+					System.out.println("输出修改的入连线id： " + connection0Array.get(b).getAsJsonObject().get("@conn_id").getAsString());
 				}
+//					
+				
 			}			
 		}
 		
@@ -392,8 +398,8 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 		for (int e = 0; e < node0Array.size(); e++) {
 			if (node0Array.get(e).getAsJsonObject().get("@shape_id").getAsString().equals(addNodeIdString)) {
 				//修改新添加的节点的anchors信息
-				String anchor_incom = conn_id_add1String;
-				String anchor_outgoing = conn_id_add2String;
+				String anchor_incom = conn_id_add1String + " ";
+				String anchor_outgoing = conn_id_add2String + " ";
 				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().remove("@incomingConnections");
 				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().remove("@outgoingConnections");
 				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().addProperty("@incomingConnections", anchor_incom);
@@ -406,7 +412,7 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 				//修改该节点的前一个节点的anchors信息，添加一条出连线
 				String anchor_outString = conn_id_add1String;
 				String anchor_outgoing_before = node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().get("@outgoingConnections").getAsString();
-				String anchor_outgoing_afterString = anchor_outgoing_before + " " + anchor_outString;
+				String anchor_outgoing_afterString = anchor_outgoing_before + anchor_outString + " ";
 				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().remove("@outgoingConnections");
 				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().addProperty("@outgoingConnections", anchor_outgoing_afterString);
 				System.out.println("修改前的anchors信息： " + anchor_outgoing_before);
@@ -415,7 +421,7 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 				//修改该节点的后一个节点的anchors信息
 				String anchor_incomString = conn_id_add2String;
 				String anchor_incoming_before = node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().get("@incomingConnections").getAsString();
-				String anchor_incoming_afterString = anchor_incoming_before + " " + anchor_incomString;
+				String anchor_incoming_afterString = anchor_incoming_before + anchor_incomString + " ";
 				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().remove("@incomingConnections");
 				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().addProperty("@incomingConnections", anchor_incoming_afterString);
 			}else if (node0Array.get(e).getAsJsonObject().get("@shape_id").getAsString().equals(fenchaNodeIdString)) {
