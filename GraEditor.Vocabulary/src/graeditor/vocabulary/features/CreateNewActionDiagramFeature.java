@@ -39,6 +39,7 @@ import com.google.gson.JsonParser;
 import com.graeditor.vocabulary_model.VocabularyModule;
 
 import graeditor.utils.DiagramUtil;
+import midfile.json.graphiti.FromMidFileAboutMerge;
 import midfile.json.graphiti.ToMidFile;
 
 public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
@@ -327,32 +328,103 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 		System.out.println("conn1Array.size: " + connection1Array.size());
 		
 		/**
-		 * 在diagram0图表中添加连线，修改相关节点中的anchor信息
+		 * 修改新添加的节点的连线信息，修改相关节点中的anchor信息
 		 */
 		//获取diagram0图表的连线
 		System.out.println("\n\n---------------------");
 		System.out.println("开始处理连线");
 		
+		String priviouNodeIdString = null; //添加的节点的上一个节点
+		String nextNodeIdString = null; //添加的节点的下一个节点
+		String addNodeIdString = null; //添加的节点
+		String fenchaNodeIdString = null; //原图表中开始分叉的节点（diagram0中的action4）
+		
 		System.out.println("merge_nodeArray.size: " + merge_nodeArray.size());
 		for (int c = 0; c < merge_nodeArray.size(); c++) {
-			String diagramNameString = merge_nodeArray.get(c).getAsJsonObject().get("diagram").getAsString();
-			if (diagramNameString.equals("action_vocabulary5")) {
-				System.out.println();
+			String nodeTypeString = merge_nodeArray.get(c).getAsJsonObject().get("action").getAsString();
+			if (nodeTypeString.equals("priviousNode")) {
+				priviouNodeIdString = merge_nodeArray.get(c).getAsJsonObject().get("shap_id").getAsString();
+				System.out.println("priviouString: " + priviouNodeIdString);
+			}else if (nodeTypeString.equals("nextNode")) {
+				nextNodeIdString = merge_nodeArray.get(c).getAsJsonObject().get("shap_id").getAsString();
+				System.out.println("nextString: " + nextNodeIdString);
+			}else if (merge_nodeArray.get(c).getAsJsonObject().get("diagram").getAsString().equals("action_vocabulary5")) {
+				addNodeIdString = merge_nodeArray.get(c).getAsJsonObject().get("shap_id").getAsString();
+				System.out.println("addNodeString: " + addNodeIdString);
+			}else if (nodeTypeString.equals("fencha") && merge_nodeArray.get(c).getAsJsonObject().get("diagram").getAsString().equals("action_vocabulary4")) {
+				fenchaNodeIdString = merge_nodeArray.get(c).getAsJsonObject().get("shap_id").getAsString();
 			}
 		}
 		
+		//为新添加的节点生成新的连线信息
+		String conn_id_add1String = priviouNodeIdString + "#" + addNodeIdString;
+		String conn_id_add2String = addNodeIdString + "#" + nextNodeIdString;
+		System.out.println("添加的入连线: " + conn_id_add1String);
+		System.out.println("添加的出连线: " + conn_id_add2String);
+		
+		//遍历图表中的所有连线信息，找出与添加节点相关联的两条链线，并修改连线数组中的属性
 		for (int b = 0; b < connection0Array.size(); b++) {
 			String conn_id_strString = connection0Array.get(b).getAsJsonObject().get("@conn_id").getAsString();
-//			String 
-//			if (conn_id_strString.contains("")) {
-//				
-//			}
-			System.out.println("conn_id_strString: " + conn_id_strString);
-			
+
+			if (conn_id_strString.contains(addNodeIdString)) {
+				System.out.println("conn_id_strString: " + conn_id_strString);
+				if (conn_id_add1String.split("#")[0].equals(addNodeIdString)) {
+					System.out.println("该连线是一条出连线");
+					connection0Array.get(b).getAsJsonObject().remove("@conn_id"); //删除原有连线中的错误属性信息
+					connection0Array.get(b).getAsJsonObject().remove("@start");
+					connection0Array.get(b).getAsJsonObject().remove("@end");
+					connection0Array.get(b).getAsJsonObject().addProperty("@conn_id", conn_id_add1String);
+					connection0Array.get(b).getAsJsonObject().addProperty("@start", addNodeIdString);
+					connection0Array.get(b).getAsJsonObject().addProperty("@end", nextNodeIdString);
+				}else {
+					System.out.println("该连线是一条入连线");
+					connection0Array.get(b).getAsJsonObject().remove("@conn_id"); //删除原有连线中的错误属性信息
+					connection0Array.get(b).getAsJsonObject().remove("@start");
+					connection0Array.get(b).getAsJsonObject().remove("@end");
+					connection0Array.get(b).getAsJsonObject().addProperty("@conn_id", conn_id_add2String);
+					connection0Array.get(b).getAsJsonObject().addProperty("@start", priviouNodeIdString);
+					connection0Array.get(b).getAsJsonObject().addProperty("@end", addNodeIdString);
+				}
+			}			
 		}
 		
+		//修改新添加节点和与该节点相关联的节点的anchors信息
+		for (int e = 0; e < node0Array.size(); e++) {
+			if (node0Array.get(e).getAsJsonObject().get("@shape_id").getAsString().equals(addNodeIdString)) {
+				//修改新添加的节点的anchors信息
+				String anchor_incom = conn_id_add1String;
+				String anchor_outgoing = conn_id_add2String;
+				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().remove("@incomingConnections");
+				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().remove("@outgoingConnections");
+				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().addProperty("@incomingConnections", anchor_incom);
+				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().addProperty("@outgoingConnections", anchor_outgoing);
+				
+				//修改该节点的位置信息
+				node0Array.get(e).getAsJsonObject().get("style").getAsJsonObject().remove("@y");
+				node0Array.get(e).getAsJsonObject().get("style").getAsJsonObject().addProperty("@y", 513);
+			}else if (node0Array.get(e).getAsJsonObject().get("@shape_id").getAsString().equals(priviouNodeIdString)) {
+				//修改该节点的前一个节点的anchors信息，添加一条出连线
+				String anchor_outString = conn_id_add1String;
+				String anchor_outgoing_before = node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().get("@outgoingConnections").getAsString();
+				String anchor_outgoing_afterString = anchor_outgoing_before + " " + anchor_outString;
+				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().remove("@outgoingConnections");
+				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().addProperty("@outgoingConnections", anchor_outgoing_afterString);
+				System.out.println("修改前的anchors信息： " + anchor_outgoing_before);
+				System.out.println("修改后的anchors信息： " + anchor_outgoing_afterString);
+			}else if (node0Array.get(e).getAsJsonObject().get("@shape_id").getAsString().equals(nextNodeIdString)) {
+				//修改该节点的后一个节点的anchors信息
+				String anchor_incomString = conn_id_add2String;
+				String anchor_incoming_before = node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().get("@incomingConnections").getAsString();
+				String anchor_incoming_afterString = anchor_incoming_before + " " + anchor_incomString;
+				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().remove("@incomingConnections");
+				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().addProperty("@incomingConnections", anchor_incoming_afterString);
+			}else if (node0Array.get(e).getAsJsonObject().get("@shape_id").getAsString().equals(fenchaNodeIdString)) {
+				
+			}
+		}
 		
-        
+		System.out.println(diagram0Obj.toString());
+		String newActionDiagramXml = FromMidFileAboutMerge.fromMidFileAboutMerge(diagram0Obj.toString(), null);
         
         
         

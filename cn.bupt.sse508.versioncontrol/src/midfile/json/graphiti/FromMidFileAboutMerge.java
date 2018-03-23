@@ -684,6 +684,7 @@ public class FromMidFileAboutMerge {
 						StringBuilder sb = new StringBuilder();
 						for (int i = 0; i < each.length; i++) {
 							JSONObject connection = connectionMap.get(each[i]);
+							System.out.println("1111111111111111111111: " + connection.toString());
 							sb.append("/0/@connections.");
 							sb.append(connection.optString("@index"));
 							sb.append(" ");
@@ -691,7 +692,7 @@ public class FromMidFileAboutMerge {
 						anchors.remove("@outgoingConnections");
 						anchors.accumulate("@outgoingConnections", sb.toString());
 					} else {
-						anchors.remove("@outgoingConnections");;
+						anchors.remove("@outgoingConnections");
 					}
 				}
 				
