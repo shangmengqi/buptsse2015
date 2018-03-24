@@ -39,6 +39,7 @@ import com.google.gson.JsonParser;
 import com.graeditor.vocabulary_model.VocabularyModule;
 
 import graeditor.utils.DiagramUtil;
+import midfile.json.graphiti.FromMidFileAboutCreateActionDiagram;
 import midfile.json.graphiti.FromMidFileAboutMerge;
 import midfile.json.graphiti.ToMidFile;
 
@@ -48,8 +49,8 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 	
 	public static JsonArray node0Array;
 	public static JsonArray node1Array;
-	public static JsonArray connection0Array;
-	public static JsonArray connection1Array;
+	public static JsonArray connection0Array = new JsonArray();
+	public static JsonArray connection1Array = new JsonArray();
 
 	public CreateNewActionDiagramFeature(IFeatureProvider fp) {
 		super(fp);
@@ -82,7 +83,8 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 	@Override
 	public void execute(ICustomContext context) {
 		
-		
+		node0Array = new JsonArray();
+		node1Array = new JsonArray();
 				
 		String diagram0Str = null;
 		String leafNodeAllIdStr = null;
@@ -151,7 +153,9 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 											//根据文件的绝对路径读取文件内容并重新存储
 											String uriString = d.eResource().getURI().toString().substring(18);
 											String dDiagramPath = "E:/Git/buptsse2015/runtime-EclipseApplication" + uriString;
+											System.out.println("bbbbbbbbbbbbbb: " + dDiagramPath);
 											diagram0Str = readFileByLines(dDiagramPath);
+											System.out.println("aaaaaaaaaaaaaaaaaa: " + diagram0Str);
 											File file = new File("E:/Git/" + d.getName() + ".diagram"); // 文件名字
 											writeToFile(diagram0Str,file);
 										}
@@ -192,7 +196,7 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 		 */
 		System.out.println("\n\n---------------------");
 		System.out.println("开始处理节点");
-		
+		System.out.println("222222222222222222222222222: " + node0Array.size());
 		node0Array = ((JsonObject)((JsonObject)diagram0Obj.get("description")).get("-diagram")).get("node").getAsJsonArray();
 		node1Array = ((JsonObject)((JsonObject)diagram1Obj.get("description")).get("-diagram")).get("node").getAsJsonArray();
 		System.out.println("node0Array: " + node0Array.toString());
@@ -200,6 +204,7 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
         
 		// 遍历action_vocabulary4(diagram0)中的节点
 		for (int i = 0; i < node0Array.size(); i++) {
+			System.out.println("111111111111111111111111111111111: " + node0Array.size());
 			String node0ModuleStyle = node0Array.get(i).getAsJsonObject().get("link").getAsJsonObject().get("@businessObjects").getAsString();
 //			System.out.println("node0ModuleStyle: " + node0ModuleStyle);
 			if (node0ModuleStyle.equals("Content")) {
@@ -375,7 +380,7 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 					connection0Array.get(b).getAsJsonObject().remove("@conn_id"); //删除原有连线中的错误属性信息
 					connection0Array.get(b).getAsJsonObject().remove("@start");
 					connection0Array.get(b).getAsJsonObject().remove("@end");
-					connection0Array.get(b).getAsJsonObject().addProperty("@conn_id", conn_id_add2String + " ");
+					connection0Array.get(b).getAsJsonObject().addProperty("@conn_id", conn_id_add2String);
 					connection0Array.get(b).getAsJsonObject().addProperty("@start", addNodeIdString);
 					connection0Array.get(b).getAsJsonObject().addProperty("@end", nextNodeIdString);
 					System.out.println("输出修改的出连线id： " + connection0Array.get(b).getAsJsonObject().get("@conn_id").getAsString());
@@ -384,7 +389,7 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 					connection0Array.get(b).getAsJsonObject().remove("@conn_id"); //删除原有连线中的错误属性信息
 					connection0Array.get(b).getAsJsonObject().remove("@start");
 					connection0Array.get(b).getAsJsonObject().remove("@end");
-					connection0Array.get(b).getAsJsonObject().addProperty("@conn_id", conn_id_add1String + " ");
+					connection0Array.get(b).getAsJsonObject().addProperty("@conn_id", conn_id_add1String);
 					connection0Array.get(b).getAsJsonObject().addProperty("@start", priviouNodeIdString);
 					connection0Array.get(b).getAsJsonObject().addProperty("@end", addNodeIdString);
 					System.out.println("输出修改的入连线id： " + connection0Array.get(b).getAsJsonObject().get("@conn_id").getAsString());
@@ -398,88 +403,47 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 		for (int e = 0; e < node0Array.size(); e++) {
 			if (node0Array.get(e).getAsJsonObject().get("@shape_id").getAsString().equals(addNodeIdString)) {
 				//修改新添加的节点的anchors信息
-				String anchor_incom = conn_id_add1String + " ";
-				String anchor_outgoing = conn_id_add2String + " ";
+				String anchor_incom = conn_id_add1String;
+				String anchor_outgoing = conn_id_add2String;
 				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().remove("@incomingConnections");
 				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().remove("@outgoingConnections");
-				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().addProperty("@incomingConnections", anchor_incom);
-				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().addProperty("@outgoingConnections", anchor_outgoing);
+				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().addProperty("@incomingConnections", anchor_incom + " ");
+				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().addProperty("@outgoingConnections", anchor_outgoing + " ");
 				
 				//修改该节点的位置信息
 				node0Array.get(e).getAsJsonObject().get("style").getAsJsonObject().remove("@y");
-				node0Array.get(e).getAsJsonObject().get("style").getAsJsonObject().addProperty("@y", 513);
+				node0Array.get(e).getAsJsonObject().get("style").getAsJsonObject().remove("@x");
+				node0Array.get(e).getAsJsonObject().get("style").getAsJsonObject().addProperty("@y", 413);
+				node0Array.get(e).getAsJsonObject().get("style").getAsJsonObject().addProperty("@x", 890);
 			}else if (node0Array.get(e).getAsJsonObject().get("@shape_id").getAsString().equals(priviouNodeIdString)) {
 				//修改该节点的前一个节点的anchors信息，添加一条出连线
 				String anchor_outString = conn_id_add1String;
 				String anchor_outgoing_before = node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().get("@outgoingConnections").getAsString();
-				String anchor_outgoing_afterString = anchor_outgoing_before + anchor_outString + " ";
+				String anchor_outgoing_afterString = anchor_outgoing_before + anchor_outString;
 				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().remove("@outgoingConnections");
-				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().addProperty("@outgoingConnections", anchor_outgoing_afterString);
+				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().addProperty("@outgoingConnections", anchor_outgoing_afterString + " ");
 				System.out.println("修改前的anchors信息： " + anchor_outgoing_before);
 				System.out.println("修改后的anchors信息： " + anchor_outgoing_afterString);
 			}else if (node0Array.get(e).getAsJsonObject().get("@shape_id").getAsString().equals(nextNodeIdString)) {
 				//修改该节点的后一个节点的anchors信息
 				String anchor_incomString = conn_id_add2String;
 				String anchor_incoming_before = node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().get("@incomingConnections").getAsString();
-				String anchor_incoming_afterString = anchor_incoming_before + anchor_incomString + " ";
+				String anchor_incoming_afterString = anchor_incoming_before + anchor_incomString;
 				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().remove("@incomingConnections");
-				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().addProperty("@incomingConnections", anchor_incoming_afterString);
+				node0Array.get(e).getAsJsonObject().get("anchors").getAsJsonObject().addProperty("@incomingConnections", anchor_incoming_afterString + " ");
 			}else if (node0Array.get(e).getAsJsonObject().get("@shape_id").getAsString().equals(fenchaNodeIdString)) {
 				
 			}
 		}
 		
 		System.out.println(diagram0Obj.toString());
-		String newActionDiagramXml = FromMidFileAboutMerge.fromMidFileAboutMerge(diagram0Obj.toString(), null);
+		String newActionDiagramXml = FromMidFileAboutCreateActionDiagram.fromMidFileAboutCreateActionDiagram(diagram0Obj.toString());
         
-        
-        
-        /**
-         * 将当前图表文件转换为中间文件格式
-         */
-        
-//        String currentDiagramName = currentDiagram.getName();
-//        String uriString = currentDiagram.eResource().getURI().toString().substring(18);
-//		String currentDiagramPath = "E:/Git/buptsse2015/runtime-EclipseApplication" + uriString;
-//		System.out.println("currentDiagramPath: " + currentDiagramPath);		
-//		String vocabularyDiagramStr = ToMidFile.toMidFile(currentDiagramPath);
-////        System.out.println("vocabularyDiagramStr" + vocabularyDiagramStr);
-//        
-//        
-//        Gson gson = new Gson();
-//		JsonParser parse =new JsonParser();
-//		JsonObject vocabularyDiagramObj= (JsonObject) parse.parse(vocabularyDiagramStr);
-//        
-//		JsonArray connectionArray = ((JsonObject)((JsonObject)vocabularyDiagramObj.get("description")).get("-diagram")).get("connections").getAsJsonArray();
-//		System.out.println(connectionArray.toString());
-//		
-//		//遍历连线，找出含有当前选择节点id的连线,找出跟该节点相关联的叶子节点leafNodeIdStr
-//		for (int i = 0; i < connectionArray.size(); i++) {
-//			String connectionStr = connectionArray.get(i).getAsJsonObject().get("@conn_id").toString();
-//			if (connectionStr.contains(currentShap_id)) {
-//				System.out.println("connectionStr: " + connectionStr);
-//				//拿取连线的终止节点，即当前节点的叶子节点
-//				leafNodeAllIdStr = connectionArray.get(i).getAsJsonObject().get("@end").toString();
-//				if (!leafNodeAllIdStr.contains(currentShap_id)) {
-//					String leadNodeIdStr = leafNodeAllIdStr;
-//					System.out.println("leafNodeIdStr: " + leadNodeIdStr);
-//					
-//					//在当前图表文件中找出这两个叶子节点、以及对应的编号
-//					//遍历该图表文件的节点
-//					JsonArray nodeArray = ((JsonObject)((JsonObject)vocabularyDiagramObj.get("description")).get("-diagram")).get("node").getAsJsonArray();
-//					for (int j = 0; j < nodeArray.size(); j++) {
-//						String nodeStringId = nodeArray.get(j).getAsJsonObject().get("@shape_id").toString();
-//						if (nodeStringId.contains(leadNodeIdStr)) {
-//							//
-//							System.out.println("nodeStringId: " + nodeStringId);
-//						}
-//					}
-//				}				
-//			}			
-//		}
-
 		
-		
+		File file = new File("E:/Git/buptsse2015/runtime-EclipseApplication/test/src/newActionDiagram.diagram"); // 文件名字
+		writeToFile(newActionDiagramXml, file);
+        
+        
 		
 	}
 	
@@ -610,6 +574,4 @@ public class CreateNewActionDiagramFeature extends AbstractCustomFeature{
 		return sb.toString();
 	}
 	
-
-
 }

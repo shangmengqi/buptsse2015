@@ -121,9 +121,14 @@ public class FromMidFileAboutMerge {
 					((JSONObject) connections).accumulate("@index", "0");
 				} else { // 连线数组
 					JSONArray connectionArr = (JSONArray) connections;
+					System.out.println("connectionArr: " + connectionArr.toString());
+					System.out.println("connectionArr.lenth: " + connectionArr.length());
 					for (int i = 0; i < connectionArr.length(); i++) {
 						String connectionID = connectionArr.getJSONObject(i).optString("@conn_id");
-						connectionMap.put(connectionID, connectionArr.getJSONObject(i));
+						System.out.println("connectionID: " + connectionID);
+						connectionMap.put(connectionID, connectionArr.getJSONObject(i)); //存放连线id以及该连线的所有信息
+//						connectionMap.put(connectionID, connectionArr.optJSONObject(i));
+						System.out.println("connectionMap: " + connectionMap.toString());
 						connectionArr.getJSONObject(i).accumulate("@index", ""+i);
 					}
 				}
@@ -163,14 +168,7 @@ public class FromMidFileAboutMerge {
 					}
 				}
 			}
-//			if (connections instanceof JSONObject) { // 单个连线
-//				processConnection((JSONObject) connections);
-//			} else { // 连线数组
-//				JSONArray connectionsArr = (JSONArray) connections;
-//				for (int i = 0; i < connectionsArr.length(); i++) {
-//					processConnection(connectionsArr.getJSONObject(i));
-//				}
-//			}
+
 			
 			// 下面生成图表的BusinessObject信息和节点link值
 			StringBuilder boXMLsb = new StringBuilder();
@@ -324,15 +322,7 @@ public class FromMidFileAboutMerge {
 					}
 				}
 			}
-//			if (connections instanceof JSONObject) { // 单个连线
-//				JSONObject connection = (JSONObject) connections;
-//				removeExtraInfoOfConnections(connection);
-//			} else { // 连线数组
-//				JSONArray connectionArr = (JSONArray) connections;
-//				for (int i = 0; i < connectionArr.length(); i++) {
-//					removeExtraInfoOfConnections(connectionArr.getJSONObject(i));
-//				}
-//			}
+
 			if (diagram.has("childrenlist")) {
 				diagram.remove("childrenlist");
 			}
@@ -734,35 +724,5 @@ public class FromMidFileAboutMerge {
 		}
 
 }
-
-//class LayeredNode{
-//	Object childList;
-//	String layer;
-//	
-//	public LayeredNode(Object childList, String layer) {
-//		this.childList = childList;
-//		this.layer = layer;
-//	}
-//}
-//
-//class LayeredBONode {
-//	int index;
-//	List<LayeredBONode> list;
-//	
-//	public LayeredBONode(int index, List<LayeredBONode> list) {
-//		this.index = index;
-//		this.list = list;
-//	}
-//}
-//
-//class IndexedConnection {
-//	int start;
-//	int end;
-//	
-//	public IndexedConnection(int start, int end) {
-//		this.start = start;
-//		this.end = end;
-//	}
-//}
 
 
