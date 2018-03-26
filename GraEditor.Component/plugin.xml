@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypes">
+      <diagramType
+            name="Component Diagram Type"
+            type="Component"
+            id="GraEditor.Component.ComponentDiagramType">
+      </diagramType>
+   </extension>
+   
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypeProviders">
+      <diagramTypeProvider
+            name="Component Diagram Type Provider"
+            class="graeditor.component.graphiti.ComponentDiagramTypeProvider"
+            id="GraEditor.Component.ComponentDiagramTypeProvider">
+         <diagramType
+               id="GraEditor.Component.ComponentDiagramType">
+               <imageProvider
+               		id="GraEditor.Component.ComponentImageProvider">
+       			</imageProvider>
+         </diagramType>
+         
+         <imageProvider
+   			id="GraEditor.Component.ComponentImageProvider">
+		</imageProvider>
+         
+      </diagramTypeProvider>
+   </extension>
+   
+   <extension
+   		point="org.eclipse.graphiti.ui.imageProviders">
+   		<imageProvider
+   			class="graeditor.component.graphiti.ComponentImageProvider"
+   			id="GraEditor.Component.ComponentImageProvider">
+		</imageProvider>
+	</extension>
+   			
+
+</plugin>

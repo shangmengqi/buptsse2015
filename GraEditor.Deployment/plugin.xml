@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypes">
+      <diagramType
+            name="Deployment Diagram Type"
+            type="Deployment"
+            id="GraEditor.Deployment.DeploymentDiagramType">
+      </diagramType>
+   </extension>
+   
+   <extension
+         point="org.eclipse.graphiti.ui.diagramTypeProviders">
+      <diagramTypeProvider
+            name="Deployment Diagram Type Provider"
+            class="graeditor.deployment.graphiti.DeploymentDiagramTypeProvider"
+            id="GraEditor.Deployment.DeploymentDiagramTypeProvider">
+         <diagramType
+               id="GraEditor.Deployment.DeploymentDiagramType">
+               <imageProvider
+               		id="GraEditor.Deployment.DeploymentImageProvider">
+       			</imageProvider>
+         </diagramType>
+         
+         <imageProvider
+   			id="GraEditor.Deployment.DeploymentImageProvider">
+		</imageProvider>
+         
+      </diagramTypeProvider>
+   </extension>
+   
+   <extension
+   		point="org.eclipse.graphiti.ui.imageProviders">
+   		<imageProvider
+   			class="graeditor.deployment.graphiti.deploymentImageProvider"
+   			id="GraEditor.Deployment.DeploymentImageProvider">
+		</imageProvider>
+	</extension>
+   			
+
+</plugin>

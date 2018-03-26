@@ -7,6 +7,7 @@ public class VocabularyDiagramTypeProvider extends AbstractDiagramTypeProvider{
 	
 	public VocabularyDiagramTypeProvider() {
 		super();
-		setFeatureProvider(new VocabularyFeatureProvider(this));	}
+		setFeatureProvider(new VocabularyFeatureProvider(this));	
+	}
 
 }
