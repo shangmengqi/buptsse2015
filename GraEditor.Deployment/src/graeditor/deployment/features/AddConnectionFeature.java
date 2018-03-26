@@ -5,6 +5,7 @@ import org.eclipse.graphiti.features.context.IAddConnectionContext;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.features.impl.AbstractAddFeature;
 import org.eclipse.graphiti.mm.algorithms.Polyline;
+import org.eclipse.graphiti.mm.algorithms.styles.LineStyle;
 import org.eclipse.graphiti.mm.pictograms.Connection;
 import org.eclipse.graphiti.mm.pictograms.ConnectionDecorator;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
@@ -53,6 +54,7 @@ public class AddConnectionFeature extends AbstractAddFeature{
 			IGaService gaService = Graphiti.getGaService();
 			Polyline polyline = gaService.createPolyline(connection);
 			polyline.setLineWidth(1);
+			polyline.setLineStyle(LineStyle.DASH);
 			polyline.setForeground(manageColor(0, 0, 0));
 			ConnectionDecorator cDecorator = peCreateService.createConnectionDecorator(connection, false, 1.0, true);
 			Polyline arrowLine = gaService.createPolyline(cDecorator, new int[]{-15,10,0,0,-15,-10});

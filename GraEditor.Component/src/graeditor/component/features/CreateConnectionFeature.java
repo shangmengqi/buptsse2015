@@ -8,6 +8,7 @@ import org.eclipse.graphiti.mm.pictograms.Connection;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 
 import com.graeditor.component_model.ComponentModule;
+import com.graeditor.component_model.LittleInterfaceModule;
 
 
 public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
@@ -46,6 +47,8 @@ public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
 			return false;
 		}
 		
+		
+		
 		return true;
 	}
 
@@ -63,6 +66,12 @@ public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
         PictogramElement startElement = context.getSourcePictogramElement();
 		
 		if (!(isQualified(startElement))) {
+			return false;
+		}
+		
+		Object bizObj = getBusinessObjectForPictogramElement(startElement);
+		ComponentModule startModule = (ComponentModule) bizObj;
+		if (startModule instanceof LittleInterfaceModule) {
 			return false;
 		}
 		return true;
