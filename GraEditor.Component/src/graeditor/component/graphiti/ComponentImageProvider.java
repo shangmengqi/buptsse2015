@@ -5,7 +5,7 @@ import org.eclipse.graphiti.ui.platform.IImageProvider;
 
 public class ComponentImageProvider extends AbstractImageProvider implements IImageProvider{
 	
-protected static final String PREFIX = "GraEditor.Component.";
+	protected static final String PREFIX = "GraEditor.Component.";
 	
 	public static final String COMPONENT  = PREFIX + "component";
 	public static final String DATABASE  = PREFIX + "database";

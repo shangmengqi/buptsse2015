@@ -1,4 +1,4 @@
-package graeditor.component.features;
+package graeditor.deployment.features;
 
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.ICreateConnectionContext;
@@ -7,23 +7,23 @@ import org.eclipse.graphiti.features.impl.AbstractCreateConnectionFeature;
 import org.eclipse.graphiti.mm.pictograms.Connection;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 
-import com.graeditor.component_model.ComponentModule;
+import com.graeditor.deployment_model.DeploymentModule;
 
 
 public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
-
+	
 	public static enum ConnectionType{
 		INPLEMENT,DEPENDENCE;
 	}
 	
 	private ConnectionType type;
-	
-	public CreateConnectionFeature(IFeatureProvider fp, ConnectionType type) {		
-		super(fp,type.name(), "add a connection between two modules");
+
+	public CreateConnectionFeature(IFeatureProvider fp, ConnectionType type) {
+		super(fp, type.name(), "add a connection between two modules");
 		this.type = type;
 	}
-
-	ComponentModule startBizObj, endBizObj;
+	
+	DeploymentModule startBizObj, endBizObj;
 
 	@Override
 	public boolean canCreate(ICreateConnectionContext context) {
@@ -38,8 +38,8 @@ public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
 			return false;
 		}
 		
-		startBizObj = (ComponentModule) getBusinessObjectForPictogramElement(startElement);
-		endBizObj = (ComponentModule) getBusinessObjectForPictogramElement(endElement);
+		startBizObj = (DeploymentModule) getBusinessObjectForPictogramElement(startElement);
+		endBizObj = (DeploymentModule) getBusinessObjectForPictogramElement(endElement);
 		
 		// 如果当前连线早已存在,则不创建该链接
 		if (startBizObj.getNext().contains(endBizObj)) {
@@ -60,7 +60,7 @@ public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
 
 	@Override
 	public boolean canStartConnection(ICreateConnectionContext context) {
-        PictogramElement startElement = context.getSourcePictogramElement();
+PictogramElement startElement = context.getSourcePictogramElement();
 		
 		if (!(isQualified(startElement))) {
 			return false;
@@ -70,7 +70,7 @@ public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
 	
 	private boolean isQualified(PictogramElement element){
 		Object bizObject = getBusinessObjectForPictogramElement(element);
-		if (bizObject == null || !(bizObject instanceof ComponentModule)) {
+		if (bizObject == null || !(bizObject instanceof DeploymentModule)) {
 			return false;
 		}
 		return true;

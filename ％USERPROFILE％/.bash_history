@@ -353,3 +353,9 @@ git commit -m "初步完成活动图的自动生成功能"
 git remote add origin https://github.com/shangmengqi/buptsse2015.git
 git pull origin master
 git push -u origin master
+git init
+git add .
+git commit -m "初步完成组件图的绘制"
+git remote add origin https://github.com/shangmengqi/buptsse2015.git
+git pull origin master
+git push -u origin master

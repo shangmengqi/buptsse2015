@@ -1,4 +1,4 @@
-package graeditor.component.features;
+package graeditor.deployment.features;
 
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.IAddConnectionContext;
@@ -12,7 +12,7 @@ import org.eclipse.graphiti.services.Graphiti;
 import org.eclipse.graphiti.services.IGaService;
 import org.eclipse.graphiti.services.IPeCreateService;
 
-import graeditor.component.features.CreateConnectionFeature.ConnectionType;
+import graeditor.deployment.features.CreateConnectionFeature.ConnectionType;
 
 
 public class AddConnectionFeature extends AbstractAddFeature{
@@ -31,7 +31,6 @@ public class AddConnectionFeature extends AbstractAddFeature{
 
 	@Override
 	public PictogramElement add(IAddContext context) {
-		
 		IAddConnectionContext addConContext = (IAddConnectionContext) context;
 		IPeCreateService peCreateService = Graphiti.getPeCreateService();
 		
@@ -60,15 +59,6 @@ public class AddConnectionFeature extends AbstractAddFeature{
 			arrowLine.setForeground(manageColor(0, 0, 0));
 			arrowLine.setLineWidth(1);
 		}
-		
-//		IGaService gaService = Graphiti.getGaService();
-//		Polyline polyline = gaService.createPolyline(connection);
-//		polyline.setLineWidth(1);
-//		polyline.setForeground(manageColor(0, 0, 0));
-//		ConnectionDecorator cDecorator = peCreateService.createConnectionDecorator(connection, false, 1.0, true);
-//		Polyline arrowLine = gaService.createPolyline(cDecorator, new int[]{-15,10,0,0,-15,-10});
-//		arrowLine.setForeground(manageColor(0, 0, 0));
-//		arrowLine.setLineWidth(1);
 		return connection;
 	}
 

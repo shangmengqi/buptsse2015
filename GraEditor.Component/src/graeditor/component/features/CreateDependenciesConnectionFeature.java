@@ -9,20 +9,12 @@ import org.eclipse.graphiti.mm.pictograms.PictogramElement;
 
 import com.graeditor.component_model.ComponentModule;
 
+public class CreateDependenciesConnectionFeature extends AbstractCreateConnectionFeature{
 
-public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
-
-	public static enum ConnectionType{
-		INPLEMENT,DEPENDENCE;
+	public CreateDependenciesConnectionFeature(IFeatureProvider fp, String name, String description) {
+		super(fp, name, description);
 	}
 	
-	private ConnectionType type;
-	
-	public CreateConnectionFeature(IFeatureProvider fp, ConnectionType type) {		
-		super(fp,type.name(), "add a connection between two modules");
-		this.type = type;
-	}
-
 	ComponentModule startBizObj, endBizObj;
 
 	@Override
@@ -53,14 +45,13 @@ public class CreateConnectionFeature extends AbstractCreateConnectionFeature{
 	public Connection create(ICreateConnectionContext context) {
 		endBizObj.setPreviousModules(startBizObj);
 		AddConnectionContext addContext = new AddConnectionContext(context.getSourceAnchor(), context.getTargetAnchor());
-		addContext.setNewObject(type);
 		Connection newConnection = (Connection) getFeatureProvider().addIfPossible(addContext);
 		return newConnection;
 	}
 
 	@Override
 	public boolean canStartConnection(ICreateConnectionContext context) {
-        PictogramElement startElement = context.getSourcePictogramElement();
+		PictogramElement startElement = context.getSourcePictogramElement();
 		
 		if (!(isQualified(startElement))) {
 			return false;

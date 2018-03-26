@@ -34,7 +34,7 @@
    <extension
    		point="org.eclipse.graphiti.ui.imageProviders">
    		<imageProvider
-   			class="graeditor.deployment.graphiti.deploymentImageProvider"
+   			class="graeditor.deployment.graphiti.DeploymentImageProvider"
    			id="GraEditor.Deployment.DeploymentImageProvider">
 		</imageProvider>
 	</extension>
